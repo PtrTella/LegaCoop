@@ -16,37 +16,45 @@ import { TeamView } from './components/TeamView';
 import { ModuleMap } from './components/ModuleMap';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
-import { SWOTAnalyst } from './components/SWOTAnalyst';
 import { AITutor } from './components/AITutor';
+import { SimulationHub } from './components/SimulationHub';
+import { PitchBattle } from './components/PitchBattle';
 
 // --- Main App Content ---
 
 const AppContent = () => {
   const { state, completePhase } = useAppContext();
-  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'swot'>('dashboard');
+  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch'>('dashboard');
+  const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
+
+  const handleSetView = (newView: any) => {
+    // Track main views for returning after completion
+    if (['dashboard', 'map', 'team', 'simulation'].includes(newView)) {
+      setLastMainView(newView);
+    }
+    setView(newView);
+  };
 
   const handleSelectModule = (id: number) => {
     setActiveModuleId(id);
     const module = MODULES[id];
-    if (id === 3) {
-      setView('swot');
-    } else if (module.lessons.length > 0) {
+    if (module.lessons.length > 0) {
       const firstLesson = module.lessons[0];
       if (firstLesson.type === 'roleplay') {
-        setView('roleplay');
+        handleSetView('roleplay');
       } else {
-        setView('lesson');
+        handleSetView('lesson');
       }
     } else {
-      setView('quiz');
+      handleSetView('quiz');
     }
   };
 
   const handleActionComplete = () => {
     if (view === 'lesson') {
       setView('quiz');
-    } else if (view === 'quiz' || view === 'roleplay' || view === 'swot') {
+    } else if (view === 'quiz' || view === 'roleplay') {
       if (activeModuleId !== null) completePhase(activeModuleId);
       setView('success');
     }
@@ -57,12 +65,12 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans flex">
       {/* Sidebar Navigation */}
-      <Sidebar view={view} setView={setView} />
+      <Sidebar view={view} setView={handleSetView} />
 
       {/* Main Content */}
       <main className="flex-1 h-screen overflow-y-auto relative bg-slate-50 flex flex-col">
         {/* Header */}
-        <Header view={view} setView={setView} activeModule={activeModule} />
+        <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
         <div className="flex-1 p-8">
           <div className="max-w-5xl mx-auto h-full">
@@ -103,9 +111,15 @@ const AppContent = () => {
                 </motion.div>
               )}
 
-              {view === 'swot' && (
-                <motion.div key="swot" initial={{ x: 300 }} animate={{ x: 0 }} exit={{ x: -300 }} className="h-full">
-                  <SWOTAnalyst onComplete={handleActionComplete} />
+              {view === 'simulation' && (
+                <motion.div key="sim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="h-full">
+                  <SimulationHub onSelect={(type) => handleSetView(type === 'governance' ? 'roleplay' : 'pitch')} />
+                </motion.div>
+              )}
+
+              {view === 'pitch' && (
+                <motion.div key="pitch" initial={{ y: 300 }} animate={{ y: 0 }} exit={{ y: -300 }} className="h-full">
+                  <PitchBattle onComplete={() => handleSetView('simulation')} />
                 </motion.div>
               )}
 
@@ -116,7 +130,12 @@ const AppContent = () => {
                   </div>
                   <h2 className="text-3xl font-black text-slate-900">Ottimo Lavoro!</h2>
                   <p className="text-slate-500">Hai completato il modulo e sbloccato nuove competenze.</p>
-                  <button onClick={() => setView('dashboard')} className="px-8 py-4 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 transition-colors">Torna alla Dashboard</button>
+                  <button 
+                    onClick={() => handleSetView(lastMainView)} 
+                    className="px-8 py-4 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 transition-colors capitalize"
+                  >
+                    Torna a {lastMainView === 'map' ? 'percorso' : lastMainView}
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
