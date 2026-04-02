@@ -26,6 +26,7 @@ export const Header = ({
           {view === 'dashboard' ? 'Dashboard Maturità' : 
            view === 'map' ? 'Percorso Formativo' : 
            view === 'team' ? 'Il Tuo Team' : 
+           view === 'swot' ? 'Analisi SWOT AI' :
            activeModule?.title}
         </h2>
       </div>

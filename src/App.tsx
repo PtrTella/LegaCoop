@@ -16,18 +16,22 @@ import { TeamView } from './components/TeamView';
 import { ModuleMap } from './components/ModuleMap';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
+import { SWOTAnalyst } from './components/SWOTAnalyst';
+import { AITutor } from './components/AITutor';
 
 // --- Main App Content ---
 
 const AppContent = () => {
   const { state, completePhase } = useAppContext();
-  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team'>('dashboard');
+  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'swot'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
 
   const handleSelectModule = (id: number) => {
     setActiveModuleId(id);
     const module = MODULES[id];
-    if (module.lessons.length > 0) {
+    if (id === 3) {
+      setView('swot');
+    } else if (module.lessons.length > 0) {
       const firstLesson = module.lessons[0];
       if (firstLesson.type === 'roleplay') {
         setView('roleplay');
@@ -42,7 +46,7 @@ const AppContent = () => {
   const handleActionComplete = () => {
     if (view === 'lesson') {
       setView('quiz');
-    } else if (view === 'quiz' || view === 'roleplay') {
+    } else if (view === 'quiz' || view === 'roleplay' || view === 'swot') {
       if (activeModuleId !== null) completePhase(activeModuleId);
       setView('success');
     }
@@ -99,6 +103,12 @@ const AppContent = () => {
                 </motion.div>
               )}
 
+              {view === 'swot' && (
+                <motion.div key="swot" initial={{ x: 300 }} animate={{ x: 0 }} exit={{ x: -300 }} className="h-full">
+                  <SWOTAnalyst onComplete={handleActionComplete} />
+                </motion.div>
+              )}
+
               {view === 'success' && (
                 <motion.div key="success" initial={{ scale: 0.8 }} animate={{ scale: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6">
                   <div className="w-32 h-32 bg-green-100 rounded-full flex items-center justify-center">
@@ -112,6 +122,7 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
         </div>
+        <AITutor />
       </main>
 
       {/* CSS for 3D Flip */}
