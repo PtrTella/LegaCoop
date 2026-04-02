@@ -11,7 +11,7 @@ export default async function handler(req: any, res: any) {
     return res.status(400).json({ error: 'Parametro "question" mancante.' });
   }
 
-  const API_KEY = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || '';
+  const API_KEY = process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY || '';
   
   if (!API_KEY) {
     return res.status(500).json({ error: 'Configurazione API Key mancante sul server.' });

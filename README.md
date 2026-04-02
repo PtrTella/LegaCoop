@@ -43,13 +43,6 @@ Nella tua scalata verso l'impresa, avrai due guide d'eccezione:
 
 ## 🗺️ Il Percorso del Cooperatore (6 Step to Launch)
 
-```mermaid
-graph LR
-    F0((0. ECO)) --> F1((1. TEAM)) --> F2((2. MVP)) --> F3((3. MKT)) --> F4((4. FIN)) --> F5((5. GOV))
-    style F0 fill:#6366f1,stroke:#fff,color:#fff
-    style F5 fill:#f59e0b,stroke:#fff,color:#fff
-```
-
 1.  **Ecosystem Mapping**: Identifica il valore sociale nel tuo territorio.
 2.  **Team Mindset**: Definisci chi siete e come prenderete decisioni (Skill Matrix).
 3.  **Validation**: Lancia il tuo MVP e testa l'impatto reale.
