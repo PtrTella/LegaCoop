@@ -1,1 +1,11 @@
 /.DS_Store
+node_modules/
+package-lock.json
+dist/
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
