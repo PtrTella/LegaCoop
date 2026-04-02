@@ -16,37 +16,41 @@ export const MicroLesson = ({
 }) => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [visibleStepLimit, setVisibleStepLimit] = useState(0);
-  const [isSectionInteractivePassed, setIsSectionInteractivePassed] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [solvedChunks, setSolvedChunks] = useState<number[]>([]);
+  const chunkRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const section = lesson.sections[currentSectionIndex];
 
-  // Reset steps when moving to a new section or lesson
+  // Reset counters when moving to a new section or lesson
   useEffect(() => {
     setVisibleStepLimit(0);
-    setIsSectionInteractivePassed(false);
+    setSolvedChunks([]);
   }, [currentSectionIndex, lesson.id]);
 
-  // Auto-scroll to bottom when new steps appear, waiting for animation
+  // Smart scroll: center the new content to avoid overlapping with fixed bottom button
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (scrollRef.current) {
-        scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      const currentElement = chunkRefs.current[visibleStepLimit];
+      if (currentElement) {
+        currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-    }, 300);
+    }, 150); // slight delay to allow rendering
     return () => clearTimeout(timer);
-  }, [visibleStepLimit, isSectionInteractivePassed]);
+  }, [visibleStepLimit, solvedChunks]);
 
   if (!section) {
     return (
       <div className="flex flex-col h-full items-center justify-center space-y-6">
-        <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center animate-bounce">
-           <Zap className="text-primary w-8 h-8" />
+        <div className="w-20 h-20 bg-primary/10 rounded-[32px] flex items-center justify-center animate-bounce shadow-xl">
+           <Zap className="text-primary w-10 h-10" />
         </div>
-        <p className="text-primary/40 font-display font-black text-[10px] uppercase tracking-widest">Lezione Terminata</p>
+        <div className="text-center">
+          <p className="text-primary/40 font-display font-black text-[10px] uppercase tracking-widest mb-2">Punto di Svolta Raggiunto</p>
+          <h3 className="text-2xl font-display font-black text-primary italic leading-tight">Ottimo lavoro, Cooperatore!</h3>
+        </div>
         <button 
           onClick={onComplete} 
-          className="px-8 py-4 bg-primary text-white rounded-2xl font-display font-black text-xs uppercase tracking-widest shadow-lg shadow-primary/20"
+          className="px-10 py-5 bg-primary text-white rounded-2xl font-display font-black text-xs uppercase tracking-widest shadow-2xl shadow-primary/30 transition-transform active:scale-95"
         >
           Vai al Quiz Finale
         </button>
@@ -55,12 +59,12 @@ export const MicroLesson = ({
   }
 
   const handleNextStep = () => {
-    if (visibleStepLimit < section.contentChunks.length - 1) {
+    const isAtLastChunk = visibleStepLimit === section.contentChunks.length - 1;
+    
+    if (!isAtLastChunk) {
       setVisibleStepLimit(prev => prev + 1);
-    } else if (section.inlineGamification && !isSectionInteractivePassed) {
-      // Logic for section-level gamification handled inline below
     } else {
-      // Move to next section
+      // Transition to next section or finish
       if (currentSectionIndex < lesson.sections.length - 1) {
         setCurrentSectionIndex(i => i + 1);
       } else {
@@ -79,9 +83,15 @@ export const MicroLesson = ({
     });
   };
 
-  const renderInteractive = (gamification: any, onSuccess: () => void) => {
-    const type = gamification.type;
-    const data = gamification.data;
+  const renderInteractive = (gamification: any, idx: number) => {
+    const { type, data } = gamification;
+    const onSuccess = () => {
+      if (!solvedChunks.includes(idx)) {
+        setSolvedChunks(prev => [...prev, idx]);
+        handleNextStep();
+      }
+    };
+
     if (type === 'quickCheck') return <QuickCheckCard data={data} onSuccess={onSuccess} />;
     if (type === 'multipleChoice') return <MultipleChoiceCard data={data} onSuccess={onSuccess} />;
     if (type === 'madLib') return <MadLibCard data={data} onSuccess={onSuccess} />;
@@ -89,112 +99,111 @@ export const MicroLesson = ({
   };
 
   const currentChunk = section.contentChunks[visibleStepLimit];
-  const isAtEndOfChunks = visibleStepLimit === section.contentChunks.length - 1;
-  const showSectionGame = isAtEndOfChunks && section.inlineGamification && !isSectionInteractivePassed;
+  const isChunkInteractive = currentChunk?.type === 'interactive';
+  const isChunkSolved = solvedChunks.includes(visibleStepLimit);
   
-  // A chunk is "active/blocking" if it's an interactive one and not solved
-  // BUT in our current sequence we don't have a state for "chunk-level solved"
-  // Let's add a state to track solved status of interactive chunks
-  const [solvedChunks, setSolvedChunks] = useState<number[]>([]);
-  const isChunkInteractiveSolved = solvedChunks.includes(visibleStepLimit);
-
-  const canShowNextButton = (currentChunk.type !== 'interactive' || isChunkInteractiveSolved) && !showSectionGame;
+  // The persistent button only appears if:
+  // 1. We are not on an interactive block OR the block is solved
+  // AND we are not yet done with the section
+  const showNextButton = !isChunkInteractive || isChunkSolved;
 
   return (
-    <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-8 pb-32 pt-8 px-4">
-      <div className="mb-4">
-        <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.4em] mb-2">{lesson.title}</p>
-        <h2 className="text-2xl font-display font-black text-primary leading-tight tracking-tight max-w-3xl italic">{section.title || "Percorso di Evoluzione"}</h2>
-      </div>
+    <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-12 pb-48 pt-12 px-6">
+      {/* Header Area */}
+      <header className="space-y-3">
+        <div className="flex items-center gap-4">
+          <span className="w-12 h-0.5 bg-secondary/30 rounded-full"></span>
+          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.5em]">{lesson.title}</p>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-display font-black text-primary leading-[1.1] tracking-tight max-w-3xl italic">
+          {section.title || "Percorso di Evoluzione"}
+        </h2>
+      </header>
 
-      <div className="space-y-10">
-        {/* Render visible chunks */}
+      {/* Main Learning Flow */}
+      <div className="space-y-12 relative">
         {section.contentChunks.map((chunk, idx) => {
           if (idx > visibleStepLimit) return null;
           
+          const isSolvedGame = chunk.type === 'interactive' && solvedChunks.includes(idx);
+          if (isSolvedGame) return null; // Disappear when solved
+
           return (
             <motion.div 
               key={`${currentSectionIndex}-${idx}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4"
+              ref={(el) => chunkRefs.current[idx] = el}
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              className="relative"
             >
               {chunk.type === 'text' && (
-                <div className="bg-surface-container-lowest p-8 rounded-[32px] shadow-ambient">
-                  <article className="text-primary/70 text-lg font-body leading-relaxed tracking-tight">
+                <div className="bg-surface-container-lowest p-10 rounded-[40px] shadow-ambient border border-primary/5">
+                  <article className="text-primary/80 text-xl font-body leading-[1.7] tracking-tight selection:bg-secondary/20">
                     {renderTextContent(chunk.content)}
                   </article>
                 </div>
               )}
 
               {chunk.type === 'video' && (
-                <div className="bg-surface-container-lowest rounded-[32px] overflow-hidden shadow-ambient relative h-[240px] bg-primary group">
+                <div className="bg-surface-container-lowest rounded-[40px] overflow-hidden shadow-ambient relative aspect-video bg-primary-container group border border-primary/10">
                     <img 
                       src={chunk.content} 
                       alt="Lesson Video" 
-                      className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-primary/10 to-primary/40">
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                       <motion.button 
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.15, rotate: 10 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-16 h-16 bg-white/20 backdrop-blur-[20px] rounded-full flex items-center justify-center border border-white/30 hover:bg-white/40 transition-all"
+                        className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-2xl transition-all"
                       >
-                        <Play className="text-white w-8 h-8 fill-white" />
+                        <Play className="text-primary w-8 h-8 fill-primary" />
                       </motion.button>
                     </div>
                 </div>
               )}
 
-              {chunk.type === 'interactive' && !solvedChunks.includes(idx) && (
-                <div className="relative">
-                  {renderInteractive(chunk.gamification, () => {
-                    if (!solvedChunks.includes(idx)) {
-                      setSolvedChunks(prev => [...prev, idx]);
-                      // Auto-advance immediately
-                      handleNextStep();
-                    }
-                  })}
-                </div>
-              )}
+              {chunk.type === 'interactive' && renderInteractive(chunk.gamification, idx)}
             </motion.div>
           );
         })}
-
-        {/* Section-level inline gamification (Legacy Support) */}
-        {showSectionGame && !isSectionInteractivePassed && (
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-            {renderInteractive(section.inlineGamification, () => {
-              setIsSectionInteractivePassed(true);
-              // Auto-advance immediately
-              handleNextStep();
-            })}
-          </motion.div>
-        )}
-
-        <div ref={scrollRef} />
+        
       </div>
 
-      {/* Persistent Interaction Row */}
-      <div className="fixed bottom-12 right-0 left-0 flex justify-center pointer-events-none">
+      {/* Universal Progression UI */}
+      <div className="fixed bottom-12 left-0 right-0 flex justify-center pointer-events-none z-50 px-6">
         <AnimatePresence>
-          {(canShowNextButton || (isAtEndOfChunks && (isSectionInteractivePassed || !section.inlineGamification))) && (
+          {showNextButton && (
             <motion.button 
-              initial={{ opacity: 0, y: 50 }}
+              key="next-btn"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNextStep}
-              className="pointer-events-auto px-8 py-4 bg-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-primary/30 flex items-center gap-3 active:bg-secondary transition-colors"
+              className="pointer-events-auto px-10 py-5 bg-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-[24px] shadow-2xl shadow-primary/40 flex items-center gap-4 transition-all hover:bg-secondary"
             >
-              {isAtEndOfChunks ? (currentSectionIndex < lesson.sections.length - 1 ? "Prossima Fase" : "Completa Studio") : "Continua Lettura"} 
-              <ChevronRight className="w-5 h-5" />
+              <div className="flex items-center gap-3">
+                <span>
+                  {visibleStepLimit === section.contentChunks.length - 1 
+                    ? (currentSectionIndex < lesson.sections.length - 1 ? "Prossima Fase" : "Concludi Percorso") 
+                    : "Continua Lettura"} 
+                </span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </div>
             </motion.button>
           )}
         </AnimatePresence>
       </div>
+
+      <style>{`
+        .shadow-ambient {
+          box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1), 0 0 1px 0 rgba(0,0,0,0.05);
+        }
+      `}</style>
     </div>
   );
 };

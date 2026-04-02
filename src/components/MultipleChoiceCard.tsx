@@ -16,46 +16,61 @@ export const MultipleChoiceCard = ({
     if (index === data.correctAnswerIndex) {
       onSuccess();
     } else {
-      setFeedback({ text: "Non proprio. Rileggi bene il testo sopra.", isCorrect: false });
+      setFeedback({ text: "Non proprio. Analizza meglio le opzioni sopra.", isCorrect: false });
     }
   };
 
   return (
-    <div className="bg-surface-container-lowest border border-primary/10 rounded-[32px] p-8 shadow-ambient space-y-6 mt-8 relative overflow-hidden">
-      <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 rotate-12">
-        <Zap size={100} className="text-primary" />
+    <div className="bg-surface-container-lowest border border-primary/10 rounded-[40px] p-10 shadow-ambient space-y-8 mt-8 relative overflow-hidden">
+      <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12 rotate-[25deg]">
+        <Zap size={180} className="text-primary" />
       </div>
 
       <AnimatePresence mode="wait">
         {!feedback || !feedback.isCorrect ? (
-          <motion.div key="q" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <span className="text-[9px] text-primary/40 font-display font-black uppercase tracking-[0.3em] mb-4 block">Verifica Rapida</span>
-            <h3 className="text-xl font-display font-black text-primary italic leading-tight mb-8">{data.question}</h3>
+          <motion.div key="q" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+              <p className="text-[10px] text-primary/40 font-display font-black uppercase tracking-[0.4em] leading-none">Scelta Strategica</p>
+            </div>
             
-            <div className="grid gap-3">
+            <h3 className="text-2xl md:text-3xl font-display font-black text-primary italic leading-tight tracking-tight mb-10 select-none">
+              {data.question}
+            </h3>
+            
+            <div className="grid gap-4">
               {data.options.map((opt, i) => (
                 <motion.button
                   key={i}
-                  whileHover={{ scale: 1.01, x: 5 }}
+                  whileHover={{ scale: 1.01, x: 8 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleOption(i)}
-                  className="w-full p-4 text-left rounded-xl bg-surface-container-low hover:bg-white border border-transparent hover:border-primary/10 transition-all text-primary font-body text-sm font-medium flex items-center justify-between group"
+                  className="w-full p-6 text-left rounded-[24px] bg-surface-container-low hover:bg-white border border-transparent hover:border-primary/10 transition-all text-primary font-body text-base font-medium flex items-center justify-between group shadow-sm hover:shadow-xl"
                 >
-                  {opt}
-                  <ChevronRight className="w-5 h-5 text-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="max-w-[85%] leading-relaxed">{opt}</span>
+                  <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                    <ChevronRight className="w-5 h-5" />
+                  </div>
                 </motion.button>
               ))}
             </div>
+            
             {feedback && !feedback.isCorrect && (
-              <p className="text-tertiary text-[10px] font-display font-black uppercase mt-4 animate-pulse italic">{feedback.text}</p>
+              <motion.p 
+                initial={{ opacity: 0, y: 5 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                className="text-tertiary text-[10px] font-display font-black uppercase mt-6 italic tracking-widest text-center animate-pulse"
+              >
+                {feedback.text}
+              </motion.p>
             )}
           </motion.div>
         ) : (
-          <motion.div key="f" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-8">
-             <div className="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-secondary/20">
-                <Zap className="text-white w-8 h-8" />
+          <motion.div key="f" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
+             <div className="w-20 h-20 bg-secondary rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-2xl animate-bounce">
+                <Zap className="text-white w-10 h-10" />
              </div>
-             <p className="text-primary font-display font-black italic">{feedback.text}</p>
+             <p className="text-primary font-display font-black text-xl italic tracking-tight capitalize">Analisi Validata</p>
           </motion.div>
         )}
       </AnimatePresence>

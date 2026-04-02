@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, Zap, Check, X } from 'lucide-react';
+import { Zap, Check, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { QuickCheck } from '../types';
 
@@ -25,68 +25,68 @@ export const QuickCheckCard = ({
   };
 
   return (
-    <div className="bg-gradient-to-br from-surface-container-lowest to-surface-container-low border border-secondary/20 rounded-[32px] p-8 shadow-ambient space-y-6 relative overflow-hidden mt-8">
-      <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8">
-        <Zap size={120} className="text-secondary" />
+    <div className="bg-gradient-to-br from-surface-container-lowest to-surface-container-low border border-secondary/10 rounded-[40px] p-10 shadow-ambient space-y-8 relative overflow-hidden mt-8">
+      <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 rotate-12">
+        <Zap size={140} className="text-secondary" />
       </div>
 
       <AnimatePresence mode="wait">
         {!feedback ? (
-          <motion.div key="question" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center">
-                <Zap className="text-secondary w-5 h-5" />
+          <motion.div key="question" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="relative z-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
+                <Zap className="text-secondary w-6 h-6" />
               </div>
-              <span className="text-[10px] text-secondary font-display font-black uppercase tracking-widest">Quick Check - Vero o Falso</span>
+              <p className="text-[10px] text-secondary font-display font-black uppercase tracking-[0.4em] leading-none">Verifica Intuizione</p>
             </div>
-            <h3 className="text-xl font-display font-black text-primary leading-tight relative z-10 italic">
+            
+            <h3 className="text-2xl md:text-3xl font-display font-black text-primary leading-tight italic tracking-tight">
               {data.question}
             </h3>
-            <div className="grid grid-cols-2 gap-4 mt-8 relative z-10">
+            
+            <div className="grid grid-cols-2 gap-6 mt-12">
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleChoice(true)}
-                className="p-6 rounded-2xl bg-white/50 hover:bg-white border border-transparent hover:border-secondary/20 shadow-sm transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-3 group"
+                className="p-8 rounded-[32px] bg-white border border-secondary/5 shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-4 group"
               >
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-colors">
-                  <Check className="w-6 h-6" />
+                <div className="w-14 h-14 bg-secondary/5 rounded-full flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all transform group-hover:rotate-12">
+                  <Check className="w-7 h-7" />
                 </div>
                 Vero
               </motion.button>
               
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleChoice(false)}
-                className="p-6 rounded-2xl bg-white/50 hover:bg-white border border-transparent hover:border-secondary/20 shadow-sm transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-3 group"
+                className="p-8 rounded-[32px] bg-white border border-tertiary/5 shadow-sm hover:shadow-xl hover:border-tertiary/20 transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-4 group"
               >
-                <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center group-hover:bg-tertiary group-hover:text-white transition-colors">
-                  <X className="w-6 h-6" />
+                <div className="w-14 h-14 bg-tertiary/5 rounded-full flex items-center justify-center group-hover:bg-tertiary group-hover:text-white transition-all transform group-hover:-rotate-12">
+                  <X className="w-7 h-7" />
                 </div>
                 Falso
               </motion.button>
             </div>
           </motion.div>
         ) : (
-          <motion.div key="feedback" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-6 py-8 relative z-10">
-            <div className={`w-20 h-20 ${feedback.isCorrect ? 'bg-secondary' : 'bg-tertiary'} rounded-2xl flex items-center justify-center mx-auto animate-bounce shadow-lg`}>
-              {feedback.isCorrect ? <Check className="text-white w-10 h-10" /> : <X className="text-white w-10 h-10" />}
+          <motion.div key="feedback" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center space-y-8 py-10 relative z-10">
+            <div className="w-24 h-24 bg-tertiary rounded-3xl flex items-center justify-center mx-auto shadow-2xl animate-shake">
+              <X className="text-white w-12 h-12" />
             </div>
-            <div>
-              <h4 className="text-xl font-display font-black text-primary">{feedback.isCorrect ? 'Analisi Corretta' : 'Attenzione'}</h4>
-              <p className="text-primary/70 font-body mt-4 max-w-md mx-auto leading-relaxed text-sm">
+            <div className="space-y-4">
+              <h4 className="text-3xl font-display font-black text-primary italic">Non ancora...</h4>
+              <p className="text-primary/60 font-body text-base max-w-sm mx-auto leading-relaxed">
                 {feedback.text}
               </p>
             </div>
-            {!feedback.isCorrect && (
-              <button 
-                onClick={() => setFeedback(null)} 
-                className="mt-8 px-6 py-3 bg-surface-container-highest text-primary font-display font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-white transition-colors relative z-10"
-              >
-                Riprova
-              </button>
-            )}
+            <button 
+              onClick={() => setFeedback(null)} 
+              className="px-8 py-4 bg-primary text-white font-display font-black text-[11px] uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform"
+            >
+              Riprova l'analisi
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
