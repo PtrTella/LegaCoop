@@ -24,58 +24,68 @@ export const FlashcardDeck = ({
   const card = cards[currentIndex] || { question: "Nessuna flashcard", answer: "Completato!" };
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 p-10 space-y-10 max-w-4xl mx-auto rounded-[32px] border border-slate-200 shadow-sm">
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col h-full bg-surface p-6 space-y-6 max-w-3xl mx-auto rounded-[32px] shadow-ambient">
+      <div className="flex justify-between items-end px-2">
         <div className="space-y-2">
-          <h2 className="text-3xl font-black text-slate-900 tracking-tight">AI Flashcards</h2>
-          <p className="text-slate-500 text-base font-medium">Carta {currentIndex + 1} di {cards.length || 1}</p>
+          <p className="text-secondary font-display font-black text-[9px] uppercase tracking-[0.4em]">Studio Attivo</p>
+          <h2 className="text-2xl font-display font-black text-primary tracking-tight leading-tight italic">AI Flashcards</h2>
         </div>
-        <div className="bg-white px-6 py-3 rounded-full shadow-sm border border-slate-100 font-black text-indigo-600 text-lg">
+        <div className="bg-surface-container-low px-4 py-2 rounded-xl font-display font-black text-primary text-base shadow-sm">
           {cards.length > 0 ? Math.round((currentIndex / cards.length) * 100) : 100}%
+          <span className="text-[9px] text-primary/30 ml-2 uppercase tracking-widest font-black">Progresso</span>
         </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-center perspective-1000 min-h-[400px]">
+      <div className="flex-1 flex items-center justify-center perspective-1000 min-h-[300px]">
         <motion.div 
           onClick={() => setIsFlipped(!isFlipped)}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
-          transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="relative w-full max-w-2xl aspect-[16/9] cursor-pointer preserve-3d"
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          className="relative w-full aspect-[16/9] cursor-pointer preserve-3d"
         >
-          <div className="absolute inset-0 bg-white rounded-[40px] shadow-xl border-2 border-indigo-50 p-12 flex flex-col items-center justify-center text-center backface-hidden hover:border-indigo-100 transition-colors">
-            <div className="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mb-8">
-              <Info className="text-indigo-600 w-10 h-10" />
+          {/* Card Front */}
+          <div className="absolute inset-0 bg-surface-container-lowest rounded-[32px] shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden hover:scale-[1.01] transition-transform duration-500 border border-surface-container-low/50">
+            <div className="w-14 h-14 bg-tertiary/20 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6">
+              <Info className="text-secondary w-7 h-7" />
             </div>
-            <p className="text-3xl font-bold text-slate-800 leading-tight max-w-xl">
+            <p className="text-xl font-display font-black text-primary leading-tight max-w-xl tracking-tight">
               {card.question}
             </p>
-            <p className="mt-10 text-indigo-400 text-sm font-bold uppercase tracking-widest animate-pulse">Tocca per girare</p>
+            <p className="mt-6 text-secondary font-display font-black text-[9px] uppercase tracking-[0.4em] animate-pulse">Tocca per scoprire</p>
           </div>
 
-          <div className="absolute inset-0 bg-indigo-600 rounded-[40px] shadow-2xl p-12 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
-            <p className="text-white text-2xl font-medium leading-relaxed max-w-xl">
+          {/* Card Back */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-container rounded-[32px] shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
+            <div className="absolute top-6 left-6 p-2 bg-white/10 rounded-lg backdrop-blur-md">
+               <span className="text-[9px] text-white/40 font-display font-bold uppercase tracking-widest leading-none">Risposta Master</span>
+            </div>
+            <p className="text-white text-base font-body font-medium leading-relaxed max-w-xl tracking-tight">
               {card.answer}
             </p>
-            <div className="mt-10 w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <ThumbsUp className="text-white w-8 h-8" />
+            <div className="mt-8 w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md">
+              <ThumbsUp className="text-tertiary w-7 h-7" />
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 h-24 max-w-2xl mx-auto w-full">
-        <button 
+      <div className="grid grid-cols-2 gap-4 h-14 w-full">
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => handleNext(false)}
-          className="bg-white border-2 border-slate-200 rounded-2xl flex items-center justify-center gap-3 font-bold text-slate-600 hover:bg-slate-50 hover:border-slate-300 active:scale-[0.98] transition-all text-lg"
+          className="bg-surface-container-low rounded-xl flex items-center justify-center gap-3 font-display font-black text-primary/40 hover:text-primary transition-all text-[11px] uppercase tracking-widest"
         >
-          <ThumbsDown className="w-6 h-6" /> Non Sapevo
-        </button>
-        <button 
+          <ThumbsDown className="w-5 h-5" /> Ripassa
+        </motion.button>
+        <motion.button 
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => handleNext(true)}
-          className="bg-green-500 rounded-2xl flex items-center justify-center gap-3 font-bold text-white shadow-lg shadow-green-200 hover:bg-green-600 active:scale-[0.98] transition-all text-lg"
+          className="bg-gradient-to-br from-secondary to-tertiary rounded-xl flex items-center justify-center gap-3 font-display font-black text-white shadow-md shadow-secondary/20 transition-all text-[11px] uppercase tracking-widest"
         >
-          <ThumbsUp className="w-6 h-6" /> Lo Sapevo!
-        </button>
+          <ThumbsUp className="w-5 h-5" /> Appreso!
+        </motion.button>
       </div>
     </div>
   );

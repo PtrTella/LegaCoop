@@ -1,10 +1,12 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { Module } from '../types';
 
 interface AppState {
   completedPhases: number[];
   maturityScore: number;
   unlockedPhases: number[];
   userRole: string | null;
+  modules: Module[] | null;
 }
 
 interface AppContextType {
@@ -22,7 +24,18 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     maturityScore: 0,
     unlockedPhases: [0], // Phase 0 is unlocked by default
     userRole: null,
+    modules: null,
   });
+
+  useEffect(() => {
+    fetch('/data/modules.json')
+      .then(res => res.json())
+      .then(data => {
+        setState(prev => ({ ...prev, modules: data }));
+      })
+      .catch(err => console.error("Failed to load modules:", err));
+  }, []);
+
 
   const completePhase = (phaseId: number) => {
     setState((prev) => {

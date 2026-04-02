@@ -31,92 +31,104 @@ export const AITutor = () => {
     setLoading(false);
   };
 
+  const renderFormattedText = (text: string) => {
+    return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-extrabold text-secondary">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <>
-      {/* Floating Button */}
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 p-6 bg-indigo-600 text-white rounded-full shadow-2xl z-50 flex items-center justify-center hover:bg-indigo-700 transition-colors"
+        className="fixed bottom-6 right-6 p-4.5 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-ambient z-50 flex items-center justify-center transform hover:rotate-6 transition-transform"
       >
-        <MessageCircle className="w-8 h-8" />
-        <span className="absolute -top-2 -right-2 w-6 h-6 bg-green-500 border-4 border-slate-50 rounded-full animate-pulse" />
+        <MessageCircle className="w-6 h-6" />
       </motion.button>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 50, x: 20 }}
-            className="fixed bottom-28 right-8 w-[400px] h-[550px] bg-white rounded-[32px] shadow-2xl border border-slate-200 z-50 flex flex-col overflow-hidden"
+            initial={{ opacity: 0, y: 15, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 15, scale: 0.95 }}
+            className="fixed bottom-24 right-6 w-[360px] h-[500px] bg-surface rounded-[28px] shadow-ambient z-50 flex flex-col overflow-hidden border border-surface-container-low"
           >
-            {/* Header */}
-            <div className="p-6 bg-indigo-600 text-white flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-indigo-500/50 rounded-xl">
-                  <Bot className="w-6 h-6" />
+            {/* Header: Accademia Digitale Look (Glassmorphism) */}
+            <div className="p-4 bg-primary/90 backdrop-blur-[20px] text-white flex items-center justify-between z-10">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-primary-container/30 rounded-xl">
+                  <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-black">Coop Tutor AI</h3>
-                  <p className="text-[10px] opacity-70 uppercase tracking-widest font-bold">Online</p>
+                  <h3 className="font-display font-extrabold text-base leading-tight">Tutor Accademia</h3>
+                  <div className="flex items-center gap-1.2">
+                    <span className="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse" />
+                    <span className="text-[9px] font-display font-bold uppercase tracking-widest text-tertiary pl-1.5">Guidance</span>
+                  </div>
                 </div>
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-white/10 rounded-lg transition-all"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4.5 h-4.5" />
               </button>
             </div>
 
-            {/* Messages */}
+            {/* Content: Tonal Layering (No lines) */}
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50"
+              className="flex-1 overflow-y-auto p-4 space-y-4 bg-surface-container-low"
             >
               {messages.map((msg, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, x: msg.role === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
                   className={`flex items-start gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
                 >
-                  <div className={`p-2 rounded-xl flex-shrink-0 ${msg.role === 'user' ? 'bg-indigo-100 text-indigo-600' : 'bg-white text-slate-400 shadow-sm'}`}>
-                    {msg.role === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                  <div className={`p-1.5 rounded-xl flex-shrink-0 ${msg.role === 'user' ? 'bg-secondary text-white' : 'bg-surface-container-lowest text-primary shadow-sm'}`}>
+                    {msg.role === 'user' ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                   </div>
-                  <div className={`p-4 rounded-2xl text-sm leading-relaxed shadow-sm max-w-[80%] ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-white text-slate-700'}`}>
-                    {msg.text}
+                  <div className={`p-3.5 rounded-2xl text-[13px] leading-relaxed max-w-[85%] whitespace-pre-wrap ${msg.role === 'user' ? 'bg-gradient-to-br from-primary to-primary-container text-white rounded-tr-none' : 'bg-surface-container-lowest text-primary shadow-sm rounded-tl-none'}`}>
+                    {renderFormattedText(msg.text)}
                   </div>
                 </motion.div>
               ))}
               {loading && (
-                <div className="flex items-center gap-2 text-slate-400 p-2">
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Tutor sta scrivendo...</span>
+                <div className="flex items-center gap-2.5 text-secondary p-1.5 animate-pulse">
+                  <div className="p-1.5 bg-tertiary/20 rounded-lg">
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  </div>
+                  <span className="text-[9px] font-display font-black uppercase tracking-widest pl-1">Inspirazione...</span>
                 </div>
               )}
             </div>
 
-            {/* Input */}
-            <div className="p-6 bg-white border-t border-slate-100">
-              <div className="bg-slate-100 p-2 rounded-2xl flex items-center gap-2 pr-4 focus-within:ring-2 focus-within:ring-indigo-600/20 transition-all">
+            {/* Input: The Soft-Touch Interaction */}
+            <div className="p-4 bg-surface-container-lowest border-t border-surface-container-low">
+              <div className="bg-surface-container-low p-1.5 rounded-2xl flex items-center gap-2 pr-3 focus-within:ring-2 focus-within:ring-primary/10 transition-all">
                 <input 
                   type="text" 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                  placeholder="Chiedimi qualsiasi cosa..."
-                  className="flex-1 bg-transparent border-none focus:ring-0 text-sm p-2 text-slate-700"
+                  placeholder="Scrivi la tua visione..."
+                  className="flex-1 bg-transparent border-none focus:ring-0 text-[13px] p-2 text-primary font-body placeholder-primary/20"
                 />
                 <button 
                   onClick={handleSend}
                   disabled={!input.trim() || loading}
-                  className="p-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-50 transition-colors shadow-lg shadow-indigo-200"
+                  className="p-2.5 bg-gradient-to-br from-secondary to-primary-container text-white rounded-xl hover:scale-105 active:scale-95 transition-all shadow-md disabled:opacity-30"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4.5 h-4.5" />
                 </button>
               </div>
             </div>

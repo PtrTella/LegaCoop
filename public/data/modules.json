@@ -1,0 +1,120 @@
+[
+  {
+    "id": 0,
+    "title": "Fase 0 - Contesto, Territorio ed Ecosistema",
+    "description": "Dimentica il mito dell'Unicorno della Silicon Valley. Scopri perché mappare i bisogni del tuo territorio e scegliere il modello cooperativo è il vero hack per creare un'impresa sostenibile.",
+    "objective": "Mappare bisogni, risorse e attori del territorio per validare la propria idea di business in chiave cooperativa.",
+    "task": "Completa il test valoriale finale e supera le 5 AI Flashcards per sbloccare la Fase 1.",
+    "lessons": [
+      {
+        "id": "l-0-1",
+        "title": "Il Mito della Startup vs. La Resilienza Cooperativa",
+        "keywords": {
+          "exit": "Vendere l'impresa per capitalizzare in fretta",
+          "resilienza": "La capacità di resistere e adattarsi alle crisi"
+        },
+        "sections": [
+          {
+            "id": "sec-0-1-a",
+            "title": "La partita a lungo termine",
+            "contentChunks": [
+              {
+                "type": "text",
+                "content": "Oggi sembra che l'unico modo per fare impresa sia aprire una startup, bruciare capitali, fare la 'exit' e sperare di diventare milionari. Ma la realtà dei fatti è diversa: la stragrande maggioranza delle startup tradizionali fallisce."
+              },
+              {
+                "type": "interactive",
+                "gamification": {
+                  "type": "quickCheck",
+                  "data": {
+                    "question": "Vero o Falso: il modello startup tradizionale è più resiliente di quello cooperativo alla prova del tempo ⏱️.",
+                    "isTrue": false,
+                    "feedback": "Esatto! Le startup tradizionali hanno tassi di fallimento molto più alti."
+                  }
+                }
+              },
+              {
+                "type": "video",
+                "content": "https://indicoo.it/video/storia-successo-coop-digitale.mp4",
+                "duration": 60
+              },
+              {
+                "type": "text",
+                "content": "La cooperativa, invece, gioca una partita a medio-lungo termine. Non nasce per essere venduta, ma per risolvere un problema reale della collettività. I dati parlano chiaro: oltre il 70% delle imprese cooperative supera i 5 anni di attività."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l-0-2",
+        "title": "Cos'è davvero lo Scopo Mutualistico?",
+        "keywords": {
+          "scopo mutualistico": "Fornire beni, servizi o lavoro ai soci a condizioni migliori del mercato",
+          "utile": "Il profitto dell'impresa, che in coop viene reinvestito o diviso secondo regole precise"
+        },
+        "sections": [
+          {
+            "id": "sec-0-2-a",
+            "title": "Non siamo una ONLUS",
+            "contentChunks": [
+              {
+                "type": "text",
+                "content": "Sfatiamo un mito: la cooperativa NON è un'associazione di volontariato. È un'impresa a tutti gli effetti. Deve fatturare, pagare gli stipendi e stare sul mercato."
+              },
+              {
+                "type": "interactive",
+                "gamification": {
+                  "type": "madLib",
+                  "data": {
+                    "template": "La cooperativa è una vera {impresa} che deve stare sul mercato, ma il cui obiettivo non è la {massimizzazione} del profitto, bensì lo Scopo {Mutualistico}.",
+                    "expectedWords": [
+                      "impresa",
+                      "massimizzazione",
+                      "Mutualistico",
+                      "beneficenza",
+                      "speculazione"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "text",
+                "content": "Solo avendo i conti in ordine e gestendo la liquidità seriamente, la cooperativa può reinvestire e creare vero impatto nel tempo."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "gamification": {
+      "flashcards": [
+        {
+          "question": "Cosa si intende per 'Ecosistema Territoriale'?",
+          "answer": "L'insieme di persone, bisogni, risorse economiche, istituzioni pubbliche e altre imprese presenti in una specifica area geografica o settore."
+        }
+      ],
+      "madLibs": [
+        {
+          "template": "Le cooperative sono forti e stabili perché invece di competere per distruggersi si basano sul concetto di {rete} e mettono al centro la persona e non il {capitale}.",
+          "expectedWords": [
+            "rete",
+            "capitale",
+            "profitto"
+          ]
+        }
+      ],
+      "multipleChoices": [
+        {
+          "question": "Quale tra queste è la caratteristica fondamentale per una nuova idea cooperativa?",
+          "options": [
+            "Che abbia un potenziale di exit milionaria a 3 anni",
+            "Che risponda in modo mutualistico a un bisogno non soddisfatto della comunità"
+          ],
+          "correctAnswerIndex": 1,
+          "feedback": "Perfetto. I bisogni reali sono il motore della vera cooperazione."
+        }
+      ]
+    }
+  }
+]

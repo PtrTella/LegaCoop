@@ -6,29 +6,36 @@ export const PopTooltip = ({ word, definition }: { word: string; definition: str
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <span className="relative inline-block">
+    <span className="relative inline-block mx-0.5">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="text-indigo-600 font-bold underline decoration-dotted cursor-help hover:text-indigo-700 transition-colors"
+        className="text-secondary font-display font-black border-b-2 border-tertiary/30 cursor-help hover:text-primary hover:border-primary transition-all duration-300 italic"
       >
         {word}
       </button>
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            initial={{ opacity: 0, y: 12, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-5 bg-white rounded-2xl shadow-2xl border border-indigo-100 z-50"
+            exit={{ opacity: 0, y: 12, scale: 0.95 }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-72 p-5 bg-surface/90 backdrop-blur-[24px] rounded-2xl shadow-ambient z-50 overflow-hidden"
           >
-            <div className="flex items-start gap-3">
-              <Info className="w-6 h-6 text-indigo-500 shrink-0 mt-0.5" />
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-1">Glossario Pop</p>
-                <p className="text-sm text-slate-700 leading-relaxed">{definition}</p>
+            {/* Ambient Glow behind content */}
+            <div className="absolute -top-10 -right-10 w-20 h-20 bg-tertiary/10 rounded-full blur-2xl" />
+            
+            <div className="relative z-10 flex flex-col gap-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center shadow-md">
+                   <Info className="w-3.5 h-3.5 text-tertiary" />
+                </div>
+                <p className="text-[9px] font-display font-black uppercase tracking-[0.2em] text-secondary">Glossario d'Eccellenza</p>
               </div>
+              <p className="text-sm text-primary/70 leading-relaxed font-body font-medium italic">"{definition}"</p>
             </div>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-white" />
+            
+            {/* The Tip (Frosted) */}
+            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface/90 backdrop-blur-[24px] rotate-45" />
           </motion.div>
         )}
       </AnimatePresence>
