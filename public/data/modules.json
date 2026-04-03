@@ -13,75 +13,69 @@
           "exit": "Vendere l'impresa per capitalizzare in fretta",
           "resilienza": "La capacità di resistere e adattarsi alle crisi"
         },
-        "sections": [
+        "contentChunks": [
           {
-            "id": "sec-demo-totale",
-            "title": "La partita a lungo termine",
-            "contentChunks": [
-              {
-                "type": "text",
-                "content": "Oggi sembra che l'unico modo per fare impresa sia aprire una startup, bruciare capitali, fare la 'exit' e sperare di diventare milionari. Ma la realtà dei fatti è diversa: la stragrande maggioranza delle startup tradizionali fallisce."
-              },
-              {
-                "type": "interactive",
-                "gamification": {
-                  "type": "quickCheck",
-                  "data": {
-                    "question": "Vero o Falso: il modello startup tradizionale è più resiliente di quello cooperativo alla prova del tempo ⏱️.",
-                    "isTrue": false,
-                    "feedback": "Esatto! Le startup tradizionali hanno tassi di fallimento molto più alti."
-                  }
-                }
-              },
-              {
-                "type": "text",
-                "content": "A differenza delle startup, la cooperativa non nasce per essere venduta al miglior offerente, ma per durare nel tempo."
-              },
-              {
-                "type": "interactive",
-                "gamification": {
-                  "type": "madLib",
-                  "data": {
-                    "template": "La cooperativa è un'{impresa} collettiva che mette al centro il {bisogno} sociale e non il profitto individuale.",
-                    "expectedWords": [
-                      "impresa",
-                      "bisogno",
-                      "profitto",
-                      "speculazione"
-                    ]
-                  }
-                }
-              },
-              {
-                "type": "video",
-                "content": "https://indicoo.it/video/storia-successo-coop-digitale.mp4",
-                "duration": 60
-              },
-              {
-                "type": "text",
-                "content": "Solo dopo aver validato il bisogno, possiamo pensare alla struttura economica."
-              },
-              {
-                "type": "interactive",
-                "gamification": {
-                  "type": "multipleChoice",
-                  "data": {
-                    "question": "Qual è il tasso di sopravvivenza a 5 anni di un'impresa cooperativa?",
-                    "options": [
-                      "Meno del 10%",
-                      "Circa il 70%",
-                      "Il 100%"
-                    ],
-                    "correctAnswerIndex": 1,
-                    "feedback": "Esatto! I dati confermano la grande resilienza del modello."
-                  }
-                }
-              },
-              {
-                "type": "text",
-                "content": "In conclusione, mappare il territorio è l'unico modo per non creare una cooperativa 'vuota' di significato sociale."
+            "type": "text",
+            "content": "Oggi sembra che l'unico modo per fare impresa sia aprire una startup, bruciare capitali, fare la 'exit' e sperare di diventare milionari. Ma la realtà dei fatti è diversa: la stragrande maggioranza delle startup tradizionali fallisce."
+          },
+          {
+            "type": "interactive",
+            "gamification": {
+              "type": "quickCheck",
+              "data": {
+                "question": "Vero o Falso: il modello startup tradizionale è più resiliente di quello cooperativo alla prova del tempo ⏱️.",
+                "isTrue": false,
+                "feedback": "Esatto! Le startup tradizionali hanno tassi di fallimento molto più alti."
               }
-            ]
+            }
+          },
+          {
+            "type": "text",
+            "content": "A differenza delle startup, la cooperativa non nasce per essere venduta al miglior offerente, ma per durare nel tempo."
+          },
+          {
+            "type": "interactive",
+            "gamification": {
+              "type": "madLib",
+              "data": {
+                "template": "La cooperativa è un'{impresa} collettiva che mette al centro il {bisogno} sociale e non il profitto individuale.",
+                "expectedWords": [
+                  "impresa",
+                  "bisogno",
+                  "profitto",
+                  "speculazione"
+                ]
+              }
+            }
+          },
+          {
+            "type": "video",
+            "content": "https://indicoo.it/video/storia-successo-coop-digitale.mp4",
+            "duration": 60
+          },
+          {
+            "type": "text",
+            "content": "Solo dopo aver validato il bisogno, possiamo pensare alla struttura economica."
+          },
+          {
+            "type": "interactive",
+            "gamification": {
+              "type": "multipleChoice",
+              "data": {
+                "question": "Qual è il tasso di sopravvivenza a 5 anni di un'impresa cooperativa?",
+                "options": [
+                  "Meno del 10%",
+                  "Circa il 70%",
+                  "Il 100%"
+                ],
+                "correctAnswerIndex": 1,
+                "feedback": "Esatto! I dati confermano la grande resilienza del modello."
+              }
+            }
+          },
+          {
+            "type": "text",
+            "content": "In conclusione, mappare il territorio è l'unico modo per non creare una cooperativa 'vuota' di significato sociale."
           }
         ]
       }

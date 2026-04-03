@@ -9,23 +9,22 @@ import { MadLibCard } from './MadLibCard';
 
 export const MicroLesson = ({ 
   lesson, 
+  phaseTitle,
   onComplete 
 }: { 
   lesson: Lesson, 
+  phaseTitle: string,
   onComplete: () => void 
 }) => {
-  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [visibleStepLimit, setVisibleStepLimit] = useState(0);
   const [solvedChunks, setSolvedChunks] = useState<number[]>([]);
   const chunkRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const section = lesson.sections[currentSectionIndex];
-
-  // Reset counters when moving to a new section or lesson
+  // Reset counters when moving to a new lesson
   useEffect(() => {
     setVisibleStepLimit(0);
     setSolvedChunks([]);
-  }, [currentSectionIndex, lesson.id]);
+  }, [lesson.id]);
 
   // Smart scroll: center the new content to avoid overlapping with fixed bottom button
   useEffect(() => {
@@ -38,38 +37,14 @@ export const MicroLesson = ({
     return () => clearTimeout(timer);
   }, [visibleStepLimit, solvedChunks]);
 
-  if (!section) {
-    return (
-      <div className="flex flex-col h-full items-center justify-center space-y-6">
-        <div className="w-20 h-20 bg-primary/10 rounded-[32px] flex items-center justify-center animate-bounce shadow-xl">
-           <Zap className="text-primary w-10 h-10" />
-        </div>
-        <div className="text-center">
-          <p className="text-primary/40 font-display font-black text-[10px] uppercase tracking-widest mb-2">Punto di Svolta Raggiunto</p>
-          <h3 className="text-2xl font-display font-black text-primary italic leading-tight">Ottimo lavoro, Cooperatore!</h3>
-        </div>
-        <button 
-          onClick={onComplete} 
-          className="px-10 py-5 bg-primary text-white rounded-2xl font-display font-black text-xs uppercase tracking-widest shadow-2xl shadow-primary/30 transition-transform active:scale-95"
-        >
-          Vai al Quiz Finale
-        </button>
-      </div>
-    );
-  }
-
   const handleNextStep = () => {
-    const isAtLastChunk = visibleStepLimit === section.contentChunks.length - 1;
+    const isAtLastChunk = visibleStepLimit === lesson.contentChunks.length - 1;
     
     if (!isAtLastChunk) {
       setVisibleStepLimit(prev => prev + 1);
     } else {
-      // Transition to next section or finish
-      if (currentSectionIndex < lesson.sections.length - 1) {
-        setCurrentSectionIndex(i => i + 1);
-      } else {
-        onComplete();
-      }
+      // Lesson completed
+      onComplete();
     }
   };
 
@@ -98,7 +73,7 @@ export const MicroLesson = ({
     return null;
   };
 
-  const currentChunk = section.contentChunks[visibleStepLimit];
+  const currentChunk = lesson.contentChunks[visibleStepLimit];
   const isChunkInteractive = currentChunk?.type === 'interactive';
   const isChunkSolved = solvedChunks.includes(visibleStepLimit);
   
@@ -109,20 +84,23 @@ export const MicroLesson = ({
 
   return (
     <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-12 pb-48 pt-12 px-6">
-      {/* Header Area */}
-      <header className="space-y-3">
-        <div className="flex items-center gap-4">
-          <span className="w-12 h-0.5 bg-secondary/30 rounded-full"></span>
-          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.5em]">{lesson.title}</p>
+      {/* Header Area - Focused on Lesson Title */}
+      <header className="space-y-4 pt-4">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-secondary/10 rounded-xl flex items-center justify-center">
+            <Zap className="text-secondary w-4 h-4" />
+          </div>
+          <p className="text-secondary font-display font-black text-[11px] uppercase tracking-[0.4em] leading-none">{phaseTitle}</p>
         </div>
-        <h2 className="text-3xl md:text-4xl font-display font-black text-primary leading-[1.1] tracking-tight max-w-3xl italic">
-          {section.title || "Percorso di Evoluzione"}
+        <h2 className="text-5xl md:text-7xl font-display font-black text-primary leading-[0.95] tracking-tighter max-w-4xl italic">
+          {lesson.title}
         </h2>
+        <div className="w-24 h-1.5 bg-secondary/20 rounded-full mt-6"></div>
       </header>
 
       {/* Main Learning Flow */}
       <div className="space-y-12 relative">
-        {section.contentChunks.map((chunk, idx) => {
+        {lesson.contentChunks.map((chunk, idx) => {
           if (idx > visibleStepLimit) return null;
           
           const isSolvedGame = chunk.type === 'interactive' && solvedChunks.includes(idx);
@@ -130,7 +108,7 @@ export const MicroLesson = ({
 
           return (
             <motion.div 
-              key={`${currentSectionIndex}-${idx}`}
+              key={`${lesson.id}-${idx}`}
               ref={(el) => chunkRefs.current[idx] = el}
               initial={{ opacity: 0, y: 30, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -188,8 +166,8 @@ export const MicroLesson = ({
             >
               <div className="flex items-center gap-3">
                 <span>
-                  {visibleStepLimit === section.contentChunks.length - 1 
-                    ? (currentSectionIndex < lesson.sections.length - 1 ? "Prossima Fase" : "Concludi Percorso") 
+                  {visibleStepLimit === lesson.contentChunks.length - 1 
+                    ? "Concludi Percorso" 
                     : "Continua Lettura"} 
                 </span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

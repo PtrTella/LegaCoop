@@ -95,7 +95,11 @@ const AppContent = () => {
 
               {view === 'lesson' && activeModule && (
                 <motion.div key="lesson" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="h-full">
-                  <MicroLesson lesson={activeModule.lessons[0]} onComplete={handleActionComplete} />
+                  <MicroLesson 
+                    lesson={activeModule.lessons[0]} 
+                    phaseTitle={activeModule.title}
+                    onComplete={handleActionComplete} 
+                  />
                 </motion.div>
               )}
 
