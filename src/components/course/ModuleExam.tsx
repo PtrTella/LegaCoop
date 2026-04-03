@@ -65,12 +65,12 @@ export const ModuleExam = ({
             <FlashcardDeck cards={currentExam.data} onFinish={handleSuccess} />
           )}
           {currentExam.type === 'madLib' && (
-             <div className="bg-surface-container-lowest p-6 rounded-[32px] shadow-ambient">
+             <div className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient">
                <MadLibCard data={currentExam.data} onSuccess={handleSuccess} />
              </div>
           )}
           {currentExam.type === 'multipleChoice' && (
-            <div className="bg-surface-container-lowest p-6 rounded-[32px] shadow-ambient">
+            <div className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient">
               <MultipleChoiceCard data={currentExam.data} onSuccess={handleSuccess} />
             </div>
           )}

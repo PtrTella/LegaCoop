@@ -16,7 +16,7 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
             Dall'idea all'impresa <span className="text-primary/30 not-italic tracking-tighter">— Percorso Accademia</span>
           </h1>
         </div>
-        <div className="w-16 h-16 bg-surface-container-low rounded-[20px] flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform">
+        <div className="w-16 h-16 bg-surface-container-low rounded-3xl flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform">
           <PieChart className="text-primary/30 w-8 h-8" />
         </div>
       </div>
@@ -41,14 +41,14 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
               <button 
                 disabled={!isUnlocked}
                 onClick={() => onSelectModule(module.id)}
-                className={`w-full max-w-xl text-left p-6 rounded-[32px] transition-all duration-500 relative group
+                className={`w-full max-w-xl text-left p-6 rounded-4xl transition-all duration-500 relative group
                   ${isUnlocked 
                     ? 'bg-surface-container-lowest shadow-ambient hover:scale-[1.01] active:scale-[0.99]' 
                     : 'bg-surface-container-low cursor-not-allowed shadow-none'
                   }`}
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-[18px] flex items-center justify-center shrink-0 z-10 shadow-lg transform group-hover:rotate-6 transition-transform ${
+                  <div className={`w-12 h-12 rounded-3xl flex items-center justify-center shrink-0 z-10 shadow-lg transform group-hover:rotate-6 transition-transform ${
                     isCompleted ? 'bg-gradient-to-br from-tertiary to-secondary' : isUnlocked ? 'bg-gradient-to-br from-primary to-primary-container' : 'bg-surface-container-highest'
                   }`}>
                     {isCompleted ? <CheckCircle2 className="text-white w-6 h-6" /> : 

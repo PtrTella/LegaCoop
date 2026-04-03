@@ -25,7 +25,7 @@ export const MultipleChoiceCard = ({
   };
 
   return (
-    <div className="bg-surface-container-lowest border border-primary/10 rounded-[40px] p-10 shadow-ambient space-y-8 mt-8 relative overflow-hidden">
+    <div className="bg-surface-container-lowest border border-primary/10 rounded-5xl p-10 shadow-ambient space-y-8 mt-8 relative overflow-hidden">
       <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12 rotate-[25deg]">
         <Zap size={180} className="text-primary" />
       </div>
@@ -55,7 +55,7 @@ export const MultipleChoiceCard = ({
                   whileHover={{ scale: 1.01, x: 8 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleOption(i)}
-                  className="w-full p-6 text-left rounded-[24px] bg-surface-container-low hover:bg-white border border-transparent hover:border-primary/10 transition-all text-primary font-body text-base font-medium flex items-center justify-between group shadow-sm hover:shadow-xl"
+                  className="w-full p-6 text-left rounded-3xl bg-surface-container-low hover:bg-white border border-transparent hover:border-primary/10 transition-all text-primary font-body text-base font-medium flex items-center justify-between group shadow-sm hover:shadow-xl"
                 >
                   <span className="max-w-[85%] leading-relaxed">{opt}</span>
                   <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
@@ -77,7 +77,7 @@ export const MultipleChoiceCard = ({
           </motion.div>
         ) : (
           <motion.div key="f" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
-             <div className="w-20 h-20 bg-secondary rounded-[24px] flex items-center justify-center mx-auto mb-6 shadow-2xl animate-bounce">
+             <div className="w-20 h-20 bg-secondary rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl animate-bounce">
                 <Zap className="text-white w-10 h-10" />
              </div>
              <p className="text-primary font-display font-black text-xl italic tracking-tight capitalize">Analisi Validata</p>

@@ -57,7 +57,7 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
     transition={{ duration: 0.18 }}
     whileHover={{ y: -3 }}
     onClick={onClick}
-    className="bg-surface-container-lowest p-5 rounded-[28px] shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/10 transition-[border-color,box-shadow] flex flex-col"
+    className="bg-surface-container-lowest p-5 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/10 transition-[border-color,box-shadow] flex flex-col"
   >
     <div className="flex items-start gap-4">
       <img
@@ -112,7 +112,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
       animate={{ scale: 1, y: 0 }}
       exit={{ scale: 0.94, y: 20 }}
       transition={{ type: 'spring', damping: 28, stiffness: 260 }}
-      className="bg-white w-full max-w-lg rounded-[40px] shadow-2xl overflow-hidden"
+      className="bg-white w-full max-w-lg rounded-5xl shadow-2xl overflow-hidden"
     >
       <div className="bg-gradient-to-br from-primary to-primary-container p-8 text-white relative overflow-hidden">
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full" />

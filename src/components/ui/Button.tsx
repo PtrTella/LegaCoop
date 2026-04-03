@@ -26,9 +26,9 @@ export const Button = ({
 
   const sizes = {
     sm: "px-6 py-3.5 rounded-xl text-[10px]",
-    md: "px-8 py-4 text-xs rounded-[20px]",
-    lg: "px-10 py-5 text-xs rounded-[24px]",
-    icon: "p-4 rounded-[14px] shrink-0"
+    md: "px-8 py-4 text-xs rounded-3xl",
+    lg: "px-10 py-5 text-xs rounded-3xl",
+    icon: "p-4 rounded-xl shrink-0"
   };
 
   return (

@@ -4,7 +4,7 @@ import { motion, HTMLMotionProps } from 'motion/react';
 interface CardProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
   padding?: 'p-6' | 'p-8' | 'p-10' | 'p-0';
-  rounded?: 'rounded-2xl' | 'rounded-[28px]' | 'rounded-[32px]' | 'rounded-[40px]';
+  rounded?: 'rounded-2xl' | 'rounded-3xl' | 'rounded-4xl' | 'rounded-5xl';
   hoverable?: boolean;
 }
 
@@ -12,7 +12,7 @@ export const Card = ({
   children, 
   className = '', 
   padding = 'p-8', 
-  rounded = 'rounded-[32px]', 
+  rounded = 'rounded-4xl', 
   hoverable = false, 
   ...props 
 }: CardProps) => {

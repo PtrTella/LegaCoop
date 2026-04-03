@@ -42,7 +42,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-surface rounded-[32px] shadow-ambient overflow-hidden max-h-[85vh]">
+    <div className="h-full flex flex-col bg-surface rounded-4xl shadow-ambient overflow-hidden max-h-[85vh]">
       {/* Header Glassmorphism */}
       <div className="h-20 bg-primary/90 backdrop-blur-[20px] px-6 flex items-center justify-between shrink-0 z-20">
         <div className="flex items-center gap-4">
@@ -128,7 +128,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="p-4 bg-gradient-to-br from-secondary to-primary text-white rounded-[14px] shadow-lg hover:shadow-secondary/30 disabled:opacity-30 transition-all shrink-0"
+            className="p-4 bg-gradient-to-br from-secondary to-primary text-white rounded-xl shadow-lg hover:shadow-secondary/30 disabled:opacity-30 transition-all shrink-0"
           >
             <Send className="w-5 h-5" />
           </motion.button>

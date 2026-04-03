@@ -19,6 +19,10 @@
 
   /* Shadows & Ambient */
   --shadow-ambient: 0 0 48px 0 rgba(26, 28, 31, 0.1);
+
+  /* Border Radius Tokens */
+  --radius-4xl: 2rem;   /* 32px */
+  --radius-5xl: 2.5rem; /* 40px */
 }
 
 @layer base {

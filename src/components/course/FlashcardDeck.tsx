@@ -24,7 +24,7 @@ export const FlashcardDeck = ({
   const card = cards[currentIndex] || { question: "Nessuna flashcard", answer: "Completato!" };
 
   return (
-    <div className="flex flex-col h-full bg-surface p-6 space-y-6 max-w-3xl mx-auto rounded-[32px] shadow-ambient">
+    <div className="flex flex-col h-full bg-surface p-6 space-y-6 max-w-3xl mx-auto rounded-4xl shadow-ambient">
       <div className="flex justify-between items-end px-2">
         <div className="space-y-2">
           <p className="text-secondary font-display font-black text-[9px] uppercase tracking-[0.4em]">Studio Attivo</p>
@@ -44,7 +44,7 @@ export const FlashcardDeck = ({
           className="relative w-full aspect-[16/9] cursor-pointer preserve-3d"
         >
           {/* Card Front */}
-          <div className="absolute inset-0 bg-surface-container-lowest rounded-[32px] shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden hover:scale-[1.01] transition-transform duration-500 border border-surface-container-low/50">
+          <div className="absolute inset-0 bg-surface-container-lowest rounded-4xl shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden hover:scale-[1.01] transition-transform duration-500 border border-surface-container-low/50">
             <div className="w-14 h-14 bg-tertiary/20 rounded-2xl flex items-center justify-center mb-6 transform -rotate-6">
               <Info className="text-secondary w-7 h-7" />
             </div>
@@ -55,7 +55,7 @@ export const FlashcardDeck = ({
           </div>
 
           {/* Card Back */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-container rounded-[32px] shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-container rounded-4xl shadow-ambient p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
             <div className="absolute top-6 left-6 p-2 bg-white/10 rounded-lg backdrop-blur-md">
                <span className="text-[9px] text-white/40 font-display font-bold uppercase tracking-widest leading-none">Risposta Master</span>
             </div>

@@ -72,7 +72,7 @@ export const AITutor = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: 'bottom right' }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-8 right-8 w-[400px] h-[600px] sm:h-[650px] bg-white/95 backdrop-blur-[24px] rounded-[32px] shadow-ambient z-50 flex flex-col overflow-hidden border border-primary/5 border-t-primary/10"
+            className="fixed bottom-8 right-8 w-[400px] h-[600px] sm:h-[650px] bg-white/95 backdrop-blur-[24px] rounded-4xl shadow-ambient z-50 flex flex-col overflow-hidden border border-primary/5 border-t-primary/10"
           >
             {/* Header: Pure Premium Visuals */}
             <div className="p-6 bg-gradient-to-r from-primary to-primary-container text-white flex items-center justify-between shrink-0">
@@ -140,7 +140,7 @@ export const AITutor = () => {
 
             {/* Footer Area: Floating Input Feel */}
             <div className="p-6 bg-white/50 border-t border-primary/5 backdrop-blur-md">
-              <div className="bg-white p-2 rounded-[20px] shadow-2xl shadow-primary/5 flex items-center gap-2 pr-2 border border-primary/5 focus-within:ring-2 focus-within:ring-primary/10 transition-all duration-300">
+              <div className="bg-white p-2 rounded-3xl shadow-2xl shadow-primary/5 flex items-center gap-2 pr-2 border border-primary/5 focus-within:ring-2 focus-within:ring-primary/10 transition-all duration-300">
                 <input 
                   type="text" 
                   value={input}

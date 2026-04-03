@@ -16,7 +16,7 @@ const EmptyFounderCard = ({ onSetup }: { key?: React.Key; onSetup: () => void })
   <motion.div
     whileHover={{ y: -4 }}
     onClick={onSetup}
-    className="bg-surface-container-lowest p-8 rounded-[32px] shadow-ambient cursor-pointer group border-2 border-dashed border-primary/10 hover:border-secondary/30 transition-all flex flex-col items-center justify-center text-center space-y-4 min-h-[200px]"
+    className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient cursor-pointer group border-2 border-dashed border-primary/10 hover:border-secondary/30 transition-all flex flex-col items-center justify-center text-center space-y-4 min-h-[200px]"
   >
     <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
       <Edit3 className="w-6 h-6 text-secondary" />
@@ -37,7 +37,7 @@ const FounderCard = ({ profile, onEdit }: { key?: React.Key; profile: UserProfil
   <motion.div
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
-    className="bg-surface-container-lowest p-6 rounded-[32px] shadow-ambient relative overflow-hidden group"
+    className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient relative overflow-hidden group"
   >
     {/* Background Glow */}
     <div className="absolute -top-8 -right-8 w-32 h-32 bg-secondary/5 rounded-full blur-2xl group-hover:bg-secondary/10 transition-all" />

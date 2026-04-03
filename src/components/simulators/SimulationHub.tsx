@@ -20,7 +20,7 @@ export const SimulationHub = ({ onSelect }: { onSelect: (simType: 'governance' |
         <motion.div 
           whileHover={{ y: -6 }}
           onClick={() => onSelect('governance')}
-          className="bg-surface-container-lowest p-8 rounded-[32px] shadow-ambient space-y-8 cursor-pointer group relative overflow-hidden"
+          className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient space-y-8 cursor-pointer group relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 p-8 opacity-5 translate-x-8 -translate-y-8">
             <Zap size={140} />
@@ -35,7 +35,7 @@ export const SimulationHub = ({ onSelect }: { onSelect: (simType: 'governance' |
             </p>
           </div>
           <motion.div 
-             className="w-full py-4 bg-surface-container-low rounded-[20px] font-display font-black text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 flex items-center justify-center gap-2.5 text-[11px] uppercase tracking-widest shadow-sm"
+             className="w-full py-4 bg-surface-container-low rounded-3xl font-display font-black text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 flex items-center justify-center gap-2.5 text-[11px] uppercase tracking-widest shadow-sm"
           >
             Configura Organo <ChevronRight size={16} />
           </motion.div>
@@ -45,7 +45,7 @@ export const SimulationHub = ({ onSelect }: { onSelect: (simType: 'governance' |
         <motion.div 
           whileHover={{ y: -6 }}
           onClick={() => onSelect('pitch')}
-          className="bg-gradient-to-br from-primary to-primary-container p-8 rounded-[32px] shadow-ambient space-y-8 cursor-pointer group relative overflow-hidden"
+          className="bg-gradient-to-br from-primary to-primary-container p-8 rounded-4xl shadow-ambient space-y-8 cursor-pointer group relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 p-8 opacity-10 translate-x-8 -translate-y-8">
             <ShieldAlert size={140} className="text-tertiary" />
@@ -63,7 +63,7 @@ export const SimulationHub = ({ onSelect }: { onSelect: (simType: 'governance' |
             </p>
           </div>
           <motion.div 
-            className="relative z-10 w-full py-4 bg-gradient-to-r from-secondary to-tertiary text-white rounded-[20px] font-display font-black group-hover:shadow-[0_0_20px_rgba(223,187,228,0.4)] transition-all duration-500 flex items-center justify-center gap-2.5 text-[11px] uppercase tracking-widest"
+            className="relative z-10 w-full py-4 bg-gradient-to-r from-secondary to-tertiary text-white rounded-3xl font-display font-black group-hover:shadow-[0_0_20px_rgba(223,187,228,0.4)] transition-all duration-500 flex items-center justify-center gap-2.5 text-[11px] uppercase tracking-widest"
           >
             Sfida il Capitale <ChevronRight size={16} />
           </motion.div>

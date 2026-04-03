@@ -128,7 +128,7 @@ const AppContent = () => {
               )}
 
               {view === 'success' && (
-                <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6 bg-surface-container-lowest rounded-[32px] shadow-ambient">
+                <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6 bg-surface-container-lowest rounded-4xl shadow-ambient">
                   <div className="w-20 h-20 bg-tertiary/10 rounded-full flex items-center justify-center">
                     <Trophy className="w-10 h-10 text-secondary" />
                   </div>

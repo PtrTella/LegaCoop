@@ -59,7 +59,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
-        className="bg-white w-full max-w-xl rounded-[40px] shadow-2xl overflow-hidden"
+        className="bg-white w-full max-w-xl rounded-5xl shadow-2xl overflow-hidden"
       >
         {/* Header */}
         <div className="p-8 pb-6 flex items-start justify-between">

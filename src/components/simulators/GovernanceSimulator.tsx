@@ -43,7 +43,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
   };
 
   return (
-    <div className="p-6 space-y-8 h-full flex flex-col max-w-4xl mx-auto bg-surface rounded-[32px] shadow-ambient relative overflow-hidden">
+    <div className="p-6 space-y-8 h-full flex flex-col max-w-4xl mx-auto bg-surface rounded-4xl shadow-ambient relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full -mr-24 -mt-24 blur-3xl" />
       
@@ -87,7 +87,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-surface-container-lowest p-8 rounded-[32px] shadow-ambient space-y-6 w-full max-w-2xl border border-surface-container-low/50"
+              className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient space-y-6 w-full max-w-2xl border border-surface-container-low/50"
             >
               <h3 className="text-lg font-display font-black text-primary leading-tight tracking-tight italic">
                 {current.question}
@@ -112,7 +112,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
               key="feedback"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-primary p-8 rounded-[32px] shadow-ambient space-y-6 w-full max-w-2xl text-center relative overflow-hidden"
+              className="bg-primary p-8 rounded-4xl shadow-ambient space-y-6 w-full max-w-2xl text-center relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mt-12 blur-2xl" />
               <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-bounce">

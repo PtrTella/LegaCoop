@@ -61,7 +61,7 @@ export const MadLibCard = ({
   const allFilled = Object.keys(selections).length === correctWords.length;
 
   return (
-    <div className="bg-surface-container-low border border-primary/10 rounded-[40px] p-10 shadow-ambient space-y-10 mt-8 relative overflow-hidden">
+    <div className="bg-surface-container-low border border-primary/10 rounded-5xl p-10 shadow-ambient space-y-10 mt-8 relative overflow-hidden">
       <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12">
         <GripVertical size={200} className="text-secondary" />
       </div>
@@ -85,7 +85,7 @@ export const MadLibCard = ({
                     <select 
                       value={selections[part.index] || ''}
                       onChange={(e) => handleSelect(part.index, e.target.value)}
-                      className={`px-4 py-2.5 rounded-[12px] border-2 transition-all font-display font-black text-[11px] uppercase tracking-widest bg-white appearance-none cursor-pointer shadow-sm ${
+                      className={`px-4 py-2.5 rounded-xl border-2 transition-all font-display font-black text-[11px] uppercase tracking-widest bg-white appearance-none cursor-pointer shadow-sm ${
                         selections[part.index] 
                         ? 'border-primary text-primary' 
                         : 'border-dashed border-primary/20 text-primary/40'
@@ -129,7 +129,7 @@ export const MadLibCard = ({
           </motion.div>
         ) : (
            <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-8">
-             <div className="w-24 h-24 bg-gradient-to-br from-secondary to-primary-container rounded-[32px] flex items-center justify-center mx-auto shadow-2xl animate-bounce">
+             <div className="w-24 h-24 bg-gradient-to-br from-secondary to-primary-container rounded-4xl flex items-center justify-center mx-auto shadow-2xl animate-bounce">
                 <Check className="text-white w-12 h-12" />
              </div>
              <div>
