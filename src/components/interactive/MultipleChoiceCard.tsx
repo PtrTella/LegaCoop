@@ -14,6 +14,10 @@ export const MultipleChoiceCard = ({
 
   const handleOption = (index: number) => {
     if (index === data.correctAnswerIndex) {
+      setFeedback({ 
+        text: data.feedback || "Analisi Corretta! Hai identificato la strategia vincente.", 
+        isCorrect: true 
+      });
       onSuccess();
     } else {
       setFeedback({ text: "Non proprio. Analizza meglio le opzioni sopra.", isCorrect: false });
@@ -28,7 +32,13 @@ export const MultipleChoiceCard = ({
 
       <AnimatePresence mode="wait">
         {!feedback || !feedback.isCorrect ? (
-          <motion.div key="q" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }}>
+          <motion.div 
+            key="q" 
+            initial={{ opacity: 0, y: 15 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.4 } }}
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          >
             <div className="flex items-center gap-3 mb-6">
               <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span>
               <p className="text-[10px] text-primary/40 font-display font-black uppercase tracking-[0.4em] leading-none">Scelta Strategica</p>

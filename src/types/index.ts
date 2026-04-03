@@ -39,6 +39,7 @@ export interface MultipleChoice {
 export interface MadLib {
   template: string; // e.g., "La {cooperativa} è una {impresa}."
   expectedWords: string[];
+  feedback?: string;
 }
 
 export interface Gamification {

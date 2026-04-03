@@ -48,6 +48,10 @@ export const MadLibCard = ({
   const checkSolution = () => {
     const isCorrect = correctWords.every((word, idx) => selections[idx] === word);
     if (isCorrect) {
+      setFeedback({ 
+        text: data.feedback || "Sintesi Perfetta! Hai ricostruito correttamente il concetto.", 
+        isCorrect: true 
+      });
       onSuccess();
     } else {
       setFeedback({ text: "Analisi incompleta. Alcuni termini non sono nel posto giusto.", isCorrect: false });
@@ -124,12 +128,17 @@ export const MadLibCard = ({
             </div>
           </motion.div>
         ) : (
-          <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-8">
+           <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-8">
              <div className="w-24 h-24 bg-gradient-to-br from-secondary to-primary-container rounded-[32px] flex items-center justify-center mx-auto shadow-2xl animate-bounce">
                 <Check className="text-white w-12 h-12" />
              </div>
              <div>
                 <h4 className="text-3xl font-display font-black text-primary italic tracking-tight">Sintesi Completata</h4>
+                {feedback && feedback.isCorrect && (
+                  <p className="text-primary/60 font-body text-base max-w-sm mx-auto leading-relaxed mt-4">
+                    {feedback.text}
+                  </p>
+                )}
              </div>
           </motion.div>
         )}
