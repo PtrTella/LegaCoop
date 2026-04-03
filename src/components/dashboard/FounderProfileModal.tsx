@@ -52,7 +52,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-primary/40 backdrop-blur-[8px] z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 bg-primary/40 backdrop-blur-md z-[100] flex items-center justify-center p-4"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <motion.div
@@ -64,11 +64,11 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         {/* Header */}
         <div className="p-8 pb-6 flex items-start justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-secondary to-primary rounded-2xl flex items-center justify-center shadow-lg shadow-secondary/20">
+            <div className="w-12 h-12 bg-linear-to-br from-secondary to-primary rounded-2xl flex items-center justify-center shadow-lg shadow-secondary/20">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <p className="text-[9px] text-secondary font-display font-black uppercase tracking-[0.3em]">
+              <p className="text-2xs text-secondary font-display font-black uppercase tracking-ultra">
                 Step {step + 1} / {STEPS.length}
               </p>
               <h2 className="text-2xl font-display font-black text-primary tracking-tight leading-tight">
@@ -85,7 +85,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         <div className="px-8 mb-6">
           <div className="h-1 bg-surface-container-low rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-secondary to-primary rounded-full"
+              className="h-full bg-linear-to-r from-secondary to-primary rounded-full"
               animate={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
               transition={{ type: 'spring', stiffness: 100, damping: 20 }}
             />
@@ -107,7 +107,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
               {step === 0 && (
                 <div className="space-y-4">
                   <div>
-                    <label className="text-[10px] font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Nome Completo</label>
+                    <label className="text-xs-tight font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Nome Completo</label>
                     <input
                       autoFocus
                       type="text"
@@ -118,7 +118,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Città / Regione</label>
+                    <label className="text-xs-tight font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Città / Regione</label>
                     <input
                       type="text"
                       value={profile.location}
@@ -161,7 +161,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           key={skill}
                           onClick={() => toggleSkill(skill)}
                           disabled={maxReached}
-                          className={`px-3 py-2 rounded-xl font-display font-black text-[10px] uppercase tracking-wider transition-all ${
+                          className={`px-3 py-2 rounded-xl font-display font-black text-xs-tight uppercase tracking-wider transition-all ${
                             isSelected
                               ? 'bg-secondary text-white shadow-md shadow-secondary/20'
                               : maxReached
@@ -174,7 +174,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                       );
                     })}
                   </div>
-                  <p className="text-[10px] text-primary/30 font-display font-black uppercase tracking-widest mt-4">
+                  <p className="text-xs-tight text-primary/30 font-display font-black uppercase tracking-widest mt-4">
                     {profile.skills?.length ?? 0} / 5 competenze selezionate
                   </p>
                 </div>
@@ -191,7 +191,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                     rows={5}
                     className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-base resize-none leading-relaxed"
                   />
-                  <p className="text-[10px] text-primary/30 mt-2 text-right font-display font-black">
+                  <p className="text-xs-tight text-primary/30 mt-2 text-right font-display font-black">
                     {profile.vision?.length ?? 0} caratteri
                   </p>
                 </div>
@@ -238,7 +238,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             disabled={!canProceed()}
             className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-display font-black text-xs uppercase tracking-widest transition-all ${
               canProceed()
-                ? 'bg-gradient-to-br from-secondary to-primary text-white shadow-xl shadow-secondary/20'
+                ? 'bg-linear-to-br from-secondary to-primary text-white shadow-xl shadow-secondary/20'
                 : 'bg-surface-container-low text-primary/20 cursor-not-allowed'
             }`}
           >

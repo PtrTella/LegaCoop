@@ -57,9 +57,9 @@ export const AITutor = () => {
           whileHover={{ scale: 1.05, y: -4 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-br from-primary via-primary-container to-secondary text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/10 group overflow-hidden"
+          className="fixed bottom-8 right-8 w-16 h-16 bg-linear-to-br from-primary via-primary-container to-secondary text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/10 group overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-tertiary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 bg-linear-to-tr from-tertiary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
           <MessageSquare className="w-7 h-7 relative z-10" />
           <div className="absolute top-3 right-3 w-3 h-3 bg-tertiary rounded-full border-2 border-primary animate-pulse" />
         </motion.button>
@@ -75,7 +75,7 @@ export const AITutor = () => {
             className="fixed bottom-8 right-8 w-[400px] h-[600px] sm:h-[650px] bg-white/95 backdrop-blur-[24px] rounded-4xl shadow-ambient z-50 flex flex-col overflow-hidden border border-primary/5 border-t-primary/10"
           >
             {/* Header: Pure Premium Visuals */}
-            <div className="p-6 bg-gradient-to-r from-primary to-primary-container text-white flex items-center justify-between shrink-0">
+            <div className="p-6 bg-linear-to-r from-primary to-primary-container text-white flex items-center justify-between shrink-0">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/5 shadow-inner">
                   <Bot className="w-6 h-6 text-tertiary" />
@@ -88,7 +88,7 @@ export const AITutor = () => {
                       <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:-0.15s]" />
                       <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce" />
                     </div>
-                    <span className="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-tertiary/80 pl-1">Live Intelligence</span>
+                    <span className="text-xs-tight font-display font-bold uppercase tracking-widest-plus text-tertiary/80 pl-1">Live Intelligence</span>
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@ export const AITutor = () => {
                   </div>
                   <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] shadow-sm
                     ${msg.role === 'user' 
-                      ? 'bg-gradient-to-br from-secondary to-primary text-white rounded-tr-none' 
+                      ? 'bg-linear-to-br from-secondary to-primary text-white rounded-tr-none' 
                       : 'bg-white/80 text-primary/80 rounded-tl-none border border-primary/5'}`}>
                     {renderFormattedText(msg.text)}
                   </div>
@@ -132,7 +132,7 @@ export const AITutor = () => {
                      <Loader2 className="w-4 h-4 text-secondary animate-spin" />
                    </div>
                    <div className="px-4 py-3 bg-white/50 rounded-2xl rounded-tl-none border border-primary/5 flex items-center gap-1.5">
-                     <span className="text-[10px] font-display font-black text-primary/30 uppercase tracking-[0.2em] italic">Inspirazione...</span>
+                     <span className="text-xs-tight font-display font-black text-primary/30 uppercase tracking-widest-plus italic">Inspirazione...</span>
                    </div>
                 </motion.div>
               )}
@@ -154,12 +154,12 @@ export const AITutor = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSend}
                   disabled={!input.trim() || loading}
-                  className="p-3 bg-gradient-to-br from-secondary to-primary text-white rounded-2xl shadow-lg shadow-secondary/20 disabled:opacity-30 flex items-center justify-center transition-all"
+                  className="p-3 bg-linear-to-br from-secondary to-primary text-white rounded-2xl shadow-lg shadow-secondary/20 disabled:opacity-30 flex items-center justify-center transition-all"
                 >
                   <Send className="w-5 h-5" />
                 </motion.button>
               </div>
-              <p className="text-center text-[10px] text-primary/30 font-display font-bold uppercase tracking-widest mt-4">
+              <p className="text-center text-xs-tight text-primary/30 font-display font-bold uppercase tracking-widest mt-4">
                 Powered by AI Accademia
               </p>
             </div>

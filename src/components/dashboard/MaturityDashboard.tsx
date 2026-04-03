@@ -21,12 +21,12 @@ export const MaturityDashboard = ({
   return (
     <div className="space-y-8 pb-8">
       {/* Hero Section: The Academic Authority */}
-      <div className="bg-gradient-to-br from-primary to-primary-container rounded-4xl p-8 text-white relative overflow-hidden shadow-ambient">
+      <div className="bg-linear-to-br from-primary to-primary-container rounded-4xl p-8 text-white relative overflow-hidden shadow-ambient">
         <div className="absolute top-0 right-0 p-8 opacity-5 scale-125 rotate-12">
           <Trophy size={160} />
         </div>
         <div className="relative z-10">
-          <p className="text-tertiary font-display font-black text-[10px] uppercase tracking-[0.4em] mb-3">Maturità Cooperativa</p>
+          <p className="text-tertiary font-display font-black text-xs-tight uppercase tracking-mega mb-3">Maturità Cooperativa</p>
           <h2 className="text-3xl font-display font-black mb-10 leading-tight max-w-lg">La tua visione sta prendendo forma.</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl">
@@ -36,7 +36,7 @@ export const MaturityDashboard = ({
                    <stat.icon className={`${stat.color} w-5 h-5`} />
                 </div>
                 <p className="text-3xl font-display font-black tracking-tighter">{stat.value}</p>
-                <p className="text-[9px] text-white/40 uppercase font-display font-black tracking-widest">{stat.label}</p>
+                <p className="text-2xs text-white/40 uppercase font-display font-black tracking-widest">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -59,13 +59,13 @@ export const MaturityDashboard = ({
             </div>
             <div>
               <h3 className="font-display font-black text-xl text-primary leading-none">Accademia Digitale</h3>
-              <p className="text-[10px] text-primary/40 uppercase font-display font-black tracking-widest mt-1.5">Percorso Formativo</p>
+              <p className="text-xs-tight text-primary/40 uppercase font-display font-black tracking-widest mt-1.5">Percorso Formativo</p>
             </div>
           </div>
           <p className="text-sm text-primary/60 font-body leading-relaxed mb-6">
             Gestisci la tua evoluzione attraverso i moduli di studio. Ogni lezione sblocca nuove opportunità di sistema.
           </p>
-          <div className="text-[10px] font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+          <div className="text-xs-tight font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
             Apri Mappa <ChevronRight size={14} />
           </div>
         </motion.div>
@@ -84,13 +84,13 @@ export const MaturityDashboard = ({
             </div>
             <div>
               <h3 className="font-display font-black text-xl text-primary leading-none">Hub Simulazioni</h3>
-              <p className="text-[10px] text-primary/40 uppercase font-display font-black tracking-widest mt-1.5">Laboratorio Pratico</p>
+              <p className="text-xs-tight text-primary/40 uppercase font-display font-black tracking-widest mt-1.5">Laboratorio Pratico</p>
             </div>
           </div>
           <p className="text-sm text-primary/60 font-body leading-relaxed mb-6">
             Metti alla prova la tua visione con Gordon e i simulatori di Governance. Affina la tua resilienza cooperativa.
           </p>
-          <div className="text-[10px] font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+          <div className="text-xs-tight font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
             Vai ai Test <ChevronRight size={14} />
           </div>
         </motion.div>
@@ -104,7 +104,7 @@ export const MaturityDashboard = ({
           </div>
           <h3 className="font-display font-black text-xl text-primary tracking-tight">Referente Dedicato</h3>
           <p className="text-sm text-primary/50 font-body leading-relaxed">Connetti la tua visione con un esperto di sistema Legacoop.</p>
-          <button className="text-[9px] font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
+          <button className="text-2xs font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
             Prenota Sessione <ChevronRight size={12} />
           </button>
         </div>
@@ -115,7 +115,7 @@ export const MaturityDashboard = ({
           </div>
           <h3 className="font-display font-black text-xl text-primary tracking-tight">Studio in Campo</h3>
           <p className="text-sm text-primary/50 font-body leading-relaxed">Immergiti per un giorno nel cuore di una cooperativa d'eccellenza.</p>
-          <button className="text-[9px] font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
+          <button className="text-2xs font-display font-black uppercase text-secondary tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all">
             Sblocca Accesso <ChevronRight size={12} />
           </button>
         </div>

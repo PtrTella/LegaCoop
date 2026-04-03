@@ -140,7 +140,7 @@ const AppContent = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleSetView(lastMainView)} 
-                    className="px-6 py-3.5 bg-gradient-to-br from-secondary to-primary-container text-white font-display font-black rounded-xl shadow-ambient transition-all text-xs uppercase tracking-widest"
+                    className="px-6 py-3.5 bg-linear-to-br from-secondary to-primary-container text-white font-display font-black rounded-xl shadow-ambient transition-all text-xs uppercase tracking-widest"
                   >
                     Torna in Accademia
                   </motion.button>

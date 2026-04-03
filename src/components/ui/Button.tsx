@@ -18,14 +18,14 @@ export const Button = ({
   
   const variants = {
     primary: "bg-primary text-white hover:bg-secondary shadow-2xl shadow-primary/40",
-    gradient: "bg-gradient-to-br from-secondary to-primary-container text-white shadow-ambient",
-    icon: "bg-gradient-to-br from-secondary to-primary text-white shadow-lg hover:shadow-secondary/30 disabled:opacity-30",
+    gradient: "bg-linear-to-br from-secondary to-primary-container text-white shadow-ambient",
+    icon: "bg-linear-to-br from-secondary to-primary text-white shadow-lg hover:shadow-secondary/30 disabled:opacity-30",
     outline: "border-2 border-primary/10 text-primary hover:border-primary/30",
     text: "text-secondary hover:text-primary"
   };
 
   const sizes = {
-    sm: "px-6 py-3.5 rounded-xl text-[10px]",
+    sm: "px-6 py-3.5 rounded-xl text-xs-tight",
     md: "px-8 py-4 text-xs rounded-3xl",
     lg: "px-10 py-5 text-xs rounded-3xl",
     icon: "p-4 rounded-xl shrink-0"

@@ -41,7 +41,7 @@ export const MultipleChoiceCard = ({
           >
             <div className="flex items-center gap-3 mb-6">
               <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span>
-              <p className="text-[10px] text-primary/40 font-display font-black uppercase tracking-[0.4em] leading-none">Scelta Strategica</p>
+              <p className="text-xs-tight text-primary/40 font-display font-black uppercase tracking-mega leading-none">Scelta Strategica</p>
             </div>
             
             <h3 className="text-2xl md:text-3xl font-display font-black text-primary italic leading-tight tracking-tight mb-10 select-none">
@@ -69,7 +69,7 @@ export const MultipleChoiceCard = ({
               <motion.p 
                 initial={{ opacity: 0, y: 5 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                className="text-tertiary text-[10px] font-display font-black uppercase mt-6 italic tracking-widest text-center animate-pulse"
+                className="text-tertiary text-xs-tight font-display font-black uppercase mt-6 italic tracking-widest text-center animate-pulse"
               >
                 {feedback.text}
               </motion.p>

@@ -9,15 +9,15 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
 
   return (
     <div className="space-y-10 py-4">
-      <div className="flex justify-between items-start">
+      <div className="flex items-start justify-between">
         <div className="max-w-xl">
-          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.4em] mb-3">Percorso di Studio</p>
-          <h1 className="text-3xl font-display font-black text-primary tracking-tight leading-tight italic">
-            Dall'idea all'impresa <span className="text-primary/30 not-italic tracking-tighter">— Percorso Accademia</span>
+          <p className="mb-3 font-display text-xs-tight font-black uppercase tracking-mega text-secondary">Percorso di Studio</p>
+          <h1 className="font-display text-3xl font-black italic tracking-tight text-primary">
+            Dall'idea all'impresa <span className="not-italic tracking-tighter text-primary/30">— Percorso Accademia</span>
           </h1>
         </div>
-        <div className="w-16 h-16 bg-surface-container-low rounded-3xl flex items-center justify-center transform rotate-6 hover:rotate-0 transition-transform">
-          <PieChart className="text-primary/30 w-8 h-8" />
+        <div className="flex h-16 w-16 rotate-6 transform items-center justify-center rounded-[20px] bg-surface-container-low transition-transform hover:rotate-0">
+          <PieChart className="h-8 w-8 text-primary/30" />
         </div>
       </div>
 
@@ -33,43 +33,43 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className={`flex flex-col ${isEven ? 'md:items-start' : 'md:items-end'} w-full relative ${!isUnlocked ? 'opacity-40 grayscale-50' : ''}`}
+              className={`relative flex w-full flex-col ${isEven ? 'md:items-start' : 'md:items-end'} ${!isUnlocked ? 'grayscale-50 opacity-40' : ''}`}
             >
               {/* Connector Trace (Soft, not a line) */}
-              <div className={`hidden md:block absolute top-1/2 w-24 h-24 border-4 border-primary/5 rounded-full -z-10 ${isEven ? '-left-12 rotate-45 border-r-0 border-b-0' : '-right-12 -rotate-45 border-l-0 border-t-0'}`} />
+              <div className={`absolute top-1/2 -z-10 hidden h-24 w-24 rounded-full border-4 border-primary/5 md:block ${isEven ? '-left-12 rotate-45 border-r-0 border-b-0' : '-right-12 -rotate-45 border-l-0 border-t-0'}`} />
 
               <button 
                 disabled={!isUnlocked}
                 onClick={() => onSelectModule(module.id)}
-                className={`w-full max-w-xl text-left p-6 rounded-4xl transition-all duration-500 relative group
+                className={`group relative w-full max-w-xl rounded-4xl text-left p-6 transition-all duration-500
                   ${isUnlocked 
-                    ? 'bg-surface-container-lowest shadow-ambient hover:scale-[1.01] active:scale-[0.99]' 
-                    : 'bg-surface-container-low cursor-not-allowed shadow-none'
+                    ? 'bg-surface-container-lowest shadow-ambient active:scale-[0.99] hover:scale-[1.01]' 
+                    : 'cursor-not-allowed bg-surface-container-low shadow-none'
                   }`}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-12 h-12 rounded-3xl flex items-center justify-center shrink-0 z-10 shadow-lg transform group-hover:rotate-6 transition-transform ${
-                    isCompleted ? 'bg-gradient-to-br from-tertiary to-secondary' : isUnlocked ? 'bg-gradient-to-br from-primary to-primary-container' : 'bg-surface-container-highest'
+                <div className="mb-4 flex items-center gap-4">
+                  <div className={`z-10 flex h-12 w-12 shrink-0 transform items-center justify-center rounded-2xl shadow-lg transition-transform group-hover:rotate-6 ${
+                    isCompleted ? 'bg-linear-to-br from-tertiary to-secondary' : isUnlocked ? 'bg-linear-to-br from-primary to-primary-container' : 'bg-surface-container-highest'
                   }`}>
-                    {isCompleted ? <CheckCircle2 className="text-white w-6 h-6" /> : 
-                     isUnlocked ? <Unlock className="text-white w-5 h-5" /> : 
-                     <Lock className="text-primary/20 w-5 h-5" />}
+                    {isCompleted ? <CheckCircle2 className="h-6 w-6 text-white" /> : 
+                     isUnlocked ? <Unlock className="h-5 w-5 text-white" /> : 
+                     <Lock className="h-5 w-5 text-primary/20" />}
                   </div>
                   
                   <div className="flex-1">
-                    <div className="flex justify-between items-center">
-                       <h3 className="font-display font-black text-xl text-primary tracking-tight">{module.title}</h3>
-                       {isUnlocked && <ChevronRight className="text-secondary w-5 h-5 transform group-hover:translate-x-1.5 transition-transform" />}
+                    <div className="flex items-center justify-between">
+                       <h3 className="font-display text-xl font-black tracking-tight text-primary">{module.title}</h3>
+                       {isUnlocked && <ChevronRight className="h-5 w-5 transform transition-transform text-secondary group-hover:translate-x-1.5" />}
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm text-primary/60 font-body leading-relaxed pl-1">{module.description}</p>
+                <p className="pl-1 font-body text-sm leading-relaxed text-primary/60">{module.description}</p>
                 
                 {isUnlocked && !isCompleted && (
-                  <div className="mt-5 flex items-center gap-3 bg-surface-container-low w-fit px-4 py-2 rounded-full">
-                    <Zap size={14} className="text-secondary animate-pulse" />
-                    <span className="text-[9px] font-display font-black uppercase text-secondary tracking-[0.2em]">Obiettivo: {module.task}</span>
+                  <div className="mt-5 flex w-fit items-center gap-3 rounded-full bg-surface-container-low px-4 py-2">
+                    <Zap size={14} className="animate-pulse text-secondary" />
+                    <span className="font-display text-2xs font-black uppercase tracking-widest-plus text-secondary">Obiettivo: {module.task}</span>
                   </div>
                 )}
               </button>

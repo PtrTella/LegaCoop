@@ -23,6 +23,19 @@
   /* Border Radius Tokens */
   --radius-4xl: 2rem;   /* 32px */
   --radius-5xl: 2.5rem; /* 40px */
+
+  /* Typography Tokens */
+  --font-size-3xs: 8px;
+  --font-size-2xs: 9px;
+  --font-size-xs-tight: 10px;
+  --font-size-sm-alt: 11px;
+
+  --tracking-widest-plus: 0.2em;
+  --tracking-ultra: 0.3em;
+  --tracking-mega: 0.4em;
+
+  /* Blur Tokens */
+  --blur-2xl: 32px;
 }
 
 @layer base {

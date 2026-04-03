@@ -70,7 +70,7 @@ export const MadLibCard = ({
         <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
           <Zap className="text-secondary w-6 h-6" />
         </div>
-        <p className="text-[10px] text-secondary font-display font-black uppercase tracking-[0.4em] leading-none">Costruzione Logica</p>
+        <p className="text-xs-tight text-secondary font-display font-black uppercase tracking-mega leading-none">Costruzione Logica</p>
       </div>
 
       <AnimatePresence mode="wait">
@@ -85,7 +85,7 @@ export const MadLibCard = ({
                     <select 
                       value={selections[part.index] || ''}
                       onChange={(e) => handleSelect(part.index, e.target.value)}
-                      className={`px-4 py-2.5 rounded-xl border-2 transition-all font-display font-black text-[11px] uppercase tracking-widest bg-white appearance-none cursor-pointer shadow-sm ${
+                      className={`px-4 py-2.5 rounded-xl border-2 transition-all font-display font-black text-sm-alt uppercase tracking-widest bg-white appearance-none cursor-pointer shadow-sm ${
                         selections[part.index] 
                         ? 'border-primary text-primary' 
                         : 'border-dashed border-primary/20 text-primary/40'
@@ -120,7 +120,7 @@ export const MadLibCard = ({
                 <motion.p 
                   initial={{ opacity: 0, y: 5 }} 
                   animate={{ opacity: 1, y: 0 }} 
-                  className="text-tertiary text-[10px] font-display font-black uppercase tracking-widest animate-pulse italic text-center"
+                  className="text-tertiary text-xs-tight font-display font-black uppercase tracking-widest animate-pulse italic text-center"
                 >
                   {feedback.text}
                 </motion.p>
@@ -129,7 +129,7 @@ export const MadLibCard = ({
           </motion.div>
         ) : (
            <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-8">
-             <div className="w-24 h-24 bg-gradient-to-br from-secondary to-primary-container rounded-4xl flex items-center justify-center mx-auto shadow-2xl animate-bounce">
+             <div className="w-24 h-24 bg-linear-to-br from-secondary to-primary-container rounded-4xl flex items-center justify-center mx-auto shadow-2xl animate-bounce">
                 <Check className="text-white w-12 h-12" />
              </div>
              <div>

@@ -46,19 +46,19 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
       {/* Header Glassmorphism */}
       <div className="h-20 bg-primary/90 backdrop-blur-[20px] px-6 flex items-center justify-between shrink-0 z-20">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-gradient-to-br from-primary-container to-secondary rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
+          <div className="w-12 h-12 bg-linear-to-br from-primary-container to-secondary rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
             <Briefcase className="text-white w-6 h-6" />
           </div>
           <div>
             <h2 className="font-display font-extrabold text-white text-lg tracking-tight leading-none">Gordon</h2>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-[9px] bg-tertiary text-primary px-1.5 py-0.5 rounded-full font-black uppercase tracking-tighter shadow-sm">Boss Level 99</span>
-              <span className="text-[9px] text-white/50 font-display font-medium uppercase tracking-widest leading-none">Capital Maven</span>
+              <span className="text-2xs bg-tertiary text-primary px-1.5 py-0.5 rounded-full font-black uppercase tracking-tighter shadow-sm">Boss Level 99</span>
+              <span className="text-2xs text-white/50 font-display font-medium uppercase tracking-widest leading-none">Capital Maven</span>
             </div>
           </div>
         </div>
         <div className="text-right flex items-center gap-3">
-          <p className="text-[10px] text-white/60 font-medium leading-tight max-w-[100px] hidden sm:block italic">Fagli capire cosa significa Resilienza</p>
+          <p className="text-xs-tight text-white/60 font-medium leading-tight max-w-[100px] hidden sm:block italic">Fagli capire cosa significa Resilienza</p>
           <div className="p-2.5 bg-secondary/20 rounded-full">
             <ShieldAlert className="text-tertiary w-5 h-5 animate-pulse" />
           </div>
@@ -87,7 +87,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
                   <div className={`p-4 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap shadow-sm transition-all
                     ${isModel 
                       ? 'bg-surface-container-lowest text-primary rounded-tl-none font-medium' 
-                      : 'bg-gradient-to-br from-secondary to-primary-container text-white rounded-tr-none'
+                      : 'bg-linear-to-br from-secondary to-primary-container text-white rounded-tr-none'
                     }`}>
                     {renderTextWithKeywords(msg.parts[0].text)}
                   </div>
@@ -106,7 +106,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
                 <div className="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce [animation-delay:-0.3s]" />
                 <div className="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce [animation-delay:-0.15s]" />
                 <div className="w-1.5 h-1.5 bg-tertiary rounded-full animate-bounce" />
-                <span className="text-[8px] font-display font-black text-primary/30 uppercase tracking-widest pl-2">Giudicando...</span>
+                <span className="text-3xs font-display font-black text-primary/30 uppercase tracking-widest pl-2">Giudicando...</span>
               </div>
             </div>
           </div>
@@ -128,14 +128,14 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="p-4 bg-gradient-to-br from-secondary to-primary text-white rounded-xl shadow-lg hover:shadow-secondary/30 disabled:opacity-30 transition-all shrink-0"
+            className="p-4 bg-linear-to-br from-secondary to-primary text-white rounded-xl shadow-lg hover:shadow-secondary/30 disabled:opacity-30 transition-all shrink-0"
           >
             <Send className="w-5 h-5" />
           </motion.button>
         </form>
         <button 
           onClick={onComplete}
-          className="mt-6 w-full text-center text-[9px] font-display font-black text-primary/30 hover:text-primary transition-colors uppercase tracking-[0.2em] font-bold"
+          className="mt-6 w-full text-center text-2xs font-display font-black text-primary/30 hover:text-primary transition-colors uppercase tracking-widest-plus font-bold"
         >
           Ritirata Strategica / Concludi
         </button>

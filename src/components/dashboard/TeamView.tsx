@@ -7,7 +7,7 @@ import { CoFounderSearch } from './CoFounderSearch';
 import { UserProfile } from '../../types';
 
 const SkillBadge = ({ skill }: { key?: React.Key; skill: string }) => (
-  <span className="px-3 py-1.5 bg-secondary/10 text-secondary font-display font-black text-[9px] uppercase tracking-wider rounded-xl">
+  <span className="px-3 py-1.5 bg-secondary/10 text-secondary font-display font-black text-2xs uppercase tracking-wider rounded-xl">
     {skill}
   </span>
 );
@@ -27,7 +27,7 @@ const EmptyFounderCard = ({ onSetup }: { key?: React.Key; onSetup: () => void })
         Crea il tuo profilo founder per sbloccare il matchmaking cooperativo.
       </p>
     </div>
-    <span className="text-[9px] font-display font-black text-secondary uppercase tracking-[0.3em] flex items-center gap-1">
+    <span className="text-2xs font-display font-black text-secondary uppercase tracking-ultra flex items-center gap-1">
       Inizia ora <Zap className="w-3 h-3" />
     </span>
   </motion.div>
@@ -52,12 +52,12 @@ const FounderCard = ({ profile, onEdit }: { key?: React.Key; profile: UserProfil
             className="w-18 h-18 rounded-2xl object-cover shadow-md border-2 border-white"
             style={{ width: 72, height: 72 }}
           />
-          <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 bg-gradient-to-br from-secondary to-tertiary rounded-full flex items-center justify-center shadow-md">
+          <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 bg-linear-to-br from-secondary to-tertiary rounded-full flex items-center justify-center shadow-md">
             <CheckCircle2 className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
         <div className="flex-1">
-          <p className="text-[9px] text-secondary font-display font-black uppercase tracking-[0.3em] mb-0.5">Il Tuo Profilo</p>
+          <p className="text-2xs text-secondary font-display font-black uppercase tracking-ultra mb-0.5">Il Tuo Profilo</p>
           <h3 className="font-display font-black text-2xl text-primary tracking-tight leading-none">{profile.name}</h3>
           <p className="text-primary/50 font-display font-bold text-xs uppercase tracking-widest mt-1">{profile.role}</p>
         </div>
@@ -106,14 +106,14 @@ export const TeamView = () => {
 
   return (
     <>
-      <div className="space-y-12 py-4 max-w-5xl mx-auto">
+      <div className="mx-auto max-w-5xl space-y-12 py-4">
         {/* Page Header */}
         <div className="space-y-3 px-1">
-          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.4em]">Capitale Umano</p>
-          <h1 className="text-4xl md:text-5xl font-display font-black text-primary tracking-tight leading-none italic">
+          <p className="font-display text-xs-tight font-black uppercase tracking-mega text-secondary">Capitale Umano</p>
+          <h1 className="font-display text-4xl font-black italic leading-none tracking-tight text-primary md:text-5xl">
             Il Tuo Team Cooperativo
           </h1>
-          <p className="text-primary/50 text-base font-body leading-relaxed max-w-2xl">
+          <p className="max-w-2xl font-body text-base leading-relaxed text-primary/50">
             La forza della visione cooperativa risiede nella mutualità delle competenze. Trova i tuoi co-founder ideali.
           </p>
         </div>
@@ -142,7 +142,7 @@ export const TeamView = () => {
             <div className="w-full border-t border-primary/5" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-surface px-6 py-2 bg-surface-container-low rounded-full text-[9px] font-display font-black uppercase tracking-[0.3em] text-primary/30">
+            <span className="rounded-full bg-surface-container-low px-6 py-2 font-display text-2xs font-black uppercase tracking-ultra text-primary/30">
               Matchmaking Cooperativo
             </span>
           </div>

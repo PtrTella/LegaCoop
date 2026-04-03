@@ -47,11 +47,11 @@ export const ModuleExam = ({
   const currentExam = availableExams[currentIndex];
 
   return (
-    <div className="max-w-3xl mx-auto h-full flex flex-col justify-center">
+    <div className="mx-auto flex h-full max-w-3xl flex-col justify-center">
       <div className="mb-8 text-center">
-        <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.4em] mb-2">Esame Finale</p>
-        <h2 className="text-2xl font-display font-black text-primary italic">Metti alla prova la tua visione</h2>
-        <p className="text-primary/40 font-body text-xs mt-2 uppercase tracking-widest">Sfida {currentIndex + 1} di {availableExams.length}</p>
+        <p className="mb-2 font-display text-xs-tight font-black uppercase tracking-mega text-secondary">Esame Finale</p>
+        <h2 className="font-display text-2xl font-black italic text-primary">Metti alla prova la tua visione</h2>
+        <p className="mt-2 font-body text-3xs font-black uppercase tracking-widest text-primary/40">Sfida {currentIndex + 1} di {availableExams.length}</p>
       </div>
       
       <AnimatePresence mode="wait">
@@ -65,12 +65,12 @@ export const ModuleExam = ({
             <FlashcardDeck cards={currentExam.data} onFinish={handleSuccess} />
           )}
           {currentExam.type === 'madLib' && (
-             <div className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient">
+             <div className="rounded-4xl bg-surface-container-lowest p-6 shadow-ambient">
                <MadLibCard data={currentExam.data} onSuccess={handleSuccess} />
              </div>
           )}
           {currentExam.type === 'multipleChoice' && (
-            <div className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient">
+            <div className="rounded-4xl bg-surface-container-lowest p-6 shadow-ambient">
               <MultipleChoiceCard data={currentExam.data} onSuccess={handleSuccess} />
             </div>
           )}

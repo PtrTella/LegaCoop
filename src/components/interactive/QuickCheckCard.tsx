@@ -29,7 +29,7 @@ export const QuickCheckCard = ({
   };
 
   return (
-    <div className="bg-gradient-to-br from-surface-container-lowest to-surface-container-low border border-secondary/10 rounded-5xl p-10 shadow-ambient space-y-8 relative overflow-hidden mt-8">
+    <div className="bg-linear-to-br from-surface-container-lowest to-surface-container-low border border-secondary/10 rounded-5xl p-10 shadow-ambient space-y-8 relative overflow-hidden mt-8">
       <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 rotate-12">
         <Zap size={140} className="text-secondary" />
       </div>
@@ -48,7 +48,7 @@ export const QuickCheckCard = ({
               <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
                 <Zap className="text-secondary w-6 h-6" />
               </div>
-              <p className="text-[10px] text-secondary font-display font-black uppercase tracking-[0.4em] leading-none">Verifica Intuizione</p>
+              <p className="text-xs-tight text-secondary font-display font-black uppercase tracking-mega leading-none">Verifica Intuizione</p>
             </div>
             
             <h3 className="text-2xl md:text-3xl font-display font-black text-primary leading-tight italic tracking-tight">
@@ -103,7 +103,7 @@ export const QuickCheckCard = ({
             {!feedback.isCorrect && (
               <button 
                 onClick={() => setFeedback(null)} 
-                className="px-8 py-4 bg-primary text-white font-display font-black text-[11px] uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform"
+                className="px-8 py-4 bg-primary text-white font-display font-black text-sm-alt uppercase tracking-widest rounded-2xl hover:scale-105 transition-transform"
               >
                 Riprova l'analisi
               </button>

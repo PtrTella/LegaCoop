@@ -48,7 +48,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
       <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full -mr-24 -mt-24 blur-3xl" />
       
       <div className="text-center space-y-2 relative z-10">
-        <p className="text-secondary font-display font-black text-[9px] uppercase tracking-[0.4em]">Laboratorio di Governance</p>
+        <p className="text-secondary font-display font-black text-2xs uppercase tracking-mega">Laboratorio di Governance</p>
         <h2 className="text-2xl font-display font-black text-primary tracking-tight leading-tight italic">
           La Bilancia <span className="not-italic text-primary/20">del Potere</span></h2>
       </div>
@@ -56,7 +56,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
       <div className="flex-1 flex flex-col items-center justify-center space-y-12 relative z-10">
         {/* Academic Scale (The Bilancia) */}
         <div className="w-full max-w-md space-y-6">
-          <div className="flex justify-between text-[10px] font-display font-black uppercase tracking-[0.2em] text-primary/40">
+          <div className="flex justify-between text-xs-tight font-display font-black uppercase tracking-widest-plus text-primary/40">
             <span className={balance < 50 ? "text-tertiary" : ""}>Capitale</span>
             <span className={balance >= 50 ? "text-secondary" : ""}>Democrazia</span>
           </div>
@@ -68,7 +68,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
              >
                 <div className={`w-2 h-2 rounded-full ${balance < 45 ? "bg-tertiary" : "bg-secondary"}`} />
              </motion.div>
-             <div className="absolute inset-0 bg-gradient-to-r from-tertiary/20 via-primary/10 to-secondary/20" />
+             <div className="absolute inset-0 bg-linear-to-r from-tertiary/20 via-primary/10 to-secondary/20" />
           </div>
           <div className="text-center">
             <motion.div
@@ -121,7 +121,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
               <p className="text-white text-base font-body leading-relaxed max-w-xl mx-auto italic">
                 "{feedback}"
               </p>
-              <div className="flex items-center justify-center gap-2 text-tertiary font-display font-black text-[9px] uppercase tracking-widest">
+              <div className="flex items-center justify-center gap-2 text-tertiary font-display font-black text-2xs uppercase tracking-widest">
                  <div className="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse" />
                  Analisi completata
               </div>

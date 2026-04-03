@@ -19,7 +19,7 @@ export interface CoFounderProfile {
 // --- SKILL BADGE (shared between card & detail) ---
 
 const SkillTag = ({ skill, highlighted = false }: { key?: React.Key; skill: string; highlighted?: boolean }) => (
-  <span className={`px-2.5 py-1 rounded-lg font-display font-black text-[9px] uppercase tracking-wider transition-colors ${
+  <span className={`px-2.5 py-1 rounded-lg font-display font-black text-2xs uppercase tracking-wider transition-colors ${
     highlighted ? 'bg-secondary/15 text-secondary' : 'bg-surface-container-low text-primary/40'
   }`}>
     {skill}
@@ -31,7 +31,7 @@ const SkillTag = ({ skill, highlighted = false }: { key?: React.Key; skill: stri
 const FilterChip = ({ label, active, onClick }: { key?: React.Key; label: string; active: boolean; onClick: () => void }) => (
   <button
     onClick={onClick}
-    className={`px-3 py-1.5 rounded-xl font-display font-black text-[10px] uppercase tracking-wider transition-colors ${
+    className={`px-3 py-1.5 rounded-xl font-display font-black text-xs-tight uppercase tracking-wider transition-colors ${
       active
         ? 'bg-secondary text-white shadow-md shadow-secondary/20'
         : 'bg-surface-container-low text-primary/50 hover:text-primary'
@@ -67,12 +67,12 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
       />
       <div className="flex-1 min-w-0">
         {profile.badge && (
-          <span className="text-[8px] font-display font-black text-secondary uppercase tracking-widest">{profile.badge}</span>
+          <span className="text-3xs font-display font-black text-secondary uppercase tracking-widest">{profile.badge}</span>
         )}
         <h4 className="font-display font-black text-primary text-base tracking-tight leading-tight">{profile.name}</h4>
         <div className="flex items-center gap-1 mt-0.5">
           <MapPin className="w-3 h-3 text-primary/30 shrink-0" />
-          <span className="text-[10px] text-primary/40 font-body truncate">{profile.location}</span>
+          <span className="text-xs-tight text-primary/40 font-body truncate">{profile.location}</span>
         </div>
       </div>
       <ChevronRight className="w-4 h-4 text-primary/20 group-hover:text-secondary group-hover:translate-x-1 transition-all mt-1 shrink-0" />
@@ -83,7 +83,7 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
         <SkillTag key={skill} skill={skill} highlighted={activeSkills.includes(skill)} />
       ))}
       {profile.skills.length > 3 && (
-        <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-primary/30 font-display font-black text-[9px] uppercase tracking-wider">
+        <span className="px-2.5 py-1 rounded-lg bg-surface-container-low text-primary/30 font-display font-black text-2xs uppercase tracking-wider">
           +{profile.skills.length - 3}
         </span>
       )}
@@ -91,7 +91,7 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
 
     <div className="mt-4 pt-3 border-t border-primary/5 flex items-center gap-1.5">
       <Clock className="w-3 h-3 text-primary/20" />
-      <span className="text-[10px] text-primary/30 font-body">{profile.availability}</span>
+      <span className="text-xs-tight text-primary/30 font-body">{profile.availability}</span>
     </div>
   </motion.div>
 );
@@ -104,7 +104,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.2 }}
-    className="fixed inset-0 bg-primary/40 backdrop-blur-[8px] z-[100] flex items-center justify-center p-4"
+    className="fixed inset-0 bg-primary/40 backdrop-blur-md z-[100] flex items-center justify-center p-4"
     onClick={(e) => e.target === e.currentTarget && onClose()}
   >
     <motion.div
@@ -114,7 +114,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
       transition={{ type: 'spring', damping: 28, stiffness: 260 }}
       className="bg-white w-full max-w-lg rounded-5xl shadow-2xl overflow-hidden"
     >
-      <div className="bg-gradient-to-br from-primary to-primary-container p-8 text-white relative overflow-hidden">
+      <div className="bg-linear-to-br from-primary to-primary-container p-8 text-white relative overflow-hidden">
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full" />
         <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full" />
         <button
@@ -131,7 +131,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
           />
           <div>
             {profile.badge && (
-              <span className="text-[9px] font-display font-black uppercase tracking-widest text-tertiary mb-1 block">{profile.badge}</span>
+              <span className="text-2xs font-display font-black uppercase tracking-widest text-tertiary mb-1 block">{profile.badge}</span>
             )}
             <h3 className="font-display font-black text-2xl tracking-tight">{profile.name}</h3>
             <p className="text-white/60 font-display font-bold text-xs uppercase tracking-widest mt-1">{profile.role}</p>
@@ -151,14 +151,14 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
 
       <div className="p-8 space-y-6">
         <div>
-          <p className="text-[9px] text-secondary font-display font-black uppercase tracking-[0.3em] mb-3">Visione Cooperativa</p>
+          <p className="text-2xs text-secondary font-display font-black uppercase tracking-ultra mb-3">Visione Cooperativa</p>
           <p className="text-primary/70 font-body leading-relaxed text-base italic">"{profile.vision}"</p>
         </div>
         <div>
-          <p className="text-[9px] text-secondary font-display font-black uppercase tracking-[0.3em] mb-3">Competenze</p>
+          <p className="text-2xs text-secondary font-display font-black uppercase tracking-ultra mb-3">Competenze</p>
           <div className="flex flex-wrap gap-2">
             {profile.skills.map(skill => (
-              <span key={skill} className="px-3 py-1.5 bg-secondary/10 text-secondary font-display font-black text-[10px] uppercase tracking-wider rounded-xl">
+              <span key={skill} className="px-3 py-1.5 bg-secondary/10 text-secondary font-display font-black text-xs-tight uppercase tracking-wider rounded-xl">
                 {skill}
               </span>
             ))}
@@ -167,7 +167,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-4 bg-gradient-to-br from-secondary to-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-secondary/20 flex items-center justify-center gap-2"
+          className="w-full py-4 bg-linear-to-br from-secondary to-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-secondary/20 flex items-center justify-center gap-2"
         >
           <Zap className="w-4 h-4" />
           Invia richiesta di connessione
@@ -208,29 +208,29 @@ export const CoFounderSearch = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-secondary/10 rounded-2xl flex items-center justify-center">
-            <Users className="w-5 h-5 text-secondary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-secondary/10">
+            <Users className="h-5 w-5 text-secondary" />
           </div>
           <div>
-            <p className="text-[9px] text-secondary font-display font-black uppercase tracking-[0.3em]">Database Cooperativo</p>
-            <h3 className="font-display font-black text-xl text-primary tracking-tight italic">Cerca Co-Founder</h3>
+            <p className="font-display text-2xs font-black uppercase tracking-ultra text-secondary">Database Cooperativo</p>
+            <h3 className="font-display text-xl font-black italic tracking-tight text-primary">Cerca Co-Founder</h3>
           </div>
         </div>
-        <span className="text-[10px] font-display font-black text-primary/30 uppercase tracking-widest">
+        <span className="font-display text-xs-tight font-black uppercase tracking-widest text-primary/30">
           {loading ? '–' : `${filtered.length} profili`}
         </span>
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center py-16 gap-3 text-primary/30">
-          <Loader2 className="w-5 h-5 animate-spin" />
-          <span className="text-xs font-display font-black uppercase tracking-widest">Caricamento profili...</span>
+        <div className="flex items-center justify-center gap-3 py-16 text-primary/30">
+          <Loader2 className="h-5 w-5 animate-spin" />
+          <span className="font-display text-xs font-black uppercase tracking-widest">Caricamento profili...</span>
         </div>
       ) : (
         <>
           {/* Skill Filters */}
           <div>
-            <p className="text-[9px] text-primary/30 font-display font-black uppercase tracking-widest mb-3">Filtra per competenza</p>
+            <p className="mb-3 font-display text-2xs font-black uppercase tracking-widest text-primary/30">Filtra per competenza</p>
             <div className="flex flex-wrap gap-2">
               {allSkills.map(skill => (
                 <FilterChip key={skill} label={skill} active={activeSkills.includes(skill)} onClick={() => toggleSkill(skill)} />
@@ -238,16 +238,16 @@ export const CoFounderSearch = () => {
               {activeSkills.length > 0 && (
                 <button
                   onClick={() => setActiveSkills([])}
-                  className="px-3 py-1.5 rounded-xl font-display font-black text-[10px] uppercase tracking-wider text-tertiary bg-tertiary/10 flex items-center gap-1 transition-colors hover:bg-tertiary/20"
+                  className="flex items-center gap-1 rounded-xl bg-tertiary/10 px-3 py-1.5 font-display text-xs-tight font-black uppercase tracking-wider text-tertiary transition-colors hover:bg-tertiary/20"
                 >
-                  <X className="w-3 h-3" /> Reset
+                  <X className="h-3 w-3" /> Reset
                 </button>
               )}
             </div>
           </div>
 
           {/* Grid — motion.div with layout so the container reshapes smoothly */}
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <motion.div layout className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <AnimatePresence mode="popLayout">
               {filtered.map(profile => (
                 <ProfileCard
@@ -261,9 +261,9 @@ export const CoFounderSearch = () => {
           </motion.div>
 
           {filtered.length === 0 && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-              <p className="text-primary/30 font-display font-black text-lg italic">Nessun profilo con queste competenze.</p>
-              <button onClick={() => setActiveSkills([])} className="mt-3 text-secondary font-display font-black text-xs uppercase tracking-widest underline underline-offset-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-16 text-center">
+              <p className="font-display text-lg font-black italic text-primary/30">Nessun profilo con queste competenze.</p>
+              <button onClick={() => setActiveSkills([])} className="mt-3 font-display text-xs font-black uppercase tracking-widest text-secondary underline underline-offset-4">
                 Rimuovi filtri
               </button>
             </motion.div>

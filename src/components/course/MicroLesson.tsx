@@ -118,7 +118,7 @@ export const MicroLesson = ({
           <div className="w-8 h-8 bg-secondary/10 rounded-xl flex items-center justify-center">
             <Zap className="text-secondary w-4 h-4" />
           </div>
-          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.4em]">
+          <p className="text-secondary font-display font-black text-xs-tight uppercase tracking-mega">
             {phaseTitle}
           </p>
         </div>
