@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowLeft, Flame, Layout, Compass, Shield, Users2, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Module } from '../types';
-import { useAppContext } from '../context/AppContext';
+import { Module } from '../../types';
+import { useAppContext } from '../../context/AppContext';
 
 export const Header = ({ 
   view, 

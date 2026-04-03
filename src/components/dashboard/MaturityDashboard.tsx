@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrendingUp, Zap, Users, Trophy, MapPin, Calendar, ChevronRight, Award, Star, PlayCircle } from 'lucide-react';
 import { motion } from 'motion/react';
-import { useAppContext } from '../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 
 export const MaturityDashboard = ({ 
   onNavigate 

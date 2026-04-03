@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Zap, GripVertical, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MadLib } from '../types';
+import { MadLib } from '../../types';
 
 export const MadLibCard = ({ 
   data, 

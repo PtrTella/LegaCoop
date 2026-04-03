@@ -7,16 +7,16 @@ import React, { useState } from 'react';
 import { Trophy, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AppProvider, useAppContext } from './context/AppContext';
-import { MicroLesson } from './components/MicroLesson';
-import { ModuleExam } from './components/ModuleExam';
-import { GovernanceSimulator } from './components/GovernanceSimulator';
-import { MaturityDashboard } from './components/MaturityDashboard';
-import { TeamView } from './components/TeamView';
-import { ModuleMap } from './components/ModuleMap';
-import { Header } from './components/Header';
-import { AITutor } from './components/AITutor';
-import { SimulationHub } from './components/SimulationHub';
-import { PitchBattle } from './components/PitchBattle';
+import { MicroLesson } from './components/course/MicroLesson';
+import { ModuleExam } from './components/course/ModuleExam';
+import { GovernanceSimulator } from './components/simulators/GovernanceSimulator';
+import { MaturityDashboard } from './components/dashboard/MaturityDashboard';
+import { TeamView } from './components/dashboard/TeamView';
+import { ModuleMap } from './components/course/ModuleMap';
+import { Header } from './components/layout/Header';
+import { AITutor } from './components/simulators/AITutor';
+import { SimulationHub } from './components/simulators/SimulationHub';
+import { PitchBattle } from './components/simulators/PitchBattle';
 
 // --- Main App Content ---
 
@@ -151,22 +151,6 @@ const AppContent = () => {
         </div>
         <AITutor />
       </main>
-
-      {/* CSS for 3D Flip */}
-      <style>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, Send, X, Bot, User, Loader2 } from 'lucide-react';
-import { askTutor } from '../services/ai';
+import { askTutor } from '../../services/ai';
 
 export const AITutor = () => {
   const [isOpen, setIsOpen] = useState(false);

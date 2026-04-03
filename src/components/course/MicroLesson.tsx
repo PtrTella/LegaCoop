@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, ChevronRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Lesson, ContentChunk } from '../types';
-import { PopTooltip } from './PopTooltip';
-import { QuickCheckCard } from './QuickCheckCard';
-import { MultipleChoiceCard } from './MultipleChoiceCard';
-import { MadLibCard } from './MadLibCard';
+import { Lesson, ContentChunk } from '../../types';
+import { PopTooltip } from '../ui/PopTooltip';
+import { Button } from '../ui/Button';
+import { QuickCheckCard } from '../interactive/QuickCheckCard';
+import { MultipleChoiceCard } from '../interactive/MultipleChoiceCard';
+import { MadLibCard } from '../interactive/MadLibCard';
 
 export const MicroLesson = ({ 
   lesson, 
@@ -26,14 +27,21 @@ export const MicroLesson = ({
     setSolvedChunks([]);
   }, [lesson.id]);
 
-  // Smart scroll: center the new content to avoid overlapping with fixed bottom button
+  // Smooth scroll al nuovo elemento con margine 
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentElement = chunkRefs.current[visibleStepLimit];
       if (currentElement) {
-        currentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const offset = 120; // Spazio dal top dello schermo
+        const elementPosition = currentElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
-    }, 150); // slight delay to allow rendering
+    }, 150); 
     return () => clearTimeout(timer);
   }, [visibleStepLimit, solvedChunks]);
 
@@ -75,12 +83,9 @@ export const MicroLesson = ({
 
   const currentChunk = lesson.contentChunks[visibleStepLimit];
   const isChunkInteractive = currentChunk?.type === 'interactive';
-  const isChunkSolved = solvedChunks.includes(visibleStepLimit);
   
-  // The persistent button only appears if:
-  // 1. We are not on an interactive block OR the block is solved
-  // AND we are not yet done with the section
-  const showNextButton = !isChunkInteractive || isChunkSolved;
+  // Il pulsante in basso è visibile unicamente se NON stiamo affrontando un blocco interattivo
+  const showNextButton = !isChunkInteractive;
 
   return (
     <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-12 pb-48 pt-12 px-6">
@@ -154,34 +159,30 @@ export const MicroLesson = ({
       <div className="fixed bottom-12 left-0 right-0 flex justify-center pointer-events-none z-50 px-6">
         <AnimatePresence>
           {showNextButton && (
-            <motion.button 
+            <motion.div 
               key="next-btn"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleNextStep}
-              className="pointer-events-auto px-10 py-5 bg-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-[24px] shadow-2xl shadow-primary/40 flex items-center gap-4 transition-all hover:bg-secondary"
+              className="pointer-events-auto"
             >
-              <div className="flex items-center gap-3">
+              <Button 
+                onClick={handleNextStep}
+                variant="primary"
+                size="lg"
+                className="group"
+              >
                 <span>
                   {visibleStepLimit === lesson.contentChunks.length - 1 
                     ? "Concludi Percorso" 
-                    : "Continua Lettura"} 
+                    : "Continua"} 
                 </span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </motion.button>
+              </Button>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
-
-      <style>{`
-        .shadow-ambient {
-          box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1), 0 0 1px 0 rgba(0,0,0,0.05);
-        }
-      `}</style>
     </div>
   );
 };

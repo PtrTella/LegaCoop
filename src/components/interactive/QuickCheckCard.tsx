@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Zap, Check, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { QuickCheck } from '../types';
+import { QuickCheck } from '../../types';
 
 export const QuickCheckCard = ({ 
   data, 

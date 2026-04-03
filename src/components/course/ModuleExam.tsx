@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Gamification } from '../types';
+import { Gamification } from '../../types';
 import { FlashcardDeck } from './FlashcardDeck';
-import { MadLibCard } from './MadLibCard';
-import { MultipleChoiceCard } from './MultipleChoiceCard';
+import { MadLibCard } from '../interactive/MadLibCard';
+import { MultipleChoiceCard } from '../interactive/MultipleChoiceCard';
 import { Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 

@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ShieldAlert, Send, Briefcase, User, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { runPitchBattle } from '../services/ai';
+import { runPitchBattle } from '../../services/ai';
+import { renderFormattedMarkdown } from '../../utils/textUtils';
 
 export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
   const [messages, setMessages] = useState<any[]>([
@@ -17,14 +18,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
     }
   }, [messages, isLoading]);
 
-  const renderFormattedText = (text: string) => {
-    return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="font-extrabold text-primary bg-tertiary/10 px-1 rounded-md">{part.slice(2, -2)}</strong>;
-      }
-      return part;
-    });
-  };
+  // renderFormattedText is now handled by textUtils
 
   const handleSend = async (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -95,7 +89,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
                       ? 'bg-surface-container-lowest text-primary rounded-tl-none font-medium' 
                       : 'bg-gradient-to-br from-secondary to-primary-container text-white rounded-tr-none'
                     }`}>
-                    {renderFormattedText(msg.parts[0].text)}
+                    {renderFormattedMarkdown(msg.parts[0].text)}
                   </div>
                 </div>
               </motion.div>

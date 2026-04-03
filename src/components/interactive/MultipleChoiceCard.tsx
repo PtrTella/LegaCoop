@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MultipleChoice } from '../types';
+import { MultipleChoice } from '../../types';
 
 export const MultipleChoiceCard = ({ 
   data, 
