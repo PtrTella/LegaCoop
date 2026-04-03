@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ShieldAlert, Send, Briefcase, User, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { runPitchBattle } from '../../services/ai';
-import { renderFormattedMarkdown } from '../../utils/textUtils';
+import { renderTextWithKeywords } from '../../utils/textUtils';
 
 export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
   const [messages, setMessages] = useState<any[]>([
@@ -89,7 +89,7 @@ export const PitchBattle = ({ onComplete }: { onComplete: () => void }) => {
                       ? 'bg-surface-container-lowest text-primary rounded-tl-none font-medium' 
                       : 'bg-gradient-to-br from-secondary to-primary-container text-white rounded-tr-none'
                     }`}>
-                    {renderFormattedMarkdown(msg.parts[0].text)}
+                    {renderTextWithKeywords(msg.parts[0].text)}
                   </div>
                 </div>
               </motion.div>

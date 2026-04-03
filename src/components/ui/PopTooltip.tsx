@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Info } from 'lucide-react';
 
-export const PopTooltip = ({ word, definition }: { word: string; definition: string }) => {
+interface PopTooltipProps {
+  word: string;
+  definition: string;
+}
+
+export const PopTooltip = ({ word, definition }: PopTooltipProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
