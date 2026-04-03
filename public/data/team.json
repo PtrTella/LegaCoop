@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1, "name": "Sara Ferretti", "location": "Bologna", "role": "Ingegneria Software",
+    "skills": ["Ingegneria Software", "Data & AI", "Blockchain", "Product Management"],
+    "vision": "Creare piattaforme digitali per la gestione trasparente della governance cooperativa.",
+    "availability": "Part-time", "avatarSeed": "sara", "badge": "🔥 Match Elevato"
+  },
+  {
+    "id": 2, "name": "Luca De Santis", "location": "Milano", "role": "Finance & Controllo",
+    "skills": ["Finanza Cooperativa", "Fundraising", "ESG", "Governance Cooperativa"],
+    "vision": "Sviluppare modelli di finanziamento mutualistico per le cooperative emergenti.",
+    "availability": "Advisor", "avatarSeed": "luca", "badge": "✦ Esperto"
+  },
+  {
+    "id": 3, "name": "Giulia Romano", "location": "Napoli", "role": "Sostenibilità & Impatto",
+    "skills": ["Sostenibilità & ESG", "Community Building", "Comunicazione", "Fundraising"],
+    "vision": "Costruire reti di imprese sociali nel Mezzogiorno attraverso la cooperazione.",
+    "availability": "Full-time", "avatarSeed": "giulia"
+  },
+  {
+    "id": 4, "name": "Marco Trevisan", "location": "Venezia", "role": "CTO / Tecnico",
+    "skills": ["Ingegneria Software", "Energie Rinnovabili", "Supply Chain", "Data & AI"],
+    "vision": "Sviluppare infrastrutture digitali per comunità energetiche rurali.",
+    "availability": "Full-time", "avatarSeed": "marco", "badge": "🔥 Match Elevato"
+  },
+  {
+    "id": 5, "name": "Chiara Bellini", "location": "Firenze", "role": "Designer & UX",
+    "skills": ["UX Design", "Comunicazione", "Marketing Digitale", "Community Building"],
+    "vision": "Rendere il mondo cooperativo accessibile e desiderabile per i giovani professionisti.",
+    "availability": "Weekend Warrior", "avatarSeed": "chiara"
+  },
+  {
+    "id": 6, "name": "Francesco Amato", "location": "Palermo", "role": "Legale & Compliance",
+    "skills": ["Diritto del Lavoro", "Governance Cooperativa", "Finanza Cooperativa"],
+    "vision": "Semplificare il percorso normativo per la nascita di nuove cooperative nel Sud Italia.",
+    "availability": "Part-time", "avatarSeed": "fran", "badge": "✦ Esperto"
+  },
+  {
+    "id": 7, "name": "Elena Moretti", "location": "Torino", "role": "Agronomia & Territorio",
+    "skills": ["Agronomia", "Sostenibilità & ESG", "Supply Chain", "Community Building"],
+    "vision": "Creare cooperative agricole che preservino le tradizioni locali e adottino pratiche biodinamiche.",
+    "availability": "Full-time", "avatarSeed": "elena"
+  },
+  {
+    "id": 8, "name": "Andrea Conti", "location": "Roma", "role": "Business Development",
+    "skills": ["Business Development", "Marketing Digitale", "Comunicazione", "Fundraising"],
+    "vision": "Connettere il movimento cooperativo con i mercati internazionali e le istituzioni europee.",
+    "availability": "Part-time", "avatarSeed": "andrea"
+  }
+]

@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Module } from '../types';
+import { Module, UserProfile } from '../types';
+
+const STORAGE_KEY = 'legacoop_user_profile';
 
 interface AppState {
   completedPhases: number[];
@@ -7,6 +9,7 @@ interface AppState {
   unlockedPhases: number[];
   userRole: string | null;
   modules: Module[] | null;
+  userProfile: UserProfile | null;
 }
 
 interface AppContextType {
@@ -14,6 +17,7 @@ interface AppContextType {
   completePhase: (phaseId: number) => void;
   updateMaturityScore: (points: number) => void;
   unlockPhase: (phaseId: number) => void;
+  updateUserProfile: (profile: UserProfile) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,33 +26,33 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<AppState>({
     completedPhases: [],
     maturityScore: 0,
-    unlockedPhases: [0], // Phase 0 is unlocked by default
+    unlockedPhases: [0],
     userRole: null,
     modules: null,
+    userProfile: (() => {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : null;
+      } catch { return null; }
+    })(),
   });
 
   useEffect(() => {
     fetch('/data/modules.json')
       .then(res => res.json())
-      .then(data => {
-        setState(prev => ({ ...prev, modules: data }));
-      })
+      .then(data => setState(prev => ({ ...prev, modules: data })))
       .catch(err => console.error("Failed to load modules:", err));
   }, []);
 
-
   const completePhase = (phaseId: number) => {
     setState((prev) => {
-      const newCompleted = prev.completedPhases.includes(phaseId) 
-        ? prev.completedPhases 
+      const newCompleted = prev.completedPhases.includes(phaseId)
+        ? prev.completedPhases
         : [...prev.completedPhases, phaseId];
-      
-      // Auto-unlock next phase if applicable
       const nextPhase = phaseId + 1;
       const newUnlocked = prev.unlockedPhases.includes(nextPhase)
         ? prev.unlockedPhases
         : [...prev.unlockedPhases, nextPhase];
-
       return {
         ...prev,
         completedPhases: newCompleted,
@@ -68,14 +72,21 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const unlockPhase = (phaseId: number) => {
     setState((prev) => ({
       ...prev,
-      unlockedPhases: prev.unlockedPhases.includes(phaseId) 
-        ? prev.unlockedPhases 
+      unlockedPhases: prev.unlockedPhases.includes(phaseId)
+        ? prev.unlockedPhases
         : [...prev.unlockedPhases, phaseId],
     }));
   };
 
+  const updateUserProfile = (profile: UserProfile) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+    } catch { /* ignore storage errors */ }
+    setState((prev) => ({ ...prev, userProfile: profile }));
+  };
+
   return (
-    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase }}>
+    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile }}>
       {children}
     </AppContext.Provider>
   );

@@ -1,3 +1,15 @@
+// --- USER PROFILE ---
+
+export interface UserProfile {
+  name: string;
+  location: string;
+  role: string;
+  skills: string[];
+  vision: string;
+  availability: string;
+  avatarSeed: string;
+}
+
 // --- DYNAMIC LESSON TYPES ---
 
 export type ContentChunk = 
