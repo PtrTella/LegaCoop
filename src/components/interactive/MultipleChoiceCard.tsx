@@ -25,8 +25,8 @@ export const MultipleChoiceCard = ({
   };
 
   return (
-    <div className="bg-surface-container-lowest border border-primary/10 rounded-5xl p-10 shadow-ambient space-y-8 mt-8 relative overflow-hidden">
-      <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12 rotate-[25deg]">
+    <div className="bg-surface-container-lowest border border-border-muted rounded-5xl p-10 shadow-ambient space-y-8 mt-8 relative overflow-hidden">
+      <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12 rotate-accent">
         <Zap size={180} className="text-primary" />
       </div>
 
@@ -55,7 +55,7 @@ export const MultipleChoiceCard = ({
                   whileHover={{ scale: 1.01, x: 8 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleOption(i)}
-                  className="w-full p-6 text-left rounded-3xl bg-surface-container-low hover:bg-white border border-transparent hover:border-primary/10 transition-all text-primary font-body text-base font-medium flex items-center justify-between group shadow-sm hover:shadow-xl"
+                  className="w-full p-6 text-left rounded-3xl bg-surface-container-low hover:bg-white border border-transparent hover:border-border-muted transition-all text-primary font-body text-base font-medium flex items-center justify-between group shadow-sm hover:shadow-xl"
                 >
                   <span className="max-w-[85%] leading-relaxed">{opt}</span>
                   <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">

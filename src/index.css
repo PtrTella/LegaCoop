@@ -2,42 +2,64 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Palette: The Academic Edge */
-  --color-primary: #311b50;
+  /* ─── Brand Colors ─────────────────────────────── */
+  --color-primary:           #311b50;
   --color-primary-container: #483267;
-  --color-secondary: #6849ba;
-  --color-tertiary: #dfbbe4;
-  
-  /* Surfaces Hierarchy */
-  --color-surface: #f9f9fe;
-  --color-surface-container-low: #f3f3f8;
-  --color-surface-container-lowest: #ffffff;
-  
-  /* Typography Tokens */
+  --color-secondary:         #6849ba;
+  --color-tertiary:          #dfbbe4;
+
+  /* ─── Surfaces ─────────────────────────────────── */
+  --color-surface:                   #f9f9fe;
+  --color-surface-container-low:     #f3f3f8;
+  --color-surface-container-lowest:  #ffffff;
+  --color-surface-container-highest: #e8e8ee;
+
+  /* ─── Semantic borders (opaque hex equivalents) ── */
+  /* primary at 5% alpha on white  →  #ece8f3  */
+  --color-border-subtle: #ece8f3;
+  /* primary at 10% alpha on white → #ddd8ea  */
+  --color-border-muted:  #ddd8ea;
+
+  /* ─── Text ──────────────────────────────────────── */
+  --color-text-muted: #7a6b8a;
+
+  /* ─── Typography ────────────────────────────────── */
   --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-body:    "Inter", sans-serif;
 
-  /* Shadows & Ambient */
-  --shadow-ambient: 0 0 48px 0 rgba(26, 28, 31, 0.1);
-
-  /* Border Radius Tokens */
-  --radius-4xl: 2rem;   /* 32px */
-  --radius-5xl: 2.5rem; /* 40px */
-
-  /* Typography Tokens */
-  --font-size-3xs: 8px;
-  --font-size-2xs: 9px;
-  --font-size-xs-tight: 10px;
-  --font-size-sm-alt: 11px;
+  --font-size-3xs:    0.5rem;   /* 8px  */
+  --font-size-2xs:    0.5625rem; /* 9px */
+  --font-size-xs-tight: 0.625rem; /* 10px */
+  --font-size-sm-alt: 0.6875rem; /* 11px */
 
   --tracking-widest-plus: 0.2em;
-  --tracking-ultra: 0.3em;
-  --tracking-mega: 0.4em;
+  --tracking-ultra:       0.3em;
+  --tracking-mega:        0.4em;
 
-  /* Blur Tokens */
-  --blur-2xl: 32px;
+  /* ─── Geometry ───────────────────────────────────── */
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  --shadow-ambient: 0 0 48px 0 rgba(26, 28, 31, 0.1);
+
+  --blur-tutor: 24px;
+  --blur-md:    12px;
+
+  /* ─── Spacing tokens ─────────────────────────────── */
+  --spacing-tutor-h:       37.5rem;   /* 600px  */
+  --spacing-tutor-h-sm:    40.625rem; /* 650px  */
+  --spacing-empty-card-min-h: 12.5rem; /* 200px */
+  --spacing-card-min-h:    15rem;     /* 240px  */
+
+  /* ─── Z-index ────────────────────────────────────── */
+  --z-fab:   50;
+  --z-modal: 100;
+
+  /* ─── Misc ───────────────────────────────────────── */
+  --rotate-accent: 25deg;
 }
 
+/* ─── Base ──────────────────────────────────────────── */
 @layer base {
   body {
     @apply bg-surface font-body text-primary;
@@ -45,17 +67,44 @@
   }
 }
 
+/* ─── Gradient utilities ────────────────────────────── */
+.bg-gradient-brand {
+  @apply bg-linear-to-br from-primary to-primary-container;
+}
+.bg-gradient-primary-deep {
+  @apply bg-linear-to-br from-primary via-primary-container to-secondary;
+}
+.bg-gradient-accent {
+  @apply bg-linear-to-br from-secondary to-tertiary;
+}
+.bg-gradient-accent-reverse {
+  @apply bg-linear-to-br from-secondary to-primary;
+}
+.bg-gradient-glow {
+  @apply bg-linear-to-tr from-tertiary/20 to-transparent;
+}
+
+/* ─── Component classes ─────────────────────────────── */
+.modal-overlay {
+  @apply fixed inset-0 flex items-center justify-center p-4;
+  @apply bg-primary/40 backdrop-blur-md;
+  z-index: var(--z-modal);
+}
+
+.glass-card {
+  @apply bg-white/95 border border-border-subtle shadow-ambient;
+  backdrop-filter: blur(var(--blur-md));
+}
+
+.btn-icon {
+  @apply p-2 hover:bg-surface-container-low rounded-xl transition-all;
+  @apply text-primary/40 hover:text-primary;
+}
+
+/* ─── 3D card utilities ─────────────────────────────── */
 @layer utilities {
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-  .rotate-y-180 {
-    transform: rotateY(180deg);
-  }
+  .perspective-1000 { perspective: 1000px; }
+  .preserve-3d      { transform-style: preserve-3d; }
+  .backface-hidden  { backface-visibility: hidden; }
+  .rotate-y-180     { transform: rotateY(180deg); }
 }

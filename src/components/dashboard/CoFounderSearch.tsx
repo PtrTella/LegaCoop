@@ -57,7 +57,7 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
     transition={{ duration: 0.18 }}
     whileHover={{ y: -3 }}
     onClick={onClick}
-    className="bg-surface-container-lowest p-5 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/10 transition-[border-color,box-shadow] flex flex-col"
+    className="bg-surface-container-lowest p-5 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/20 transition-[border-color,box-shadow] flex flex-col"
   >
     <div className="flex items-start gap-4">
       <img
@@ -89,7 +89,7 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
       )}
     </div>
 
-    <div className="mt-4 pt-3 border-t border-primary/5 flex items-center gap-1.5">
+    <div className="mt-4 pt-3 border-t border-border-subtle flex items-center gap-1.5">
       <Clock className="w-3 h-3 text-primary/20" />
       <span className="text-xs-tight text-primary/30 font-body">{profile.availability}</span>
     </div>
@@ -104,7 +104,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.2 }}
-    className="fixed inset-0 bg-primary/40 backdrop-blur-md z-[100] flex items-center justify-center p-4"
+    className="modal-overlay"
     onClick={(e) => e.target === e.currentTarget && onClose()}
   >
     <motion.div
@@ -114,7 +114,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
       transition={{ type: 'spring', damping: 28, stiffness: 260 }}
       className="bg-white w-full max-w-lg rounded-5xl shadow-2xl overflow-hidden"
     >
-      <div className="bg-linear-to-br from-primary to-primary-container p-8 text-white relative overflow-hidden">
+      <div className="bg-gradient-brand p-8 text-white relative overflow-hidden">
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full" />
         <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full" />
         <button
@@ -167,7 +167,7 @@ const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClos
         <motion.button
           whileHover={{ scale: 1.02, y: -2 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full py-4 bg-linear-to-br from-secondary to-primary text-white font-display font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-secondary/20 flex items-center justify-center gap-2"
+          className="w-full py-4 bg-gradient-accent-reverse text-white font-display font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-secondary/20 flex items-center justify-center gap-2"
         >
           <Zap className="w-4 h-4" />
           Invia richiesta di connessione
@@ -188,8 +188,14 @@ export const CoFounderSearch = () => {
   useEffect(() => {
     fetch('/data/team.json')
       .then(res => res.json())
-      .then((data: CoFounderProfile[]) => { setProfiles(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then((data: { members: CoFounderProfile[] }) => {
+        setProfiles(data.members || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('[CoFounderSearch] Failed to load team.json:', err);
+        setLoading(false);
+      });
   }, []);
 
   // Memoized: only recompute when profiles/activeSkills change

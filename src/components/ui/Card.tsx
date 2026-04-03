@@ -17,7 +17,9 @@ export const Card = ({
   ...props 
 }: CardProps) => {
   const baseClasses = `bg-surface-container-lowest ${padding} ${rounded} shadow-ambient transition-all`;
-  const hoverClasses = hoverable ? 'group cursor-pointer border border-transparent hover:border-primary/10' : 'border border-primary/5';
+  const hoverClasses = hoverable 
+    ? 'group cursor-pointer border border-transparent hover:border-border-muted' 
+    : 'border border-border-subtle';
   
   return (
     <motion.div className={`${baseClasses} ${hoverClasses} ${className}`} {...props}>

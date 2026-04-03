@@ -18,7 +18,7 @@ export const Header = ({
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Layout },
     { id: 'map', label: 'Accademia', icon: Compass },
-    { id: 'simulation', label: 'Simulazioni', icon: Shield },
+    { id: 'simulation', label: 'Laboratorio', icon: Shield },
     { id: 'team', label: 'Team', icon: Users2 },
   ];
 
@@ -32,7 +32,7 @@ export const Header = ({
       <div className="flex items-center gap-8">
         {/* Branding (Moved from Sidebar) */}
         <div className="flex cursor-pointer items-center gap-3" onClick={() => setView('dashboard')}>
-          <div className="group relative flex h-8 w-8 -rotate-3 transform items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary-container shadow-ambient shadow-primary/10">
+          <div className="group relative flex h-8 w-8 -rotate-3 transform items-center justify-center rounded-xl bg-gradient-brand shadow-ambient shadow-primary/10">
              <div className="absolute inset-0 animate-pulse rounded-xl bg-white/20" />
              <span className="z-10 font-display text-base font-black text-white">L</span>
           </div>
@@ -54,7 +54,7 @@ export const Header = ({
                 onClick={() => setView(item.id)}
                 className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-500 ${
                   isActive 
-                    ? 'bg-linear-to-r from-primary to-primary-container text-white shadow-md shadow-primary/20' 
+                    ? 'bg-gradient-brand text-white shadow-md shadow-primary/20' 
                     : 'text-primary/40 hover:text-primary'
                 }`}
               >
@@ -78,7 +78,7 @@ export const Header = ({
                  <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${progressToNextLevel}%` }}
-                    className="h-full bg-linear-to-r from-secondary to-tertiary"
+                    className="h-full bg-gradient-accent"
                  />
               </div>
            </div>
@@ -95,7 +95,7 @@ export const Header = ({
             <p className="mb-0.5 font-display text-xs font-black leading-none text-primary">Pietro Tellarini</p>
             <p className="font-bold uppercase tracking-widest-plus text-primary/30 text-3xs">Founder</p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center border-2 border-surface rounded-xl bg-linear-to-br from-primary to-primary-container font-display text-xs font-black text-white shadow-ambient shadow-primary/20">
+          <div className="flex h-10 w-10 items-center justify-center border-2 border-surface rounded-xl bg-gradient-brand font-display text-xs font-black text-white shadow-ambient shadow-primary/20">
             PT
           </div>
         </div>

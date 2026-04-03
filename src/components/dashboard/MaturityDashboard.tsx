@@ -21,7 +21,7 @@ export const MaturityDashboard = ({
   return (
     <div className="space-y-8 pb-8">
       {/* Hero Section: The Academic Authority */}
-      <div className="bg-linear-to-br from-primary to-primary-container rounded-4xl p-8 text-white relative overflow-hidden shadow-ambient">
+      <div className="bg-gradient-brand rounded-4xl p-8 text-white relative overflow-hidden shadow-ambient">
         <div className="absolute top-0 right-0 p-8 opacity-5 scale-125 rotate-12">
           <Trophy size={160} />
         </div>
@@ -48,7 +48,7 @@ export const MaturityDashboard = ({
         <motion.div 
           whileHover={{ scale: 1.01 }}
           onClick={() => onNavigate('map')}
-          className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient group cursor-pointer border border-transparent hover:border-primary/10 transition-all overflow-hidden relative"
+          className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient group cursor-pointer border border-transparent hover:border-border-muted transition-all overflow-hidden relative"
         >
           <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 transform group-hover:scale-110 transition-transform">
              <Zap size={140} className="text-primary" />
@@ -73,7 +73,7 @@ export const MaturityDashboard = ({
         <motion.div 
           whileHover={{ scale: 1.01 }}
           onClick={() => onNavigate('simulation')}
-          className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient group cursor-pointer border border-transparent hover:border-secondary/10 transition-all overflow-hidden relative"
+          className="bg-surface-container-lowest p-8 rounded-4xl shadow-ambient group cursor-pointer border border-transparent hover:border-secondary/20 transition-all overflow-hidden relative"
         >
           <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 transform group-hover:scale-110 transition-transform">
              <PlayCircle size={140} className="text-secondary" />

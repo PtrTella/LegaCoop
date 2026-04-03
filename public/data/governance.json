@@ -1,0 +1,177 @@
+[
+    {
+        "id_caso": "sim_001_kwali_chicken",
+        "titolo": "La Sfida dello Sheraton Hotel",
+        "descrizione": "Lo Sheraton Hotel richiede 12.000 petti di pollo freschi, biologici e senza antibiotici. La cooperativa deve decidere se accettare questa commessa che raddoppierebbe il fatturato ma richiede standard qualitativi mai raggiunti prima.",
+        "opzioni": [
+            {
+                "testo": "Accetta la commessa e investi immediatamente in infrastrutture per il biologico.",
+                "impatto": {
+                    "finanze": 20,
+                    "soddisfazione_soci": -5,
+                    "principi_coop": 10
+                },
+                "feedback": "Il fatturato vola, ma i soci sono stressati dai nuovi rigidi protocolli sanitari."
+            },
+            {
+                "testo": "Rifiuta la commessa per concentrarti sul mercato locale tradizionale, meno esigente.",
+                "impatto": {
+                    "finanze": -10,
+                    "soddisfazione_soci": 5,
+                    "principi_coop": 5
+                },
+                "feedback": "Hai evitato il rischio di fallimento qualitativo, ma hai perso un'occasione di crescita unica."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_002_gender_leadership",
+        "titolo": "Equilibrio di Genere nel CdA",
+        "descrizione": "Nonostante l'ampia base sociale femminile, la leadership della cooperativa è interamente maschile. Questa mancanza di diversità sta creando tensioni e riducendo l'innovazione nelle proposte.",
+        "opzioni": [
+            {
+                "testo": "Istituisci percorsi di formazione e mentorship specifici per le potenziali leader donne.",
+                "impatto": {
+                    "finanze": -5,
+                    "soddisfazione_soci": 15,
+                    "principi_coop": 20
+                },
+                "feedback": "Il clima sociale migliora e la cooperativa diventa un esempio di inclusione internazionale."
+            },
+            {
+                "testo": "Mantieni lo status quo per evitare conflitti con i soci storici più conservatori.",
+                "impatto": {
+                    "finanze": 0,
+                    "soddisfazione_soci": -15,
+                    "principi_coop": -20
+                },
+                "feedback": "La partecipazione delle socie cala drasticamente, portando a una perdita di talenti gestionali."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_003_pricing_policy",
+        "titolo": "Politica dei Prezzi di Vendita",
+        "descrizione": "La cooperativa deve stabilire la strategia di prezzo per i prodotti dei soci. Un prezzo troppo alto potrebbe allontanare i clienti, uno troppo basso non coprirebbe i costi operativi.",
+        "opzioni": [
+            {
+                "testo": "Imposta un prezzo basato esclusivamente sui costi medi di produzione più un margine fisso.",
+                "impatto": {
+                    "finanze": 10,
+                    "soddisfazione_soci": 5,
+                    "principi_coop": 0
+                },
+                "feedback": "Garantisci la stabilità finanziaria, ma potresti non essere competitivo durante i picchi di mercato."
+            },
+            {
+                "testo": "Adotta un prezzo dinamico basato sulla concorrenza per attirare nuovi clienti.",
+                "impatto": {
+                    "finanze": 5,
+                    "soddisfazione_soci": -10,
+                    "principi_coop": -5
+                },
+                "feedback": "Aumenti il volume di vendita, ma i soci lamentano l'instabilità dei loro guadagni."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_004_bulk_purchase_risk",
+        "titolo": "Finanziamento Acquisti Collettivi",
+        "descrizione": "C'è l'opportunità di fare un acquisto collettivo (bulk purchase) di sementi per ottenere sconti enormi. Tuttavia, la cooperativa non ha capitale liquido sufficiente al momento.",
+        "opzioni": [
+            {
+                "testo": "Chiedi ai soci di anticipare il pagamento per finanziare l'acquisto collettivo.",
+                "impatto": {
+                    "finanze": 10,
+                    "soddisfazione_soci": -15,
+                    "principi_coop": 5
+                },
+                "feedback": "Ottieni lo sconto, ma molti soci piccoli si sentono esclusi perché non hanno liquidità immediata."
+            },
+            {
+                "testo": "Rinuncia allo sconto e acquista solo le quantità minime necessarie.",
+                "impatto": {
+                    "finanze": -15,
+                    "soddisfazione_soci": 5,
+                    "principi_coop": 0
+                },
+                "feedback": "Hai protetto la cassa dei soci, ma l'impresa è meno competitiva rispetto ai grandi player."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_005_stock_management",
+        "titolo": "Stoccaggio: Centrale o Diffuso?",
+        "descrizione": "Bisogna decidere se gestire un unico magazzino centrale o lasciare la gestione delle scorte in modo decentralizzato tra i vari gruppi di soci.",
+        "opzioni": [
+            {
+                "testo": "Centralizza tutto lo stoccaggio per migliorare il controllo qualità e ridurre gli sprechi.",
+                "impatto": {
+                    "finanze": 15,
+                    "soddisfazione_soci": -5,
+                    "principi_coop": 5
+                },
+                "feedback": "La logistica è più efficiente, ma i soci distanti lamentano i tempi di trasporto."
+            },
+            {
+                "testo": "Mantieni lo stoccaggio decentralizzato per restare vicini alle fattorie dei soci.",
+                "impatto": {
+                    "finanze": -10,
+                    "soddisfazione_soci": 15,
+                    "principi_coop": 10
+                },
+                "feedback": "I soci sono felici della comodità, ma i costi di gestione per la cooperativa aumentano."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_006_new_service_risk",
+        "titolo": "Investimento in Nuovi Servizi",
+        "descrizione": "I soci chiedono che la cooperativa offra anche servizi di trasporto propri per i prodotti. L'investimento iniziale per i camion è però molto oneroso.",
+        "opzioni": [
+            {
+                "testo": "Acquista i camion per rendere la cooperativa totalmente autonoma.",
+                "impatto": {
+                    "finanze": -20,
+                    "soddisfazione_soci": 20,
+                    "principi_coop": 15
+                },
+                "feedback": "Autonomia totale raggiunta! Ma i debiti bancari peseranno sui bilanci per i prossimi 5 anni."
+            },
+            {
+                "testo": "Esternalizza (outsourcing) il trasporto a una ditta privata per ridurre i rischi iniziali.",
+                "impatto": {
+                    "finanze": 5,
+                    "soddisfazione_soci": -5,
+                    "principi_coop": -5
+                },
+                "feedback": "Hai protetto le finanze, ma ora dipendi dai prezzi e dalla puntualità di un fornitore terzo."
+            }
+        ]
+    },
+    {
+        "id_caso": "sim_007_member_commitment",
+        "titolo": "Il Socio 'Infedele'",
+        "descrizione": "Alcuni soci vendono i loro prodotti migliori a commercianti privati esterni perché pagano in contanti subito, invece di conferirli alla cooperativa.",
+        "opzioni": [
+            {
+                "testo": "Introduci sanzioni severe o l'espulsione per chi non rispetta l'obbligo di conferimento.",
+                "impatto": {
+                    "finanze": 10,
+                    "soddisfazione_soci": -20,
+                    "principi_coop": -5
+                },
+                "feedback": "Ripristini l'ordine formale, ma crei un clima di paura e sfiducia tra la base sociale."
+            },
+            {
+                "testo": "Offri un servizio di pagamento immediato (cash-on-delivery) pareggiando l'offerta dei privati.",
+                "impatto": {
+                    "finanze": -15,
+                    "soddisfazione_soci": 15,
+                    "principi_coop": 10
+                },
+                "feedback": "La lealtà dei soci è salva, ma la cooperativa deve affrontare una crisi di liquidità imprevista."
+            }
+        ]
+    }
+]

@@ -49,8 +49,7 @@ export const ModuleExam = ({
   return (
     <div className="mx-auto flex h-full max-w-3xl flex-col justify-center">
       <div className="mb-8 text-center">
-        <p className="mb-2 font-display text-xs-tight font-black uppercase tracking-mega text-secondary">Esame Finale</p>
-        <h2 className="font-display text-2xl font-black italic text-primary">Metti alla prova la tua visione</h2>
+        <h2 className="font-display text-2xl font-black italic text-primary">Esame Finale</h2>
         <p className="mt-2 font-body text-3xs font-black uppercase tracking-widest text-primary/40">Sfida {currentIndex + 1} di {availableExams.length}</p>
       </div>
       

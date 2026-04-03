@@ -27,8 +27,7 @@ export const FlashcardDeck = ({
     <div className="mx-auto flex h-full max-w-3xl flex-col space-y-6 rounded-4xl bg-surface p-6 shadow-ambient">
       <div className="flex items-end justify-between px-2">
         <div className="space-y-2">
-          <p className="font-display text-2xs font-black uppercase tracking-mega text-secondary">Studio Attivo</p>
-          <h2 className="font-display text-2xl font-black italic tracking-tight text-primary">AI Flashcards</h2>
+          <h2 className="font-display text-2xl font-black italic tracking-tight text-primary">Flashcards</h2>
         </div>
         <div className="rounded-xl bg-surface-container-low px-4 py-2 font-display text-base font-black text-primary shadow-sm">
           {cards.length > 0 ? Math.round((currentIndex / cards.length) * 100) : 100}%
@@ -36,12 +35,12 @@ export const FlashcardDeck = ({
         </div>
       </div>
 
-      <div className="perspective-1000 flex flex-1 items-center justify-center min-h-[300px]">
+      <div className="perspective-1000 flex flex-1 items-center justify-center" style={{ minHeight: '240px' }}>
         <motion.div 
           onClick={() => setIsFlipped(!isFlipped)}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          className="relative aspect-[16/9] w-full cursor-pointer preserve-3d"
+          className="relative aspect-video w-full cursor-pointer preserve-3d"
         >
           {/* Card Front */}
           <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl border border-surface-container-low/50 bg-surface-container-lowest p-8 text-center shadow-ambient transition-transform duration-500 hover:scale-[1.01]">
@@ -55,7 +54,7 @@ export const FlashcardDeck = ({
           </div>
 
           {/* Card Back */}
-          <div className="rotate-y-180 backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl bg-linear-to-br from-primary to-primary-container p-8 text-center shadow-ambient">
+          <div className="rotate-y-180 backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl bg-gradient-brand p-8 text-center shadow-ambient">
             <div className="absolute top-6 left-6 rounded-lg bg-white/10 p-2 backdrop-blur-md">
                <span className="font-display text-2xs font-bold uppercase leading-none tracking-widest text-white/40">Risposta Master</span>
             </div>
@@ -82,7 +81,7 @@ export const FlashcardDeck = ({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleNext(true)}
-          className="flex items-center justify-center gap-3 rounded-xl bg-linear-to-br from-secondary to-tertiary font-display text-sm-alt font-black uppercase tracking-widest text-white shadow-md shadow-secondary/20 transition-all"
+          className="flex items-center justify-center gap-3 rounded-xl bg-gradient-accent font-display text-sm-alt font-black uppercase tracking-widest text-white shadow-md shadow-secondary/20 transition-all"
         >
           <ThumbsUp className="h-5 w-5" /> Appreso!
         </motion.button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, ChevronRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Lesson } from '../../types';
+import { ContentChunk, Lesson } from '../../types';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { QuickCheckCard } from '../interactive/QuickCheckCard';
@@ -9,21 +9,32 @@ import { MultipleChoiceCard } from '../interactive/MultipleChoiceCard';
 import { MadLibCard } from '../interactive/MadLibCard';
 import { renderTextWithKeywords } from '../../utils/textUtils';
 
-// Dispatcher per i componenti interattivi
-const INTERACTIVE_COMPONENTS: Record<string, any> = {
+// Dispatcher for interactive chunk components
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const INTERACTIVE_COMPONENTS: Record<string, React.ComponentType<any>> = {
   quickCheck: QuickCheckCard,
   multipleChoice: MultipleChoiceCard,
   madLib: MadLibCard,
 };
 
-// Componente interno per il rendering dei singoli blocchi (Chunk)
-const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, chunkRefs }: any) => {
+// Props for the internal chunk renderer
+interface ChunkRendererProps {
+  chunk: ContentChunk;
+  idx: number;
+  isSolved: boolean;
+  keywords: Lesson['keywords'];
+  onSuccess: (idx: number) => void;
+  chunkRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
+}
+
+// Internal component for rendering individual content blocks
+const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, chunkRefs }: ChunkRendererProps) => {
   return (
-    <motion.div 
-      ref={el => chunkRefs.current[idx] = el}
+    <motion.div
+      ref={el => { chunkRefs.current[idx] = el; }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: isSolved ? 0.6 : 1, y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 25 }}
+      transition={{ type: 'spring', stiffness: 100, damping: 25 }}
       className="relative"
     >
       {chunk.type === 'text' && (
@@ -50,9 +61,9 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
           {(() => {
             const InteractiveComponent = INTERACTIVE_COMPONENTS[chunk.gamification.type];
             return InteractiveComponent ? (
-              <InteractiveComponent 
-                data={chunk.gamification.data} 
-                onSuccess={() => onSuccess(idx)} 
+              <InteractiveComponent
+                data={chunk.gamification.data}
+                onSuccess={() => onSuccess(idx)}
               />
             ) : null;
           })()}

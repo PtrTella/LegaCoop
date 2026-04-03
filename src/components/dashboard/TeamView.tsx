@@ -52,7 +52,7 @@ const FounderCard = ({ profile, onEdit }: { key?: React.Key; profile: UserProfil
             className="w-18 h-18 rounded-2xl object-cover shadow-md border-2 border-white"
             style={{ width: 72, height: 72 }}
           />
-          <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 bg-linear-to-br from-secondary to-tertiary rounded-full flex items-center justify-center shadow-md">
+          <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 bg-gradient-accent rounded-full flex items-center justify-center shadow-md">
             <CheckCircle2 className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
@@ -139,7 +139,7 @@ export const TeamView = () => {
         {/* Divider */}
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-primary/5" />
+            <div className="w-full border-t border-border-subtle" />
           </div>
           <div className="relative flex justify-center">
             <span className="rounded-full bg-surface-container-low px-6 py-2 font-display text-2xs font-black uppercase tracking-ultra text-primary/30">

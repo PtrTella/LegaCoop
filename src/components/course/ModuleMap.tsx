@@ -16,7 +16,7 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
             Dall'idea all'impresa <span className="not-italic tracking-tighter text-primary/30">— Percorso Accademia</span>
           </h1>
         </div>
-        <div className="flex h-16 w-16 rotate-6 transform items-center justify-center rounded-[20px] bg-surface-container-low transition-transform hover:rotate-0">
+        <div className="flex h-16 w-16 rotate-6 transform items-center justify-center rounded-2xl bg-surface-container-low transition-transform hover:rotate-0">
           <PieChart className="h-8 w-8 text-primary/30" />
         </div>
       </div>
@@ -36,7 +36,7 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
               className={`relative flex w-full flex-col ${isEven ? 'md:items-start' : 'md:items-end'} ${!isUnlocked ? 'grayscale-50 opacity-40' : ''}`}
             >
               {/* Connector Trace (Soft, not a line) */}
-              <div className={`absolute top-1/2 -z-10 hidden h-24 w-24 rounded-full border-4 border-primary/5 md:block ${isEven ? '-left-12 rotate-45 border-r-0 border-b-0' : '-right-12 -rotate-45 border-l-0 border-t-0'}`} />
+              <div className={`absolute top-1/2 -z-10 hidden h-24 w-24 rounded-full border-4 border-border-subtle md:block ${isEven ? '-left-12 rotate-45 border-r-0 border-b-0' : '-right-12 -rotate-45 border-l-0 border-t-0'}`} />
 
               <button 
                 disabled={!isUnlocked}
@@ -49,7 +49,7 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
               >
                 <div className="mb-4 flex items-center gap-4">
                   <div className={`z-10 flex h-12 w-12 shrink-0 transform items-center justify-center rounded-2xl shadow-lg transition-transform group-hover:rotate-6 ${
-                    isCompleted ? 'bg-linear-to-br from-tertiary to-secondary' : isUnlocked ? 'bg-linear-to-br from-primary to-primary-container' : 'bg-surface-container-highest'
+                    isCompleted ? 'bg-gradient-accent' : isUnlocked ? 'bg-gradient-brand' : 'bg-surface-container-highest'
                   }`}>
                     {isCompleted ? <CheckCircle2 className="h-6 w-6 text-white" /> : 
                      isUnlocked ? <Unlock className="h-5 w-5 text-white" /> : 

@@ -18,9 +18,9 @@ export const Button = ({
   
   const variants = {
     primary: "bg-primary text-white hover:bg-secondary shadow-2xl shadow-primary/40",
-    gradient: "bg-linear-to-br from-secondary to-primary-container text-white shadow-ambient",
-    icon: "bg-linear-to-br from-secondary to-primary text-white shadow-lg hover:shadow-secondary/30 disabled:opacity-30",
-    outline: "border-2 border-primary/10 text-primary hover:border-primary/30",
+    gradient: "bg-gradient-accent-reverse text-white shadow-ambient",
+    icon: "bg-gradient-accent-reverse text-white shadow-lg hover:shadow-secondary/30 disabled:opacity-30",
+    outline: "border-2 border-border-muted text-primary hover:border-border-subtle",
     text: "text-secondary hover:text-primary"
   };
 

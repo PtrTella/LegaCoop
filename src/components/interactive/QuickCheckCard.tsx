@@ -29,7 +29,7 @@ export const QuickCheckCard = ({
   };
 
   return (
-    <div className="bg-linear-to-br from-surface-container-lowest to-surface-container-low border border-secondary/10 rounded-5xl p-10 shadow-ambient space-y-8 relative overflow-hidden mt-8">
+    <div className="bg-linear-to-br from-surface-container-lowest to-surface-container-low border border-secondary/20 rounded-5xl p-10 shadow-ambient space-y-8 relative overflow-hidden mt-8">
       <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 rotate-12">
         <Zap size={140} className="text-secondary" />
       </div>
@@ -60,7 +60,7 @@ export const QuickCheckCard = ({
                 whileHover={{ scale: 1.02, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleChoice(true)}
-                className="p-8 rounded-4xl bg-white border border-secondary/5 shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-4 group"
+                className="p-8 rounded-4xl bg-white border border-secondary/border-subtle shadow-sm hover:shadow-xl hover:border-secondary/20 transition-all text-primary font-display font-black text-xs uppercase tracking-widest flex flex-col items-center gap-4 group"
               >
                 <div className="w-14 h-14 bg-secondary/5 rounded-full flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all transform group-hover:rotate-12">
                   <Check className="w-7 h-7" />

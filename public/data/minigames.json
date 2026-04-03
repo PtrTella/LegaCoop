@@ -1,0 +1,139 @@
+[
+    {
+        "id": "game_001_sociogram",
+        "titolo": "Il Sociogramma",
+        "obiettivi": [
+            "Conoscere i partecipanti e il contesto cooperativo locale",
+            "Valorizzare l'intelligenza collettiva del gruppo"
+        ],
+        "descrizione_metodo": "Un'attività rompighiaccio dinamica che utilizza lo spazio fisico per visualizzare l'esperienza del gruppo.",
+        "istruzioni_passo_passo": [
+            "Identifica angoli della stanza che rappresentano diverse risposte (es. regioni di provenienza).",
+            "Invita i partecipanti a spostarsi fisicamente nell'angolo che meglio li rappresenta.",
+            "Chiedi ai partecipanti di allinearsi in base agli anni di esperienza cooperativa.",
+            "Calcola la somma totale degli anni di esperienza del gruppo per sottolineare il valore della loro saggezza collettiva."
+        ],
+        "materiali_necessari": [
+            "Cartelli o fogli mobili per identificare gli spazi",
+            "Ampio spazio fisico per muoversi"
+        ]
+    },
+    {
+        "id": "game_002_coop_cube",
+        "titolo": "Il Cubo delle Cooperative",
+        "obiettivi": [
+            "Apprendere i concetti base della cooperativa agricola",
+            "Applicare i principi cooperativi in contesti specifici"
+        ],
+        "descrizione_metodo": "Un esercizio tattile in cui i partecipanti interpretano e discutono i sette principi cooperativi dell'ICA.",
+        "istruzioni_passo_passo": [
+            "Dividi i partecipanti in gruppi di cinque, assegnando a ciascuno un cubo di cartone con un principio scritto sopra.",
+            "Ogni partecipante scrive su un post-it la propria interpretazione del principio assegnato.",
+            "Il gruppo discute le diverse interpretazioni e come il principio viene applicato (o ostacolato) nel loro contesto reale.",
+            "I cubi passano a un altro gruppo per una valutazione incrociata e una sintesi finale."
+        ],
+        "materiali_necessari": [
+            "7 cubi di cartone (uno per principio cooperativo)",
+            "Post-it colorati e penne",
+            "Fogli mobili e nastro adesivo"
+        ]
+    },
+    {
+        "id": "game_003_knowledge_cafe",
+        "titolo": "Il Caffè della Conoscenza",
+        "obiettivi": [
+            "Esplorare azioni per migliorare l'adesione e la partecipazione dei soci",
+            "Valorizzare la diversità all'interno della cooperativa"
+        ],
+        "descrizione_metodo": "Un dialogo informale a rotazione basato sulla metodologia del World Café per far emergere idee innovative.",
+        "istruzioni_passo_passo": [
+            "Prepara 4 tavoli, ognuno con una domanda specifica sulla partecipazione o la diversità dei soci.",
+            "Copri i tavoli con carta marrone o fogli mobili e invita i partecipanti a scarabocchiare o disegnare le loro idee direttamente sul tavolo.",
+            "Dopo ogni round (15-30 min), i partecipanti cambiano tavolo tranne un 'ospite' che resta per riassumere le idee al nuovo gruppo.",
+            "Concludi con un debriefing collettivo dove gli ospiti dei tavoli presentano una sintesi delle riflessioni."
+        ],
+        "materiali_necessari": [
+            "4 tavoli e sedie",
+            "Carta marrone per coprire i tavoli",
+            "Pennarelli colorati"
+        ]
+    },
+    {
+        "id": "game_004_network_analysis",
+        "titolo": "Analisi di Rete del Gestore",
+        "obiettivi": [
+            "Mappare le relazioni con gli attori esterni (fornitori, buyer, governo)",
+            "Valutare l'influenza e gli obiettivi degli stakeholder"
+        ],
+        "descrizione_metodo": "Un esercizio visivo per analizzare l'ambiente economico, sociale e politico in cui opera la cooperativa.",
+        "istruzioni_passo_passo": [
+            "Elenca tutti gli stakeholder con cui la cooperativa interagisce (agricoltori, fornitori, competitor, ecc.).",
+            "Disegna i collegamenti tra gli attori usando diversi colori per flussi di denaro, informazioni o prodotti.",
+            "Valuta l'influenza di ogni attore sulla cooperativa utilizzando piccoli blocchi di legno o post-it (più alto il blocco, maggiore l'influenza).",
+            "Identifica le relazioni problematiche e pianifica azioni per migliorare la posizione di potere dei soci."
+        ],
+        "materiali_necessari": [
+            "Grandi fogli di carta",
+            "Pennarelli di diversi colori",
+            "Spilli e piccoli blocchi di legno per visualizzare il potere"
+        ]
+    },
+    {
+        "id": "game_005_value_chain_roleplay",
+        "titolo": "Gioco di Ruolo: La Catena del Valore",
+        "obiettivi": [
+            "Comprendere i passaggi che portano un prodotto dal campo al consumatore",
+            "Identificare il ruolo della cooperativa nel migliorare i ritorni per i soci"
+        ],
+        "descrizione_metodo": "Una simulazione dinamica in cui i partecipanti interpretano i diversi attori della filiera agricola.",
+        "istruzioni_passo_passo": [
+            "Scegli un prodotto familiare (es. mais o latte) e mettilo fisicamente in mano al 'consumatore'.",
+            "Il consumatore indica da chi ha comprato il prodotto (es. dettagliante), che a sua volta indica il fornitore precedente (grossista, processore, produttore).",
+            "Ogni attore viene intervistato sui suoi requisiti di qualità, costi e margini di profitto.",
+            "Analizza collettivamente come la cooperativa può accorciare la catena o aggiungere valore tramite l'upgrading."
+        ],
+        "materiali_necessari": [
+            "Un campione fisico del prodotto scelto",
+            "Cartellini stampati con i ruoli degli attori"
+        ]
+    },
+    {
+        "id": "game_006_marketing_board_game",
+        "titolo": "Il Gioco del Marketing Mix",
+        "obiettivi": [
+            "Esplorare idee e problemi di marketing per prodotti agricoli",
+            "Applicare il concetto delle 5 P (Prodotto, Prezzo, Posto, Promozione, Persone)"
+        ],
+        "descrizione_metodo": "Un vero gioco da tavolo dove si avanza tramite dadi e si risponde a sfide sulle strategie di mercato.",
+        "istruzioni_passo_passo": [
+            "Dividi i partecipanti in gruppi e assegna a ciascuno un tabellone di gioco.",
+            "I giocatori tirano i dadi e muovono i propri segnaposto sul percorso.",
+            "Quando un giocatore atterra su un simbolo (es. Euro per Prezzo, Mela per Prodotto), deve rispondere a una carta sfida 'Vero o Falso'.",
+            "Se atterra sul simbolo 'Persone', il gruppo discute collettivamente un dilemma relazionale tra soci e clienti."
+        ],
+        "materiali_necessari": [
+            "Tabelloni di gioco (disponibili in allegato al manuale)",
+            "Set di carte sfida per le 5 P",
+            "Dadi e segnaposto colorati"
+        ]
+    },
+    {
+        "id": "game_007_fishbowl_discussion",
+        "titolo": "Discussione in Acquario (Fishbowl)",
+        "obiettivi": [
+            "Esplorare in profondità temi complessi come le certificazioni (Fair Trade, Bio)",
+            "Incoraggiare l'ascolto attivo e la partecipazione flessibile"
+        ],
+        "descrizione_metodo": "Una tecnica di dialogo che utilizza una cerchia interna di relatori e una esterna di osservatori che possono scambiarsi i posti.",
+        "istruzioni_passo_passo": [
+            "Disponi un piccolo cerchio di sedie al centro della stanza e un cerchio più grande all'esterno.",
+            "Solo chi siede nel cerchio interno può parlare; gli osservatori nel cerchio esterno devono restare in silenzio.",
+            "Chi vuole intervenire deve spostarsi fisicamente occupando una sedia vuota nel cerchio interno.",
+            "Se non ci sono sedie vuote, un partecipante interno deve cedere il posto per far entrare un nuovo osservatore."
+        ],
+        "materiali_necessari": [
+            "Due file concentriche di sedie",
+            "Fogli mobili per il debriefing finale"
+        ]
+    }
+]

@@ -1,41 +1,56 @@
-// SWOT feature deprecated and removed.
+// AI service layer — handles communication with the server-side API endpoints.
 
-export const askTutor = async (question: string, context?: string) => {
+interface MessagePart {
+  text: string;
+}
+
+interface ChatMessage {
+  role: 'user' | 'model';
+  parts: MessagePart[];
+}
+
+/**
+ * Sends a question to the AI Tutor endpoint.
+ */
+export const askTutor = async (question: string, context?: string): Promise<string> => {
   try {
     const response = await fetch('/api/tutor', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question, context })
+      body: JSON.stringify({ question, context }),
     });
 
     if (!response.ok) {
-      throw new Error('Errore dal server API');
+      throw new Error(`Tutor API responded with HTTP ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as { text: string };
     return data.text;
   } catch (error) {
-    console.error("Error asking tutor (Client):", error);
-    return "Mi dispiace, il server AI non è momentaneamente raggiungibile. Riprova più tardi!";
+    console.error('[AI Service] askTutor error:', error);
+    return 'Mi dispiace, il server AI non è momentaneamente raggiungibile. Riprova più tardi!';
   }
 };
 
-export const runPitchBattle = async (messages: any[]) => {
+/**
+ * Sends the full conversation history to the Pitch Battle endpoint.
+ */
+export const runPitchBattle = async (messages: ChatMessage[]): Promise<string> => {
   try {
     const response = await fetch('/api/pitch', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages })
+      body: JSON.stringify({ messages }),
     });
 
     if (!response.ok) {
-      throw new Error('Errore dal server API');
+      throw new Error(`Pitch API responded with HTTP ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as { text: string };
     return data.text;
   } catch (error) {
-    console.error("Error asking Pitch AI (Client):", error);
+    console.error('[AI Service] runPitchBattle error:', error);
     return "Connessione con l'investitore persa (forse è in galleria). Riprova!";
   }
 };
