@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ContentChunk, Lesson } from '../../types';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
+import { VideoPlayer } from '../ui/VideoPlayer';
 import { QuickCheckCard } from '../interactive/QuickCheckCard';
 import { MultipleChoiceCard } from '../interactive/MultipleChoiceCard';
 import { MadLibCard } from '../interactive/MadLibCard';
@@ -46,14 +47,7 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
       )}
 
       {chunk.type === 'video' && (
-        <Card padding="p-0" className="overflow-hidden aspect-video group relative">
-          <img src={chunk.content} alt="" className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button variant="icon" size="icon" className="w-20 h-20 rounded-full">
-              <Play className="fill-white" />
-            </Button>
-          </div>
-        </Card>
+        <VideoPlayer content={chunk.content} />
       )}
 
       {chunk.type === 'interactive' && (
