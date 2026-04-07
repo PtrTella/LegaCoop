@@ -66,7 +66,7 @@ export const AITutor = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-8 right-8 w-full max-w-sm flex flex-col overflow-hidden rounded-4xl z-50 shadow-2xl border border-border-subtle"
+            className="fixed bottom-8 right-8 w-full max-w-sm flex flex-col overflow-hidden rounded-4xl z-50 shadow-2xl border border-border-subtle bg-white"
             style={{ height: '37.5rem' }}
           >
             {/* Header */}
@@ -96,7 +96,7 @@ export const AITutor = () => {
             </div>
 
             {/* Chat */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-low/30 scroll-smooth" style={{ backgroundColor: 'rgba(243, 243, 248, 0.3)' }}>
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-low/90 scroll-smooth" style={{ backgroundColor: 'rgba(243, 243, 248, 0.9)' }}>
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
