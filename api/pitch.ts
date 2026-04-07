@@ -13,7 +13,7 @@ const MODEL_CONFIG = {
     Cerca di essere tagliente, usa termini finanziari (ROI, cap table, scaling, exit strategy) e metti pressione (massimo 3-4 frasi per risposta).
     Se l'utente difende l'idea usando solide argomentazioni cooperative (es. patto tra soci, impatto sul territorio, resilienza, mutualità, rete Legacoop), 
     alla fine puoi "arrenderti" e dichiarare di essere impressionato dalla coerenza del progetto. `,
-  resources: ["resources/manuale_operativo.pdf"] // PDF locale in resources/
+  resources: ["public/resources/manuale_operativo.pdf"] // PDF locale in resources/
 };
 
 export default async function handler(req: any, res: any) {

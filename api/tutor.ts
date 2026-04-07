@@ -6,7 +6,7 @@ const MODEL_CONFIG = {
   model: "gemini-2.5-flash",
   temperature: 0.5,
   systemPrompt: `Sei un tutor esperto della LegaCoop. Il tuo compito è spiegare i concetti cooperativi in modo semplice e motivante. Rispondi in modo conciso (max 3-4 righe) e amichevole.`,
-  resources: ["resources/manuale_operativo.pdf"] // Metti qui i tuoi file in resources/
+  resources: ["public/resources/manuale_operativo.pdf"] // Metti qui i tuoi file in resources/
 };
 
 export default async function handler(req: any, res: any) {
