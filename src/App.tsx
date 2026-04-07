@@ -26,6 +26,7 @@ const AppContent = () => {
   const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch'>('dashboard');
   const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
+  const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
 
   if (!modules) {
     return (
@@ -46,6 +47,7 @@ const AppContent = () => {
 
   const handleSelectModule = (id: number) => {
     setActiveModuleId(id);
+    setCurrentLessonIndex(0); // Reset lesson queue
     const module = modules[id];
     if (module.lessons.length > 0) {
       handleSetView('lesson');
@@ -56,10 +58,17 @@ const AppContent = () => {
 
   const handleActionComplete = () => {
     if (view === 'lesson') {
-      setView('quiz');
+      const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
+      if (activeModule && currentLessonIndex < activeModule.lessons.length - 1) {
+        // Move to the next lesson in sequence
+        setCurrentLessonIndex(prev => prev + 1);
+      } else {
+        // All lessons done -> Final exam
+        handleSetView('quiz');
+      }
     } else if (view === 'quiz' || view === 'roleplay') {
       if (activeModuleId !== null) completePhase(activeModuleId);
-      setView('success');
+      handleSetView('success');
     }
   };
 
@@ -94,9 +103,9 @@ const AppContent = () => {
               )}
 
               {view === 'lesson' && activeModule && (
-                <motion.div key="lesson" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="h-full">
+                <motion.div key={`lesson-${currentLessonIndex}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="h-full">
                   <MicroLesson 
-                    lesson={activeModule.lessons[0]} 
+                    lesson={activeModule.lessons[currentLessonIndex]} 
                     phaseTitle={activeModule.title}
                     onComplete={handleActionComplete} 
                   />

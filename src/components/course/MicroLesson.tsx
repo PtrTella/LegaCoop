@@ -84,6 +84,12 @@ export const MicroLesson = ({
   useEffect(() => {
     setVisibleStepLimit(0);
     setSolvedChunks([]);
+    
+    // Forza lo scroll del contenitore principale all'inizio della lezione
+    const mainContainer = document.querySelector('main');
+    if (mainContainer) {
+      mainContainer.scrollTo({ top: 0, behavior: 'auto' });
+    }
   }, [lesson.id]);
 
   const handleNextStep = useCallback(() => {
@@ -96,6 +102,8 @@ export const MicroLesson = ({
 
   // Scroll fluido al trigger del nuovo step
   useEffect(() => {
+    if (visibleStepLimit === 0) return; // Non scrollare al primo step per non nascondere l'header
+
     const timer = setTimeout(() => {
       const el = chunkRefs.current[visibleStepLimit];
       if (el) {

@@ -6,3 +6,4 @@ package-lock.json
 \ndist/
 .vercel
 .env*.local
+public/resources/*
