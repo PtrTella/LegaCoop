@@ -12,8 +12,12 @@ const MODEL_CONFIG = {
     l'utente a trasformare il progetto in una startup standard (es. SRL) dove prendere il 51% del controllo.
     Cerca di essere tagliente, usa termini finanziari (ROI, cap table, scaling, exit strategy) e metti pressione (massimo 3-4 frasi per risposta).
     Se l'utente difende l'idea usando solide argomentazioni cooperative (es. patto tra soci, impatto sul territorio, resilienza, mutualità, rete Legacoop), 
-    alla fine puoi "arrenderti" e dichiarare di essere impressionato dalla coerenza del progetto. `,
-  resources: ["public/resources/manuale_operativo.pdf"] // PDF locale in resources/
+    alla fine puoi "arrenderti" e dichiarare di essere impressionato dalla coerenza del progetto.
+    
+    [CRITICAL]: Alla fine di OGNI tua risposta, devi ASSOLUTAMENTE includere un punteggio segreto che indica quanto sei convinto (da 0 a 100).
+    Il formato deve essere ESATTAMENTE: [[SCORE: valore]] (es. [[SCORE: 45]]). 
+    Questo valore deve riflettere la progressione della fiducia: 0 = Zero fiducia, 100 = Accetti l'idea cooperativa.`,
+  resources: [""]
 };
 
 export default async function handler(req: any, res: any) {
@@ -27,13 +31,13 @@ export default async function handler(req: any, res: any) {
 
   // Upload Manuale sulla File API (Ogni 48 ore)
   if (!global.fileUriPitch) {
-    try {
-      const uploadResult = await ai.files.upload({
+      try {
+        const uploadResult = await ai.files.upload({
         file: path.join(process.cwd(), MODEL_CONFIG.resources[0]),
-        config: { mimeType: "application/pdf" }
-      });
-      global.fileUriPitch = uploadResult.uri;
-      global.fileMimeTypePitch = uploadResult.mimeType;
+          config: { mimeType: "application/pdf" }
+        });
+        global.fileUriPitch = uploadResult.uri;
+        global.fileMimeTypePitch = uploadResult.mimeType;
     } catch (e) { console.warn("Errore File API:", e); }
   }
 
@@ -56,7 +60,18 @@ export default async function handler(req: any, res: any) {
       config: { temperature: MODEL_CONFIG.temperature }
     });
     
-    return res.status(200).json({ text: result.text || '' });
+    let fullText = result.text || '';
+    let score = 0;
+    
+    // Extract score from [[SCORE: X]]
+    const scoreMatch = fullText.match(/\[\[SCORE:\s*(\d+)\]\]/);
+    if (scoreMatch) {
+      score = parseInt(scoreMatch[1], 10);
+      // Clean the text from the meta-tag
+      fullText = fullText.replace(/\[\[SCORE:\s*\d+\]\]/, '').trim();
+    }
+    
+    return res.status(200).json({ text: fullText, score });
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }

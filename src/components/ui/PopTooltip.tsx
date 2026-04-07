@@ -30,12 +30,7 @@ export const PopTooltip = ({ word, definition }: PopTooltipProps) => {
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-tertiary/10 rounded-full blur-2xl" />
             
             <div className="relative z-10 flex flex-col gap-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center shadow-md">
-                   <Info className="w-3.5 h-3.5 text-tertiary" />
-                </div>
-                <p className="text-2xs font-display font-black uppercase tracking-widest-plus text-secondary">Glossario d'Eccellenza</p>
-              </div>
+              <p className="text-2xs font-display font-black uppercase tracking-widest-plus text-secondary">Glossario</p>
               <p className="text-sm text-primary/70 leading-relaxed font-body font-medium italic">"{definition}"</p>
             </div>
             

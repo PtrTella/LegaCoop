@@ -35,7 +35,7 @@ export const askTutor = async (question: string, context?: string): Promise<stri
 /**
  * Sends the full conversation history to the Pitch Battle endpoint.
  */
-export const runPitchBattle = async (messages: ChatMessage[]): Promise<string> => {
+export const runPitchBattle = async (messages: ChatMessage[]): Promise<{ text: string, score: number }> => {
   try {
     const response = await fetch('/api/pitch', {
       method: 'POST',
@@ -47,10 +47,16 @@ export const runPitchBattle = async (messages: ChatMessage[]): Promise<string> =
       throw new Error(`Pitch API responded with HTTP ${response.status}`);
     }
 
-    const data = await response.json() as { text: string };
-    return data.text;
+    const data = await response.json() as { text: string, score: number };
+    return { 
+      text: data.text || '', 
+      score: typeof data.score === 'number' ? data.score : 0 
+    };
   } catch (error) {
     console.error('[AI Service] runPitchBattle error:', error);
-    return "Connessione con l'investitore persa (forse è in galleria). Riprova!";
+    return { 
+      text: "Connessione con l'investitore persa (forse è in galleria). Riprova!", 
+      score: 0 
+    };
   }
 };
