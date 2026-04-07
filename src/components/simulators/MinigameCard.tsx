@@ -20,36 +20,36 @@ export const MinigameCard: React.FC<MinigameCardProps> = ({ game, icon: Icon, in
     transition={{ delay: index * 0.05 }}
     whileHover={{ y: -4 }}
     onClick={onClick}
-    className="bg-surface-container-lowest p-6 rounded-3xl shadow-ambient cursor-pointer group relative overflow-hidden border border-surface-container-low/50 space-y-5"
+    className="bg-surface-container-lowest p-5 rounded-3xl shadow-ambient cursor-pointer group relative overflow-hidden border border-surface-container-low/50 space-y-4"
   >
     {/* Ghost icon decor */}
     <div className="absolute top-0 right-0 opacity-[0.04] p-4 -translate-y-2 translate-x-2" aria-hidden="true">
-      <Icon size={80} />
+      <Icon size={64} />
     </div>
 
     {/* Icon badge */}
-    <div className="w-11 h-11 bg-surface-container-low rounded-xl flex items-center justify-center group-hover:bg-secondary/10 transition-all duration-300">
-      <Icon className="w-5 h-5 text-secondary" aria-hidden="true" />
+    <div className="w-10 h-10 bg-surface-container-low rounded-xl flex items-center justify-center group-hover:bg-secondary/10 transition-all duration-300">
+      <Icon className="w-4.5 h-4.5 text-secondary" aria-hidden="true" />
     </div>
 
     {/* Content */}
-    <div className="space-y-2 relative z-10">
-      <h4 className="font-display font-black text-base text-primary leading-tight italic tracking-tight group-hover:text-secondary transition-colors">
+    <div className="space-y-1.5 relative z-10">
+      <h4 className="font-display font-black text-sm-alt text-primary leading-tight italic tracking-tight group-hover:text-secondary transition-colors">
         {game.titolo}
       </h4>
-      <p className="text-primary/50 font-body text-xs leading-relaxed line-clamp-2">
+      <p className="text-primary/50 font-body text-[11px] leading-relaxed line-clamp-2">
         {game.descrizione_metodo}
       </p>
     </div>
 
     {/* Footer */}
     <div className="flex items-center justify-between">
-      <span className="text-2xs font-display font-black text-primary/20 uppercase tracking-widest">
+      <span className="text-3xs font-display font-black text-primary/20 uppercase tracking-widest">
         {game.materiali_necessari.length} materiali
       </span>
       <div className="flex items-center gap-1 text-secondary opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
-        <span className="text-2xs font-display font-black uppercase tracking-widest">Scopri</span>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <span className="text-3xs font-display font-black uppercase tracking-widest">Scopri</span>
+        <ChevronRight className="w-3 h-3" />
       </div>
     </div>
   </motion.div>

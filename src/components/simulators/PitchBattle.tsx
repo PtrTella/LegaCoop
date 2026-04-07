@@ -153,7 +153,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
         </form>
         <button
           onClick={onComplete}
-          className="mt-6 w-full text-center text-2xs font-display font-black text-primary/30 hover:text-primary transition-colors uppercase tracking-widest-plus font-bold"
+          className="mt-6 w-full text-center text-2xs font-display text-primary/30 hover:text-primary transition-colors uppercase tracking-widest-plus font-bold"
         >
           Ritirata Strategica / Concludi
         </button>

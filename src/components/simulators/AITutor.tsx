@@ -83,7 +83,7 @@ export const AITutor = () => {
                       <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:-0.15s]" />
                       <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce" />
                     </div>
-                    <span className="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-tertiary/80 pl-1">Live Intelligence</span>
+                    <span className="text-[10px] font-display font-bold uppercase tracking-widest-plus text-tertiary/80 pl-1">Live Intelligence</span>
                   </div>
                 </div>
               </div>
@@ -118,7 +118,7 @@ export const AITutor = () => {
                     <Loader2 className="w-4 h-4 text-secondary animate-spin" />
                   </div>
                   <div className="px-4 py-3 bg-white rounded-2xl rounded-tl-none border border-border-subtle flex items-center gap-1.5">
-                    <span className="text-[10px] font-display font-black text-primary/30 uppercase tracking-[0.2em] italic">Ispirazione...</span>
+                    <span className="text-[10px] font-display font-black text-primary/30 uppercase tracking-widest-plus italic">Ispirazione...</span>
                   </div>
                 </motion.div>
               )}
@@ -145,7 +145,7 @@ export const AITutor = () => {
                   <Send className="w-4 h-4" />
                 </motion.button>
               </div>
-              <p className="text-center text-[10px] text-primary/30 font-display font-bold uppercase tracking-[0.2em] mt-3">
+              <p className="text-center text-[10px] text-primary/30 font-display font-bold uppercase tracking-widest-plus mt-3">
                 Powered by AI Accademia
               </p>
             </div>

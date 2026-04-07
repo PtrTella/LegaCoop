@@ -87,12 +87,12 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
-        className="bg-white w-full max-w-xl rounded-5xl shadow-2xl overflow-hidden"
+        className="bg-surface-container-lowest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden"
       >
         {!config ? (
           <div className="p-20 flex flex-col items-center justify-center gap-4">
             <Loader2 className="w-8 h-8 text-secondary animate-spin" />
-            <p className="text-sm font-display font-black uppercase tracking-widest text-primary/30">Inizializzazione Setup...</p>
+            <p className="text-xs-tight font-display font-black uppercase tracking-widest-plus text-primary/40">Inizializzazione Setup...</p>
           </div>
         ) : (
           <>
@@ -103,7 +103,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xs text-secondary font-display font-black uppercase tracking-ultra">
+                  <p className="text-[10px] text-secondary font-display font-black uppercase tracking-mega">
                     Step {step + 1} / {config.steps.length}
                   </p>
                   <h2 className="text-2xl font-display font-black text-primary tracking-tight leading-tight">
@@ -125,7 +125,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                   transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                 />
               </div>
-              <p className="text-primary/40 text-xs font-body mt-2">{config.steps[step].subtitle}</p>
+              <p className="text-primary/40 text-xs-tight font-body mt-2">{config.steps[step].subtitle}</p>
             </div>
 
             {/* Step Content */}
@@ -142,24 +142,24 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                   {step === 0 && (
                     <div className="space-y-4">
                       <div>
-                        <label className="text-xs-tight font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Nome Completo</label>
+                        <label className="text-xs-tight font-display font-black uppercase tracking-widest-plus text-primary/40 mb-2 block">Nome Completo</label>
                         <input
                           autoFocus
                           type="text"
                           value={profile.name}
                           onChange={e => setProfile(prev => ({ ...prev, name: e.target.value }))}
                           placeholder="Es. Marco Bianchi"
-                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-base"
+                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt"
                         />
                       </div>
                       <div>
-                        <label className="text-xs-tight font-display font-black uppercase tracking-widest text-primary/40 mb-2 block">Città / Regione</label>
+                        <label className="text-xs-tight font-display font-black uppercase tracking-widest-plus text-primary/40 mb-2 block">Città / Regione</label>
                         <input
                           type="text"
                           value={profile.location}
                           onChange={e => setProfile(prev => ({ ...prev, location: e.target.value }))}
                           placeholder="Es. Bologna, Emilia-Romagna"
-                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-base"
+                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt"
                         />
                       </div>
                     </div>
@@ -172,10 +172,10 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                         <button
                           key={role}
                           onClick={() => setProfile(prev => ({ ...prev, role }))}
-                          className={`px-4 py-3 rounded-2xl font-display font-black text-xs uppercase tracking-wider transition-all ${
+                          className={`px-4 py-3 rounded-2xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                             profile.role === role
                               ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                              : 'bg-surface-container-low text-primary/60 hover:bg-surface-container text-primary'
+                              : 'bg-surface-container-low text-primary/60 hover:bg-surface-container'
                           }`}
                         >
                           {role}
@@ -196,7 +196,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                               key={skill}
                               onClick={() => toggleSkill(skill)}
                               disabled={maxReached}
-                              className={`px-3 py-2 rounded-xl font-display font-black text-xs-tight uppercase tracking-wider transition-all ${
+                              className={`px-3 py-2 rounded-xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                                 isSelected
                                   ? 'bg-secondary text-white shadow-md shadow-secondary/20'
                                   : maxReached
@@ -209,7 +209,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           );
                         })}
                       </div>
-                      <p className="text-xs-tight text-primary/30 font-display font-black uppercase tracking-widest mt-4">
+                      <p className="text-xs-tight text-primary/30 font-display font-black uppercase tracking-widest-plus mt-4">
                         {profile.skills?.length ?? 0} / 5 competenze selezionate
                       </p>
                     </div>
@@ -224,9 +224,9 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                         onChange={e => setProfile(prev => ({ ...prev, vision: e.target.value }))}
                         placeholder="Es. Voglio creare una cooperativa di comunità energetica nelle aree rurali dell'Emilia, mettendo in rete piccoli agricoltori e ridistribuendo il surplus energetico..."
                         rows={5}
-                        className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-base resize-none leading-relaxed"
+                        className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt resize-none leading-relaxed"
                       />
-                      <p className="text-xs-tight text-primary/30 mt-2 text-right font-display font-black">
+                      <p className="text-[10px] text-primary/30 mt-2 text-right font-display font-black uppercase tracking-widest-plus">
                         {profile.vision?.length ?? 0} caratteri
                       </p>
                     </div>
@@ -247,7 +247,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                         >
                           <div>
                             <p className="font-display font-black text-sm">{label}</p>
-                            <p className={`text-xs font-body ${profile.availability === label ? 'text-white/60' : 'text-primary/40'}`}>{desc}</p>
+                            <p className={`text-xs-tight font-body ${profile.availability === label ? 'text-white/60' : 'text-primary/40'}`}>{desc}</p>
                           </div>
                           {profile.availability === label && <Check className="w-5 h-5 text-tertiary" />}
                         </button>
@@ -262,7 +262,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             <div className="px-8 pb-8 flex items-center justify-between">
               <button
                 onClick={() => setStep(prev => Math.max(0, prev - 1))}
-                className={`flex items-center gap-2 text-xs font-display font-black uppercase tracking-widest transition-all ${step === 0 ? 'opacity-0 pointer-events-none' : 'text-primary/40 hover:text-primary'}`}
+                className={`flex items-center gap-2 text-xs-tight font-display font-black uppercase tracking-widest-plus transition-all ${step === 0 ? 'opacity-0 pointer-events-none' : 'text-primary/40 hover:text-primary'}`}
               >
                 <ArrowLeft className="w-4 h-4" /> Indietro
               </button>
@@ -271,7 +271,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                 whileTap={canProceed() ? { scale: 0.97 } : {}}
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-display font-black text-xs uppercase tracking-widest transition-all ${
+                className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                   canProceed()
                     ? 'bg-gradient-accent-reverse text-white shadow-xl shadow-secondary/20'
                     : 'bg-surface-container-low text-primary/20 cursor-not-allowed'
