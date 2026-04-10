@@ -58,7 +58,7 @@ const ProfileCard = React.memo(({ profile, activeSkills, onClick }: {
     transition={{ duration: 0.2 }}
     whileHover={{ y: -4 }}
     onClick={() => onClick(profile)}
-    className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/20 flex flex-col h-full min-h-[var(--spacing-card-min-h)]"
+    className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/20 flex flex-col h-full min-h-(--spacing-card-min-h)"
   >
     <div className="flex items-center gap-4 mb-6">
       <div className="relative shrink-0">
