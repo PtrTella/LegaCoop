@@ -57,20 +57,38 @@ const AppContent = () => {
   };
 
   const handleActionComplete = () => {
+    const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
+    
     if (view === 'lesson') {
-      const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
       if (activeModule && currentLessonIndex < activeModule.lessons.length - 1) {
         // Move to the next lesson in sequence
         setCurrentLessonIndex(prev => prev + 1);
-      } else {
-        // All lessons done -> Final exam
-        handleSetView('quiz');
+      } else if (activeModule) {
+        // All lessons done -> Check for exam content
+        const hasQuiz = (activeModule.gamification?.flashcards?.length ?? 0) > 0 || 
+                        (activeModule.gamification?.madLibs?.length ?? 0) > 0 ||
+                        (activeModule.gamification?.multipleChoices?.length ?? 0) > 0;
+        
+        if (hasQuiz) {
+          handleSetView('quiz');
+        } else {
+          // No quiz -> Auto-complete and redirect
+          if (activeModuleId !== null) completePhase(activeModuleId);
+          
+          if (activeModuleId === 0) {
+            // Intro -> go to map directly to start phase 1
+            handleSetView('map');
+          } else {
+            handleSetView('success');
+          }
+        }
       }
     } else if (view === 'quiz' || view === 'roleplay') {
       if (activeModuleId !== null) completePhase(activeModuleId);
       handleSetView('success');
     }
   };
+
 
   const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
 

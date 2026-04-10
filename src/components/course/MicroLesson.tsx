@@ -5,7 +5,9 @@ import { ContentChunk, Lesson } from '../../types';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { VideoPlayer } from '../ui/VideoPlayer';
+import { AudioPill } from '../ui/AudioPill';
 import { QuickCheckCard } from '../interactive/QuickCheckCard';
+
 import { MultipleChoiceCard } from '../interactive/MultipleChoiceCard';
 import { MadLibCard } from '../interactive/MadLibCard';
 import { renderTextWithKeywords } from '../../utils/textUtils';
@@ -49,6 +51,11 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
       {chunk.type === 'video' && (
         <VideoPlayer content={chunk.content} />
       )}
+
+      {chunk.type === 'audio' && (
+        <AudioPill src={chunk.content} title={chunk.title} />
+      )}
+
 
       {chunk.type === 'interactive' && (
         <div className="mt-4">

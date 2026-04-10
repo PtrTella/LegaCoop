@@ -1,6 +1,43 @@
 [
   {
     "id": 0,
+    "title": "Benvenuti in Accademia",
+    "description": "Inizia il tuo viaggio con Aldo, il mentore dell'Accademia. Scopri il potenziale dell'impresa cooperativa e il metodo INDICOO per trasformare la tua idea in realtà.",
+    "task": "Ascoltare le pillole introduttive e scoprire il framework.",
+    "lessons": [
+      {
+        "id": "l-intro-1",
+        "title": "Primi passi nell'Accademia",
+        "keywords": {
+          "Accademia": "Piattaforma formativa per startup cooperative.",
+          "INDICOO": "Framework metodologico per l'incubazione d'impresa."
+        },
+        "contentChunks": [
+          {
+            "type": "text",
+            "content": "Benvenuto! Prima di iniziare la Fase 0, prenditi qualche minuto per ascoltare queste introduzioni fondamentali. Aldo ti spiegherà come muoverti tra le sfide e i test che ti aspettano."
+          },
+          {
+            "type": "audio",
+            "content": "/audio/pills/pill_01.mp3",
+            "title": "Introduzione all'Accademia",
+            "duration": 60
+          },
+          {
+            "type": "audio",
+            "content": "/audio/pills/pill_02.mp3",
+            "title": "Il Modello INDICOO",
+            "duration": 60
+          }
+        ]
+      }
+    ],
+    "gamification": {
+      "flashcards": []
+    }
+  },
+  {
+    "id": 1,
     "title": "Fase 0: Contesto e Territorio",
     "description": "Sulla scia dell'innovazione sociale: impara ad ascoltare il territorio, mappare l'ecosistema e validare il bisogno reale prima di trasformare la tua idea in una cooperativa solida e resiliente.",
     "task": "Individuare bisogni prioritari, stakeholder chiave e opportunità pilota.",
@@ -34,8 +71,9 @@
             "content": "Per validare la reale urgenza di un problema, il manuale richiede l'esecuzione di una Quest investigativa che incrocia due fonti di dati. In primo luogo, è richiesta un'accurata analisi di documenti territoriali ufficiali, come piani sociali, report di enti locali, studi di settore o ricerche di fondazioni. In secondo luogo, il team ha il compito obbligatorio di condurre dai 5 ai 10 colloqui esplorativi mirati. Attenzione al target assegnato: queste interviste non vanno mai rivolte a cerchie di amicizie, componenti della famiglia o persone già convinte, ma esclusivamente a \"realtà operative del territorio\" che vivono il settore quotidianamente. L'obiettivo pratico di questi incontri sul campo è raccogliere prove inconfutabili ed esempi specifici di inefficienze, sprechi o bisogni attualmente insoddisfatti."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_03.mp3",
+            "title": "Identificare il bisogno",
             "duration": 60
           },
           {
@@ -110,8 +148,9 @@
             "content": "Durante la tua analisi, dovrai classificare ogni realtà che incontri sul territorio utilizzando lo strumento della Ecosystem Map (o Stakeholder Matrix). Il framework ti chiede di dividere le varie realtà in quattro categorie esatte: le potenziali partnership operative con cui collaborare, le realtà facilitatrici (come reti, fondazioni ed enti), le parti critiche o concorrenti, e infine le autorità decisionali o di regolamentazione. Saper distinguere chi può offrire supporto da chi detta le regole è un passaggio strategico fondamentale."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_04.mp3",
+            "title": "Mappa dell'ecosistema",
             "duration": 60
           },
           {
@@ -184,8 +223,9 @@
             "content": "Durante l'esplorazione del territorio potresti imbatterti in call, programmi di incubazione o bandi di finanziamento. Ottimo, raccoglili! Ma fai molta attenzione a una delle cause di fallimento più frequenti nelle startup: costruire il progetto esclusivamente \"intorno a un bando\". Il manuale stabilisce una regola chiara: i bandi devono essere esplorati e trattati come un'opportunità tra le altre per facilitare il test pilota, non come l'unico driver del progetto. Se devi forzare la natura della tua idea solo per aderire ai requisiti di un bando specifico, significa che stai compromettendo la validazione reale."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_05.mp3",
+            "title": "Opportunità pilota",
             "duration": 60
           },
           {
@@ -257,11 +297,6 @@
             "content": "Cosa succede quando l'impresa genera utili? Questo è il bivio strategico che svela le reali intenzioni della compagine fondatrice. Il framework avverte: la forma Cooperativa è un gioco a lungo termine mirato alla stabilità territoriale. Prevede che una quota significativa degli utili venga bloccata in una \"riserva indivisibile\", un patrimonio collettivo che non può essere distribuito alla compagine sociale, nemmeno in caso di scioglimento. Al contrario, se l'obiettivo del team è la scalabilità rapida, la massima redditività per un ristretto gruppo di investimento e magari una futura \"Exit\" (vendere l'azienda per monetizzare), la forma cooperativa diventa una trappola incoerente ed è obbligatorio orientarsi verso una SRL."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
-            "duration": 60
-          },
-          {
             "type": "interactive",
             "gamification": {
               "type": "multipleChoice",
@@ -323,7 +358,7 @@
     }
   },
   {
-    "id": 1,
+    "id": 2,
     "title": "Fase 1: Analisi e assetto del team",
     "description": "Definire la missione, mappare le competenze e formalizzare l'impegno tra i soci.",
     "task": "Definire missione condivisa, Skill Matrix e Patto tra Soci.",
@@ -356,8 +391,9 @@
             "content": "Una volta completato il confronto sulle motivazioni, il team deve redigere un documento di missione condivisa, solitamente lungo 1-2 pagine. Questo testo formalizza il \"Perché\" comune e definisce l'identità della cooperativa, spiegando chiaramente perché essa esiste e quale cambiamento vuole produrre. Il documento deve essere leggibile anche da soggetti esterni, come potenziali soci o partner, per rassicurarli sulla solidità della visione del gruppo. La missione non è un semplice slogan di marketing, ma deve riflettere i principi cooperativi di mutualità, partecipazione e democrazia. Avere una missione scritta garantisce che tutti i soci fondatori siano sulla stessa lunghezza d'onda prima di investire risorse significative"
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_06.mp3",
+            "title": "Missione condivisa",
             "duration": 60
           },
           {
@@ -425,8 +461,9 @@
             "content": "Durante la mappatura, il team deve valutare aree fondamentali come il commerciale, l'amministrazione, il digitale e la progettazione. Una volta identificati i vuoti di competenza (gap), è necessario definire strategie concrete per colmarli, come la ricerca di nuovi soci, il ricorso a consulenti esterni o la formazione mirata dei membri attuali. In una cooperativa, la complementarità delle competenze è essenziale per garantire una gestione democratica ed efficiente. Ignorare le mancanze in questa fase significa costruire un'impresa su fondamenta fragili, aumentando il rischio di errori operativi gravi durante il lancio dei servizi."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_07.mp3",
+            "title": "Skill Matrix",
             "duration": 60
           },
           {
@@ -494,8 +531,9 @@
             "content": "Per proteggere la coesione del team, il Patto tra soci deve includere un protocollo per la gestione del dissenso e delle divergenze decisionali. Questo strumento definisce in anticipo quali decisioni richiedono l'unanimità e quali la semplice maggioranza, prevedendo anche tecniche di \"raffreddamento\" come pause di riflessione di 24 ore. È fondamentale stabilire una procedura di escalation che preveda, in caso di stallo prolungato, il coinvolgimento di un mentor o dell'assemblea. Gestire il conflitto in modo preventivo e costruttivo impedisce che le divergenze blocchino l'operatività della cooperativa, garantendo il rispetto del principio democratico"
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_08.mp3",
+            "title": "Patto tra Soci",
             "duration": 60
           },
           {
@@ -563,11 +601,6 @@
             "content": "l piano di bootstrapping definisce come finanziare la Fase 2 (validazione dell'idea) utilizzando esclusivamente risorse proprie e riducendo al minimo i costi fissi. L'obiettivo è stimare il fabbisogno minimo di cassa necessario per condurre interviste, costruire l'MVP e coprire piccole spese operative senza dipendere subito da finanziamenti esterni. Ogni socio dichiara quanto capitale o tempo è disposto a investire in questa fase esplorativa. Questo approccio \"leggero\" permette al team di testare la propria capacità di gestione finanziaria prima di assumere impegni più onerosi con banche o investitori."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
-            "duration": 60
-          },
-          {
             "type": "interactive",
             "gamification": {
               "type": "multipleChoice",
@@ -612,7 +645,7 @@
     }
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Fase 2: Validazione dell'Idea",
     "description": "Costruire le Buyer Persona, condurre Customer Discovery e progettare l'MVP per testare il mercato.",
     "task": "Creare Buyer Persona, condurre 20-30 interviste e validare l'MVP.",
@@ -646,8 +679,9 @@
             "content": "Per ogni segmento di target individuato, il team deve andare in profondità descrivendo dati anagrafici, bisogni specifici e comportamenti d'acquisto o adesione.  Un elemento cruciale è l'identificazione delle frustrazioni attuali, ovvero gli ostacoli e i rischi che impediscono ai potenziali soci o clienti di risolvere il loro problema in modo soddisfacente. Bisogna descrivere cosa queste persone fanno oggi, quali canali utilizzano abitualmente e quali obiettivi sperano di raggiungere nel breve e medio termine. Ad esempio, una \"Buyer Persona\" tipo potrebbe essere un negoziante che lamenta costi di consegna troppo rigidi e cerca flessibilità tramite l'uso di app.\n Mappare questi elementi permette di creare una connessione diretta e credibile tra l'offerta della cooperativa e la realtà quotidiana dell'utente finale. La compilazione di schede dettagliate per ogni \"persona\" fornisce al team una base comune di conoscenza necessaria per le fasi di intervista."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_09.mp3",
+            "title": "Buyer Persona",
             "duration": 60
           },
           {
@@ -715,8 +749,9 @@
             "content": "Per ottenere dati affidabili e statisticamente rilevanti, il team deve condurre almeno 20-30 interviste qualitative con persone che rientrano nei profili delle Buyer Persona. La guida dell'intervista deve essere strutturata per esplorare tre ambiti: il contesto dell'utente, la natura del problema e le soluzioni attualmente adottate. È essenziale utilizzare domande aperte che incoraggino l'intervistato a raccontare episodi concreti della sua vita quotidiana o lavorativa. Bisogna evitare di intervistare solo amici o parenti (\"contatti già convinti\"), cercando invece interlocutori esterni che possano fornire feedback imparziali e critici. Durante il colloquio, si chiede all'utente di descrivere l'ultima volta che ha affrontato il problema specifico e come ha cercato di risolverlo. Questo livello di dettaglio permette di far emergere insight profondi che i semplici sondaggi online non potrebbero rivelare"
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_10.mp3",
+            "title": "Customer Discovery",
             "duration": 60
           },
           {
@@ -783,8 +818,9 @@
             "content": "La Javelin Board è lo strumento visuale fondamentale utilizzato dal team per tracciare con rigore scientifico ogni esperimento di validazione. Il processo segue una sequenza logica costante e trasparente: si parte da un'ipotesi rischiosa, si progetta un test specifico, si raccolgono i risultati e infine si prende una decisione informata. Ogni riga della board documenta ufficialmente cosa il team \"credeva\" inizialmente e cosa ha effettivamente scoperto parlando con gli utenti o testando l'MVP. Questo metodo impedisce di procedere per semplici intuizioni o \"sensazioni\", obbligando il gruppo a basarsi su evidenze numeriche e feedback reali. Se un esperimento fallisce, la Javelin Board aiuta a capire quale singola variabile modificare senza dover scartare l'intero progetto. È il \"diario di bordo\" che dimostra la serietà del percorso di progettazione ad attori esterni."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_11.mp3",
+            "title": "Progettare l'MVP",
             "duration": 60
           },
           {
@@ -852,11 +888,6 @@
             "content": "Il Business Model Canvas (v0) è lo schema strategico che mette in relazione logica tutti i nove blocchi dell'idea validata: dai segmenti di clientela alla proposta di valore, dai canali ai flussi di ricavo. In questa fase, il Canvas non è un documento burocratico, ma una mappa \"viva\" che serve a verificare la coerenza interna dell'intero progetto cooperativo. È fondamentale distinguere graficamente (ad esempio con colori diversi) gli elementi che sono già stati validati dai test reali rispetto a quelli che rimangono ancora semplici ipotesi da verificare. Questa distinzione è vitale per comunicare a terzi, come banche o partner del network, il reale livello di rischio del progetto. Il Canvas v0 rappresenta la base strategica che verrà poi tradotta nelle Assumptions Table e nei flussi di cassa della Fase 4."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
-            "duration": 60
-          },
-          {
             "type": "interactive",
             "gamification": {
               "type": "multipleChoice",
@@ -897,7 +928,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Fase 3: Analisi strategica e mercato",
     "description": "Dimensionare il mercato (TAM-SAM-SOM), analizzare la concorrenza e definire la proposta di valore.",
     "task": "Calcolare TAM-SAM-SOM, mappare competitor e definire KPI di impatto.",
@@ -931,8 +962,9 @@
             "content": "L’obiettivo operativo finale del dimensionamento è il calcolo del SOM (Serviceable Obtainable Market), ovvero la quota di mercato che la cooperativa prevede di acquisire concretamente nei primi 2-3 anni. A differenza del TAM e del SAM, il SOM dipende direttamente dalle reali capacità di esecuzione del team, dalle strategie di marketing e dal budget disponibile per la fase di avvio.\n\nNel manuale INDICOO si sottolinea l’importanza di utilizzare fonti attendibili (statistiche ufficiali, studi di settore o dati dei consorzi) e di rendere esplicite tutte le ipotesi di calcolo. Una stima del SOM prudente e ben documentata è essenziale per alimentare le proiezioni di ricavo della Fase 4 e per dimostrare solidità a soci e finanziatori istituzionali.\n\nQuesta metodologia consente di trasformare i dati raccolti durante le interviste e i test MVP della Fase 2 in volumi economici realistici."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_12.mp3",
+            "title": "TAM, SAM e SOM",
             "duration": 60
           },
           {
@@ -1001,8 +1033,9 @@
             "content": "Il posizionamento strategico definisce l’identità unica della cooperativa rispetto alle alternative esistenti, valorizzando fattori come la qualità, la specializzazione o la sostenibilità. Nel framework INDICOO, il modello cooperativo rappresenta spesso un vantaggio competitivo grazie al radicamento territoriale e alla partecipazione dei soci, elementi che contribuiscono a una qualità del servizio percepita come superiore.\n\nClienti e partner territoriali attribuiscono valore alla natura partecipativa e allo scopo mutualistico, aspetti difficilmente replicabili dalle grandi imprese profit. Questo posizionamento consente di evitare una competizione basata esclusivamente sul prezzo, proteggendo la marginalità economica.\n\nDefinire con chiarezza “cosa ci rende unici” permette di costruire una proposta di valore coerente con la missione sociale delineata nella Fase 1. Un posizionamento solido rende il SOM molto più difendibile agli occhi di banche e stakeholder."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_13.mp3",
+            "title": "Analisi competitiva",
             "duration": 60
           },
           {
@@ -1071,8 +1104,9 @@
             "content": "La Teoria del Cambiamento (ToC) garantisce che il posizionamento commerciale sia coerente con gli impatti sociali e ambientali desiderati, collegando le attività economiche ai benefici di lungo periodo per la comunità. Per rendere questo impatto misurabile, si utilizza l’Impact Planning Matrix, che traduce la missione in indicatori (KPI) e target numerici concreti a 1 e 3 anni.\n\nDefinire indicatori come il numero di soci stabilizzati o le tonnellate di CO₂ evitate consente di rendere l’impatto “leggibile” e professionale agli occhi di finanziatori e partner territoriali. Questo approccio evita che la cooperativa perda di vista la propria missione sociale originaria a favore della sola quota di mercato.\n\nMonitorare l’impatto permette un miglioramento continuo dei servizi e rafforza un’identità cooperativa trasparente. Una solida pianificazione dell’impatto è inoltre essenziale in vista della redazione del futuro Bilancio Sociale della cooperativa"
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_14.mp3",
+            "title": "Proposta di valore e impatto",
             "duration": 60
           },
           {
@@ -1128,11 +1162,6 @@
           {
             "type": "text",
             "content": "Al termine della Fase 3, il Business Model Canvas viene aggiornato alla Versione 1 (v1), integrando i dati reali di mercato, l’analisi dei competitor e le strategie di rete definite. Questa versione non si basa più solo su intuizioni, ma su evidenze che validano segmenti, canali e partner chiave.\n\nIl BMC v1 rappresenta il “progetto esecutivo” necessario per affrontare con rigore la successiva pianificazione finanziaria della Fase 4. La sintesi strategica prodotta alimenta sezioni cruciali del Business Plan, fornendo stime di ricavi fondate e una chiara strategia commerciale.\n\nUna Fase 3 ben documentata riduce l’incertezza tipica dei progetti in fase di avvio e aumenta la credibilità nei confronti di partner e investitori istituzionali. Il Canvas v1 diventa così uno strumento dinamico che garantisce la coerenza tra la visione strategica e l’operatività quotidiana della cooperativa"
-          },
-          {
-            "type": "video",
-            "content": "Inserisci link video",
-            "duration": 60
           },
           {
             "type": "interactive",
@@ -1198,7 +1227,7 @@
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Fase 4: Sostenibilità Finanziaria",
     "description": "Costruire l'Assumptions Table, monitorare il Cash Flow e analizzare il punto di pareggio.",
     "task": "Elaborare proiezioni finanziarie, cash flow e scenari prudenziali.",
@@ -1231,8 +1260,9 @@
             "content": "Nella compilazione pratica, occorre elencare variabili fondamentali come il numero di clienti, i prezzi medi di vendita, gli stipendi dei soci, i costi fissi (affitti, utenze) e quelli variabili (materie prime, marketing). Per ogni voce, bisogna indicare l'unità di misura, il periodo di riferimento e la fonte del dato. È inoltre essenziale distinguere tra le ipotesi \"core\", che definiscono la struttura base, e le ipotesi \"sensibili\", ovvero quelle variabili (come il tasso di conversione clienti) il cui minimo mutamento può stravolgere il risultato finale del progetto."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_15.mp3",
+            "title": "Assumptions Table",
             "duration": 60
           },
           {
@@ -1300,8 +1330,9 @@
             "content": "Per costruire un Cash Flow efficace, bisogna inserire tutte le entrate (incassi da vendite, conferimenti di capitale dei soci, finanziamenti bancari o bandi) e tutte le uscite (stipendi, affitti, tasse, rimborsi prestiti). Un calcolo fondamentale derivato da questo strumento è il massimo deficit cumulato, che rappresenta il punto più basso della cassa prima che la cooperativa inizi a rigenerare liquidità. Questo dato definisce con precisione il fabbisogno finanziario iniziale: ovvero quanti soldi servono realmente per partire senza rischiare il fallimento tecnico nei primi mesi di vita."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_16.mp3",
+            "title": "Cash Flow",
             "duration": 60
           },
           {
@@ -1367,8 +1398,9 @@
             "content": "Il calcolo si basa sul margine unitario, ovvero la differenza tra il prezzo medio di vendita e il costo variabile per singola unità. Dividendo i costi fissi totali per questo margine, si ottiene il numero di prodotti o servizi da vendere per pareggiare i conti. Questa analisi funge da vero e proprio \"stress test\": se il volume di vendite richiesto per il pareggio appare irrealistico rispetto alla capacità operativa del team o alla dimensione del mercato (SOM) stimata in Fase 3, allora il modello di business va rivisto profondamente prima di procedere alla costituzione legale."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_17.mp3",
+            "title": "Break-even Analysis",
             "duration": 60
           },
           {
@@ -1434,8 +1466,9 @@
             "content": "Nello scenario prudenziale, si ipotizzano solitamente volumi di vendita ridotti (es. -20%), costi leggermente superiori o incassi più lenti da parte dei clienti. Per ogni scenario, bisogna ricalcolare il margine, il break-even e soprattutto il runway. Se nello scenario prudenziale il runway risulta troppo breve (es. meno di pochi mesi), la cooperativa si trova in una zona di alto rischio di liquidità. Questa analisi multidimensionale è ciò che differenzia un Business Plan amatoriale da uno \"Data-driven\" professionale, capace di rassicurare soci, banche e partner istituzionali."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_18.mp3",
+            "title": "Runway e Scenari",
             "duration": 60
           },
           {
@@ -1494,7 +1527,7 @@
     }
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Fase 5: Formalizzazione e Governance",
     "description": "Definire la tipologia di cooperativa, l'architettura organizzativa e redigere statuto e regolamenti.",
     "task": "Scegliere tipologia cooperativa e definire organigramma operativo e politico.",
@@ -1524,8 +1557,9 @@
             "content": "Il regime di mutualità prevalente è un pilastro del modello cooperativo e comporta il rispetto di determinati requisiti normativi sulla prevalenza dei rapporti con i soci. Questa qualifica permette di accedere a importanti agevolazioni fiscali, come l'esenzione IRES su una parte degli utili destinati a riserva indivisibile. Tuttavia, implica anche vincoli precisi sulla distribuzione degli utili e sulla gestione del patrimonio in caso di scioglimento. Comprendere questi meccanismi è vitale per garantire la sostenibilità di lungo periodo e la coerenza con i principi di partecipazione e solidarietà."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_19.mp3",
+            "title": "Tipologia di cooperativa",
             "duration": 60
           },
           {
@@ -1590,8 +1624,9 @@
             "content": "Per costruire un organigramma efficace, il team deve collegare i ruoli alle competenze rilevate precedentemente nella Skill Matrix. Non si tratta di assegnare titoli, ma di distribuire responsabilità gestionali in base alla capacità reale di esecuzione del business model. Questo processo permette di identificare se permangono gap che richiedono consulenti esterni o l'inserimento di nuovi soci lavoratori. Un assetto basato sulle competenze aumenta la credibilità della cooperativa agli occhi di banche e partner, dimostrando che il team è tecnicamente pronto a gestire il progetto."
           },
           {
-            "type": "video",
-            "content": "Inserisci link video",
+            "type": "audio",
+            "content": "/audio/pills/pill_20.mp3",
+            "title": "Organigramma e ruoli",
             "duration": 60
           },
           {
@@ -1654,11 +1689,6 @@
           {
             "type": "text",
             "content": "Il regolamento del lavoro disciplina il rapporto tra la cooperativa e i suoi soci lavoratori, definendo orari, turni, diritti e compensi. Questo documento deve essere coerente con i Contratti Collettivi Nazionali (CCNL) di riferimento, ma può includere specifiche sull'organizzazione interna e sulla flessibilità. Definire criteri chiari per l'accesso al ruolo di socio e per il periodo di prova riduce il rischio di incomprensioni e malumori. È un atto di trasparenza che trasforma i soci in lavoratori consapevoli dei propri doveri e protetti nei propri diritti."
-          },
-          {
-            "type": "video",
-            "content": "Inserisci link video",
-            "duration": 60
           },
           {
             "type": "interactive",

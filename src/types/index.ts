@@ -13,8 +13,9 @@ export interface UserProfile {
 // --- DYNAMIC LESSON TYPES ---
 
 export type ContentChunk = 
-  | { type: 'text' | 'video'; content: string; duration?: number; }
+  | { type: 'text' | 'video' | 'audio'; content: string; duration?: number; title?: string; }
   | { type: 'interactive'; gamification: InlineGamification; };
+
 
 export type InlineGamification = 
   | { type: 'quickCheck'; data: QuickCheck }
