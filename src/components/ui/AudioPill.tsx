@@ -98,9 +98,9 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
         </div>
 
         {/* Info & Controls */}
-        <div className="flex-grow space-y-3">
+        <div className="grow space-y-3">
           <div className="space-y-1">
-            <p className="text-secondary font-display font-black text-[10px] uppercase tracking-[0.2em] opacity-70">
+            <p className="text-secondary font-display font-black text-[10px] uppercase tracking-widest opacity-70">
               Le pillole di Aldo
             </p>
             <h4 className="text-primary font-display font-black text-2xl leading-tight tracking-tight italic">
@@ -116,7 +116,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
               {isPlaying ? <Pause fill="currentColor" /> : <Play className="ml-1" fill="currentColor" />}
             </button>
             
-            <div className="flex-grow space-y-1">
+            <div className="grow space-y-1">
               <input 
                 type="range" 
                 min="0" 
