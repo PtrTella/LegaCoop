@@ -133,7 +133,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
                       ? 'bg-surface-container-lowest text-primary border-border-subtle rounded-tl-none font-medium text-base'
                       : 'bg-gradient-accent-reverse text-white border-transparent rounded-tr-none text-sm'
                   }`}>
-                    {renderTextWithKeywords(msg.parts[0].text)}
+                    {renderTextWithKeywords(msg.parts[0].text.replace(/\[?\[?\s*SCORE:\s*\d+\s*\]?\]?/gi, ''))}
                   </div>
                 </div>
               </motion.div>

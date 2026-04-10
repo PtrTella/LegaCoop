@@ -1,9 +1,8 @@
 import { GoogleGenAI } from '@google/genai';
-import path from 'path';
 
 // --- CONFIGURAZIONE ESSENZIALE GORDON (PITCH) ---
 const MODEL_CONFIG = {
-  model: "gemini-2.5-flash",
+  model: "gemma-4-26b-a4b-it",
   temperature: 0.9,
   systemPrompt: `Sei "Gordon", un investitore cinico assaltatore tipico del mondo Venture Capital americano. 
     L'utente di fronte a te sta cercando di proporti l'idea di creare una *Cooperativa*.
@@ -16,8 +15,7 @@ const MODEL_CONFIG = {
     
     [CRITICAL]: Alla fine di OGNI tua risposta, devi ASSOLUTAMENTE includere un punteggio segreto che indica quanto sei convinto (da 0 a 100).
     Il formato deve essere ESATTAMENTE: [[SCORE: valore]] (es. [[SCORE: 45]]). 
-    Questo valore deve riflettere la progressione della fiducia: 0 = Zero fiducia, 100 = Accetti l'idea cooperativa.`,
-  resources: [""]
+    Questo valore deve riflettere la progressione della fiducia: 0 = Zero fiducia, 100 = Accetti l'idea cooperativa.`
 };
 
 export default async function handler(req: any, res: any) {
@@ -29,20 +27,6 @@ export default async function handler(req: any, res: any) {
   const API_KEY = process.env.GEMINI_API_KEY || '';
   const ai = new GoogleGenAI({ apiKey: API_KEY });
 
-  // Upload Manuale sulla File API (Ogni 48 ore)
-  if (!global.fileUriPitch) {
-      try {
-        const uploadResult = await ai.files.upload({
-        file: path.join(process.cwd(), MODEL_CONFIG.resources[0]),
-          config: { mimeType: "application/pdf" }
-        });
-        global.fileUriPitch = uploadResult.uri;
-        global.fileMimeTypePitch = uploadResult.mimeType;
-    } catch (e) { console.warn("Errore File API:", e); }
-  }
-
-  const fileData = global.fileUriPitch ? { fileUri: global.fileUriPitch, mimeType: global.fileMimeTypePitch } : null;
-
   // Formatta cronologia chat (user/model)
   const contents = messages.map((m: any) => ({
     role: (m.role === 'bot' || m.role === 'model' ? 'model' : 'user'),
@@ -50,25 +34,35 @@ export default async function handler(req: any, res: any) {
   }));
 
   try {
+    const finalizedContents = [...contents];
+    
+    // Gemini richiede rigorosamente che la history inizi con un 'user'.
+    // Poichè il frontend spesso invia un messaggio 'model' (Gordon) come prima riga, preveniamo il crash.
+    if (finalizedContents.length > 0 && finalizedContents[0].role === 'model') {
+      finalizedContents.unshift({ role: 'user', parts: [{ text: '(Entro nella stanza e mi siedo di fronte a Gordon)' }] });
+    }
+
     const result = await ai.models.generateContent({
       model: MODEL_CONFIG.model,
-      contents: [
-        ...(fileData ? [{ role: "user", parts: [{ fileData }] }] : []),
-        { role: "user", parts: [{ text: `[SYSTEM_ALERT]: ${MODEL_CONFIG.systemPrompt}` }] },
-        ...contents
-      ],
-      config: { temperature: MODEL_CONFIG.temperature }
+      contents: finalizedContents,
+      config: { 
+        temperature: MODEL_CONFIG.temperature,
+        systemInstruction: MODEL_CONFIG.systemPrompt
+      }
     });
     
     let fullText = result.text || '';
     let score = 0;
     
-    // Extract score from [[SCORE: X]]
-    const scoreMatch = fullText.match(/\[\[SCORE:\s*(\d+)\]\]/);
+    // Extract score from [[SCORE: X]] or [SCORE: X] or SCORE: X
+    const parseRegex = /\[?\[?\s*SCORE:\s*(\d+)\s*\]?\]?/i;
+    const scoreMatch = fullText.match(parseRegex);
     if (scoreMatch) {
       score = parseInt(scoreMatch[1], 10);
-      // Clean the text from the meta-tag
-      fullText = fullText.replace(/\[\[SCORE:\s*\d+\]\]/, '').trim();
+      // We keep the score tag in the text so that it persists in chat history 
+      // for the next turn, allowing Gordon to see his previous conviction level.
+      // But we remove extra markdown artifacts if present.
+      fullText = fullText.replace(/\*\*\s*\*\*/g, '').trim(); 
     }
     
     return res.status(200).json({ text: fullText, score });
