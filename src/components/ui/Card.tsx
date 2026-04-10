@@ -3,10 +3,11 @@ import { motion, HTMLMotionProps } from 'motion/react';
 
 interface CardProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
-  padding?: 'p-6' | 'p-8' | 'p-10' | 'p-0';
-  rounded?: 'rounded-2xl' | 'rounded-3xl' | 'rounded-4xl' | 'rounded-5xl';
+  padding?: string;
+  rounded?: string;
   hoverable?: boolean;
 }
+
 
 export const Card = ({ 
   children, 

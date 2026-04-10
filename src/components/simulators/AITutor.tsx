@@ -51,8 +51,9 @@ export const AITutor = () => {
           whileHover={{ scale: 1.05, y: -4 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-primary-deep text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/10 group overflow-hidden"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-primary-deep text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/10 group overflow-hidden"
         >
+
           <div className="absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity" />
           <MessageSquare className="w-7 h-7 relative z-10" />
           <div className="absolute top-3 right-3 w-3 h-3 bg-tertiary rounded-full border-2 border-primary animate-pulse" />
@@ -66,9 +67,9 @@ export const AITutor = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-8 right-8 w-full max-w-sm flex flex-col overflow-hidden rounded-4xl z-50 shadow-2xl border border-border-subtle bg-white"
-            style={{ height: '37.5rem' }}
+            className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-8 sm:right-8 sm:w-full sm:max-w-sm flex flex-col overflow-hidden rounded-4xl z-50 shadow-2xl border border-border-subtle bg-white h-[80vh] sm:h-tutor-h"
           >
+
             {/* Header */}
             <div className="p-6 bg-gradient-brand text-white flex items-center justify-between shrink-0">
               <div className="flex items-center gap-4">

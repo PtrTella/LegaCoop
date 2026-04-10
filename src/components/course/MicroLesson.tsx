@@ -41,8 +41,9 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
       className="relative"
     >
       {chunk.type === 'text' && (
-        <Card padding="p-10">
-          <article className="text-primary/80 text-xl font-body leading-[1.7] selection:bg-secondary/20">
+        <Card padding="p-6 sm:p-10">
+          <article className="text-primary/80 text-lg sm:text-xl font-body leading-[1.7] selection:bg-secondary/20">
+
             {renderTextWithKeywords(chunk.content, keywords)}
           </article>
         </Card>
@@ -131,7 +132,8 @@ export const MicroLesson = ({
   const showNextButton = !isInteractive || isSolved;
 
   return (
-    <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-12 pb-64 pt-12 px-6">
+    <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-8 sm:space-y-12 pb-64 pt-6 sm:pt-12 px-4 sm:px-6">
+
       {/* Header statico e pulito */}
       <header className="space-y-4 pt-4">
         <div className="flex items-center gap-3">
@@ -142,14 +144,16 @@ export const MicroLesson = ({
             {phaseTitle}
           </p>
         </div>
-        <h2 className="text-5xl md:text-7xl font-display font-black text-primary leading-[0.95] tracking-tighter italic">
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-black text-primary leading-[0.95] tracking-tighter italic">
           {lesson.title}
         </h2>
+
         <div className="w-24 h-1.5 bg-secondary/20 rounded-full mt-6" />
       </header>
 
       {/* Learning Flow: Linear rendering of active chunks */}
-      <div className="space-y-12 relative">
+      <div className="space-y-8 sm:space-y-12 relative">
+
         {lesson.contentChunks.slice(0, visibleStepLimit + 1).map((chunk, idx) => (
           <ChunkRenderer 
             key={`${lesson.id}-${idx}`}
