@@ -3,11 +3,11 @@
     "id": 0,
     "title": "Fase 0: Contesto e Territorio",
     "description": "Sulla scia dell'innovazione sociale: impara ad ascoltare il territorio, mappare l'ecosistema e validare il bisogno reale prima di trasformare la tua idea in una cooperativa solida e resiliente.",
-    "task": "Identificare bisogni urgenti, mappare gli stakeholder e valutare opportunità pilota per fondamenta d'impresa solide.",
+    "task": "Individuare bisogni prioritari, stakeholder chiave e opportunità pilota.",
     "lessons": [
       {
         "id": "l-0-1",
-        "title": "VALIDARE L'URGENZA E SCHEDARE IL BISOGNO",
+        "title": "Validare l'urgenza e schedare il bisogno",
         "keywords": {
           "startup cooperativa": "Impresa che nasce per soddisfare bisogni prioritari e specifici di una comunità locale.",
           "Scheda Bisogno Reale": "Documento di sintesi (massimo 1 pagina) composto da 5 blocchi informativi specifici.",
@@ -83,7 +83,7 @@
       },
       {
         "id": "l-0-2",
-        "title": "L'ECOSISTEMA: SCANSIONARE IL TERRITORIO",
+        "title": "L'ecosistema: scansionare il territorio",
         "keywords": {
           "Ecosystem Map": "Strumento visuale (o Stakeholder Matrix) utilizzato per classificare e analizzare le realtà presenti sul territorio.",
           "Stakeholder": "Realtà, reti, persone o enti che hanno un interesse o il potere di influenzare il progetto.",
@@ -157,7 +157,7 @@
       },
       {
         "id": "l-0-3",
-        "title": "VERIFICA DELLE OPPORTUNITÀ PILOTA",
+        "title": "Verifica delle opportunità pilota",
         "keywords": {
           "Test pilota": "Sperimentazione in scala ridotta di un servizio o prodotto prima della costituzione ufficiale.",
           "Trappola dei Bandi": "Rischio mortale per i progetti d'impresa, in cui il progetto viene forzato e snaturato solo per vincere un finanziamento.",
@@ -230,7 +230,7 @@
       },
       {
         "id": "l-0-4",
-        "title": "SCELTA DELLA FORMA GIURIDICA: COOPERATIVA O SRL?",
+        "title": "Scelta della forma giuridica: cooperativa o SRL?",
         "keywords": {
           "mutualistica": "Logica d'impresa volta a soddisfare i bisogni della compagine sociale e del territorio, senza focalizzarsi primariamente sul profitto di chi investe.",
           "riserva indivisibile": "Patrimonio collettivo generato dagli utili che non può mai essere distribuito alla compagine sociale, nemmeno in caso di scioglimento della società.",
@@ -619,7 +619,7 @@
     "lessons": [
       {
         "id": "l-2-1",
-        "title": "Definire il Target (Buyer Persona)",
+        "title": "Definire il target (buyer persona)",
         "keywords": {
           "Buyer Persona": "Profilo semi-fittizio del cliente/socio ideale basato su dati reali",
           "Segmenti": "Gruppi specifici di beneficiari (es. B2B, B2C) con caratteristiche omogenee",
@@ -688,7 +688,7 @@
       },
       {
         "id": "l-2-2",
-        "title": "Customer Discovery e Interviste di Problema",
+        "title": "Customer discovery e interviste di problema",
         "keywords": {
           "Customer Discovery": "Processo di ricerca per validare ipotesi su clienti e problemi",
           "Interviste qualitative": "Colloqui basati su domande aperte ed episodi concreti",
@@ -756,7 +756,7 @@
       },
       {
         "id": "l-2-3",
-        "title": "Sperimentazione e Progettazione dell'MVP",
+        "title": "Sperimentazione e progettazione dell'MVP",
         "keywords": {
           "MVP": "Versione minima di un servizio per validare l'interesse con il minimo sforzo",
           "Javelin Board": "Strumento per tracciare il ciclo ipotesi-esperimento-risultati-scelta",
@@ -825,7 +825,7 @@
       },
       {
         "id": "l-2-4",
-        "title": "Sintesi, Modello di Business e Decisione Strategica",
+        "title": "Sintesi, modello di business e decisione strategica",
         "keywords": {
           "Pivot": "Cambio di rotta strategico su un elemento del progetto basato sui test",
           "Business Model Canvas": "Schema in 9 blocchi che descrive come l'impresa crea valore",
@@ -904,7 +904,7 @@
     "lessons": [
       {
         "id": "l-3-1",
-        "title": "Dimensionare il Mercato (TAM–SAM–SOM)",
+        "title": "Dimensionare il mercato (TAM–SAM–SOM)",
         "keywords": {
           "TAM (Total Addressable Market)": "rappresenta la dimensione teorica complessiva del mercato potenziale a livello globale o nazionale per il servizio offerto.",
           "SAM (Serviceable Available Market)": "definisce la porzione del mercato totale effettivamente raggiungibile dalla cooperativa, tenendo conto dei vincoli geografici e operativi.",
@@ -974,7 +974,7 @@
       },
       {
         "id": "l-3-2",
-        "title": " Analisi Competitiva e Differenziazione",
+        "title": "Analisi competitiva e differenziazione",
         "keywords": {
           "Matrice competitor": "strumento utilizzato per confrontare sistematicamente la cooperativa con almeno tre concorrenti significativi su variabili come target, prezzi e canali.",
           "Non-mercato": "insieme delle soluzioni informali o “fai-da-te” che i beneficiari utilizzano attualmente per rispondere ai propri bisogni in assenza di servizi strutturati.",
@@ -1044,7 +1044,7 @@
       },
       {
         "id": "l-3-3",
-        "title": " Affinare la Proposta di Valore e l'Impatto",
+        "title": "Affinare la proposta di valore e l'impatto",
         "keywords": {
           "Value Proposition Canvas": "schema che mette in relazione i compiti e le difficoltà dei clienti con i prodotti e i servizi offerti dalla cooperativa.",
           "Impact Planning Matrix": "tabella operativa che traduce la missione sociale in indicatori (KPI) e target numerici concreti da monitorare nel tempo.",
@@ -1205,7 +1205,7 @@
     "lessons": [
       {
         "id": "l-4-1",
-        "title": "Costruire le Fondamenta – L’Assumptions Table",
+        "title": "Costruire le fondamenta – l’assumptions table",
         "keywords": {
           "Assumptions Table": "Tabella che raccoglie e giustifica le principali ipotesi numeriche (prezzi, volumi, costi) alla base del modello.",
           "Benchmark": "Valore di riferimento basato su dati di mercato o standard di settore utilizzato per validare un'ipotesi."
@@ -1274,7 +1274,7 @@
       },
       {
         "id": "l-4-2",
-        "title": "Il Cash Flow – Monitorare la Sopravvivenza Mensile",
+        "title": "Il cash flow – monitorare la sopravvivenza mensile",
         "keywords": {
           "Cash Flow (Rendiconto Finanziario)": "Prospetto che simula mese per mese le entrate e le uscite di denaro contante.",
           "Fabbisogno di Cassa": "La quantità totale di liquidità necessaria per coprire i periodi in cui le uscite superano le entrate effettive."
@@ -1341,7 +1341,7 @@
       },
       {
         "id": "l-4-3",
-        "title": "Break-even Analysis – Verso l'Autosufficienza",
+        "title": "Break-even analysis – verso l'autosufficienza",
         "keywords": {
           "Break-even Point (Punto di Pareggio)": "Il livello di attività minimo in cui i ricavi totali eguagliano i costi totali.",
           "Costi Fissi": "Spese che non variano al variare dei volumi di produzione, come l'affitto o le assicurazioni."
@@ -1408,7 +1408,7 @@
       },
       {
         "id": "l-4-4",
-        "title": "Runway e Scenari – Gestire l'Incertezza",
+        "title": "Runway e scenari – gestire l'incertezza",
         "keywords": {
           "Runway": "Numero di mesi di autonomia finanziaria garantiti dalla liquidità disponibile prima che la cassa si esaurisca.",
           "Scenario Prudenziale": "Modello che ipotizza condizioni meno favorevoli (es. meno ricavi, costi più alti) per testare la tenuta del progetto."
@@ -1567,7 +1567,7 @@
       },
       {
         "id": "l-5-2",
-        "title": "ARCHITETTURA ORGANIZZATIVA E RUOLI",
+        "title": "Architettura organizzativa e ruoli",
         "keywords": {},
         "contentChunks": [
           {
