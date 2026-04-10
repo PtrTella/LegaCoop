@@ -18,17 +18,19 @@ export interface CoFounderProfile {
 
 // --- SKILL BADGE (shared between card & detail) ---
 
-const SkillTag = ({ skill, highlighted = false }: { key?: React.Key; skill: string; highlighted?: boolean }) => (
+const SkillTag = React.memo(({ skill, highlighted = false }: { skill: string; highlighted?: boolean }) => (
   <span className={`px-2.5 py-1 rounded-lg font-display font-black text-2xs uppercase tracking-widest-plus transition-colors ${
     highlighted ? 'bg-secondary/15 text-secondary' : 'bg-surface-container-low text-primary/40'
   }`}>
     {skill}
   </span>
-);
+));
+
+SkillTag.displayName = 'SkillTag';
 
 // --- FILTER BUTTON ---
 
-const FilterChip = ({ label, active, onClick }: { key?: React.Key; label: string; active: boolean; onClick: () => void }) => (
+const FilterChip = React.memo(({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) => (
   <button
     onClick={onClick}
     className={`px-3 py-1.5 rounded-xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
@@ -39,37 +41,38 @@ const FilterChip = ({ label, active, onClick }: { key?: React.Key; label: string
   >
     {label}
   </button>
-);
+));
+
+FilterChip.displayName = 'FilterChip';
 
 // --- PROFILE CARD ---
 
-const ProfileCard = ({ profile, activeSkills, onClick }: {
-  key?: React.Key;
+const ProfileCard = React.memo(({ profile, activeSkills, onClick }: {
   profile: CoFounderProfile;
   activeSkills: string[];
   onClick: () => void;
 }) => (
   <motion.div
-    layout="position"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.18 }}
-    whileHover={{ y: -4, scale: 1.02 }}
+    initial={{ opacity: 0, scale: 0.98 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.98 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    whileHover={{ y: -4, scale: 1.01 }}
     onClick={onClick}
-    className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/20 transition-all flex flex-col"
+    className="bg-surface-container-lowest p-6 rounded-4xl shadow-ambient cursor-pointer group border border-transparent hover:border-secondary/20 transition-all flex flex-col h-full min-h-40"
   >
     <div className="flex items-start gap-4">
       <img
         src={`https://picsum.photos/seed/${profile.avatarSeed}/120/120`}
         alt={profile.name}
         className="w-14 h-14 rounded-2xl object-cover shadow-lg group-hover:scale-105 transition-transform duration-300 shrink-0 border-2 border-white"
+        loading="lazy"
       />
       <div className="flex-1 min-w-0">
         {profile.badge && (
           <span className="text-[9px] font-display font-black text-secondary uppercase tracking-ultra mb-1 block">{profile.badge}</span>
         )}
-        <h4 className="font-display font-black text-primary text-base tracking-tight leading-tight italic">{profile.name}</h4>
+        <h4 className="font-display font-black text-primary text-base tracking-tight leading-tight italic truncate">{profile.name}</h4>
         <div className="flex items-center gap-1.5 mt-1.5">
           <MapPin className="w-3.5 h-3.5 text-primary/30 shrink-0" />
           <span className="text-xs-tight text-primary/40 font-body truncate">{profile.location}</span>
@@ -94,7 +97,9 @@ const ProfileCard = ({ profile, activeSkills, onClick }: {
       <span className="text-xs-tight text-primary/30 font-body uppercase tracking-widest-plus">{profile.availability}</span>
     </div>
   </motion.div>
-);
+));
+
+ProfileCard.displayName = 'ProfileCard';
 
 // --- PROFILE DETAIL MODAL ---
 
@@ -202,6 +207,7 @@ export const CoFounderSearch = () => {
 
   // Memoized: only recompute when profiles/activeSkills change
   const allSkills = useMemo(() => Array.from(new Set(profiles.flatMap(p => p.skills))), [profiles]);
+  
   const filtered = useMemo(
     () => activeSkills.length === 0 ? profiles : profiles.filter(p => activeSkills.some(s => p.skills.includes(s))),
     [profiles, activeSkills]
@@ -210,6 +216,8 @@ export const CoFounderSearch = () => {
   const toggleSkill = useCallback((skill: string) => {
     setActiveSkills(prev => prev.includes(skill) ? prev.filter(s => s !== skill) : [...prev, skill]);
   }, []);
+
+  const resetFilters = useCallback(() => setActiveSkills([]), []);
 
   return (
     <div className="space-y-10">
@@ -245,7 +253,7 @@ export const CoFounderSearch = () => {
               ))}
               {activeSkills.length > 0 && (
                 <button
-                  onClick={() => setActiveSkills([])}
+                  onClick={resetFilters}
                   className="flex items-center gap-2 rounded-xl bg-tertiary/10 px-4 py-2 font-display text-xs-tight font-black uppercase tracking-widest-plus text-tertiary transition-all hover:bg-tertiary/20"
                 >
                   <X className="h-4 w-4" /> Reset
@@ -254,9 +262,9 @@ export const CoFounderSearch = () => {
             </div>
           </div>
 
-          {/* Grid — motion.div with layout so the container reshapes smoothly */}
-          <motion.div layout className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            <AnimatePresence mode="popLayout">
+          {/* Grid — Optimized motion.div */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 min-h-100">
+            <AnimatePresence mode="popLayout" initial={false}>
               {filtered.map(profile => (
                 <ProfileCard
                   key={profile.id}
@@ -266,12 +274,12 @@ export const CoFounderSearch = () => {
                 />
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
 
           {filtered.length === 0 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="py-24 text-center">
               <p className="font-display text-2xl font-black italic text-primary/20">Nessun profilo trovato</p>
-              <button onClick={() => setActiveSkills([])} className="mt-4 font-display text-xs-tight font-black uppercase tracking-widest-plus text-secondary hover:underline underline-offset-8 transition-all">
+              <button onClick={resetFilters} className="mt-4 font-display text-xs-tight font-black uppercase tracking-widest-plus text-secondary hover:underline underline-offset-8 transition-all">
                 Rimuovi tutti i filtri
               </button>
             </motion.div>

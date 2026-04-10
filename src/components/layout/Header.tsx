@@ -28,10 +28,10 @@ export const Header = ({
   const progressToNextLevel = (state.maturityScore % 20) * 5; // Scale to 100%
 
   return (
-    <header className="sticky top-0 z-40 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
-      <div className="flex items-center gap-8">
+    <header className="sticky top-0 z-40 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
+      <div className="flex items-center gap-3 md:gap-8 text-nowrap">
         {/* Branding (Moved from Sidebar) */}
-        <div className="flex cursor-pointer items-center gap-3" onClick={() => setView('dashboard')}>
+        <div className="flex cursor-pointer items-center gap-2 md:gap-3" onClick={() => setView('dashboard')}>
           <div className="group relative flex h-8 w-8 -rotate-3 transform items-center justify-center rounded-xl bg-gradient-brand shadow-ambient shadow-primary/10">
              <div className="absolute inset-0 animate-pulse rounded-xl bg-white/20" />
              <span className="z-10 font-display text-base font-black text-white">L</span>
@@ -49,24 +49,27 @@ export const Header = ({
             return (
               <motion.button
                 key={item.id}
+                layout
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setView(item.id)}
-                className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-500 ${
+                className={`flex items-center gap-2 rounded-full px-3 md:px-4 py-2 transition-all duration-500 ${
                   isActive 
                     ? 'bg-gradient-brand text-white shadow-md shadow-primary/20' 
                     : 'text-primary/40 hover:text-primary'
                 }`}
               >
                 <item.icon className={`h-3.5 w-3.5 ${isActive ? 'text-tertiary' : ''}`} />
-                <span className="font-display text-sm-alt font-black uppercase tracking-wider">{item.label}</span>
+                <span className={`font-display text-sm-alt font-black uppercase tracking-wider ${isActive ? 'block' : 'hidden md:block'}`}>
+                  {item.label}
+                </span>
               </motion.button>
             );
           })}
         </nav>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 md:gap-6">
         {/* Evolution Metrics (XP & Level) - Centralized in App */}
         <div className="hidden items-center gap-4 rounded-full bg-surface-container-low px-4 py-2 shadow-sm lg:flex">
            <div className="flex flex-col items-end gap-0.5">
@@ -90,7 +93,7 @@ export const Header = ({
         </div>
 
         {/* User Profile */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3 cursor-pointer">
           <div className="hidden text-right sm:block">
             <p className="mb-0.5 font-display text-xs font-black leading-none text-primary">Pietro Tellarini</p>
             <p className="font-bold uppercase tracking-widest-plus text-primary/30 text-3xs">Founder</p>
