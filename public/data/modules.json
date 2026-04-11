@@ -15,7 +15,17 @@
         "contentChunks": [
           {
             "type": "text",
-            "content": "Benvenuto! Prima di iniziare la Fase 0, prenditi qualche minuto per ascoltare queste introduzioni fondamentali. Aldo ti spiegherà come muoverti tra le sfide e i test che ti aspettano."
+            "content": "Benvenuto nello spazio digitale di Legacoop, la più antica associazione di rappresentanza delle imprese cooperative in Italia. Fondata nel 1886, la nostra realtà unisce migliaia di imprese che hanno scelto di mettere la persona al centro dell'economia, trasformando i valori del mutualismo e della democrazia in una forza produttiva capace di competere sui mercati globali. Questa piattaforma illustra l'impegno di una rete capillare che, dalla distribuzione all'agroalimentare fino ai servizi sociali, lavora ogni giorno per generare uno sviluppo sostenibile, inclusivo e profondamente radicato nel territorio nazionale"
+          },
+          {
+            "type": "video",
+            "content": "https://youtu.be/ee1aILSHPaE",
+            "title": "La realtà Legacoop",
+            "duration": 98
+          },
+          {
+            "type": "text",
+            "content": "Prima di iniziare la Fase 0, prenditi qualche minuto per ascoltare queste introduzioni fondamentali. Aldo ti spiegherà come muoverti tra le sfide e i test che ti aspettano."
           },
           {
             "type": "audio",
