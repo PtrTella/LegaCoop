@@ -1,6 +1,7 @@
 // --- USER PROFILE ---
 
-export interface UserProfile {
+export interface CoFounderProfile {
+  id: number;
   name: string;
   location: string;
   role: string;
@@ -8,7 +9,10 @@ export interface UserProfile {
   vision: string;
   availability: string;
   avatarSeed: string;
+  badge?: string;
 }
+
+export type UserProfile = CoFounderProfile;
 
 export interface CooperativeProfile {
   id: number;

@@ -99,6 +99,17 @@ export const TeamView = () => {
   const { userProfile } = state;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab ] = useState<'individuals' | 'cooperatives'>('individuals');
+  
+  // Lifted state for synchronization
+  const [talentFilters, setTalentFilters] = useState<string[]>([]);
+  const [coopFilters, setCoopFilters] = useState<string[]>([]);
+
+  const toggleTalentFilter = (f: string) => setTalentFilters(prev => 
+    prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]
+  );
+  const toggleCoopFilter = (f: string) => setCoopFilters(prev => 
+    prev.includes(f) ? prev.filter(x => x !== f) : [...prev, f]
+  );
 
   const handleSave = (profile: UserProfile) => {
     updateUserProfile(profile);
@@ -121,7 +132,7 @@ export const TeamView = () => {
 
         {/* --- Section 1: Personal Hub & Strategic Connections --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          <div className="lg:col-span-5 h-full">
+          <div className="lg:col-span-7 h-full">
              <AnimatePresence mode="wait">
               {userProfile ? (
                 <FounderCard
@@ -138,7 +149,7 @@ export const TeamView = () => {
             </AnimatePresence>
           </div>
 
-          <div className="lg:col-span-7 h-full">
+          <div className="lg:col-span-5 h-full">
             <div className="bg-gradient-brand p-8 rounded-4xl text-white relative overflow-hidden group h-full flex flex-col justify-between shadow-ambient">
               <div className="absolute top-0 right-0 p-8 opacity-10 scale-150 rotate-12 transition-transform group-hover:rotate-0 pointer-events-none">
                  <Zap size={140} fill="white" />
@@ -165,66 +176,119 @@ export const TeamView = () => {
           </div>
         </div>
 
-        {/* --- Section 2: Unified Discovery Module (Title + Switcher Integrated) --- */}
-        <div className="space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-primary/5 pb-8">
-            <div className="space-y-1">
-              <p className="text-secondary font-display font-black text-[11px] uppercase tracking-mega">Discovery Engine</p>
-              <h2 className="text-2xl md:text-4xl font-display font-black text-primary tracking-tight italic leading-none">
-                Esplora <span className="not-italic text-primary/20">Ecosistema</span>
-              </h2>
+        {/* --- Section 2: Unified Control Hub (Title + Switcher + Filters) --- */}
+        <div className="space-y-10 pt-4">
+          <div className="bg-white/40 backdrop-blur-xl rounded-5xl border border-white/50 p-6 md:p-10 shadow-ambient space-y-8 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-secondary/10 transition-all duration-1000" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-lg shadow-secondary/40" />
+                  <p className="text-secondary font-display font-black text-[10px] uppercase tracking-mega">Ecosystem Hub</p>
+                </div>
+                <h2 className="text-3xl md:text-5xl font-display font-black text-primary tracking-tighter italic leading-none">
+                  Esplora <span className="not-italic text-primary/20">Ecosistema.</span>
+                </h2>
+              </div>
+
+              {/* Tab Switcher */}
+              <div className="relative flex bg-secondary/10 backdrop-blur-xl p-1.5 rounded-[1.8rem] border border-secondary/20 w-full md:w-fit overflow-hidden shadow-inner shrink-0">
+                <div 
+                  className="absolute top-1.5 bottom-1.5 transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) bg-white rounded-2xl shadow-xl border border-white/50"
+                  style={{
+                    left: activeTab === 'individuals' ? '6px' : 'calc(50% + 3px)',
+                    width: 'calc(50% - 9px)'
+                  }}
+                />
+                <button 
+                  onClick={() => setActiveTab('individuals')}
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                    activeTab === 'individuals' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                  }`}
+                >
+                  <UserPlus size={18} className={activeTab === 'individuals' ? 'text-secondary' : ''} /> Talenti
+                </button>
+                <button 
+                  onClick={() => setActiveTab('cooperatives')}
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                    activeTab === 'cooperatives' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                  }`}
+                >
+                  <Building2 size={18} className={activeTab === 'cooperatives' ? 'text-secondary' : ''} /> Imprese
+                </button>
+              </div>
             </div>
 
-            {/* High Emphasis Tab Switcher (NO SCROLL LOGIC) */}
-            <div className="relative flex bg-secondary/10 backdrop-blur-xl p-1.5 rounded-[1.6rem] border border-secondary/20 w-full md:w-fit overflow-hidden shadow-inner">
-              <div 
-                className="absolute top-1.5 bottom-1.5 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) bg-white rounded-xl shadow-lg border border-white/50"
-                style={{
-                  left: activeTab === 'individuals' ? '6px' : 'calc(50% + 3px)',
-                  width: 'calc(50% - 9px)'
-                }}
-              />
-              <button 
-                onClick={() => setActiveTab('individuals')}
-                className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
-                  activeTab === 'individuals' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
-                }`}
-              >
-                <UserPlus size={16} className={activeTab === 'individuals' ? 'text-secondary' : ''} /> Talenti
-              </button>
-              <button 
-                onClick={() => setActiveTab('cooperatives')}
-                className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
-                  activeTab === 'cooperatives' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
-                }`}
-              >
-                <Building2 size={16} className={activeTab === 'cooperatives' ? 'text-secondary' : ''} /> Imprese
-              </button>
+            {/* Integrated Filters inside the box */}
+            <div className="relative z-10 pt-4 border-t border-primary/5">
+              <AnimatePresence mode="wait">
+                {activeTab === 'individuals' ? (
+                  <motion.div
+                    key="filters-individuals"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <CoFounderSearch 
+                      renderFiltersOnly 
+                      activeFilters={talentFilters}
+                      onToggleFilter={toggleTalentFilter}
+                      onReset={() => setTalentFilters([])}
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="filters-cooperatives"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <CooperativeNetworking 
+                      renderFiltersOnly 
+                      activeFilters={coopFilters}
+                      onToggleFilter={toggleCoopFilter}
+                      onReset={() => setCoopFilters([])}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
-          {/* Discovery Content Layers (Cross-fade only to avoid layout jumps) */}
-          <div className="relative">
-            <AnimatePresence mode="wait" initial={false}>
+          {/* Results Grid - Slegata Logic (Outside the box) */}
+          {/* Stable container to prevent page collapse during popLayout transitions */}
+          <div className="relative min-h-200">
+            <AnimatePresence mode="popLayout" initial={false}>
               {activeTab === 'individuals' ? (
                 <motion.div
-                  key="individuals"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  key="grid-individuals"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="w-full"
                 >
-                  <CoFounderSearch />
+                  <CoFounderSearch 
+                    renderGridOnly 
+                    activeFilters={talentFilters}
+                  />
                 </motion.div>
               ) : (
                 <motion.div
-                  key="cooperatives"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  key="grid-cooperatives"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                  className="w-full"
                 >
-                  <CooperativeNetworking />
+                  <CooperativeNetworking 
+                    renderGridOnly 
+                    activeFilters={coopFilters}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
