@@ -1,0 +1,59 @@
+{
+  "cooperatives": [
+    {
+      "id": 1,
+      "name": "EcoTerra Società Cooperativa",
+      "sector": "Agricoltura Rigenerativa",
+      "location": "Reggio Emilia",
+      "description": "Leader nella produzione biologica e nel recupero di terreni abbandonati attraverso tecniche innovative di permacultura.",
+      "mission": "Rigenerare il territorio attraverso l'agricoltura sostenibile e la mutualità tra produttori.",
+      "studioInCampoAvailable": true,
+      "avatarSeed": "ecoterra",
+      "tags": ["Bio", "Sostenibilità", "Innovazione Green"]
+    },
+    {
+      "id": 2,
+      "name": "DigiCoop Solutions",
+      "sector": "Servizi Digitali & IT",
+      "location": "Bologna",
+      "description": "Una tech-coop specializzata in software open source e soluzioni di governance digitale per l'economia sociale.",
+      "mission": "Democratizzare l'accesso alla tecnologia attraverso modelli di proprietà collettiva.",
+      "studioInCampoAvailable": false,
+      "avatarSeed": "digicoop",
+      "tags": ["Open Source", "Software", "Digital Transformation"]
+    },
+    {
+      "id": 3,
+      "name": "Insieme Sociale",
+      "sector": "Servizi alla Persona",
+      "location": "Modena",
+      "description": "Cooperativa sociale di tipo A operante nel settore dell'assistenza domiciliare e dell'integrazione di fasce deboli.",
+      "mission": "Mettere la persona al centro attraverso servizi di cura di alta professionalità e umanità.",
+      "studioInCampoAvailable": true,
+      "avatarSeed": "insieme",
+      "tags": ["Welfare", "Sociale", "Inclusione"]
+    },
+    {
+      "id": 4,
+      "name": "Vento & Sole",
+      "sector": "Energia Rinnovabile",
+      "location": "Ravenna",
+      "description": "Comunità energetica in forma cooperativa che gestisce impianti fotovoltaici ed eolici per i propri soci.",
+      "mission": "Raggiungere l'indipendenza energetica territoriale attraverso la partecipazione attiva.",
+      "studioInCampoAvailable": true,
+      "avatarSeed": "ventosole",
+      "tags": ["Energia", "Green", "Community Content"]
+    },
+    {
+      "id": 5,
+      "name": "LogisCoop",
+      "sector": "Logistica & Trasporti",
+      "location": "Piacenza",
+      "description": "Operatore logistico integrato che applica i principi cooperativi alla gestione dei flussi di magazzino e distribuzione.",
+      "mission": "Garantire dignità lavorativa e efficienza operativa in una filiera etica.",
+      "studioInCampoAvailable": false,
+      "avatarSeed": "logiscoop",
+      "tags": ["Logistica", "Filiere Etiche", "Lavoro"]
+    }
+  ]
+}

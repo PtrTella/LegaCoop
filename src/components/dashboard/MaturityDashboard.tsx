@@ -98,30 +98,6 @@ export const MaturityDashboard = ({
         </motion.div>
       </div>
 
-      {/* Opportunities (Secondary Context) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-90">
-        <div className="bg-surface-container-low p-6 rounded-4xl border border-border-subtle space-y-4 group hover:bg-surface-container-lowest hover:shadow-ambient transition-all duration-300">
-          <div className="w-10 h-10 bg-surface-container-lowest rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-             <MapPin className="w-4 h-4" />
-          </div>
-          <h3 className="font-display font-black text-xl text-primary tracking-tight">Referente Dedicato</h3>
-          <p className="text-xs font-body leading-relaxed text-primary/60">Connetti la tua visione con un esperto di sistema Legacoop per una consulenza strategica mirata.</p>
-          <button className="text-[9px] font-display font-black uppercase text-secondary tracking-widest-plus flex items-center gap-2 group-hover:gap-3 transition-all">
-            Prenota Sessione <ChevronRight size={12} />
-          </button>
-        </div>
-
-        <div className="bg-surface-container-low p-6 rounded-4xl border border-border-subtle space-y-4 group hover:bg-surface-container-lowest hover:shadow-ambient transition-all duration-300">
-           <div className="w-10 h-10 bg-surface-container-lowest rounded-xl flex items-center justify-center group-hover:bg-secondary group-hover:text-white transition-all shadow-sm">
-             <Calendar className="w-4 h-4" />
-          </div>
-          <h3 className="font-display font-black text-xl text-primary tracking-tight">Studio in Campo</h3>
-          <p className="text-xs font-body leading-relaxed text-primary/60">Immergiti per un giorno nel cuore di una cooperativa d'eccellenza e scopri i loro segreti operativi.</p>
-          <button className="text-[9px] font-display font-black uppercase text-secondary tracking-widest-plus flex items-center gap-2 group-hover:gap-3 transition-all">
-            Sblocca Accesso <ChevronRight size={12} />
-          </button>
-        </div>
-      </div>
     </div>
   );
 };

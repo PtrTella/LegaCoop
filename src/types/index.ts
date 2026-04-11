@@ -10,6 +10,18 @@ export interface UserProfile {
   avatarSeed: string;
 }
 
+export interface CooperativeProfile {
+  id: number;
+  name: string;
+  sector: string;
+  location: string;
+  description: string;
+  mission: string;
+  studioInCampoAvailable: boolean;
+  avatarSeed: string;
+  tags: string[];
+}
+
 // --- DYNAMIC LESSON TYPES ---
 
 export type ContentChunk = 

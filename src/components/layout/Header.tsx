@@ -19,7 +19,7 @@ export const Header = ({
     { id: 'dashboard', label: 'Dashboard', icon: Layout },
     { id: 'map', label: 'Accademia', icon: Compass },
     { id: 'simulation', label: 'Laboratorio', icon: Shield },
-    { id: 'team', label: 'Team', icon: Users2 },
+    { id: 'team', label: 'Networking', icon: Users2 },
   ];
 
   // Dynamic evolution metrics
