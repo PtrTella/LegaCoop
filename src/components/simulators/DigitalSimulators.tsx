@@ -8,7 +8,7 @@ interface DigitalSimulatorsProps {
 
 const SectionDivider = ({ title }: { title: string }) => (
   <div className="flex items-center gap-4">
-    <h3 className="font-display font-black text-sm uppercase tracking-mega text-primary/30 shrink-0">{title}</h3>
+    <h3 className="font-display font-black text-sm-alt uppercase tracking-mega text-primary/30 shrink-0">{title}</h3>
     <div className="flex-1 h-px bg-surface-container-low" />
   </div>
 );
@@ -27,11 +27,11 @@ const GovernanceCard = ({ onSelect }: { onSelect: () => void }) => (
     </div>
     <div className="relative z-10">
       <h3 className="font-display font-black text-xl text-primary mb-2.5 tracking-tight leading-none italic">Governance</h3>
-      <p className="text-primary/60 font-body leading-relaxed text-xs">
+      <p className="text-primary/60 font-body leading-relaxed text-sm-alt">
         Sperimenta l'equilibrio tra democrazia interna e investimenti strategici su casi reali.
       </p>
     </div>
-    <div className="w-full py-3.5 bg-surface-container-low rounded-3xl font-display font-black text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 flex items-center justify-center gap-2.5 text-[10px] uppercase tracking-widest shadow-sm">
+    <div className="w-full py-3.5 bg-surface-container-low rounded-3xl font-display font-black text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 flex items-center justify-center gap-2.5 text-xs-tight uppercase tracking-widest shadow-sm">
       Configura Organo <ChevronRight size={14} />
     </div>
   </motion.div>
@@ -52,15 +52,15 @@ const PitchBattleCard = ({ onSelect }: { onSelect: () => void }) => (
     <div className="relative z-10">
       <div className="flex items-center gap-3 mb-2.5">
         <h3 className="font-display font-black text-xl text-white tracking-tight leading-none italic">Pitch Battle</h3>
-        <div className="px-2 py-0.5 bg-white/20 backdrop-blur-md text-[9px] text-tertiary font-display font-black uppercase rounded-full shadow-sm">
+        <div className="px-2 py-0.5 bg-white/20 backdrop-blur-md text-2xs text-tertiary font-display font-black uppercase rounded-full shadow-sm">
           Boss Fight
         </div>
       </div>
-      <p className="text-white/70 font-body leading-relaxed text-xs">
+      <p className="text-white/70 font-body leading-relaxed text-sm-alt">
         Sfida l'investitore cinico. Difendi il modello cooperativo con dati e resilienza.
       </p>
     </div>
-    <div className="relative z-10 w-full py-3.5 bg-gradient-accent text-white rounded-3xl font-display font-black group-hover:shadow-[0_0_20px_rgba(223,187,228,0.4)] transition-all duration-500 flex items-center justify-center gap-2.5 text-[10px] uppercase tracking-widest">
+    <div className="relative z-10 w-full py-3.5 bg-gradient-accent text-white rounded-3xl font-display font-black group-hover:shadow-[0_0_20px_rgba(223,187,228,0.4)] transition-all duration-500 flex items-center justify-center gap-2.5 text-xs-tight uppercase tracking-widest">
       Sfida il Capitale <ChevronRight size={14} />
     </div>
   </motion.div>

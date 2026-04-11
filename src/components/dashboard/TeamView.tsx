@@ -9,7 +9,7 @@ import { CooperativeNetworking } from './CooperativeNetworking';
 import { UserProfile } from '../../types';
 
 const SkillBadge = ({ skill }: { skill: string; key?: React.Key }) => (
-  <span className="px-3 py-1 bg-white/40 backdrop-blur-md text-primary/70 border border-white/20 font-display font-black text-[9px] uppercase tracking-widest-plus rounded-xl shadow-sm">
+  <span className="px-3 py-1 bg-white/40 backdrop-blur-md text-primary/70 border border-white/20 font-display font-black text-2xs uppercase tracking-widest-plus rounded-xl shadow-sm">
     {skill}
   </span>
 );
@@ -25,11 +25,11 @@ const EmptyFounderCard = ({ onSetup }: { onSetup: () => any; key?: React.Key }) 
     </div>
     <div className="space-y-1">
       <h4 className="font-display font-black text-lg text-primary tracking-tight italic leading-none">Profilo Incompleto</h4>
-      <p className="text-primary/40 text-[10px] font-body leading-relaxed max-w-empty-card-min-h">
+      <p className="text-primary/40 text-2xs font-body leading-relaxed max-w-empty-card-min-h">
         Attiva il tuo profilo founder per comparire nel database.
       </p>
     </div>
-    <span className="px-4 py-2 bg-secondary text-white rounded-xl text-[9px] font-display font-black uppercase tracking-ultra flex items-center gap-2 shadow-lg shadow-secondary/20 group-hover:shadow-secondary/40 transition-all">
+    <span className="px-4 py-2 bg-secondary text-white rounded-xl text-2xs font-display font-black uppercase tracking-ultra flex items-center gap-2 shadow-lg shadow-secondary/20 group-hover:shadow-secondary/40 transition-all">
       Configura <Zap className="w-3 h-3 fill-current" />
     </span>
   </motion.div>
@@ -57,7 +57,7 @@ const FounderCard = ({ profile, onEdit }: { profile: UserProfile; onEdit: () => 
           </div>
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[9px] text-secondary font-display font-black uppercase tracking-mega mb-1 px-2 py-0.5 bg-secondary/5 rounded-full w-fit">Founder Hub</p>
+          <p className="text-2xs text-secondary font-display font-black uppercase tracking-mega mb-1 px-2 py-0.5 bg-secondary/5 rounded-full w-fit">Founder Hub</p>
           <h3 className="font-display font-black text-xl text-primary tracking-tight leading-none italic truncate">{profile.name}</h3>
         </div>
       </div>
@@ -65,17 +65,17 @@ const FounderCard = ({ profile, onEdit }: { profile: UserProfile; onEdit: () => 
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="bg-surface-container-low/40 p-3 rounded-xl border border-white/20 flex items-center gap-2.5">
            <MapPin size={12} className="text-secondary/60" />
-           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus text-primary/60 truncate">{profile.location}</span>
+           <span className="text-2xs font-display font-black uppercase tracking-widest-plus text-primary/60 truncate">{profile.location}</span>
         </div>
         <div className="bg-surface-container-low/40 p-3 rounded-xl border border-white/20 flex items-center gap-2.5">
            <Clock size={12} className="text-secondary/60" />
-           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus text-primary/60 truncate">{profile.availability}</span>
+           <span className="text-2xs font-display font-black uppercase tracking-widest-plus text-primary/60 truncate">{profile.availability}</span>
         </div>
       </div>
 
       <div className="bg-linear-to-br from-secondary/5 to-primary/5 p-4 rounded-3xl mb-6 relative group/vision border border-white/20 grow">
         <MessageSquare className="absolute top-3 right-3 w-3 h-3 text-secondary/20" />
-        <p className="text-primary/60 font-body text-xs leading-relaxed italic line-clamp-2">
+        <p className="text-primary/60 font-body text-xs-tight leading-relaxed italic line-clamp-2">
           "{profile.vision}"
         </p>
       </div>
@@ -156,16 +156,16 @@ export const TeamView = () => {
                   <div className="p-3 bg-white/10 rounded-xl backdrop-blur-md border border-white/10">
                     <Users size={20} className="text-tertiary" />
                   </div>
-                  <span className="font-display text-[10px] font-black uppercase tracking-mega text-tertiary">Strategic Advisor</span>
+                  <span className="font-display text-2xs font-black uppercase tracking-mega text-tertiary">Strategic Advisor</span>
                 </div>
                 <h3 className="text-3xl font-display font-black tracking-tight italic leading-none mb-4">
                   Referente <span className="text-tertiary">Dedicato.</span>
                 </h3>
-                <p className="max-w-md text-white/70 font-body text-xs leading-relaxed mb-8">
+                <p className="max-w-md text-white/70 font-body text-xs-tight leading-relaxed mb-8">
                   Prenota advisory personalizzata per accelerare il tuo percorso.
                 </p>
               </div>
-              <button className="relative z-10 w-full md:w-fit px-8 py-4 bg-white text-primary rounded-xl font-display font-black text-[10px] uppercase tracking-widest-plus hover:shadow-2xl transition-all flex items-center justify-center gap-3 active:scale-95 group/btn border border-white/50">
+              <button className="relative z-10 w-full md:w-fit px-8 py-4 bg-white text-primary rounded-xl font-display font-black text-2xs uppercase tracking-widest-plus hover:shadow-2xl transition-all flex items-center justify-center gap-3 active:scale-95 group/btn border border-white/50">
                 Prenota Sessione 
                 <ChevronRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
               </button>
@@ -182,7 +182,7 @@ export const TeamView = () => {
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-lg shadow-secondary/40" />
-                  <p className="text-secondary font-display font-black text-[10px] uppercase tracking-mega">Ecosystem Hub</p>
+                  <p className="text-secondary font-display font-black text-2xs uppercase tracking-mega">Ecosystem Hub</p>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-display font-black text-primary tracking-tighter italic leading-none">
                   Esplora <span className="not-italic text-primary/20">Ecosistema.</span>
@@ -200,7 +200,7 @@ export const TeamView = () => {
                 />
                 <button 
                   onClick={() => setActiveTab('individuals')}
-                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-xs-tight uppercase tracking-widest transition-all duration-500 ${
                     activeTab === 'individuals' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
                   }`}
                 >
@@ -208,7 +208,7 @@ export const TeamView = () => {
                 </button>
                 <button 
                   onClick={() => setActiveTab('cooperatives')}
-                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-xs-tight uppercase tracking-widest transition-all duration-500 ${
                     activeTab === 'cooperatives' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
                   }`}
                 >

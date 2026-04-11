@@ -57,12 +57,12 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
                   </div>
                 </div>
 
-                <p className="pl-1 font-body text-xs leading-relaxed text-primary/60">{module.description}</p>
+                <p className="pl-1 font-body text-xs-tight leading-relaxed text-primary/60">{module.description}</p>
                 
                 {isUnlocked && !isCompleted && (
                   <div className="mt-4 flex w-fit items-center gap-2.5 rounded-full bg-surface-container-low px-3.5 py-1.5">
                     <Zap size={12} className="animate-pulse text-secondary" />
-                    <span className="font-display text-[9px] font-black uppercase tracking-widest-plus text-secondary">Obiettivo: {module.task}</span>
+                    <span className="font-display text-2xs font-black uppercase tracking-widest-plus text-secondary">Obiettivo: {module.task}</span>
                   </div>
                 )}
               </button>

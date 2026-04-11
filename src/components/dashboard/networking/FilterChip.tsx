@@ -13,7 +13,7 @@ export const FilterChip = React.memo(({ label, active, onClick }: FilterChipProp
     whileHover={{ scale: 1.05, y: -2 }}
     whileTap={{ scale: 0.95 }}
     transition={{ type: "spring", stiffness: 400, damping: 15 }}
-    className={`h-11 px-6 rounded-full font-display font-black text-[10px] uppercase tracking-widest-plus shrink-0 transition-colors border flex items-center justify-center ${
+    className={`h-11 px-6 rounded-full font-display font-black text-2xs uppercase tracking-widest-plus shrink-0 transition-colors border flex items-center justify-center ${
       active
         ? 'bg-secondary text-white border-secondary'
         : 'bg-white/60 text-primary/40 hover:text-primary hover:bg-white border-white/40 shadow-sm'

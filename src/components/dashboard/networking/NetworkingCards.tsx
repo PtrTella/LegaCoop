@@ -5,7 +5,7 @@ import { CooperativeProfile, CoFounderProfile } from '../../../types';
 
 // --- SHARED SKILL TAG ---
 export const SkillTag = React.memo(({ skill, highlighted = false }: { skill: string; highlighted?: boolean }) => (
-  <span className={`px-2.5 py-1.5 rounded-lg font-display font-black text-[8px] uppercase tracking-widest-plus transition-all border ${
+  <span className={`px-2.5 py-1.5 rounded-lg font-display font-black text-3xs uppercase tracking-widest-plus transition-all border ${
     highlighted 
       ? 'bg-secondary text-white border-secondary shadow-lg shadow-secondary/20' 
       : 'bg-white/50 text-primary/40 border-white/40 hover:text-primary hover:bg-white'
@@ -45,7 +45,7 @@ export const ProfileCard = React.memo(({ profile, activeFilters, onClick }: {
       </div>
       <div className="flex-1 min-w-0">
         <h4 className="font-display font-black text-primary text-xl tracking-tight leading-none italic group-hover:text-secondary transition-colors truncate">{profile.name}</h4>
-        <p className="text-[9px] text-primary/30 font-display font-black uppercase tracking-widest-plus mt-1.5 px-2 py-0.5 bg-primary/5 rounded-full w-fit">{profile.role}</p>
+        <p className="text-2xs text-primary/30 font-display font-black uppercase tracking-widest-plus mt-1.5 px-2 py-0.5 bg-primary/5 rounded-full w-fit">{profile.role}</p>
       </div>
     </div>
 
@@ -53,11 +53,11 @@ export const ProfileCard = React.memo(({ profile, activeFilters, onClick }: {
       <div className="flex items-center gap-4 text-primary/40 mb-5 px-1">
         <div className="flex items-center gap-2">
            <MapPin size={12} className="text-secondary/60" />
-           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus">{profile.location}</span>
+           <span className="text-2xs font-display font-black uppercase tracking-widest-plus">{profile.location}</span>
         </div>
         <div className="flex items-center gap-2">
            <Clock size={12} className="text-secondary/60" />
-           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus text-secondary/70">{profile.availability}</span>
+           <span className="text-2xs font-display font-black uppercase tracking-widest-plus text-secondary/70">{profile.availability}</span>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export const ProfileCard = React.memo(({ profile, activeFilters, onClick }: {
             <SkillTag key={skill} skill={skill} highlighted={activeFilters.includes(skill)} />
           ))}
           {profile.skills.length > 3 && (
-            <span className="self-center px-1 text-[8px] font-display font-black text-primary/20 uppercase tracking-widest-plus">
+            <span className="self-center px-1 text-3xs font-display font-black text-primary/20 uppercase tracking-widest-plus">
               +{profile.skills.length - 3}
             </span>
           )}

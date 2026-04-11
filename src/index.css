@@ -27,10 +27,10 @@
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-body:    "Inter", sans-serif;
 
-  --font-size-3xs:    0.7rem;   /* 8px  */
-  --font-size-2xs:    0.8rem; /* 9px */
-  --font-size-xs-tight: 0.9rem; /* 10px */
-  --font-size-sm-alt: 1rem; /* 11px */
+  --font-size-3xs:    0.625rem;  /* 10px */
+  --font-size-2xs:    0.6875rem; /* 11px */
+  --font-size-xs-tight: 0.75rem;   /* 12px */
+  --font-size-sm-alt: 0.8125rem; /* 13px */
 
   --tracking-widest-plus: 0.2em;
   --tracking-ultra:       0.3em;
