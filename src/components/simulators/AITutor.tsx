@@ -77,7 +77,7 @@ export const AITutor = () => {
                   <Bot className="w-6 h-6 text-tertiary" />
                 </div>
                 <div>
-                  <h3 className="font-display font-black text-lg leading-none tracking-tight">Tutor Accademia</h3>
+                  <h3 className="font-display font-black text-lg leading-none tracking-tight italic">TutorAI</h3>
                   <div className="flex items-center gap-2 mt-1.5">
                     <div className="flex gap-0.5">
                       <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:-0.3s]" />

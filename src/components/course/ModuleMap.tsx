@@ -2,24 +2,20 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PieChart, CheckCircle2, Unlock, Lock, ChevronRight, Zap } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
+import { SectionHeader } from '../common/SectionHeader';
 
 export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => void }) => {
   const { state } = useAppContext();
   const modules = state.modules || [];
 
   return (
-    <div className="space-y-8 py-4">
-      <div className="flex items-start justify-between">
-        <div className="max-w-xl">
-          <p className="mb-2.5 font-display text-[10px] font-black uppercase tracking-mega text-secondary">Percorso di Studio</p>
-          <h1 className="font-display text-2xl font-black italic tracking-tight text-primary">
-            Dall'idea all'impresa <span className="not-italic tracking-tighter text-primary/30">— Percorso Accademia</span>
-          </h1>
-        </div>
-        <div className="flex h-14 w-14 rotate-6 transform items-center justify-center rounded-2xl bg-surface-container-low transition-transform hover:rotate-0">
-          <PieChart className="h-7 w-7 text-primary/30" />
-        </div>
-      </div>
+    <div className="space-y-8 py-2">
+      <SectionHeader 
+        preTitle="Percorso di Studio"
+        titleMain="Dall'idea"
+        titleSuffix="all'impresa"
+        description="Un viaggio strutturato per trasformare la tua visione in una realtà cooperativa solida."
+      />
 
       <div className="grid grid-cols-1 gap-5">
         {modules.map((module, index) => {
@@ -55,7 +51,7 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
                   
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                       <h3 className="font-display text-lg font-black tracking-tight text-primary">{module.title}</h3>
+                       <h3 className="font-display text-xl font-black tracking-tight text-primary italic transition-colors group-hover:text-secondary">{module.title}</h3>
                        {isUnlocked && <ChevronRight className="h-4.5 w-4.5 transform transition-transform text-secondary group-hover:translate-x-1.5" />}
                     </div>
                   </div>

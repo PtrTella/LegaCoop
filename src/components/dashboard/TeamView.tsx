@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SectionHeader } from '../common/SectionHeader';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Clock, Edit3, Zap, CheckCircle2, Users, Building2, ChevronRight, UserPlus, MessageSquare } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
@@ -118,17 +119,13 @@ export const TeamView = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl space-y-12 py-10 px-4 md:px-8">
-        {/* --- Unified Page Header --- */}
-        <div className="text-center space-y-2 max-w-3xl mx-auto">
-          <p className="text-secondary font-display font-black text-[10px] uppercase tracking-mega">Hub di Sistema</p>
-          <h1 className="text-4xl md:text-5xl font-display font-black text-primary tracking-tighter leading-tight italic">
-            Networking <span className="not-italic text-primary/20">&</span> Sinergie
-          </h1>
-          <p className="text-primary/50 text-sm font-body leading-relaxed max-w-2xl mx-auto">
-            Accedi a sessioni di advisory personalizzata e connettiti con l'ecosistema cooperativo.
-          </p>
-        </div>
+      <div className="mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-4 md:px-8">
+        <SectionHeader 
+          preTitle="Hub di Sistema"
+          titleMain="Networking"
+          titleSuffix="Hub"
+          description="Accedi a sessioni di advisory personalizzata e connettiti con l'ecosistema cooperativo."
+        />
 
         {/* --- Section 1: Personal Hub & Strategic Connections --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
