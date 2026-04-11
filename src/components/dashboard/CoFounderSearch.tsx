@@ -35,7 +35,7 @@ SkillTag.displayName = 'SkillTag';
 const FilterChip = React.memo(({ label, active, onClick }: { label: string; active: boolean; onClick: () => void; key?: React.Key }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 rounded-xl font-display font-black text-[9px] uppercase tracking-widest-plus shrink-0 transition-all border ${
+    className={`px-3 py-1.5 rounded-xl font-display font-black text-[8.5px] uppercase tracking-widest-plus shrink-0 transition-all border ${
       active
         ? 'bg-secondary text-white shadow-xl shadow-secondary/20 border-secondary scale-105'
         : 'bg-white/50 text-primary/40 hover:text-primary hover:bg-white border-border-subtle/50'
@@ -243,45 +243,20 @@ export const CoFounderSearch = () => {
   }
 
   return (
-    <div className="space-y-8">
-      {/* Unified Search Header & Filters */}
-      <div className="bg-white/40 backdrop-blur-xl rounded-3xl border border-white/50 p-6 md:p-8 space-y-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-center gap-5">
-            <div className="w-12 h-12 bg-gradient-brand rounded-xl flex items-center justify-center shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
-               <Search className="text-white w-6 h-6" />
-            </div>
-            <div>
-              <p className="font-display text-[9px] font-black uppercase tracking-mega text-primary/30">Matchmaking Database</p>
-              <h3 className="font-display text-2xl font-black italic tracking-tight text-primary">Cerca Co-Founder</h3>
-            </div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl border border-white/50 shadow-sm">
-             <span className="font-display text-[10px] font-black uppercase tracking-widest-plus text-secondary">
-               {filtered.length} profili matching
-             </span>
-          </div>
-        </div>
-
-        <div className="space-y-4 pt-4 border-t border-primary/5">
-          <div className="flex items-center gap-3">
-             <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
-             <p className="text-[10px] font-display font-black uppercase tracking-ultra text-primary/40">Filtra per Competenze Tecniche</p>
-          </div>
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible scrollbar-hide">
-            {allSkills.map(skill => (
-              <FilterChip key={skill} label={skill} active={activeSkills.includes(skill)} onClick={() => toggleSkill(skill)} />
-            ))}
-            {activeSkills.length > 0 && (
-              <button
-                onClick={resetFilters}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-tertiary/10 font-display text-[9px] font-black uppercase tracking-widest-plus text-tertiary hover:bg-tertiary/20 transition-all border border-tertiary/10"
-              >
-                <X size={12} /> Clear
-              </button>
-            )}
-          </div>
-        </div>
+    <div className="space-y-10">
+      {/* Filters (Injected into Unified Header in TeamView) */}
+      <div className="flex flex-wrap items-center gap-2">
+        {allSkills.map(skill => (
+          <FilterChip key={skill} label={skill} active={activeSkills.includes(skill)} onClick={() => toggleSkill(skill)} />
+        ))}
+        {activeSkills.length > 0 && (
+          <button
+            onClick={resetFilters}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-tertiary/10 font-display text-[9px] font-black uppercase tracking-widest-plus text-tertiary hover:bg-tertiary/20 transition-all border border-tertiary/10"
+          >
+            <X size={12} /> Clear
+          </button>
+        )}
       </div>
 
       {/* Grid */}

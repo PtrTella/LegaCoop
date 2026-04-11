@@ -98,7 +98,7 @@ export const TeamView = () => {
   const { state, updateUserProfile } = useAppContext();
   const { userProfile } = state;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'individuals' | 'cooperatives'>('individuals');
+  const [activeTab, setActiveTab ] = useState<'individuals' | 'cooperatives'>('individuals');
 
   const handleSave = (profile: UserProfile) => {
     updateUserProfile(profile);
@@ -108,7 +108,7 @@ export const TeamView = () => {
   return (
     <>
       <div className="mx-auto max-w-7xl space-y-12 py-10 px-4 md:px-8">
-        {/* --- Header (Laboratorio Style) --- */}
+        {/* --- Unified Page Header --- */}
         <div className="text-center space-y-2 max-w-3xl mx-auto">
           <p className="text-secondary font-display font-black text-[10px] uppercase tracking-mega">Hub di Sistema</p>
           <h1 className="text-4xl md:text-5xl font-display font-black text-primary tracking-tighter leading-tight italic">
@@ -119,7 +119,7 @@ export const TeamView = () => {
           </p>
         </div>
 
-        {/* --- Personal Hub Grid --- */}
+        {/* --- Section 1: Personal Hub & Strategic Connections --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           <div className="lg:col-span-5 h-full">
              <AnimatePresence mode="wait">
@@ -139,7 +139,6 @@ export const TeamView = () => {
           </div>
 
           <div className="lg:col-span-7 h-full">
-            {/* Referente Dedicated Banner */}
             <div className="bg-gradient-brand p-8 rounded-4xl text-white relative overflow-hidden group h-full flex flex-col justify-between shadow-ambient">
               <div className="absolute top-0 right-0 p-8 opacity-10 scale-150 rotate-12 transition-transform group-hover:rotate-0 pointer-events-none">
                  <Zap size={140} fill="white" />
@@ -166,61 +165,71 @@ export const TeamView = () => {
           </div>
         </div>
 
-        {/* --- Tab Switcher --- */}
-        <div className="flex justify-center pt-4">
-          <div className="relative flex bg-surface-container-low/50 backdrop-blur-md p-1.5 rounded-[1.8rem] border border-border-subtle/50 w-full md:w-fit overflow-hidden">
-            <div 
-              className="absolute top-1.5 bottom-1.5 transition-all duration-500 ease-out bg-white rounded-[1.4rem] shadow-sm border border-white/50"
-              style={{
-                left: activeTab === 'individuals' ? '6px' : 'calc(50% + 3px)',
-                width: 'calc(50% - 9px)'
-              }}
-            />
-            <button 
-              onClick={() => setActiveTab('individuals')}
-              className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-2.5 px-8 py-3 font-display font-black text-[9px] uppercase tracking-widest-plus transition-colors duration-500 ${
-                activeTab === 'individuals' ? 'text-primary' : 'text-primary/30'
-              }`}
-            >
-              <UserPlus size={14} /> Capitale Umano
-            </button>
-            <button 
-              onClick={() => setActiveTab('cooperatives')}
-              className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-2.5 px-8 py-3 font-display font-black text-[9px] uppercase tracking-widest-plus transition-colors duration-500 ${
-                activeTab === 'cooperatives' ? 'text-primary' : 'text-primary/30'
-              }`}
-            >
-              <Building2 size={14} /> Ecosistema Imprese
-            </button>
+        {/* --- Section 2: Unified Discovery Module (Title + Switcher Integrated) --- */}
+        <div className="space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-primary/5 pb-8">
+            <div className="space-y-1">
+              <p className="text-secondary font-display font-black text-[11px] uppercase tracking-mega">Discovery Engine</p>
+              <h2 className="text-2xl md:text-4xl font-display font-black text-primary tracking-tight italic leading-none">
+                Esplora <span className="not-italic text-primary/20">Ecosistema</span>
+              </h2>
+            </div>
+
+            {/* High Emphasis Tab Switcher (NO SCROLL LOGIC) */}
+            <div className="relative flex bg-secondary/10 backdrop-blur-xl p-1.5 rounded-[1.6rem] border border-secondary/20 w-full md:w-fit overflow-hidden shadow-inner">
+              <div 
+                className="absolute top-1.5 bottom-1.5 transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) bg-white rounded-xl shadow-lg border border-white/50"
+                style={{
+                  left: activeTab === 'individuals' ? '6px' : 'calc(50% + 3px)',
+                  width: 'calc(50% - 9px)'
+                }}
+              />
+              <button 
+                onClick={() => setActiveTab('individuals')}
+                className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                  activeTab === 'individuals' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                }`}
+              >
+                <UserPlus size={16} className={activeTab === 'individuals' ? 'text-secondary' : ''} /> Talenti
+              </button>
+              <button 
+                onClick={() => setActiveTab('cooperatives')}
+                className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-[11px] uppercase tracking-widest transition-all duration-500 ${
+                  activeTab === 'cooperatives' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                }`}
+              >
+                <Building2 size={16} className={activeTab === 'cooperatives' ? 'text-secondary' : ''} /> Imprese
+              </button>
+            </div>
+          </div>
+
+          {/* Discovery Content Layers (Cross-fade only to avoid layout jumps) */}
+          <div className="relative">
+            <AnimatePresence mode="wait" initial={false}>
+              {activeTab === 'individuals' ? (
+                <motion.div
+                  key="individuals"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <CoFounderSearch />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="cooperatives"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <CooperativeNetworking />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
-
-        {/* --- Discovery Layers --- */}
-        <AnimatePresence mode="wait">
-          {activeTab === 'individuals' ? (
-            <motion.div
-              key="individuals"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="mt-6"
-            >
-              <CoFounderSearch />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="cooperatives"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="mt-6"
-            >
-              <CooperativeNetworking />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* Profile Modal */}
