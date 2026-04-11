@@ -37,18 +37,18 @@ export const MinigameCard: React.FC<MinigameCardProps> = ({ game, icon: Icon, in
       <h4 className="font-display font-black text-sm-alt text-primary leading-tight italic tracking-tight group-hover:text-secondary transition-colors">
         {game.titolo}
       </h4>
-      <p className="text-primary/50 font-body text-[11px] leading-relaxed line-clamp-2">
+      <p className="text-primary/50 font-body text-xs-tight leading-relaxed line-clamp-2">
         {game.descrizione_metodo}
       </p>
     </div>
 
     {/* Footer */}
     <div className="flex items-center justify-between">
-      <span className="text-3xs font-display font-black text-primary/20 uppercase tracking-widest">
+      <span className="text-2xs font-display font-black text-primary/20 uppercase tracking-widest">
         {game.materiali_necessari.length} materiali
       </span>
       <div className="flex items-center gap-1 text-secondary opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
-        <span className="text-3xs font-display font-black uppercase tracking-widest">Scopri</span>
+        <span className="text-2xs font-display font-black uppercase tracking-widest">Scopri</span>
         <ChevronRight className="w-3 h-3" />
       </div>
     </div>

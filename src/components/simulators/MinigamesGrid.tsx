@@ -17,10 +17,10 @@ interface SectionDividerProps {
 
 const SectionDivider = ({ title, badge }: SectionDividerProps) => (
   <div className="flex items-center gap-4">
-    <h3 className="font-display font-black text-sm uppercase tracking-mega text-primary/30 shrink-0">{title}</h3>
+    <h3 className="font-display font-black text-sm-alt uppercase tracking-mega text-primary/30 shrink-0">{title}</h3>
     <div className="flex-1 h-px bg-surface-container-low" aria-hidden="true" />
     {badge && (
-      <span className="text-2xs font-display font-black text-primary/20 uppercase tracking-widest shrink-0">{badge}</span>
+      <span className="text-xs-tight font-display font-black text-primary/40 uppercase tracking-widest shrink-0">{badge}</span>
     )}
   </div>
 );
