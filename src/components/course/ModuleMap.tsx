@@ -61,7 +61,6 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
                 
                 {isUnlocked && !isCompleted && (
                   <div className="mt-4 flex w-fit items-center gap-2.5 rounded-full bg-surface-container-low px-3.5 py-1.5">
-                    <Zap size={12} className="animate-pulse text-secondary" />
                     <span className="font-display text-2xs font-black uppercase tracking-widest-plus text-secondary">Obiettivo: {module.task}</span>
                   </div>
                 )}
