@@ -119,7 +119,7 @@ export const TeamView = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-4 md:px-8">
+      <div className="mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-0.5 sm:px-4 md:px-8">
         <SectionHeader 
           preTitle="Hub di Sistema"
           titleMain="Networking"
@@ -174,8 +174,8 @@ export const TeamView = () => {
         </div>
 
         {/* --- Section 2: Unified Control Hub (Title + Switcher + Filters) --- */}
-        <div className="space-y-10 pt-4">
-          <div className="bg-white/40 backdrop-blur-xl rounded-5xl border border-white/50 p-6 md:p-10 shadow-ambient space-y-8 relative overflow-hidden group">
+        <div className="space-y-6 md:space-y-10 pt-4">
+          <div className="bg-white/40 backdrop-blur-xl rounded-2xl md:rounded-5xl border border-white/50 p-2 sm:p-6 md:p-10 shadow-ambient space-y-8 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-secondary/10 transition-all duration-1000" />
             
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
@@ -200,19 +200,19 @@ export const TeamView = () => {
                 />
                 <button 
                   onClick={() => setActiveTab('individuals')}
-                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-xs-tight uppercase tracking-widest transition-all duration-500 ${
-                    activeTab === 'individuals' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-1 md:gap-3 px-1 md:px-10 py-3 md:py-4 font-display font-black text-[11px] xs:text-2xs md:text-xs-tight uppercase tracking-widest transition-all duration-500 ${
+                    activeTab === 'individuals' ? 'text-primary' : 'text-primary/30 hover:text-primary/60'
                   }`}
                 >
-                  <UserPlus size={18} className={activeTab === 'individuals' ? 'text-secondary' : ''} /> Talenti
+                  <UserPlus size={16} className={`hidden xs:block ${activeTab === 'individuals' ? 'text-secondary' : ''}`} /> Talenti
                 </button>
                 <button 
                   onClick={() => setActiveTab('cooperatives')}
-                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-3 px-10 py-4 font-display font-black text-xs-tight uppercase tracking-widest transition-all duration-500 ${
-                    activeTab === 'cooperatives' ? 'text-primary scale-105' : 'text-primary/30 hover:text-primary/60'
+                  className={`relative z-10 flex-1 md:flex-none flex items-center justify-center gap-1 md:gap-3 px-1 md:px-10 py-3 md:py-4 font-display font-black text-[11px] xs:text-2xs md:text-xs-tight uppercase tracking-widest transition-all duration-500 ${
+                    activeTab === 'cooperatives' ? 'text-primary' : 'text-primary/30 hover:text-primary/60'
                   }`}
                 >
-                  <Building2 size={18} className={activeTab === 'cooperatives' ? 'text-secondary' : ''} /> Imprese
+                  <Building2 size={16} className={`hidden xs:block ${activeTab === 'cooperatives' ? 'text-secondary' : ''}`} /> Imprese
                 </button>
               </div>
             </div>

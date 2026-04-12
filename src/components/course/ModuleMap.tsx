@@ -60,8 +60,8 @@ export const ModuleMap = ({ onSelectModule }: { onSelectModule: (id: number) => 
                 <p className="pl-1 font-body text-xs-tight leading-relaxed text-primary/60">{module.description}</p>
                 
                 {isUnlocked && !isCompleted && (
-                  <div className="mt-4 flex w-fit items-center gap-2.5 rounded-full bg-surface-container-low px-3.5 py-1.5">
-                    <span className="font-display text-2xs font-black uppercase tracking-widest-plus text-secondary">Obiettivo: {module.task}</span>
+                  <div className="mt-4 flex w-fit items-start rounded-2xl bg-surface-container-low px-4 py-3 border border-secondary/5">
+                    <span className="font-display text-2xs md:text-xs-tight font-black uppercase tracking-widest-plus text-secondary leading-tight">Obiettivo: {module.task}</span>
                   </div>
                 )}
               </button>
