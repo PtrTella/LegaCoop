@@ -31,12 +31,14 @@ export const Header = ({
     <header className="sticky top-0 z-40 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
       <div className="flex items-center gap-3 md:gap-8 text-nowrap">
         {/* Branding (Moved from Sidebar) */}
-        <div className="flex cursor-pointer items-center gap-2 md:gap-3" onClick={() => setView('dashboard')}>
-          <div className="group relative flex h-8 w-8 -rotate-3 transform items-center justify-center rounded-xl bg-gradient-brand shadow-ambient shadow-primary/10">
-             <div className="absolute inset-0 animate-pulse rounded-xl bg-white/20" />
-             <span className="z-10 font-display text-base font-black text-white">L</span>
-          </div>
-          <h1 className="hidden font-display text-lg font-black italic tracking-tighter text-primary md:block">LegaCoop</h1>
+        <div className="flex cursor-pointer items-center" onClick={() => setView('dashboard')}>
+          <motion.img 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            src="/indicoo-logo.svg" 
+            alt="Indicoo Logo" 
+            className="h-8 md:h-11 w-auto object-contain" 
+          />
         </div>
 
         {/* Global Navigation */}
