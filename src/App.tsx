@@ -17,16 +17,45 @@ import { Header } from './components/layout/Header';
 import { AITutor } from './components/simulators/AITutor';
 import { SimulationHub } from './components/simulators/SimulationHub';
 import { PitchBattle } from './components/simulators/PitchBattle';
+import { GuidedTour } from './components/ui/GuidedTour';
+import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
 
 // --- Main App Content ---
 
 const AppContent = () => {
-  const { state, completePhase } = useAppContext();
+  const { state, completePhase, completeTour } = useAppContext();
   const { modules } = state;
   const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch'>('dashboard');
   const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
+
+  const tourSteps = [
+    {
+      title: "Benvenuto nel tuo Hub",
+      description: "Questo è il cuore della tua startup cooperativa. Qui monitori la tua crescita e accedi rapidamente alle sezioni chiave.",
+      icon: Sparkles,
+      view: 'dashboard' as const
+    },
+    {
+      title: "Il tuo Percorso",
+      description: "In Accademia trovi la mappa del tuo viaggio. Sblocca ogni fase completando le lezioni e i quiz.",
+      icon: GraduationCap,
+      view: 'map' as const
+    },
+    {
+      title: "Ecosistema e Network",
+      description: "Non sei solo. Connettiti con talenti, imprese ed esperti dell'ecosistema Legacoop per accelerare la tua visione.",
+      icon: Users,
+      view: 'team' as const
+    },
+    {
+      title: "Laboratorio Pratico",
+      description: "Metti alla prova le tue abilità con simulatori realistici di governance e pitch in un ambiente protetto.",
+      icon: Zap,
+      view: 'simulation' as const
+    }
+  ];
 
   if (!modules) {
     return (
@@ -178,6 +207,20 @@ const AppContent = () => {
         </div>
         <AITutor />
       </main>
+
+      <AnimatePresence>
+        {!state.hasSeenTour && (
+          <GuidedTour 
+            steps={tourSteps}
+            currentView={view}
+            onNavigate={handleSetView}
+            onComplete={() => {
+              completeTour();
+              handleSetView('dashboard');
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

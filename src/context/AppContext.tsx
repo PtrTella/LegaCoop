@@ -10,6 +10,7 @@ interface AppState {
   userRole: string | null;
   modules: Module[] | null;
   userProfile: UserProfile | null;
+  hasSeenTour: boolean;
 }
 
 interface AppContextType {
@@ -18,6 +19,7 @@ interface AppContextType {
   updateMaturityScore: (points: number) => void;
   unlockPhase: (phaseId: number) => void;
   updateUserProfile: (profile: UserProfile) => void;
+  completeTour: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -29,6 +31,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     unlockedPhases: [0],
     userRole: null,
     modules: null,
+    hasSeenTour: localStorage.getItem('legacoop_has_seen_tour') === 'true',
     userProfile: (() => {
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -85,8 +88,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, userProfile: profile }));
   };
 
+  const completeTour = () => {
+    localStorage.setItem('legacoop_has_seen_tour', 'true');
+    setState(prev => ({ ...prev, hasSeenTour: true }));
+  };
+
   return (
-    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile }}>
+    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile, completeTour }}>
       {children}
     </AppContext.Provider>
   );
