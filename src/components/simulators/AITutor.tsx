@@ -6,7 +6,7 @@ import { askTutor } from '../../services/ai';
 export const AITutor = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: 'bot' | 'user', text: string }[]>([
-    { role: 'bot', text: 'Ciao! Sono il tuo Tutor Accademia. Hai qualche dubbio sulla lezione o vuoi esplorare un concetto cooperativo?' }
+    { role: 'bot', text: 'Ciao! Sono la tua intelligenza cooperativa. Come posso aiutarti oggi?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ export const AITutor = () => {
       const response = await askTutor(userMessage);
       setMessages(prev => [...prev, { role: 'bot', text: response }]);
     } catch {
-      setMessages(prev => [...prev, { role: 'bot', text: 'Scusa, la mia connessione alla rete cooperativa è instabile. Riprova tra un attimo.' }]);
+      setMessages(prev => [...prev, { role: 'bot', text: 'Connessione instabile. Riprova tra un attimo.' }]);
     } finally {
       setLoading(false);
     }
@@ -37,7 +37,7 @@ export const AITutor = () => {
   const renderFormattedText = (text: string) =>
     text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="font-extrabold text-secondary">{part.slice(2, -2)}</strong>;
+        return <strong key={i} className="font-extrabold text-primary">{part.slice(2, -2)}</strong>;
       }
       return part;
     });
@@ -51,12 +51,10 @@ export const AITutor = () => {
           whileHover={{ scale: 1.05, y: -4 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-14 h-14 sm:w-16 sm:h-16 bg-gradient-primary-deep text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/10 group overflow-hidden"
+          className="fixed bottom-8 right-8 w-16 h-16 bg-primary text-white rounded-2xl shadow-2xl z-50 flex items-center justify-center border border-white/20 group overflow-hidden"
         >
-
-          <div className="absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity" />
-          <MessageSquare className="w-7 h-7 relative z-10" />
-          <div className="absolute top-3 right-3 w-3 h-3 bg-tertiary rounded-full border-2 border-primary animate-pulse" />
+          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <Sparkles className="w-7 h-7 relative z-10 text-glow-brand" />
         </motion.button>
       )}
 
@@ -64,59 +62,52 @@ export const AITutor = () => {
         {isOpen && (
           <motion.div
             layoutId="tutor-container"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-8 sm:right-8 sm:w-full sm:max-w-sm flex flex-col overflow-hidden rounded-4xl z-50 shadow-2xl border border-border-subtle bg-white h-[80vh] sm:h-tutor-h"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="fixed bottom-8 right-8 w-full max-w-95 flex flex-col overflow-hidden rounded-5xl z-50 shadow-2xl border border-primary/10 bg-white h-150"
           >
-
             {/* Header */}
-            <div className="p-6 bg-gradient-brand text-white flex items-center justify-between shrink-0">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10" style={{ backdropFilter: 'blur(24px)' }}>
-                  <Bot className="w-6 h-6 text-tertiary" />
+            <div className="p-6 bg-gradient-brand text-white flex items-center justify-between shrink-0 relative overflow-hidden">
+              {/* Internal Aurora Blob */}
+              <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/20 rounded-full blur-2xl pointer-events-none" />
+              
+              <div className="flex items-center gap-4 relative z-10">
+                <div className="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-md">
+                  <Sparkles className="w-6 h-6 text-white text-glow-brand" />
                 </div>
                 <div>
-                  <h3 className="font-display font-black text-lg leading-none tracking-tight italic">TutorAI</h3>
-                  <div className="flex items-center gap-2 mt-1.5">
-                    <div className="flex gap-0.5">
-                      <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:-0.3s]" />
-                      <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce [animation-delay:-0.15s]" />
-                      <div className="w-1 h-1 bg-tertiary rounded-full animate-bounce" />
-                    </div>
-                    <span className="text-2xs font-display font-bold uppercase tracking-widest-plus text-tertiary/80 pl-1">Live Intelligence</span>
-                  </div>
+                  <h3 className="font-display font-black text-lg tracking-tight italic">AI Hub</h3>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-white/60">Live Intelligence</p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2.5 hover:bg-white/10 rounded-xl transition-all group"
-              >
-                <Minus className="w-5 h-5 text-white/40 group-hover:text-white" />
+              <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-white/10 rounded-lg transition-all relative z-10">
+                <Minus className="w-5 h-5 text-white/40" />
               </button>
             </div>
 
-            {/* Chat */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-surface-container-low/90 scroll-smooth" style={{ backgroundColor: 'rgba(243, 243, 248, 0.9)' }}>
-              {messages.map((msg, i) => (
+            {/* Messages */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 md:p-12 space-y-10 bg-white/70 backdrop-blur-[40px] scrollbar-hide relative z-10">
+             {messages.map((m, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex items-start gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center shadow-sm shrink-0 mt-1 ${msg.role === 'user' ? 'bg-secondary text-white' : 'bg-white border border-border-subtle text-primary'}`}>
-                    {msg.role === 'user' ? <User className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-secondary" />}
-                  </div>
-                  <div className={`p-4 rounded-2xl text-sm leading-relaxed max-w-[85%] shadow-sm ${msg.role === 'user' ? 'bg-gradient-accent-reverse text-white rounded-tr-none' : 'bg-white text-primary rounded-tl-none border border-border-subtle'}`}>
-                    {renderFormattedText(msg.text)}
+                  <div className={`max-w-[85%] px-5 py-3.5 rounded-3xl text-sm font-body leading-relaxed shadow-sm border ${
+                    m.role === 'user' 
+                      ? 'bg-gradient-brand text-white border-white/20 rounded-tr-none' 
+                      : 'bg-white/70 border-white/60 text-text-primary rounded-tl-none backdrop-blur-[40px]'
+                 }`}>
+                    {renderFormattedText(m.text)}
                   </div>
                 </motion.div>
               ))}
               {loading && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-white border border-border-subtle rounded-xl flex items-center justify-center shrink-0">
-                    <Loader2 className="w-4 h-4 text-secondary animate-spin" />
+                    <Loader2 className="w-4 h-4 text-primary animate-spin" />
                   </div>
                   <div className="px-4 py-3 bg-white rounded-2xl rounded-tl-none border border-border-subtle flex items-center gap-1.5">
                     <span className="text-2xs font-display font-black text-primary/30 uppercase tracking-widest-plus italic">Ispirazione...</span>
@@ -127,7 +118,7 @@ export const AITutor = () => {
 
             {/* Footer */}
             <div className="p-4 bg-white border-t border-border-subtle">
-              <div className="bg-surface-container-low rounded-2xl flex items-center gap-2 px-4 py-2 border border-border-subtle focus-within:border-secondary/40 transition-all">
+              <div className="bg-surface-soft rounded-2xl flex items-center gap-2 px-4 py-2 border border-border-subtle focus-within:border-primary/40 transition-all">
                 <input
                   type="text"
                   value={input}
@@ -141,7 +132,7 @@ export const AITutor = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSend}
                   disabled={!input.trim() || loading}
-                  className="p-2.5 bg-gradient-accent-reverse text-white rounded-xl shadow-md disabled:opacity-30 flex items-center justify-center transition-all shrink-0"
+                  className="p-2.5 bg-gradient-brand text-white rounded-xl shadow-md disabled:opacity-30 flex items-center justify-center transition-all shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </motion.button>

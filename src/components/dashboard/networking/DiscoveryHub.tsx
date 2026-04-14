@@ -100,7 +100,7 @@ export function DiscoveryHub<T extends { id: string | number }>({
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="h-11 flex items-center gap-2 px-6 rounded-full bg-white text-text-muted hover:text-primary-deep font-display text-[10px] font-black uppercase tracking-widest-plus shadow-sm border border-border-subtle hover:border-primary-deep/30 transition-all shrink-0"
+              className="h-11 flex items-center gap-2 px-6 rounded-full bg-white text-text-muted hover:text-primary font-display text-[10px] font-black uppercase tracking-widest-plus shadow-sm border border-border-subtle hover:border-primary/30 transition-all shrink-0"
             >
               <X size={14} className="text-accent" /> Reset
             </motion.button>

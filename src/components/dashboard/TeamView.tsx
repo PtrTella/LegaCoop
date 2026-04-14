@@ -9,7 +9,7 @@ import { CooperativeNetworking } from './CooperativeNetworking';
 import { UserProfile } from '../../types';
 
 const SkillBadge = ({ skill }: { skill: string; key?: React.Key }) => (
-  <span className="px-3 py-1 bg-surface-container-low text-text-muted border border-border-subtle font-display font-black text-[9px] uppercase tracking-widest-plus rounded-xl shadow-sm">
+  <span className="px-3 py-1 bg-surface-soft text-text-muted border border-border-subtle font-display font-black text-[9px] uppercase tracking-widest-plus rounded-xl shadow-sm">
     {skill}
   </span>
 );
@@ -18,10 +18,10 @@ const EmptyFounderCard = ({ onSetup }: { onSetup: () => any; key?: React.Key }) 
   <motion.div
     whileHover={{ y: -4, scale: 1.01 }}
     onClick={onSetup}
-    className="box-testo cursor-pointer group flex flex-col items-center justify-center text-center space-y-6 min-h-[240px] bg-white"
+    className="box-testo cursor-pointer group flex flex-col items-center justify-center text-center space-y-6 min-h-60 bg-white"
   >
-    <div className="w-14 h-14 bg-surface-container-low rounded-2xl flex items-center justify-center group-hover:bg-primary-deep/5 transition-colors">
-      <UserPlus className="w-6 h-6 text-primary-deep/40 group-hover:text-primary-deep" />
+    <div className="w-14 h-14 bg-surface-soft rounded-2xl flex items-center justify-center group-hover:bg-primary/5 transition-colors">
+      <UserPlus className="w-6 h-6 text-primary/40 group-hover:text-primary" />
     </div>
     <div className="space-y-2">
       <h4 className="font-display font-black text-xl text-text-primary tracking-tight italic leading-none">Profilo Incompleto</h4>
@@ -29,7 +29,7 @@ const EmptyFounderCard = ({ onSetup }: { onSetup: () => any; key?: React.Key }) 
         Attiva il tuo profilo founder per comparire nel database della community.
       </p>
     </div>
-    <button className="px-6 py-3 bg-primary-deep text-white rounded-xl text-[10px] font-display font-black uppercase tracking-ultra flex items-center gap-2 shadow-lg shadow-primary-deep/20 group-hover:shadow-glow transition-all">
+    <button className="px-6 py-3 bg-primary text-white rounded-xl text-[10px] font-display font-black uppercase tracking-ultra flex items-center gap-2 shadow-lg shadow-primary/20 group-hover:shadow-glow transition-all">
       Configura <Zap className="w-3 h-3 fill-current" />
     </button>
   </motion.div>
@@ -41,12 +41,12 @@ const FounderCard = ({ profile, onEdit }: { profile: UserProfile; onEdit: () => 
     animate={{ opacity: 1, scale: 1 }}
     className="box-testo relative overflow-hidden group h-full bg-white"
   >
-    <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-deep/5 rounded-full blur-3xl" />
+    <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
     
     <div className="relative z-10 flex flex-col h-full">
       <div className="flex items-center gap-5 mb-8">
         <div className="relative shrink-0">
-          <div className="absolute inset-0 bg-primary-deep rounded-2xl blur-md opacity-20 scale-110" />
+          <div className="absolute inset-0 bg-primary rounded-2xl blur-md opacity-20 scale-110" />
           <img
             src={`https://picsum.photos/seed/${profile.avatarSeed}/120/120`}
             alt={profile.name}
@@ -57,24 +57,24 @@ const FounderCard = ({ profile, onEdit }: { profile: UserProfile; onEdit: () => 
           </div>
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-[10px] text-text-muted font-display font-black uppercase tracking-mega mb-2 px-2 py-0.5 bg-surface-container-low rounded-full w-fit">Founder Hub</p>
+          <p className="text-[10px] text-text-muted font-display font-black uppercase tracking-mega mb-2 px-2 py-0.5 bg-surface-soft rounded-full w-fit">Founder Hub</p>
           <h3 className="font-display font-black text-2xl text-text-primary tracking-tight leading-none italic truncate">{profile.name}</h3>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="bg-surface-container-low/50 p-4 rounded-xl border border-border-subtle flex items-center gap-2.5">
-           <MapPin size={12} className="text-primary-deep/40" />
+        <div className="bg-surface-soft/50 p-4 rounded-xl border border-border-subtle flex items-center gap-2.5">
+           <MapPin size={12} className="text-primary/40" />
            <span className="text-[10px] font-display font-black uppercase tracking-widest-plus text-text-muted truncate">{profile.location}</span>
         </div>
-        <div className="bg-surface-container-low/50 p-4 rounded-xl border border-border-subtle flex items-center gap-2.5">
-           <Clock size={12} className="text-primary-deep/40" />
+        <div className="bg-surface-soft/50 p-4 rounded-xl border border-border-subtle flex items-center gap-2.5">
+           <Clock size={12} className="text-primary/40" />
            <span className="text-[10px] font-display font-black uppercase tracking-widest-plus text-text-muted truncate">{profile.availability}</span>
         </div>
       </div>
 
-      <div className="bg-surface-container-low/30 p-5 rounded-3xl mb-8 relative group/vision border border-border-subtle grow">
-        <MessageSquare className="absolute top-3 right-3 w-3 h-3 text-primary-deep/20" />
+      <div className="bg-surface-soft/30 p-5 rounded-3xl mb-8 relative group/vision border border-border-subtle grow">
+        <MessageSquare className="absolute top-3 right-3 w-3 h-3 text-primary/20" />
         <p className="text-text-primary/70 font-body text-sm leading-relaxed italic">
           "{profile.vision}"
         </p>
@@ -86,7 +86,7 @@ const FounderCard = ({ profile, onEdit }: { profile: UserProfile; onEdit: () => 
         </div>
         <button
           onClick={onEdit}
-          className="shrink-0 p-2.5 bg-white text-text-muted rounded-xl hover:text-primary-deep border border-border-subtle shadow-sm transition-all hover:scale-105"
+          className="shrink-0 p-2.5 bg-white text-text-muted rounded-xl hover:text-primary border border-border-subtle shadow-sm transition-all hover:scale-105"
         >
           <Edit3 className="w-4 h-4" />
         </button>
@@ -121,9 +121,8 @@ export const TeamView = () => {
     <>
       <div className="mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-0.5 sm:px-4 md:px-8 font-display">
         <SectionHeader 
-          preTitle="Hub di Sistema"
-          titleMain="Networking"
-          titleSuffix="Hub"
+          titleMain="L'Ecosistema"
+          titleSuffix="Indicoo"
           description="Accedi a sessioni di advisory personalizzata e connettiti con l'ecosistema cooperativo."
         />
 
@@ -153,7 +152,7 @@ export const TeamView = () => {
               </div>
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="p-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
+                  <div className="p-3 bg-white/70 rounded-2xl backdrop-blur-[40px] border border-white/10">
                     <Users size={20} className="text-white" />
                   </div>
                   <span className="font-display text-[10px] font-black uppercase tracking-mega text-white/60">Strategic Advisor</span>
@@ -175,14 +174,14 @@ export const TeamView = () => {
 
         {/* --- Section 2: Unified Control Hub (Title + Switcher + Filters) --- */}
         <div className="space-y-6 md:space-y-10 pt-4">
-          <div className="box-testo md:rounded-5xl !p-6 md:!p-10 relative overflow-hidden group bg-white">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-deep/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary-deep/10 transition-all duration-1000" />
+          <div className="box-testo md:rounded-5xl p-6! md:p-10! relative overflow-hidden group bg-white">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-all duration-1000" />
             
             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
-                  <p className="text-primary-deep font-display font-black text-[10px] uppercase tracking-ultra">Ecosystem Hub</p>
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-glow shadow-accent/40" />
+                  <p className="text-primary font-display font-black text-[10px] uppercase tracking-ultra">Ecosystem Hub</p>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-display font-black text-text-primary tracking-tighter italic leading-none">
                   Esplora <span className="not-italic text-text-primary/20">Ecosistema.</span>
@@ -190,7 +189,7 @@ export const TeamView = () => {
               </div>
 
               {/* Tab Switcher */}
-              <div className="relative flex bg-surface-container-low p-1.5 rounded-[1.8rem] border border-border-subtle w-full md:w-fit overflow-hidden shadow-inner shrink-0">
+              <div className="relative flex bg-surface-soft p-1.5 rounded-[1.8rem] border border-border-subtle w-full md:w-fit overflow-hidden shadow-inner shrink-0">
                 <div 
                   className="absolute top-1.5 bottom-1.5 transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) bg-gradient-brand rounded-2xl shadow-xl"
                   style={{

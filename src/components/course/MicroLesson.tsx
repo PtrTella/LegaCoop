@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Play, ChevronRight, Zap } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ContentChunk, Lesson } from '../../types';
 import { Button } from '../ui/Button';
@@ -41,8 +41,8 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
       className="relative"
     >
       {chunk.type === 'text' && (
-        <Card padding="p-8 sm:p-12" className="bg-white shadow-soft border border-border-subtle">
-          <article className="text-text-lesson text-lg sm:text-2xl font-body leading-[1.6] selection:bg-primary/20">
+        <Card padding="p-0" className="bg-white/70 backdrop-blur-[40px] shadow-soft border border-white/40 overflow-hidden">
+          <article className="p-8 sm:p-12 text-text-lesson text-lg sm:text-2xl font-body leading-[1.6] selection:bg-primary/20">
             {renderTextWithKeywords(chunk.content, keywords)}
           </article>
         </Card>
@@ -131,13 +131,13 @@ export const MicroLesson = ({
   const showNextButton = !isInteractive || isSolved;
 
   return (
-    <div className="flex flex-col h-full bg-surface max-w-4xl mx-auto space-y-8 sm:space-y-12 pb-64 pt-6 sm:pt-12 px-4 sm:px-6">
+    <div className="flex flex-col h-full bg-transparent max-w-4xl mx-auto space-y-8 sm:space-y-12 pb-64 pt-6 sm:pt-12 px-4 sm:px-6">
 
       {/* Header statico e pulito */}
       <header className="space-y-4 pt-4 text-center sm:text-left">
         <div className="flex items-center justify-center sm:justify-start gap-3">
-          <div className="w-2 h-2 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
-          <p className="text-primary-deep font-display font-black text-[10px] uppercase tracking-mega">
+          <div className="w-2 h-2 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40 animate-pulse" />
+          <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">
             {phaseTitle}
           </p>
         </div>
@@ -146,7 +146,7 @@ export const MicroLesson = ({
           <span className="not-italic bg-gradient-brand bg-clip-text text-transparent opacity-90 block sm:inline">.</span>
         </h2>
 
-        <div className="w-24 h-1.5 bg-surface-container-highest rounded-full mt-8 mx-auto sm:mx-0" />
+        <div className="w-24 h-1.5 bg-primary/20 rounded-full mt-8 mx-auto sm:mx-0" />
       </header>
 
       {/* Learning Flow: Linear rendering of active chunks */}

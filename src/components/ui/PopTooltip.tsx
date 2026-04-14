@@ -14,7 +14,7 @@ export const PopTooltip = ({ word, definition }: PopTooltipProps) => {
     <span className="relative inline-block mx-0.5">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="text-secondary font-display font-black border-b-2 border-tertiary/30 cursor-help hover:text-primary hover:border-primary transition-all duration-300 italic"
+        className="text-primary font-display font-black border-b-2 border-tertiary/30 cursor-help hover:text-primary hover:border-primary transition-all duration-300 italic"
       >
         {word}
       </button>
@@ -30,7 +30,7 @@ export const PopTooltip = ({ word, definition }: PopTooltipProps) => {
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-tertiary/10 rounded-full blur-2xl" />
             
             <div className="relative z-10 flex flex-col gap-3">
-              <p className="text-2xs font-display font-black uppercase tracking-widest-plus text-secondary">Glossario</p>
+              <p className="text-2xs font-display font-black uppercase tracking-widest-plus text-primary">Glossario</p>
               <p className="text-sm text-primary/70 leading-relaxed font-body font-medium italic">"{definition}"</p>
             </div>
             

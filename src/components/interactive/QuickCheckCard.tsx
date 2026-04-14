@@ -31,7 +31,7 @@ export const QuickCheckCard = ({
   return (
     <div className="box-testo p-10 mt-8 relative overflow-hidden bg-white">
       <div className="absolute top-0 right-0 p-8 opacity-5 -mr-8 -mt-8 rotate-12">
-        <Zap size={140} className="text-primary-deep" />
+        <Zap size={140} className="text-primary" />
       </div>
 
       <AnimatePresence mode="wait">
@@ -45,10 +45,10 @@ export const QuickCheckCard = ({
             className="relative z-10"
           >
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-10 h-10 bg-accent-warm shadow-glow shadow-accent-warm/20 rounded-2xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-accent shadow-glow shadow-accent/20 rounded-2xl flex items-center justify-center">
                 <Zap className="text-white w-5 h-5 fill-white" />
               </div>
-              <p className="text-[10px] text-primary-deep font-display font-black uppercase tracking-ultra leading-none">Verifica Intuizione</p>
+              <p className="text-[10px] text-primary font-display font-black uppercase tracking-ultra leading-none">Verifica Intuizione</p>
             </div>
             
             <h3 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-[0.9] italic tracking-tighter">
@@ -60,9 +60,9 @@ export const QuickCheckCard = ({
                 whileHover={{ scale: 1.02, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleChoice(true)}
-                className="p-8 rounded-4xl bg-surface-container-low border border-border-subtle hover:bg-white hover:border-border-brand transition-all text-text-primary font-display font-black text-[10px] uppercase tracking-widest flex flex-col items-center gap-4 group shadow-sm hover:shadow-xl"
+                className="p-8 rounded-4xl bg-surface-soft border border-border-subtle hover:bg-white hover:border-border-brand transition-all text-text-primary font-display font-black text-[10px] uppercase tracking-widest flex flex-col items-center gap-4 group shadow-sm hover:shadow-xl"
               >
-                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center group-hover:bg-primary-deep group-hover:text-white transition-all transform group-hover:rotate-12 shadow-sm border border-border-subtle">
+                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all transform group-hover:rotate-12 shadow-sm border border-border-subtle">
                   <Check className="w-7 h-7" />
                 </div>
                 Vero
@@ -72,7 +72,7 @@ export const QuickCheckCard = ({
                 whileHover={{ scale: 1.02, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleChoice(false)}
-                className="p-8 rounded-4xl bg-surface-container-low border border-border-subtle hover:bg-white hover:border-border-brand transition-all text-text-primary font-display font-black text-[10px] uppercase tracking-widest flex flex-col items-center gap-4 group shadow-sm hover:shadow-xl"
+                className="p-8 rounded-4xl bg-surface-soft border border-border-subtle hover:bg-white hover:border-border-brand transition-all text-text-primary font-display font-black text-[10px] uppercase tracking-widest flex flex-col items-center gap-4 group shadow-sm hover:shadow-xl"
               >
                 <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all transform group-hover:-rotate-12 shadow-sm border border-border-subtle">
                   <X className="w-7 h-7" />
@@ -103,7 +103,7 @@ export const QuickCheckCard = ({
             {!feedback.isCorrect && (
               <button 
                 onClick={() => setFeedback(null)} 
-                className="px-8 py-4 bg-primary-deep text-white font-display font-black text-[10px] uppercase tracking-widest rounded-2xl hover:scale-105 transition-all shadow-lg shadow-primary-deep/20"
+                className="px-8 py-4 bg-primary text-white font-display font-black text-[10px] uppercase tracking-widest rounded-2xl hover:scale-105 transition-all shadow-lg shadow-primary/20"
               >
                 Riprova l'analisi
               </button>

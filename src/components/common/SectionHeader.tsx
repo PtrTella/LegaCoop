@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SectionHeaderProps {
-  preTitle: string;
+  preTitle?: string;
   titleMain: string;
   titleSuffix: string;
   description?: string;
@@ -18,13 +18,15 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`text-center space-y-4 max-w-4xl mx-auto ${className}`}>
       <div className="space-y-4">
+      {preTitle && (
         <div className="flex items-center justify-center gap-3">
-          <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
-          <p className="font-display text-[10px] font-black uppercase tracking-ultra text-primary-deep">
+          <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-glow shadow-accent/40" />
+          <p className="font-display text-[10px] font-black uppercase tracking-ultra text-primary">
             {preTitle}
           </p>
-          <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
+          <div className="w-1.5 h-1.5 rounded-full bg-accent shadow-glow shadow-accent/40" />
         </div>
+      )}
         
         <h1 className="font-display text-4xl md:text-6xl font-black italic tracking-tighter text-text-primary leading-[0.9] select-none">
           <span className="mr-3">{titleMain}</span>

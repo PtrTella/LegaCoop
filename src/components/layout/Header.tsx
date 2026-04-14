@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowLeft, Flame, Layout, Compass, Shield, Users2, Zap } from 'lucide-react';
+import { Layout, Compass, Shield, Users2, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Module } from '../../types';
 import { useAppContext } from '../../context/AppContext';
@@ -42,7 +41,7 @@ export const Header = ({
         </div>
 
         {/* Global Navigation */}
-        <nav className="flex items-center rounded-full bg-surface-container-low p-1 shadow-inner">
+        <nav className="flex items-center rounded-full bg-primary/5 p-1.5 shadow-inner border border-primary/5">
           {menuItems.map((item) => {
             const isActive = view === item.id || 
               (item.id === 'map' && ['lesson', 'quiz', 'success'].includes(view)) ||
@@ -58,11 +57,11 @@ export const Header = ({
                 className={`flex items-center gap-2 rounded-full px-3 md:px-4 py-2 transition-all duration-500 ${
                   isActive 
                     ? 'bg-gradient-brand text-white shadow-md shadow-primary/20' 
-                    : 'text-primary/40 hover:text-primary'
+                    : 'text-primary/70 hover:text-primary'
                 }`}
               >
-                <item.icon className={`h-3.5 w-3.5 ${isActive ? 'text-accent-warm' : ''}`} />
-                <span className={`font-display text-sm-alt font-black uppercase tracking-wider ${isActive ? 'block' : 'hidden md:block'}`}>
+                <item.icon className={`h-4 w-4 ${isActive ? 'text-white' : 'opacity-80'}`} />
+                <span className={`font-display text-xs-tight font-black uppercase tracking-wider ${isActive ? 'block' : 'hidden md:block'}`}>
                   {item.label}
                 </span>
               </motion.button>
@@ -73,24 +72,24 @@ export const Header = ({
 
       <div className="flex items-center gap-3 md:gap-6">
         {/* Evolution Metrics (XP & Level) - Centralized in App */}
-        <div className="hidden items-center gap-4 rounded-full bg-surface-container-low px-4 py-2 shadow-sm lg:flex">
+        <div className="hidden items-center gap-4 rounded-full bg-primary/5 px-4 py-2 shadow-sm border border-primary/5 lg:flex">
            <div className="flex flex-col items-end gap-0.5">
               <div className="flex items-center gap-1.5">
-                 <span className="font-display text-3xs font-black uppercase leading-none tracking-widest text-primary/30">LVL</span>
-                 <span className="font-display text-xs font-black leading-none text-secondary">{currentLevel}</span>
+                 <span className="font-display text-[9px] font-black uppercase leading-none tracking-widest text-primary/40">LVL</span>
+                 <span className="font-display text-xs font-black leading-none text-primary">{currentLevel}</span>
               </div>
-              <div className="h-1 w-16 overflow-hidden rounded-full bg-surface-container-highest">
+              <div className="h-1.5 w-20 overflow-hidden rounded-full bg-primary/10">
                  <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${progressToNextLevel}%` }}
-                    className="h-full bg-gradient-accent"
+                    className="h-full bg-primary shadow-[0_0_10px_rgba(159,135,243,0.5)]"
                  />
               </div>
            </div>
            <div className="h-4 w-px bg-primary/10" />
-           <div className="flex items-center gap-2 rounded-lg bg-tertiary/20 px-2.5 py-1">
-              <Zap className="h-3.5 w-3.5 fill-secondary text-secondary" />
-              <span className="font-display text-xs-tight font-black uppercase tracking-tight text-secondary">{currentXP} XP</span>
+           <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-2.5 py-1">
+              <Zap className="h-3.5 w-3.5 fill-primary text-primary" />
+              <span className="font-display text-xs font-black uppercase tracking-tight text-primary text-nowrap">{currentXP} XP</span>
            </div>
         </div>
 

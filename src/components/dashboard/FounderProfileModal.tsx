@@ -87,11 +87,11 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
-        className="bg-surface-container-lowest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden"
+        className="bg-surface-softest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden"
       >
         {!config ? (
           <div className="p-20 flex flex-col items-center justify-center gap-4">
-            <Loader2 className="w-8 h-8 text-secondary animate-spin" />
+            <Loader2 className="w-8 h-8 text-primary animate-spin" />
             <p className="text-xs-tight font-display font-black uppercase tracking-widest-plus text-primary/40">Inizializzazione Setup...</p>
           </div>
         ) : (
@@ -99,11 +99,11 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             {/* Header */}
             <div className="p-8 pb-6 flex items-start justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-accent-reverse rounded-2xl flex items-center justify-center shadow-lg shadow-secondary/20">
+                <div className="w-12 h-12 bg-gradient-accent-reverse rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-secondary font-display font-black uppercase tracking-mega">
+                  <p className="text-[10px] text-primary font-display font-black uppercase tracking-mega">
                     Step {step + 1} / {config.steps.length}
                   </p>
                   <h2 className="text-2xl font-display font-black text-primary tracking-tight leading-tight">
@@ -118,7 +118,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
 
             {/* Progress Bar */}
             <div className="px-8 mb-6">
-              <div className="h-1 bg-surface-container-low rounded-full overflow-hidden">
+              <div className="h-1 bg-surface-soft rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-accent-reverse rounded-full"
                   animate={{ width: `${((step + 1) / config.steps.length) * 100}%` }}
@@ -149,7 +149,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           value={profile.name}
                           onChange={e => setProfile(prev => ({ ...prev, name: e.target.value }))}
                           placeholder="Es. Marco Bianchi"
-                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt"
+                          className="w-full px-5 py-4 bg-surface-soft rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm-alt"
                         />
                       </div>
                       <div>
@@ -159,7 +159,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           value={profile.location}
                           onChange={e => setProfile(prev => ({ ...prev, location: e.target.value }))}
                           placeholder="Es. Bologna, Emilia-Romagna"
-                          className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt"
+                          className="w-full px-5 py-4 bg-surface-soft rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm-alt"
                         />
                       </div>
                     </div>
@@ -175,7 +175,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           className={`px-4 py-3 rounded-2xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                             profile.role === role
                               ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                              : 'bg-surface-container-low text-primary/60 hover:bg-surface-container'
+                              : 'bg-surface-soft text-primary/60 hover:bg-white'
                           }`}
                         >
                           {role}
@@ -198,10 +198,10 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                               disabled={maxReached}
                               className={`px-3 py-2 rounded-xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                                 isSelected
-                                  ? 'bg-secondary text-white shadow-md shadow-secondary/20'
+                                  ? 'bg-primary text-white shadow-md shadow-primary/20'
                                   : maxReached
-                                    ? 'bg-surface-container-low text-primary/20 cursor-not-allowed'
-                                    : 'bg-surface-container-low text-primary/50 hover:text-primary'
+                                    ? 'bg-surface-soft text-primary/20 cursor-not-allowed'
+                                    : 'bg-surface-soft text-primary/50 hover:text-primary'
                               }`}
                             >
                               {skill}
@@ -224,7 +224,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                         onChange={e => setProfile(prev => ({ ...prev, vision: e.target.value }))}
                         placeholder="Es. Voglio creare una cooperativa di comunità energetica nelle aree rurali dell'Emilia, mettendo in rete piccoli agricoltori e ridistribuendo il surplus energetico..."
                         rows={5}
-                        className="w-full px-5 py-4 bg-surface-container-low rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-secondary/20 text-sm-alt resize-none leading-relaxed"
+                        className="w-full px-5 py-4 bg-surface-soft rounded-2xl text-primary font-body focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm-alt resize-none leading-relaxed"
                       />
                       <p className="text-[10px] text-primary/30 mt-2 text-right font-display font-black uppercase tracking-widest-plus">
                         {profile.vision?.length ?? 0} caratteri
@@ -242,7 +242,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                           className={`w-full flex items-center justify-between px-6 py-4 rounded-2xl transition-all text-left ${
                             profile.availability === label
                               ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                              : 'bg-surface-container-low text-primary hover:bg-surface-container'
+                              : 'bg-surface-soft text-primary hover:bg-white'
                           }`}
                         >
                           <div>
@@ -273,8 +273,8 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                 disabled={!canProceed()}
                 className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                   canProceed()
-                    ? 'bg-gradient-accent-reverse text-white shadow-xl shadow-secondary/20'
-                    : 'bg-surface-container-low text-primary/20 cursor-not-allowed'
+                    ? 'bg-gradient-accent-reverse text-white shadow-xl shadow-primary/20'
+                    : 'bg-surface-soft text-primary/20 cursor-not-allowed'
                 }`}
               >
                 {step === config.steps.length - 1 ? 'Salva Profilo' : 'Continua'}

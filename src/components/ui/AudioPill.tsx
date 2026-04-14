@@ -63,7 +63,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
   return (
     <Card 
       padding="p-6" 
-      className={`bg-surface-container-low border-secondary/10 hover:border-secondary/30 transition-all duration-500 overflow-hidden group ${className}`}
+      className={`bg-surface-soft border-primary/10 hover:border-primary/30 transition-all duration-500 overflow-hidden group ${className}`}
     >
       <audio 
         ref={audioRef} 
@@ -76,7 +76,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
       <div className="flex items-center gap-6 relative z-10">
         {/* Avatar Section */}
         <div className="relative shrink-0">
-          <div className={`absolute -inset-1 bg-linear-to-tr from-secondary to-primary rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity ${isPlaying ? 'animate-pulse' : ''}`} />
+          <div className={`absolute -inset-1 bg-linear-to-tr from-primary to-primary rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity ${isPlaying ? 'animate-pulse' : ''}`} />
           <div className="w-20 h-20 rounded-full border-2 border-white/10 overflow-hidden relative shadow-xl">
             <img 
               src="https://lh3.googleusercontent.com/a-/ALV-UjW3UYVvKXbV00oD5igjTXLhRX6VdiXCHC5aye3z7S94wk-1Nhm8WQ=s480-p-k-no" 
@@ -91,7 +91,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
           <motion.div 
             animate={{ scale: isPlaying ? [1, 1.2, 1] : 1 }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="absolute -bottom-1 -right-1 w-8 h-8 bg-secondary rounded-full flex items-center justify-center shadow-lg border-2 border-surface"
+            className="absolute -bottom-1 -right-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg border-2 border-surface"
           >
             <Music className="text-white w-4 h-4" />
           </motion.div>
@@ -100,7 +100,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
         {/* Info & Controls */}
         <div className="grow space-y-3">
           <div className="space-y-1">
-            <p className="text-secondary font-display font-black text-[10px] uppercase tracking-widest opacity-70">
+            <p className="text-primary font-display font-black text-[10px] uppercase tracking-widest opacity-70">
               Le pillole di Aldo
             </p>
             <h4 className="text-primary font-display font-black text-2xl leading-tight tracking-tight italic">
@@ -123,7 +123,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
                 max="100" 
                 value={progress} 
                 onChange={handleSeek}
-                className="w-full h-1.5 bg-secondary/10 rounded-full appearance-none cursor-pointer accent-secondary hover:accent-secondary-container transition-all"
+                className="w-full h-1.5 bg-primary/10 rounded-full appearance-none cursor-pointer accent-primary hover:accent-primary transition-all"
               />
               <div className="flex justify-between text-[10px] font-mono font-medium text-primary/40 uppercase tracking-widest">
                 <span>{formatTime(audioRef.current?.currentTime || 0)}</span>
@@ -135,7 +135,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
       </div>
 
       {/* Background Decorative Polish */}
-      <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
     </Card>
   );

@@ -1,103 +1,116 @@
 import React from 'react';
-import { TrendingUp, Zap, Users, Trophy, MapPin, Calendar, ChevronRight, Award, Star, PlayCircle, Rocket } from 'lucide-react';
 import { motion } from 'motion/react';
+import { TrendingUp, Zap, Users, Trophy, ChevronRight, Compass } from 'lucide-react';
 import { useAppContext } from '../../context/AppContext';
 
-export const MaturityDashboard = ({ 
-  onNavigate 
-}: { 
-  onNavigate: (view: 'map' | 'simulation') => void;
-}) => {
+export const MaturityDashboard = ({ onNavigate }: { onNavigate: (view: any) => void }) => {
   const { state } = useAppContext();
-  
-  const totalModules = state.modules ? state.modules.length : 0;
-  
-  const stats = [
-    { label: "Maturità", value: `${state.maturityScore}%`, icon: TrendingUp, color: "text-white" },
-    { label: "Percorso", value: `${state.completedPhases.length}/${totalModules}`, icon: Zap, color: "text-white" },
-    { label: "Studio", value: state.userRole === 'founder' ? "Pronto" : "In cerca", icon: Users, color: "text-white" },
-  ];
+  const totalModules = state.modules?.length || 7;
 
   return (
-    <div className="space-y-8 pb-8">
-      {/* Hero Section: The Academic Authority */}
-      <div className="bg-gradient-brand rounded-4xl p-8 text-white relative overflow-hidden shadow-ambient">
-        <div className="absolute top-0 right-0 p-8 opacity-5 scale-125 rotate-12">
-          <Trophy size={140} />
+    <div className="space-y-12 pb-12">
+      {/* Hero Section: The Aurora Masterpiece (Refined & High Contrast) */}
+      <div className="relative overflow-hidden rounded-5xl p-6 md:p-10 border border-white/60 shadow-ambient bg-white/40 backdrop-blur-[40px] text-text-primary">
+        {/* Atmospheric Depth: Dynamic Internal Blobs */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-pulse pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent-warm/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />
+        <div className="absolute -bottom-24 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-[110px] pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12">
+          <div className="space-y-6 max-w-2xl">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-accent shadow-glow shadow-accent/40 animate-pulse" />
+              <p className="text-primary font-display font-black text-[9px] uppercase tracking-mega">Status Evolutivo</p>
+            </div>
+            
+            <h2 className="text-5xl md:text-8xl font-display font-black leading-[0.85] tracking-tighter italic select-none">
+              La tua visione <br/>
+              <span className="not-italic bg-gradient-brand bg-clip-text text-transparent opacity-90 text-nowrap">prende forma</span>
+              <span className="-ml-1 text-accent">.</span>
+            </h2>
+          </div>
         </div>
-        <div className="relative z-10">
-          <p className="text-white/60 font-display font-black text-[10px] uppercase tracking-mega mb-3">Maturità Cooperativa</p>
-          <h2 className="text-3xl md:text-4xl font-display font-black mb-10 leading-[0.9] tracking-tighter max-w-lg italic">
-            La tua visione sta prendendo forma.
-          </h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl">
-            {stats.map((stat, i) => (
-              <div key={i} className="space-y-2">
-                <div className="p-1.5 bg-white/20 w-fit rounded-lg backdrop-blur-md">
-                   <stat.icon className={`${stat.color} w-4.5 h-4.5`} />
-                </div>
-                <p className="text-3xl font-display font-black tracking-tighter leading-none">{stat.value}</p>
-                <p className="text-[10px] text-white/50 uppercase font-display font-black tracking-widest-plus">{stat.label}</p>
+
+        {/* Secondary Stats: Minimalist layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/20 relative z-10">
+          <div className="flex items-center gap-5 group">
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary border border-primary/5 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              <TrendingUp className="w-6 h-6" />
+            </div>
+            <div className="flex flex-col">
+              <p className="text-2xl font-display font-black text-text-primary tracking-tight leading-none">
+                {state.maturityScore}%
+              </p>
+              <p className="text-[10px] text-text-muted uppercase font-display font-black tracking-widest-plus mt-1">Maturità Startup</p>
+            </div>
+            </div>
+
+          <div className="flex items-center gap-5 group">
+            <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent border border-accent/5 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+              <Trophy className="w-6 h-6" />
+            </div>
+            <div>
+              <p className="text-2xl font-display font-black text-text-primary tracking-tight leading-none">
+                {state.completedPhases.length}/{totalModules}
+              </p>
+              <p className="text-[10px] text-text-muted uppercase font-display font-black tracking-widest-plus mt-1">Moduli Superati</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-5 group">
+            <div className="w-12 h-12 rounded-2xl bg-accent-warm/10 flex items-center justify-center text-accent-warm border border-accent-warm/5 group-hover:bg-accent-warm group-hover:text-white transition-all duration-500 shadow-sm">
+              <Users className="w-6 h-6" />
+            </div>
+            <div>
+              <p className="text-2xl font-display font-black text-text-primary tracking-tight leading-none">
+                {state.userRole === 'founder' ? "Founder" : "User"}
+              </p>
+              <p className="text-[10px] text-text-muted uppercase font-display font-black tracking-widest-plus mt-1">Ruolo Piattaforma</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Action Tiles - Restoration of Lab Style with Clear Accents */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="box-testo group cursor-pointer hover:scale-[1.02] transition-all bg-white/70 border-white/40 min-h-40 flex flex-col justify-between" onClick={() => onNavigate('map')}>
+           <div className="flex items-center justify-between mb-2">
+              <div className="p-3 bg-primary/10 rounded-2xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                <Compass size={24} />
               </div>
-            ))}
-          </div>
+           </div>
+           <div>
+             <h4 className="font-display font-black text-xl text-text-primary mb-1">Accademia</h4>
+             <p className="text-text-muted text-xs leading-relaxed">9 Moduli, 3 livelli di competenza</p>
+           </div>
+        </div>
+        
+        <div className="box-testo group cursor-pointer hover:scale-[1.02] transition-all bg-white/70 border-white/40 min-h-40 flex flex-col justify-between" onClick={() => onNavigate('team')}>
+           <div className="flex items-center justify-between mb-2">
+              <div className="p-3 bg-accent/10 rounded-2xl text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm">
+                <Users size={24} />
+              </div>
+           </div>
+           <div>
+             <h4 className="font-display font-black text-xl text-text-primary mb-1">Ecosistema</h4>
+             <p className="text-text-muted text-xs leading-relaxed">Connettiti con 42 Cooperative</p>
+           </div>
+        </div>
+
+        <div className="box-testo group cursor-pointer hover:scale-[1.02] transition-all bg-white/70 border-white/40 min-h-40 flex flex-col justify-between" onClick={() => onNavigate('simulation')}>
+           <div className="flex items-center justify-between mb-2">
+              <div className="p-3 bg-accent-warm/10 rounded-2xl text-accent-warm group-hover:bg-accent-warm group-hover:text-white transition-all duration-500 shadow-sm">
+                <Trophy size={24} />
+              </div>
+              <ChevronRight className="w-5 h-5 text-text-muted/20 group-hover:translate-x-1 group-hover:text-accent-warm transition-all" />
+           </div>
+           <div>
+             <h4 className="font-display font-black text-2xl text-text-primary italic tracking-tight">Laboratorio</h4>
+             <p className="text-[11px] text-text-muted mt-2 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Affronta simulazioni reali di governance e pitch battle AI.</p>
+           </div>
         </div>
       </div>
-
-      {/* Strategic Shortcuts: The Core Paths */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <motion.div 
-          whileHover={{ y: -4, scale: 1.01 }}
-          onClick={() => onNavigate('map')}
-          className="box-testo group cursor-pointer overflow-hidden relative bg-white"
-        >
-          <div className="absolute top-0 right-0 p-8 opacity-5 -mr-6 -mt-6 transform group-hover:scale-110 transition-transform">
-             <Zap size={110} className="text-primary-deep" />
-          </div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-surface-container-low rounded-2xl flex items-center justify-center transform -rotate-3 group-hover:rotate-0 transition-transform border border-border-subtle shadow-sm">
-              <Star className="text-primary-deep w-6 h-6 fill-primary-deep" />
-            </div>
-            <div>
-              <h3 className="font-display font-black text-xl text-text-primary leading-none tracking-tight italic">Accademia Digitale</h3>
-              <p className="text-[10px] text-text-muted font-display font-black tracking-widest-plus mt-1.5 uppercase">Percorso Formativo</p>
-            </div>
-          </div>
-          <p className="text-sm text-text-muted font-body leading-relaxed mb-6 italic">
-            Gestisci la tua evoluzione attraverso i moduli di studio. Ogni lezione sblocca nuove opportunità di sistema.
-          </p>
-          <div className="text-[10px] font-display font-black uppercase text-primary-deep tracking-widest-plus flex items-center gap-2 group-hover:gap-3 transition-all">
-            Apri Mappa <ChevronRight size={14} />
-          </div>
-        </motion.div>
-
-        <motion.div 
-          whileHover={{ y: -4, scale: 1.01 }}
-          onClick={() => onNavigate('simulation')}
-          className="box-testo group cursor-pointer overflow-hidden relative bg-white"
-        >
-          <div className="absolute top-0 right-0 p-8 opacity-[0.03] -mr-6 -mt-6 transform group-hover:scale-110 transition-transform">
-             <Zap size={110} className="text-accent-warm" />
-          </div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-gradient-warm rounded-2xl flex items-center justify-center transform rotate-3 group-hover:rotate-0 transition-transform shadow-lg shadow-accent-warm/20">
-              <Rocket className="text-white w-6 h-6 fill-white" />
-            </div>
-            <div>
-              <h3 className="font-display font-black text-xl text-text-primary leading-none tracking-tight italic">Hub Simulazioni</h3>
-              <p className="text-[10px] text-accent-warm font-display font-black tracking-widest-plus mt-1.5 uppercase">Laboratorio Pratico</p>
-            </div>
-          </div>
-          <p className="text-sm text-text-muted font-body leading-relaxed mb-6 italic">
-            Metti alla prova la tua visione con casi studio interattivi e sfide di governance reale.
-          </p>
-          <div className="text-[10px] font-display font-black uppercase text-accent-warm tracking-widest-plus flex items-center gap-2 group-hover:gap-3 transition-all">
-            Avvia Simulazione <ChevronRight size={14} />
-          </div>
-        </motion.div>
-      </div>
-
     </div>
   );
 };
+

@@ -23,7 +23,7 @@ import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
 // --- Main App Content ---
 
 const AppContent = () => {
-  const { state, completePhase, completeTour } = useAppContext();
+  const { state, completePhase, completeTour, updateMaturityScore } = useAppContext();
   const { modules } = state;
   const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch'>('dashboard');
   const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
@@ -60,7 +60,7 @@ const AppContent = () => {
   if (!modules) {
     return (
       <div className="min-h-screen bg-surface flex flex-col items-center justify-center space-y-4">
-        <Loader2 className="w-10 h-10 text-secondary animate-spin" />
+        <Loader2 className="w-10 h-10 text-primary animate-spin" />
         <p className="text-primary/50 font-display text-sm tracking-widest uppercase">Caricamento Accademia</p>
       </div>
     );
@@ -68,7 +68,7 @@ const AppContent = () => {
 
   const handleSetView = (newView: any) => {
     // Track main views for returning after completion
-    if (['dashboard', 'map', 'team', 'simulation'].includes(newView)) {
+    if (['dashboard', 'map', 'team', 'simulation', 'knowledge'].includes(newView)) {
       setLastMainView(newView);
     }
     setView(newView);
@@ -89,6 +89,9 @@ const AppContent = () => {
     const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
     
     if (view === 'lesson') {
+      // Reward each lesson completion to make level bar advance
+      updateMaturityScore(5);
+      
       if (activeModule && currentLessonIndex < activeModule.lessons.length - 1) {
         // Move to the next lesson in sequence
         setCurrentLessonIndex(prev => prev + 1);
@@ -122,13 +125,21 @@ const AppContent = () => {
   const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
 
   return (
-    <div className="min-h-screen bg-surface font-body flex flex-col">
+    <div className="min-h-screen aurora-container font-body flex flex-col">
+      {/* Magnificent Aurora: High-Vibrancy Radiant Atmosphere (Restored) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-white">
+        <div className="aurora-blob bg-aurora-purple w-[150vw] h-[150vw] -top-[50vw] -left-[50vw] opacity-[0.45] mix-blend-multiply" />
+        <div className="aurora-blob bg-aurora-pink w-[120vw] h-[120vw] top-[10vw] right-[-20vw] opacity-[0.4] mix-blend-multiply" />
+        <div className="aurora-blob bg-aurora-amber w-[130vw] h-[130vw] -bottom-[40vw] -right-[30vw] opacity-[0.35] mix-blend-multiply" />
+        <div className="aurora-blob bg-aurora-violet w-[140vw] h-[140vw] top-[40vw] left-[-20vw] opacity-[0.25] mix-blend-multiply blur-[120px]" />
+      </div>
+
       {/* Main Content Area */}
-      <main className="flex-1 min-h-screen overflow-y-auto relative bg-surface flex flex-col">
+      <main className="flex-1 min-h-screen relative z-10 flex flex-col">
         {/* Header (Now contains all Navigation & Metrics) */}
         <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
-        <div className="flex-1 py-8 px-6 sm:px-12">
+        <div className="flex-1 pt-10 pb-12 px-6 sm:px-12">
           <div className="max-w-6xl mx-auto h-full">
             <AnimatePresence mode="wait">
               {view === 'dashboard' && (
@@ -184,9 +195,9 @@ const AppContent = () => {
               )}
 
               {view === 'success' && (
-                <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6 bg-surface-container-lowest rounded-4xl shadow-ambient">
-                  <div className="w-20 h-20 bg-tertiary/10 rounded-full flex items-center justify-center">
-                    <Trophy className="w-10 h-10 text-secondary" />
+                <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6 glass-card rounded-5xl">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Trophy className="w-10 h-10 text-primary" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-display font-black text-primary leading-tight">Congratulazioni!</h2>
@@ -196,7 +207,7 @@ const AppContent = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleSetView(lastMainView)} 
-                    className="px-6 py-3.5 bg-gradient-accent-reverse text-white font-display font-black rounded-xl shadow-ambient transition-all text-xs uppercase tracking-widest"
+                    className="px-6 py-3.5 bg-gradient-brand text-white font-display font-black rounded-xl shadow-ambient transition-all text-xs uppercase tracking-widest"
                   >
                     Torna in Accademia
                   </motion.button>

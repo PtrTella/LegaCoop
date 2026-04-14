@@ -7,7 +7,7 @@ interface Step {
   description: string;
   icon: React.ElementType;
   target?: string; // CSS selector for spotlight
-  view?: 'dashboard' | 'map' | 'networking' | 'simulation';
+  view?: 'dashboard' | 'map' | 'networking' | 'simulation' | 'team';
 }
 
 interface GuidedTourProps {
@@ -46,7 +46,7 @@ export const GuidedTour = ({ steps, onComplete, currentView, onNavigate }: Guide
   const Icon = step.icon;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-200 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Dimmed Overlay */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -61,26 +61,26 @@ export const GuidedTour = ({ steps, onComplete, currentView, onNavigate }: Guide
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="relative z-10 w-full max-w-md bg-white rounded-5xl shadow-2xl border border-secondary/10 p-8 overflow-hidden"
+        className="relative z-10 w-full max-w-md bg-white rounded-5xl shadow-2xl border border-primary/10 p-8 overflow-hidden"
       >
         {/* Background glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
         
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-8">
-             <div className="p-3 bg-secondary/10 rounded-2xl">
-               <Icon className="w-6 h-6 text-secondary" />
+             <div className="p-3 bg-primary/10 rounded-2xl">
+               <Icon className="w-6 h-6 text-primary" />
              </div>
              <button 
                onClick={onComplete}
-               className="p-2 hover:bg-surface-container-low rounded-xl transition-all text-primary/20 hover:text-primary"
+               className="p-2 hover:bg-surface-soft rounded-xl transition-all text-primary/20 hover:text-primary"
              >
                <X size={20} />
              </button>
           </div>
 
           <div className="space-y-4 mb-10">
-            <p className="text-secondary font-display font-black text-2xs uppercase tracking-mega">
+            <p className="text-primary font-display font-black text-2xs uppercase tracking-mega">
               Passaggio {currentStep + 1} di {steps.length}
             </p>
             <h2 className="text-3xl font-display font-black text-primary tracking-tight leading-none italic">
@@ -116,7 +116,7 @@ export const GuidedTour = ({ steps, onComplete, currentView, onNavigate }: Guide
             <div 
               key={i}
               className={`h-1 rounded-full transition-all duration-500 ${
-                i === currentStep ? 'w-4 bg-secondary' : 'w-1 bg-secondary/20'
+                i === currentStep ? 'w-4 bg-primary' : 'w-1 bg-primary/20'
               }`}
             />
           ))}

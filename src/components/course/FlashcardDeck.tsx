@@ -24,64 +24,76 @@ export const FlashcardDeck = ({
   const card = cards[currentIndex] || { question: "Nessuna flashcard", answer: "Completato!" };
 
   return (
-    <div className="mx-auto flex h-full max-w-3xl flex-col space-y-6 rounded-4xl bg-surface p-6 shadow-ambient">
-      <div className="flex items-end justify-between px-2">
-        <div className="space-y-2">
-          <h2 className="font-display text-2xl font-black italic tracking-tight text-primary">Flashcards</h2>
+    <div className="glass-card p-10 mt-8 relative overflow-hidden rounded-[3rem] shadow-ambient">
+      {/* Internal Atmospheric Glow using static classes */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="flex items-end justify-between px-2 mb-8 relative z-10">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
+            <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">Flashcards Lab</p>
+          </div>
+          <h2 className="font-display text-3xl font-black italic tracking-tight text-text-primary uppercase leading-none">Messa a Fuoco</h2>
         </div>
-        <div className="rounded-xl bg-surface-container-low px-4 py-2 font-display text-base font-black text-primary shadow-sm">
+        <div className="rounded-2xl bg-white/70 backdrop-blur-[40px] border border-white/60 px-6 py-3 font-display text-xl font-black text-primary shadow-sm flex flex-col items-end">
+          <span className="text-[10px] opacity-40 uppercase tracking-widest mb-1">Ritmo</span>
           {cards.length > 0 ? Math.round((currentIndex / cards.length) * 100) : 100}%
-          <span className="ml-2 font-display text-2xs font-black uppercase tracking-widest text-primary/30">Progresso</span>
         </div>
       </div>
 
-      <div className="perspective-1000 flex flex-1 items-center justify-center" style={{ minHeight: '240px' }}>
+      <div className="perspective-1000 flex flex-1 items-center justify-center relative z-10" style={{ minHeight: '320px' }}>
         <motion.div 
           onClick={() => setIsFlipped(!isFlipped)}
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          className="relative aspect-video w-full cursor-pointer preserve-3d"
+          className="relative aspect-video w-full max-w-2xl cursor-pointer preserve-3d"
         >
           {/* Card Front */}
-          <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl border border-surface-container-low/50 bg-surface-container-lowest p-8 text-center shadow-ambient transition-transform duration-500 hover:scale-[1.01]">
-            <div className="mb-6 flex h-14 w-14 -rotate-6 transform items-center justify-center rounded-2xl bg-tertiary/20">
-              <Info className="h-7 w-7 text-secondary" />
+          <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl border border-white/60 bg-white/70 p-10 text-center shadow-ambient transition-all duration-500 hover:bg-white/80 hover:scale-[1.02] backdrop-blur-[40px]">
+            <div className="mb-8 flex h-20 w-20 -rotate-3 transform items-center justify-center rounded-4xl bg-accent/10 border border-accent/20">
+              <Info className="h-10 w-10 text-accent animate-pulse" />
             </div>
-            <p className="max-w-xl font-display text-xl font-black tracking-tight text-primary leading-tight">
+            <p className="max-w-xl font-display text-2xl md:text-3xl font-black tracking-tight text-text-primary leading-[1.1] italic uppercase">
               {card.question}
             </p>
-            <p className="animate-pulse mt-6 font-display text-2xs font-black uppercase tracking-mega text-secondary">Tocca per scoprire</p>
+            <div className="mt-8 flex items-center gap-2 text-primary font-display font-black text-[9px] uppercase tracking-mega opacity-40">
+               <div className="w-2 h-px bg-primary" />
+               Tocca per l'Analisi
+               <div className="w-2 h-px bg-primary" />
+            </div>
           </div>
 
           {/* Card Back */}
-          <div className="rotate-y-180 backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-4xl bg-gradient-brand p-8 text-center shadow-ambient">
-            <div className="absolute top-6 left-6 rounded-lg bg-white/10 p-2 backdrop-blur-md">
-               <span className="font-display text-2xs font-bold uppercase leading-none tracking-widest text-white/40">Risposta Master</span>
+          <div className="rotate-y-180 backface-hidden absolute inset-0 flex flex-col items-center justify-center rounded-[3rem] bg-gradient-brand p-12 text-center shadow-glow-primary border border-white/20">
+            <div className="absolute top-8 left-8 rounded-full bg-white/10 px-4 py-1.5 backdrop-blur-md border border-white/10">
+               <span className="font-display text-[9px] font-black uppercase leading-none tracking-mega text-white">Risposta Chiave</span>
             </div>
-            <p className="max-w-xl font-body text-base font-medium tracking-tight text-white leading-relaxed">
-              {card.answer}
+            <p className="max-w-xl font-body text-lg font-medium tracking-tight text-white leading-relaxed italic">
+              "{card.answer}"
             </p>
-            <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 backdrop-blur-md">
-              <ThumbsUp className="h-7 w-7 text-tertiary" />
+            <div className="w-11 h-11 bg-white/70 rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-[40px] animate-bounce">
+              <ThumbsUp className="h-8 w-8 text-white" />
             </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="grid h-14 w-full grid-cols-2 gap-4">
+      <div className="grid h-16 w-full grid-cols-2 gap-6 mt-12 relative z-10">
         <motion.button 
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleNext(false)}
-          className="flex items-center justify-center gap-3 rounded-xl bg-surface-container-low font-display text-sm-alt font-black uppercase tracking-widest text-primary/40 transition-all hover:text-primary"
+          className="flex items-center justify-center gap-4 rounded-3xl bg-white/40 border border-white/60 font-display text-[10px] font-black uppercase tracking-widest text-accent hover:bg-accent/10 hover:border-accent/40 shadow-sm"
         >
-          <ThumbsDown className="h-5 w-5" /> Ripassa
+          <ThumbsDown className="h-5 w-5" /> Ripassa Concetto
         </motion.button>
         <motion.button 
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleNext(true)}
-          className="flex items-center justify-center gap-3 rounded-xl bg-gradient-accent font-display text-sm-alt font-black uppercase tracking-widest text-white shadow-md shadow-secondary/20 transition-all"
+          className="flex items-center justify-center gap-4 rounded-3xl bg-linear-to-r from-accent-warm to-amber-500 font-display text-[10px] font-black uppercase tracking-widest text-white shadow-2xl shadow-accent-warm/30"
         >
           <ThumbsUp className="h-5 w-5" /> Appreso!
         </motion.button>

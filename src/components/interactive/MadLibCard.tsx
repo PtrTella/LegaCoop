@@ -61,16 +61,16 @@ export const MadLibCard = ({
   const allFilled = Object.keys(selections).length === correctWords.length;
 
   return (
-    <div className="box-testo p-10 mt-8 relative overflow-hidden bg-white">
+    <div className="box-testo p-10 mt-8 relative overflow-hidden bg-white/70 backdrop-blur-[40px]">
       <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12">
-        <GripVertical size={200} className="text-primary-deep" />
+        <GripVertical size={200} className="text-primary" />
       </div>
 
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-10 h-10 bg-accent-warm shadow-glow shadow-accent-warm/20 rounded-2xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-accent shadow-glow shadow-accent/20 rounded-2xl flex items-center justify-center">
           <Zap className="text-white w-5 h-5 fill-white" />
         </div>
-        <p className="text-[10px] text-primary-deep font-display font-black uppercase tracking-ultra leading-none">Costruzione Logica</p>
+        <p className="text-[10px] text-primary font-display font-black uppercase tracking-ultra leading-none">Costruzione Logica</p>
       </div>
 
       <AnimatePresence mode="wait">
@@ -85,10 +85,10 @@ export const MadLibCard = ({
                     <select 
                       value={selections[part.index] || ''}
                       onChange={(e) => handleSelect(part.index, e.target.value)}
-                      className={`px-4 py-2 rounded-xl border-2 transition-all font-display font-black text-sm uppercase tracking-widest bg-surface-container-low appearance-none cursor-pointer shadow-sm ${
+                      className={`px-4 py-2 rounded-xl border-2 transition-all font-display font-black text-sm uppercase tracking-widest bg-primary/5 appearance-none cursor-pointer shadow-sm ${
                         selections[part.index] 
-                        ? 'border-primary-deep text-primary-deep bg-white' 
-                        : 'border-dashed border-border-subtle text-text-muted hover:border-primary-deep/30'
+                        ? 'border-primary text-primary bg-white' 
+                        : 'border-dashed border-border-subtle text-text-muted hover:border-primary/30'
                       }`}
                     >
                       <option value="" disabled>...</option>
@@ -109,7 +109,7 @@ export const MadLibCard = ({
                 onClick={checkSolution}
                 className={`px-10 py-5 rounded-2xl font-display font-black text-xs uppercase tracking-widest shadow-2xl transition-all ${
                   !allFilled
-                  ? 'bg-surface-container-highest text-text-muted/20 cursor-not-allowed'
+                  ? 'bg-primary/10 text-text-muted/30 cursor-not-allowed'
                   : 'bg-gradient-brand text-white shadow-primary/30 hover:shadow-glow'
                 }`}
               >

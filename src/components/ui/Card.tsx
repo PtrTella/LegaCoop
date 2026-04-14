@@ -17,7 +17,7 @@ export const Card = ({
   hoverable = false, 
   ...props 
 }: CardProps) => {
-  const baseClasses = `bg-surface-container-lowest ${padding} ${rounded} shadow-ambient transition-all`;
+  const baseClasses = `bg-surface-softest ${padding} ${rounded} shadow-ambient transition-all`;
   const hoverClasses = hoverable 
     ? 'group cursor-pointer border border-transparent hover:border-border-muted' 
     : 'border border-border-subtle';

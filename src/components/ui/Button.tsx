@@ -20,8 +20,8 @@ export const Button = ({
     primary: "bg-gradient-brand text-white shadow-xl shadow-primary/20 border border-white/10 hover:shadow-glow transition-all",
     gradient: "bg-gradient-warm text-white shadow-xl shadow-accent/20",
     icon: "bg-white border border-border-subtle text-text-primary hover:border-primary/40 shadow-sm",
-    outline: "border-2 border-border-subtle text-text-primary hover:border-primary-deep/30 bg-white/50",
-    text: "text-primary-deep hover:text-primary-deep/70 font-display font-black"
+    outline: "border-2 border-border-subtle text-text-primary hover:border-primary/30 bg-white/50",
+    text: "text-primary hover:text-primary/70 font-display font-black"
   };
 
   const sizes = {

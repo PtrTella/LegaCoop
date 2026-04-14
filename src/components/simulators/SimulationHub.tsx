@@ -8,9 +8,8 @@ interface SimulationHubProps {
 }
 
 export const SimulationHub = ({ onSelect }: SimulationHubProps) => (
-  <div className="space-y-10 max-w-5xl mx-auto pt-2 pb-10">
+  <div className="space-y-8">
     <SectionHeader 
-      preTitle="Laboratorio Pratico"
       titleMain="Lab"
       titleSuffix="Accademia"
       description="Simulatori digitali e minigiochi offline per affinare la visione cooperativa. Sfida lo status quo, difendi la mutualità."

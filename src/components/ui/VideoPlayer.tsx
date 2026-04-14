@@ -33,7 +33,7 @@ export const VideoPlayer = ({ content, className = '' }: VideoPlayerProps) => {
           />
         </div>
       ) : (
-        <div className="relative w-full h-full bg-surface-container-low">
+        <div className="relative w-full h-full bg-surface-soft">
           <video 
             src={content} 
             className="w-full h-full object-cover"
