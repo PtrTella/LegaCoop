@@ -79,13 +79,9 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
           <div className={`absolute -inset-1 bg-linear-to-tr from-primary to-primary rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity ${isPlaying ? 'animate-pulse' : ''}`} />
           <div className="w-20 h-20 rounded-full border-2 border-white/10 overflow-hidden relative shadow-xl">
             <img 
-              src="https://lh3.googleusercontent.com/a-/ALV-UjW3UYVvKXbV00oD5igjTXLhRX6VdiXCHC5aye3z7S94wk-1Nhm8WQ=s480-p-k-no" 
-              alt="Aldo" 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                // Fallback if image not found
-                (e.target as HTMLImageElement).src = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aldo';
-              }}
+              src="/favicon.svg" 
+              alt="Indicoo" 
+              className="w-full h-full object-cover p-3 bg-white"
             />
           </div>
           <motion.div 
@@ -101,7 +97,7 @@ export const AudioPill = ({ src, title, className = '' }: AudioPillProps) => {
         <div className="grow space-y-3">
           <div className="space-y-1">
             <p className="text-primary font-display font-black text-[10px] uppercase tracking-widest opacity-70">
-              Le pillole di Aldo
+              Le pillole di Indicoo
             </p>
             <h4 className="text-primary font-display font-black text-2xl leading-tight tracking-tight italic">
               {title || "Approfondimento audio"}

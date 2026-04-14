@@ -2,7 +2,7 @@
   {
     "id": 0,
     "title": "Benvenuti in Accademia",
-    "description": "Inizia il tuo viaggio con Aldo, il mentore dell'Accademia. Scopri il potenziale dell'impresa cooperativa e il metodo INDICOO per trasformare la tua idea in realtà.",
+    "description": "Inizia il tuo viaggio con Indicoo, la guida dell'Accademia. Scopri il potenziale dell'impresa cooperativa e il metodo INDICOO per trasformare la tua idea in realtà.",
     "task": "Ascoltare le pillole introduttive e scoprire il framework.",
     "lessons": [
       {
@@ -25,7 +25,7 @@
           },
           {
             "type": "text",
-            "content": "Prima di iniziare la Fase 0, prenditi qualche minuto per ascoltare queste introduzioni fondamentali. Aldo ti spiegherà come muoverti tra le sfide e i test che ti aspettano."
+            "content": "Prima di iniziare la Fase 0, prenditi qualche minuto per ascoltare queste introduzioni fondamentali. Le pillole di Indicoo ti spiegheranno come muoverti tra le sfide e i test che ti aspettano."
           },
           {
             "type": "audio",
