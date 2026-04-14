@@ -62,18 +62,13 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
     }
   };
 
-  // Color logic for the meter
-  const getMeterColor = () => {
-    if (score < 35) return 'bg-red-500 shadow-red-500/40';
-    if (score < 65) return 'bg-amber-500 shadow-amber-500/40';
-    return 'bg-emerald-500 shadow-emerald-500/40';
-  };
 
   return (
     <div className="h-full flex flex-col glass-card rounded-5xl shadow-ambient overflow-hidden max-h-[85vh] relative">
       {/* Internal Aurora Atmosphere - High Definition */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[140px] animate-pulse pointer-events-none" />
-      <div className="absolute bottom-40 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[140px] animate-pulse pointer-events-none" />
+      <div className="absolute bottom-40 left-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-warm/5 rounded-full blur-[160px] pointer-events-none" />
 
       {/* Milky Glass Header with Color Accent Line */}
       <div className="bg-white/70 backdrop-blur-[40px] px-8 py-8 md:px-12 md:py-10 shrink-0 z-20 relative overflow-hidden border-b border-white/60 shadow-sm">
@@ -81,34 +76,42 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
         
         <div className="flex items-center justify-between mb-8 relative z-10">
           <div className="flex items-center gap-6">
-            <div className={`w-16 h-16 bg-white/70 rounded-3xl flex items-center justify-center shadow-ambient border border-white/60 backdrop-blur-[40px] transition-all duration-700 ${isLoading ? 'animate-pulse scale-110 shadow-glow shadow-primary/20' : 'transform rotate-2 hover:rotate-0'}`}>
-              <Briefcase className="text-primary w-8 h-8" aria-hidden="true" />
+            <div className={`w-16 h-16 bg-white/70 rounded-3xl flex items-center justify-center shadow-ambient border border-white/60 backdrop-blur-[40px] transition-all duration-700 ${isLoading ? 'animate-pulse scale-110 shadow-glow shadow-primary/40 border-primary/30' : 'transform rotate-2 hover:rotate-0 hover:border-accent/30'}`}>
+              <Briefcase className={`w-8 h-8 transition-colors ${isLoading ? 'text-accent' : 'text-primary'}`} aria-hidden="true" />
             </div>
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
                 <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">Sessione Pitch Live</p>
               </div>
-              <h2 className="font-display font-black text-text-primary text-4xl tracking-tight leading-none italic uppercase">Gordon</h2>
+              <h2 className="font-display font-black text-4xl tracking-tighter leading-none italic uppercase bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent filter drop-shadow-sm select-none">
+                Gordon
+              </h2>
             </div>
           </div>
           <div className="text-right">
             <p className="text-[10px] text-text-muted/40 font-display font-black uppercase tracking-mega mb-2">Livello di Convinzione</p>
             <div className="flex items-center gap-3 justify-end">
-              <span className={`text-4xl font-display font-black tracking-tighter transition-colors duration-700 ${score > 60 ? 'text-primary' : score > 30 ? 'text-text-primary' : 'text-text-muted/60'}`}>
+              <span className="text-4xl font-display font-black tracking-tighter tabular-nums bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent">
                 {score}%
               </span>
             </div>
           </div>
         </div>
 
-        {/* The Meter Bar: Refined Glass Edition */}
-        <div className="relative h-2 bg-white/40 rounded-full overflow-hidden shadow-inner border border-white/20">
+        {/* The Meter Bar: Redesigned Trust Gradient */}
+        <div className="relative h-2.5 bg-surface-soft/40 rounded-full shadow-inner border border-white/20 overflow-hidden">
+          {/* Static background gradient track */}
+          <div className="absolute inset-0 bg-linear-to-r from-primary via-accent to-accent-warm opacity-20" />
+          
           <motion.div 
              initial={{ width: 0 }}
              animate={{ width: `${score}%` }}
-             className={`absolute top-0 left-0 h-full transition-all duration-1000 ease-out shadow-glow bg-primary ${getMeterColor()}`}
-          />
+             className="absolute top-0 left-0 h-full bg-linear-to-r from-primary via-accent to-accent-warm transition-all duration-1000 ease-out shadow-glow"
+          >
+            {/* Glossy overlay on the filled part */}
+            <div className="absolute inset-0 bg-linear-to-b from-white/20 to-transparent" />
+          </motion.div>
         </div>
         
         <div className="mt-4 flex justify-between items-center text-[9px] font-display font-black uppercase tracking-mega">
@@ -137,8 +140,8 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
                   </div>
                   <div className={`p-6 rounded-4xl shadow-ambient transition-all border leading-relaxed ${
                     isModel
-                      ? 'bg-white/80 text-text-primary border-white/60 rounded-tl-none font-body text-base backdrop-blur-[40px]'
-                      : 'bg-white/70 text-text-primary border-accent/30 rounded-tr-none text-base font-body shadow-glow shadow-accent/5 backdrop-blur-[40px]'
+                      ? 'bg-white/80 text-text-primary border-white/60 rounded-tl-none font-body text-base backdrop-blur-[40px] shadow-glow shadow-primary/5'
+                      : 'bg-white/70 text-text-primary border-accent/20 rounded-tr-none text-base font-body shadow-glow shadow-accent/5 backdrop-blur-[40px]'
                   }`}>
                     {renderTextWithKeywords(msg.parts[0].text.replace(/\[?\[?\s*SCORE:\s*\d+\s*\]?\]?/gi, ''))}
                   </div>
@@ -179,18 +182,19 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder="Sostieni la tua visione con eleganza..."
-            className="flex-1 px-10 py-7 bg-white/70 rounded-4xl focus:outline-none focus:ring-4 focus:ring-primary/5 text-text-primary font-body text-lg placeholder-text-muted/30 transition-all border border-white/60 shadow-inner backdrop-blur-[40px]"
+            className="flex-1 px-10 py-7 bg-white/70 rounded-4xl focus:outline-none focus:ring-4 focus:ring-primary/20 text-text-primary font-body text-lg placeholder-text-muted/30 transition-all border border-primary/30 shadow-inner backdrop-blur-[40px] hover:border-primary/50"
             disabled={isLoading}
           />
           <motion.button
-            whileHover={{ scale: 1.05, y: -4 }}
+            whileHover={{ scale: 1.05, y: -4, shadow: '0 20px 40px rgba(251, 191, 36, 0.3)' }}
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="p-7 bg-gradient-brand text-white rounded-4xl shadow-2xl shadow-primary/30 hover:shadow-glow-primary transition-all shrink-0"
+            className="p-7 bg-gradient-brand hover:from-primary hover:to-accent-warm text-white rounded-4xl shadow-2xl shadow-primary/30 transition-all shrink-0 relative overflow-hidden group/btn"
             aria-label="Invia pitch"
           >
-            <Send className="w-8 h-8" />
+            <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000" />
+            <Send className="w-8 h-8 relative z-10" />
           </motion.button>
         </form>
         <div className="mt-8 flex justify-center">
