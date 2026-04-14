@@ -3,25 +3,33 @@
 
 @theme {
   /* ─── Brand Colors ─────────────────────────────── */
-  --color-primary:           #311b50;
-  --color-primary-container: #483267;
-  --color-secondary:         #6849ba;
-  --color-tertiary:          #dfbbe4;
+  --color-primary:           #9F87F3; /* Base Lavender */
+  --color-primary-deep:      #7C5DFA; /* Blue-Violet/Indigo */
+  --color-primary-container: #F8F7FF; /* Ultra soft tint */
+  --color-secondary:         #6366F1; /* Indigo */
+  --color-accent:            #FF8E9E; /* Pink side */
+  --color-accent-warm:       #FFB347; /* Orange side */
+  --color-tertiary:          #4F46E5; /* Deep Violet */
 
   /* ─── Surfaces ─────────────────────────────────── */
-  --color-surface:                   #f9f9fe;
-  --color-surface-container-low:     #f3f3f8;
-  --color-surface-container-lowest:  #ffffff;
-  --color-surface-container-highest: #e8e8ee;
+  --color-surface:                   #F9FAFB; /* Neutral light surface */
+  --color-surface-container:         #FFFFFF;
+  --color-surface-container-low:     #F3F4F6;
+  --color-surface-container-lowest:  #FFFFFF;
+  --color-surface-container-highest: #E5E7EB;
 
-  /* ─── Semantic borders (opaque hex equivalents) ── */
-  /* primary at 5% alpha on white  →  #ece8f3  */
-  --color-border-subtle: #ece8f3;
-  /* primary at 10% alpha on white → #ddd8ea  */
-  --color-border-muted:  #ddd8ea;
+  /* ─── Semantic borders & Shadows ────────────────── */
+  --color-border-subtle: #F3F4F6; /* Neutral subtle border */
+  --color-border-brand:  #E8E6F5; /* Lavender tinted border */
+  
+  --shadow-soft: 0 4px 24px -1px rgba(0, 0, 0, 0.04), 0 2px 10px -2px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 30px 0 rgba(159, 135, 243, 0.15);
 
   /* ─── Text ──────────────────────────────────────── */
-  --color-text-muted: #7a6b8a;
+  --color-text-primary: #1A1A1A; /* Solid neutral black for high contrast */
+  --color-text-lesson:  #040404; /* High contrast for learning */
+  --color-text-muted:   #6B7280; /* Neutral gray */
+  --color-text-brand:   #7C5DFA; /* Deep brand accent */
 
   /* ─── Typography ────────────────────────────────── */
   --font-display: "Plus Jakarta Sans", sans-serif;
@@ -40,23 +48,14 @@
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
 
-  --shadow-ambient: 0 0 48px 0 rgba(26, 28, 31, 0.1);
+  --shadow-ambient: 0 0 48px 0 rgba(0, 0, 0, 0.06);
 
   --blur-tutor: 24px;
   --blur-md:    12px;
 
-  /* ─── Spacing tokens ─────────────────────────────── */
-  --spacing-tutor-h:       37.5rem;   /* 600px  */
-  --spacing-tutor-h-sm:    40.625rem; /* 650px  */
-  --spacing-empty-card-min-h: 12.5rem; /* 200px */
-  --spacing-card-min-h:    15rem;     /* 240px  */
-
   /* ─── Z-index ────────────────────────────────────── */
   --z-fab:   50;
   --z-modal: 100;
-
-  /* ─── Misc ───────────────────────────────────────── */
-  --rotate-accent: 25deg;
 }
 
 /* ─── Base ──────────────────────────────────────────── */
@@ -67,41 +66,66 @@
   }
 }
 
-/* ─── Gradient utilities ────────────────────────────── */
-.bg-gradient-brand {
-  @apply bg-linear-to-br from-primary to-primary-container;
+/* ─── Gradient & Aurora utilities ───────────────────── */
+.bg-gradient-brand { @apply bg-linear-to-br from-primary via-primary-deep to-secondary; }
+.bg-gradient-primary-deep { @apply bg-linear-to-br from-primary-deep via-secondary to-tertiary; }
+.bg-gradient-warm { @apply bg-linear-to-br from-accent to-accent-warm; }
+.bg-gradient-accent { @apply bg-linear-to-br from-primary to-accent; }
+.bg-gradient-accent-reverse { @apply bg-linear-to-br from-accent to-primary; }
+
+.aurora-container {
+  @apply relative overflow-hidden bg-white;
 }
-.bg-gradient-primary-deep {
-  @apply bg-linear-to-br from-primary via-primary-container to-secondary;
+
+.aurora-blob {
+  @apply absolute rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-pulse transition-all duration-1000;
 }
-.bg-gradient-accent {
-  @apply bg-linear-to-br from-secondary to-tertiary;
-}
-.bg-gradient-accent-reverse {
-  @apply bg-linear-to-br from-secondary to-primary;
-}
-.bg-gradient-glow {
-  @apply bg-linear-to-tr from-tertiary/20 to-transparent;
-}
+
+.bg-aurora-purple { @apply bg-primary; }
+.bg-aurora-blue   { @apply bg-secondary/60; }
+.bg-aurora-pink   { @apply bg-accent/60; }
 
 /* ─── Component classes ─────────────────────────────── */
 .modal-overlay {
   @apply fixed inset-0 flex items-center justify-center p-4;
-  @apply bg-primary/40 backdrop-blur-md;
+  @apply bg-text-primary/10 backdrop-blur-md;
   z-index: var(--z-modal);
 }
 
 .glass-card {
-  @apply bg-white/95 border border-border-subtle shadow-ambient;
-  backdrop-filter: blur(var(--blur-md));
+  @apply bg-white/80 border border-white/40 shadow-ambient backdrop-blur-xl;
 }
+
+.glass-pill {
+  @apply rounded-full bg-white/40 border border-white/60 backdrop-blur-md shadow-sm;
+  @apply hover:bg-white/60 transition-all duration-300;
+}
+
+.box-testo {
+  @apply bg-white border border-primary-deep/10 rounded-3xl p-6 shadow-soft;
+  @apply hover:border-primary-deep/30 transition-all duration-300;
+}
+
+.pill-search {
+  @apply bg-white rounded-full px-8 py-4 shadow-xl border border-white transition-all duration-500;
+  @apply focus-within:shadow-2xl focus-within:ring-4 focus-within:ring-primary/5 active:scale-[0.995];
+}
+
+.border-brand { @apply border-primary-deep/20; }
 
 .btn-icon {
   @apply p-2 hover:bg-surface-container-low rounded-xl transition-all;
-  @apply text-primary/40 hover:text-primary;
+  @apply text-text-muted hover:text-primary-deep;
 }
 
-/* ─── 3D card utilities ─────────────────────────────── */
+/* ─── Base Overrides ────────────────────────────────── */
+@layer utilities {
+  .text-glow-brand {
+    text-shadow: 0 0 15px rgba(159, 135, 243, 0.3);
+  }
+}
+
+/* ─── 3D & Layout utilities ─────────────────────────── */
 @layer utilities {
   .perspective-1000 { perspective: 1000px; }
   .preserve-3d      { transform-style: preserve-3d; }

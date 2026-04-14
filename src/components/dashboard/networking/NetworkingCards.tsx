@@ -26,11 +26,11 @@ export const ProfileCard = React.memo(({ profile, activeFilters, onClick }: {
     animate={{ opacity: 1, scale: 1 }}
     whileHover={{ y: -4, scale: 1.01 }}
     onClick={() => onClick(profile)}
-    className="bg-white/70 backdrop-blur-xl p-6 rounded-4xl shadow-ambient cursor-pointer group border border-white/50 hover:bg-white transition-all flex flex-col h-full min-h-65"
+    className="box-testo cursor-pointer group flex flex-col h-full min-h-65 bg-white"
   >
     <div className="flex items-center gap-5 mb-6">
       <div className="relative shrink-0">
-        <div className="absolute inset-0 bg-secondary rounded-2xl blur-md opacity-0 group-hover:opacity-20 transition-opacity" />
+        <div className="absolute inset-0 bg-primary-deep rounded-2xl blur-md opacity-0 group-hover:opacity-10 transition-opacity" />
         <img
           src={`https://picsum.photos/seed/${profile.avatarSeed}/120/120`}
           alt={profile.name}
@@ -38,37 +38,37 @@ export const ProfileCard = React.memo(({ profile, activeFilters, onClick }: {
           loading="lazy"
         />
         {profile.badge && (
-          <div className="absolute -top-2 -right-2 bg-gradient-accent w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
+          <div className="absolute -top-2 -right-2 bg-gradient-warm w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
              <Zap className="w-3 h-3 text-white fill-current" />
           </div>
         )}
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className="font-display font-black text-primary text-xl tracking-tight leading-none italic group-hover:text-secondary transition-colors truncate">{profile.name}</h4>
-        <p className="text-2xs text-primary/30 font-display font-black uppercase tracking-widest-plus mt-1.5 px-2 py-0.5 bg-primary/5 rounded-full w-fit">{profile.role}</p>
+        <h4 className="font-display font-black text-text-primary text-xl tracking-tight leading-none italic group-hover:text-primary-deep transition-colors truncate">{profile.name}</h4>
+        <p className="text-[10px] text-text-muted font-display font-black uppercase tracking-widest-plus mt-2 px-2 py-0.5 bg-surface-container-low rounded-full w-fit">{profile.role}</p>
       </div>
     </div>
 
     <div className="flex-1 flex flex-col justify-between">
-      <div className="flex items-center gap-4 text-primary/40 mb-5 px-1">
+      <div className="flex items-center gap-4 text-text-muted mb-5 px-1">
         <div className="flex items-center gap-2">
-           <MapPin size={12} className="text-secondary/60" />
-           <span className="text-2xs font-display font-black uppercase tracking-widest-plus">{profile.location}</span>
+           <MapPin size={12} className="text-primary-deep/40" />
+           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus">{profile.location}</span>
         </div>
         <div className="flex items-center gap-2">
-           <Clock size={12} className="text-secondary/60" />
-           <span className="text-2xs font-display font-black uppercase tracking-widest-plus text-secondary/70">{profile.availability}</span>
+           <Clock size={12} className="text-primary-deep/40" />
+           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus">{profile.availability}</span>
         </div>
       </div>
 
       <div className="space-y-4">
-        <div className="h-px bg-linear-to-r from-transparent via-border-subtle/50 to-transparent" />
+        <div className="h-px bg-border-subtle" />
         <div className="flex flex-wrap gap-1.5">
           {profile.skills.slice(0, 3).map(skill => (
             <SkillTag key={skill} skill={skill} highlighted={activeFilters.includes(skill)} />
           ))}
           {profile.skills.length > 3 && (
-            <span className="self-center px-1 text-3xs font-display font-black text-primary/20 uppercase tracking-widest-plus">
+            <span className="self-center px-1 text-[10px] font-display font-black text-text-muted/40 uppercase tracking-widest-plus">
               +{profile.skills.length - 3}
             </span>
           )}
@@ -89,7 +89,7 @@ export const CooperativeCard = React.memo(({ coop, onClick }: {
     animate={{ opacity: 1, y: 0 }}
     whileHover={{ y: -4, scale: 1.01 }}
     onClick={() => onClick(coop)}
-    className="bg-white/70 backdrop-blur-xl p-6 rounded-4xl shadow-ambient cursor-pointer group border border-white/50 hover:bg-white transition-all flex flex-col h-full min-h-70"
+    className="box-testo cursor-pointer group flex flex-col h-full min-h-70 bg-white"
   >
     <div className="flex items-start justify-between mb-6">
       <div className="flex items-center gap-4">
@@ -97,28 +97,30 @@ export const CooperativeCard = React.memo(({ coop, onClick }: {
            <Building2 className="text-white w-6 h-6 relative z-10" />
         </div>
         <div>
-          <h4 className="font-display font-black text-primary text-xl tracking-tight leading-none italic transition-colors">{coop.name}</h4>
-          <p className="text-[9px] text-primary/30 font-display font-black uppercase tracking-widest-plus mt-1 px-2 py-0.5 bg-primary/5 rounded-full w-fit">{coop.sector}</p>
+          <h4 className="font-display font-black text-text-primary text-xl tracking-tight leading-none italic transition-colors group-hover:text-primary-deep">{coop.name}</h4>
+          <p className="text-[9px] text-text-muted font-display font-black uppercase tracking-widest-plus mt-2 px-2 py-0.5 bg-surface-container-low rounded-full w-fit">{coop.sector}</p>
         </div>
       </div>
       {coop.studioInCampoAvailable && (
-        <div className="p-1.5 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center border border-secondary/5 group-hover:bg-secondary group-hover:text-white transition-all">
+        <div className="p-1.5 bg-accent-warm/10 text-accent-warm rounded-lg flex items-center justify-center border border-accent-warm/10 group-hover:bg-accent-warm group-hover:text-white transition-all shadow-glow shadow-accent-warm/10">
            <Zap className="w-3.5 h-3.5 fill-current" />
         </div>
       )}
     </div>
 
-    <p className="text-xs font-body text-primary/60 leading-relaxed line-clamp-3 mb-6 flex-1 italic">
+    <p className="text-xs font-body text-text-primary/70 leading-relaxed line-clamp-3 mb-6 flex-1 italic">
       "{coop.description}"
     </p>
 
-    <div className="space-y-4 mt-auto pt-4 border-t border-primary/5">
+    <div className="space-y-4 mt-auto pt-4 border-t border-border-subtle">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-primary/40">
-          <MapPin className="w-3.5 h-3.5 text-secondary/60" />
+        <div className="flex items-center gap-2 text-text-muted">
+          <MapPin className="w-3.5 h-3.5 text-primary-deep/40" />
           <span className="text-[10px] font-display font-black uppercase tracking-widest-plus">{coop.location}</span>
         </div>
-        <ChevronRight size={14} className="text-secondary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+        <div className="p-1 rounded-full bg-primary-deep/5 text-primary-deep opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+          <ChevronRight size={14} />
+        </div>
       </div>
     </div>
   </motion.div>

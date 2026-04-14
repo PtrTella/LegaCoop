@@ -16,17 +16,23 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = ""
 }) => {
   return (
-    <div className={`text-center space-y-3 max-w-4xl mx-auto ${className}`}>
-      <div className="space-y-2">
-        <p className="font-display text-sm-alt font-black uppercase tracking-mega text-secondary mb-1">
-          {preTitle}
-        </p>
-        <h1 className="font-display text-4xl md:text-5xl font-black italic tracking-tighter text-primary leading-tight">
+    <div className={`text-center space-y-4 max-w-4xl mx-auto ${className}`}>
+      <div className="space-y-4">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
+          <p className="font-display text-[10px] font-black uppercase tracking-ultra text-primary-deep">
+            {preTitle}
+          </p>
+          <div className="w-1.5 h-1.5 rounded-full bg-accent-warm shadow-glow shadow-accent-warm/40" />
+        </div>
+        
+        <h1 className="font-display text-4xl md:text-6xl font-black italic tracking-tighter text-text-primary leading-[0.9] select-none">
           <span className="mr-3">{titleMain}</span>
-          <span className="not-italic text-primary/20">{titleSuffix}.</span>
+          <span className="not-italic bg-gradient-brand bg-clip-text text-transparent opacity-90">{titleSuffix}.</span>
         </h1>
+        
         {description && (
-          <p className="text-primary/50 text-sm-alt font-body leading-relaxed max-w-2xl mx-auto">
+          <p className="text-text-muted text-sm-alt font-body leading-relaxed max-w-2xl mx-auto">
             {description}
           </p>
         )}

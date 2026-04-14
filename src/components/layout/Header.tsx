@@ -61,7 +61,7 @@ export const Header = ({
                     : 'text-primary/40 hover:text-primary'
                 }`}
               >
-                <item.icon className={`h-3.5 w-3.5 ${isActive ? 'text-tertiary' : ''}`} />
+                <item.icon className={`h-3.5 w-3.5 ${isActive ? 'text-accent-warm' : ''}`} />
                 <span className={`font-display text-sm-alt font-black uppercase tracking-wider ${isActive ? 'block' : 'hidden md:block'}`}>
                   {item.label}
                 </span>

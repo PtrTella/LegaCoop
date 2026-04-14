@@ -17,17 +17,17 @@ export const Button = ({
   const baseClasses = "font-display font-black uppercase tracking-widest transition-all text-center flex items-center justify-center gap-3";
   
   const variants = {
-    primary: "bg-primary text-white hover:bg-secondary shadow-2xl shadow-primary/40",
-    gradient: "bg-gradient-accent-reverse text-white shadow-ambient",
-    icon: "bg-gradient-accent-reverse text-white shadow-lg hover:shadow-secondary/30 disabled:opacity-30",
-    outline: "border-2 border-border-muted text-primary hover:border-border-subtle",
-    text: "text-secondary hover:text-primary"
+    primary: "bg-gradient-brand text-white shadow-xl shadow-primary/20 border border-white/10 hover:shadow-glow transition-all",
+    gradient: "bg-gradient-warm text-white shadow-xl shadow-accent/20",
+    icon: "bg-white border border-border-subtle text-text-primary hover:border-primary/40 shadow-sm",
+    outline: "border-2 border-border-subtle text-text-primary hover:border-primary-deep/30 bg-white/50",
+    text: "text-primary-deep hover:text-primary-deep/70 font-display font-black"
   };
 
   const sizes = {
-    sm: "px-6 py-3.5 rounded-xl text-xs-tight",
-    md: "px-8 py-4 text-xs rounded-3xl",
-    lg: "px-10 py-5 text-xs rounded-3xl",
+    sm: "px-6 py-3.5 rounded-xl text-[10px]",
+    md: "px-8 py-4 text-2xs rounded-3xl",
+    lg: "px-10 py-5 text-2xs rounded-3xl",
     icon: "p-4 rounded-xl shrink-0"
   };
 

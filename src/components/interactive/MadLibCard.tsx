@@ -61,22 +61,22 @@ export const MadLibCard = ({
   const allFilled = Object.keys(selections).length === correctWords.length;
 
   return (
-    <div className="bg-surface-container-low border border-border-muted rounded-5xl p-10 shadow-ambient space-y-10 mt-8 relative overflow-hidden">
+    <div className="box-testo p-10 mt-8 relative overflow-hidden bg-white">
       <div className="absolute top-0 right-0 p-10 opacity-[0.03] -mr-12 -mt-12">
-        <GripVertical size={200} className="text-secondary" />
+        <GripVertical size={200} className="text-primary-deep" />
       </div>
 
-      <div className="flex items-center gap-4 mb-2">
-        <div className="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center">
-          <Zap className="text-secondary w-6 h-6" />
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-10 h-10 bg-accent-warm shadow-glow shadow-accent-warm/20 rounded-2xl flex items-center justify-center">
+          <Zap className="text-white w-5 h-5 fill-white" />
         </div>
-        <p className="text-xs-tight text-secondary font-display font-black uppercase tracking-mega leading-none">Costruzione Logica</p>
+        <p className="text-[10px] text-primary-deep font-display font-black uppercase tracking-ultra leading-none">Costruzione Logica</p>
       </div>
 
       <AnimatePresence mode="wait">
         {!feedback || !feedback.isCorrect ? (
-          <motion.div key="game" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className="space-y-10">
-            <div className="text-2xl md:text-3xl font-display font-black text-primary leading-[1.6] italic relative z-10 select-none tracking-tight">
+          <motion.div key="game" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className="space-y-12">
+            <div className="text-3xl md:text-4xl font-display font-black text-text-primary leading-[1.6] italic relative z-10 select-none tracking-tight">
               {parts.map((part, i) => (
                 typeof part === 'string' ? (
                   <span key={i}>{part}</span>
@@ -85,13 +85,13 @@ export const MadLibCard = ({
                     <select 
                       value={selections[part.index] || ''}
                       onChange={(e) => handleSelect(part.index, e.target.value)}
-                      className={`px-4 py-2.5 rounded-xl border-2 transition-all font-display font-black text-sm-alt uppercase tracking-widest bg-white appearance-none cursor-pointer shadow-sm ${
+                      className={`px-4 py-2 rounded-xl border-2 transition-all font-display font-black text-sm uppercase tracking-widest bg-surface-container-low appearance-none cursor-pointer shadow-sm ${
                         selections[part.index] 
-                        ? 'border-primary text-primary' 
-                        : 'border-dashed border-primary/20 text-primary/40'
+                        ? 'border-primary-deep text-primary-deep bg-white' 
+                        : 'border-dashed border-border-subtle text-text-muted hover:border-primary-deep/30'
                       }`}
                     >
-                      <option value="" disabled>SELEZIONA...</option>
+                      <option value="" disabled>...</option>
                       {data.expectedWords.map(opt => (
                         <option key={opt} value={opt}>{opt}</option>
                       ))}
@@ -101,7 +101,7 @@ export const MadLibCard = ({
               ))}
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-6 relative z-10">
+            <div className="flex flex-col items-center justify-center gap-6 relative z-10 pt-4 border-t border-border-subtle">
               <motion.button
                 whileHover={allFilled ? { scale: 1.05, y: -4 } : {}}
                 whileTap={allFilled ? { scale: 0.95 } : {}}
@@ -109,8 +109,8 @@ export const MadLibCard = ({
                 onClick={checkSolution}
                 className={`px-10 py-5 rounded-2xl font-display font-black text-xs uppercase tracking-widest shadow-2xl transition-all ${
                   !allFilled
-                  ? 'bg-surface-container-highest text-primary/20 cursor-not-allowed opacity-50'
-                  : 'bg-primary text-white hover:bg-secondary shadow-primary/30'
+                  ? 'bg-surface-container-highest text-text-muted/20 cursor-not-allowed'
+                  : 'bg-gradient-brand text-white shadow-primary/30 hover:shadow-glow'
                 }`}
               >
                 Valida Sintesi
@@ -120,7 +120,7 @@ export const MadLibCard = ({
                 <motion.p 
                   initial={{ opacity: 0, y: 5 }} 
                   animate={{ opacity: 1, y: 0 }} 
-                  className="text-tertiary text-xs-tight font-display font-black uppercase tracking-widest animate-pulse italic text-center"
+                  className="text-accent text-[10px] font-display font-black uppercase tracking-widest animate-pulse italic text-center"
                 >
                   {feedback.text}
                 </motion.p>
@@ -128,14 +128,14 @@ export const MadLibCard = ({
             </div>
           </motion.div>
         ) : (
-           <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-8">
-             <div className="w-24 h-24 bg-gradient-accent-reverse rounded-4xl flex items-center justify-center mx-auto shadow-2xl animate-bounce">
-                <Check className="text-white w-12 h-12" />
+           <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10 space-y-10">
+             <div className="w-24 h-24 bg-gradient-brand rounded-4xl flex items-center justify-center mx-auto shadow-glow border border-white/20 animate-bounce">
+                <Check className="text-white w-12 h-12 stroke-[3px]" />
              </div>
              <div>
-                <h4 className="text-3xl font-display font-black text-primary italic tracking-tight">Sintesi Completata</h4>
+                <h4 className="text-4xl font-display font-black text-text-primary italic tracking-tight">Sintesi Completata</h4>
                 {feedback && feedback.isCorrect && (
-                  <p className="text-primary/60 font-body text-base max-w-sm mx-auto leading-relaxed mt-4">
+                  <p className="text-text-muted font-body text-base max-w-sm mx-auto leading-relaxed mt-6 italic">
                     {feedback.text}
                   </p>
                 )}
