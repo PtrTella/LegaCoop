@@ -68,7 +68,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
       {/* Internal Aurora Atmosphere - High Definition */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[140px] animate-pulse pointer-events-none" />
       <div className="absolute bottom-40 left-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-warm/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-accent-warm/5 rounded-full blur-[160px] pointer-events-none" />
 
       {/* Milky Glass Header with Color Accent Line */}
       <div className="bg-white/70 backdrop-blur-[40px] px-8 py-8 md:px-12 md:py-10 shrink-0 z-20 relative overflow-hidden border-b border-white/60 shadow-sm">
@@ -193,7 +193,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
             className="p-7 bg-gradient-brand hover:from-primary hover:to-accent-warm text-white rounded-4xl shadow-2xl shadow-primary/30 transition-all shrink-0 relative overflow-hidden group/btn"
             aria-label="Invia pitch"
           >
-            <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000" />
+            <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
             <Send className="w-8 h-8 relative z-10" />
           </motion.button>
         </form>
