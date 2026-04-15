@@ -164,7 +164,7 @@ const AppContent = () => {
 
 
   const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
-  const isFullWidth = ['pitch', 'roleplay'].includes(view);
+  const isFullWidth = ['pitch', 'roleplay', 'tutor'].includes(view);
 
   return (
     <div className={`aurora-container font-body flex flex-col w-full ${isFullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
@@ -268,7 +268,7 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
         </div>
-      <div className="hidden md:block">
+        <div className="hidden md:flex">
           <AITutor mode="fab" />
         </div>
       </main>
