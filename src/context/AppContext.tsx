@@ -10,7 +10,7 @@ interface AppState {
   userRole: string | null;
   modules: Module[] | null;
   userProfile: UserProfile | null;
-  hasSeenTour: boolean;
+  seenTours: string[];
   messages: ChatMessage[];
 }
 
@@ -20,7 +20,7 @@ interface AppContextType {
   updateMaturityScore: (points: number) => void;
   unlockPhase: (phaseId: number) => void;
   updateUserProfile: (profile: UserProfile) => void;
-  completeTour: () => void;
+  markTourAsSeen: (viewId: string) => void;
   addChatMessage: (msg: ChatMessage) => void;
 }
 
@@ -33,7 +33,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     unlockedPhases: [0],
     userRole: null,
     modules: null,
-    hasSeenTour: localStorage.getItem('legacoop_has_seen_tour') === 'true',
+    seenTours: (() => {
+      try {
+        const saved = localStorage.getItem('legacoop_seen_tours');
+        return saved ? JSON.parse(saved) : [];
+      } catch { return []; }
+    })(),
     messages: [
       { role: 'bot', text: 'Ciao! Sono la tua intelligenza cooperativa. Come posso aiutarti oggi?' }
     ],
@@ -46,6 +51,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   });
 
   useEffect(() => {
+    // Migration: Cleanup old legacy tour key if it exists
+    if (localStorage.getItem('legacoop_has_seen_tour')) {
+      localStorage.removeItem('legacoop_has_seen_tour');
+    }
+
     fetch('/data/modules.json')
       .then(res => res.json())
       .then(data => setState(prev => ({ ...prev, modules: data })))
@@ -93,9 +103,15 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, userProfile: profile }));
   };
 
-  const completeTour = () => {
-    localStorage.setItem('legacoop_has_seen_tour', 'true');
-    setState(prev => ({ ...prev, hasSeenTour: true }));
+  const markTourAsSeen = (viewId: string) => {
+    setState(prev => {
+      if (prev.seenTours.includes(viewId)) return prev;
+      const newSeen = [...prev.seenTours, viewId];
+      try {
+        localStorage.setItem('legacoop_seen_tours', JSON.stringify(newSeen));
+      } catch { /* ignore */ }
+      return { ...prev, seenTours: newSeen };
+    });
   };
 
   const addChatMessage = (msg: ChatMessage) => {
@@ -103,7 +119,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile, completeTour, addChatMessage }}>
+    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile, markTourAsSeen, addChatMessage }}>
       {children}
     </AppContext.Provider>
   );

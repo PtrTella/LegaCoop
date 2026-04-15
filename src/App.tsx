@@ -24,39 +24,52 @@ import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
 // --- Main App Content ---
 
 const AppContent = () => {
-  const { state, completePhase, completeTour, updateMaturityScore } = useAppContext();
+  const { state, completePhase, markTourAsSeen, updateMaturityScore } = useAppContext();
   const { modules } = state;
   const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch' | 'tutor'>('dashboard');
   const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
 
-  const tourSteps = [
-    {
-      title: "Benvenuto nel tuo Hub",
-      description: "Questo è il cuore della tua startup cooperativa. Qui monitori la tua crescita e accedi rapidamente alle sezioni chiave.",
-      icon: Sparkles,
-      view: 'dashboard' as const
-    },
-    {
-      title: "Il tuo Percorso",
-      description: "In Accademia trovi la mappa del tuo viaggio. Sblocca ogni fase completando le lezioni e i quiz.",
-      icon: GraduationCap,
-      view: 'map' as const
-    },
-    {
+  // --- Contextual Introductions Logic ---
+  const [activeTour, setActiveTour] = useState<any[] | null>(null);
+
+  const viewIntros: Record<string, any[]> = {
+    dashboard: [{
+      title: "Il tuo Hub Cooperativo",
+      description: "Benvenuto! Da qui puoi monitorare la tua crescita ed accedere rapidamente a Laboratorio, Networking e Accademia attraverso i banner qui sotto.",
+      icon: Sparkles
+    }],
+    map: [{
+      title: "Percorso Accademia",
+      description: "Sblocca ogni fase della tua startup completando le lezioni e i quiz per scalare i livelli di maturità.",
+      icon: GraduationCap
+    }],
+    simulation: [{
       title: "Laboratorio Pratico",
-      description: "Metti alla prova le tue abilità con simulatori realistici di governance e pitch in un ambiente protetto.",
-      icon: Zap,
-      view: 'simulation' as const
-    },
-    {
-      title: "Ecosistema e Network",
-      description: "Non sei solo. Connettiti con talenti, imprese ed esperti dell'ecosistema Legacoop per accelerare la tua visione.",
-      icon: Users,
-      view: 'team' as const
+      description: "Metti alla prova le tue abilità con simulatori reali di governance e pitch battle AI in un ambiente sicuro.",
+      icon: Zap
+    }],
+    team: [{
+      title: "Ecosistema Network",
+      description: "Non sei solo. Connettiti con talenti, imprese ed esperti per far crescere e scalare la tua visione cooperativa.",
+      icon: Users
+    }]
+  };
+
+  React.useEffect(() => {
+    // Only show tour if not already seen for this view
+    if (!state.seenTours.includes(view) && viewIntros[view]) {
+      // Small delay so the page transition can finish
+      const timer = setTimeout(() => {
+        setActiveTour(viewIntros[view]);
+      }, 500);
+      return () => clearTimeout(timer);
+    } else {
+      setActiveTour(null);
     }
-  ];
+  }, [view, state.seenTours]);
+
 
   // --- History Management ---
   React.useEffect(() => {
@@ -162,11 +175,11 @@ const AppContent = () => {
         <div className="aurora-blob bg-aurora-violet w-[140vw] h-[140vw] top-[40vw] left-[-20vw] opacity-[0.25] mix-blend-multiply blur-[120px]" />
       </div>
 
-      {/* Main Content Area */}
-      <main className="flex-1 min-h-screen relative z-10 flex flex-col">
-        {/* Header (Now contains all Navigation & Metrics) */}
-        <Header view={view} setView={handleSetView} activeModule={activeModule} />
+      {/* Header (Moved outside main to fix stacking order) */}
+      <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
+      {/* Main Content Area */}
+      <main className="flex-1 min-h-screen relative z-10 flex flex-col pt-20">
         <div className="flex-1 pt-10 pb-32 md:pb-12 px-1.5 sm:px-12">
           <div className="max-w-6xl mx-auto h-full">
             <AnimatePresence mode="wait">
@@ -250,23 +263,19 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
         </div>
-        <div className="hidden md:block">
+      <div className="hidden md:block">
           <AITutor mode="fab" />
         </div>
       </main>
 
       <MobileTabNavigation view={view} setView={handleSetView} />
 
+      {/* Contextual Introductions */}
       <AnimatePresence>
-        {!state.hasSeenTour && (
+        {activeTour && (
           <GuidedTour 
-            steps={tourSteps}
-            currentView={view}
-            onNavigate={handleSetView}
-            onComplete={() => {
-              completeTour();
-              handleSetView('dashboard');
-            }}
+            steps={activeTour} 
+            onComplete={() => markTourAsSeen(view)}
           />
         )}
       </AnimatePresence>
