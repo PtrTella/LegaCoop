@@ -4,7 +4,7 @@ import { GoogleGenAI } from '@google/genai';
 const MODEL_CONFIG = {
   model: "gemma-4-26b-a4b-it",
   temperature: 0.5,
-  systemPrompt: `Sei un tutor esperto della LegaCoop. Il tuo compito è spiegare i concetti cooperativi in modo semplice e motivante. Rispondi in modo conciso (max 3-4 righe) e amichevole.`
+  systemPrompt: `Sei un tutor esperto della Legacoop. Il tuo compito è spiegare i concetti cooperativi in modo semplice e motivante. Rispondi in modo conciso (max 3-4 righe) e amichevole.`
 };
 
 export default async function handler(req: any, res: any) {

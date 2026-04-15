@@ -47,6 +47,13 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
       })
       .catch(err => console.error('[FounderProfileModal] Failed to load config:', err));
   }, [initialProfile]);
+  
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   const toggleSkill = (skill: string) => {
     setProfile(prev => {
@@ -87,7 +94,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
-        className="bg-surface-softest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden"
+        className="bg-surface-softest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden max-h-[calc(100vh-40px)] flex flex-col"
       >
         {!config ? (
           <div className="p-20 flex flex-col items-center justify-center gap-4">
@@ -111,7 +118,11 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                   </h2>
                 </div>
               </div>
-              <button onClick={onClose} className="btn-icon">
+              <button 
+                onClick={onClose} 
+                className="btn-icon relative z-50 w-10 h-10 flex items-center justify-center active:scale-90"
+                aria-label="Chiudi"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -129,7 +140,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             </div>
 
             {/* Step Content */}
-            <div className="px-8 pb-8 min-h-60">
+            <div className="px-8 pb-6 overflow-y-auto flex-1 min-h-0 touch-pan-y">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={step}
@@ -186,8 +197,8 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
 
                   {/* Step 2: Skills */}
                   {step === 2 && (
-                    <div>
-                      <div className="flex flex-wrap gap-2">
+                    <div className="space-y-6">
+                      <div className="flex flex-wrap gap-2 auto-rows-min">
                         {config.skills.map(skill => {
                           const isSelected = profile.skills?.includes(skill);
                           const maxReached = (profile.skills?.length ?? 0) >= 5 && !isSelected;

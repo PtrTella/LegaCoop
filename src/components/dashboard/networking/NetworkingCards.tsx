@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { MapPin, Clock, Zap, Building2, X, LayoutGrid, Award, ChevronRight, Share2 } from 'lucide-react';
 import { CooperativeProfile, CoFounderProfile } from '../../../types';
@@ -130,6 +130,13 @@ CooperativeCard.displayName = 'CooperativeCard';
 // --- PROFILE DETAIL MODAL ---
 export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile; onClose: () => void }) => {
   const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -141,7 +148,11 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
         className="bg-white/70 backdrop-blur-[40px] w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden border border-white/50"
       >
         <div className="bg-gradient-brand p-10 text-white relative overflow-hidden">
-          <button onClick={onClose} className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-20 backdrop-blur-md">
+          <button 
+            onClick={onClose} 
+            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
+            aria-label="Chiudi"
+          >
             <X className="w-5 h-5" />
           </button>
           {/* Internal Aurora Blob for Modal */}
@@ -158,7 +169,7 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
             </div>
           </div>
         </div>
-        <div className="p-10 space-y-10 overflow-y-auto max-h-[60vh] scrollbar-hide">
+        <div className="p-8 md:p-10 space-y-10 overflow-y-auto max-h-[calc(100vh-200px)] min-h-0 touch-pan-y">
           <section className="space-y-3">
             <p className="text-[10px] text-primary/60 font-display font-black uppercase tracking-ultra">Visione</p>
             <div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-3xl border border-white/60 italic"><p className="text-text-primary/70 font-body leading-relaxed text-sm">"{profile.vision}"</p></div>
@@ -177,6 +188,13 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
 // --- COOPERATIVE DETAIL MODAL ---
 export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile; onClose: () => void }) => {
   const [requestSent, setRequestSent] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -188,7 +206,13 @@ export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile;
         className="bg-white/70 backdrop-blur-[40px] w-full max-w-4xl rounded-5xl shadow-ambient overflow-hidden border border-white/50 flex flex-col max-h-[90vh]"
       >
         <div className="bg-gradient-brand p-8 md:p-10 text-white relative shrink-0">
-           <button onClick={onClose} className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-10 backdrop-blur-md"><X className="w-5 h-5" /></button>
+           <button 
+             onClick={onClose} 
+             className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
+             aria-label="Chiudi"
+           >
+             <X className="w-5 h-5" />
+           </button>
            {/* Internal Aurora Blob for Modal */}
            <div className="absolute top-0 left-0 w-64 h-64 bg-accent-warm/20 rounded-full blur-[80px]" />
            
@@ -200,17 +224,39 @@ export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile;
             </div>
           </div>
         </div>
-        <div className="p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 overflow-y-auto scrollbar-hide">
+        <div className="p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 overflow-y-auto min-h-0 touch-pan-y">
           <div className="lg:col-span-7 space-y-10">
             <section className="space-y-3"><div className="flex items-center gap-3 text-primary/60"><LayoutGrid size={16} /><h5 className="text-[10px] font-display font-black uppercase tracking-ultra">Identità</h5></div><p className="text-text-primary/70 font-body leading-relaxed text-sm italic">"{coop.description}"</p></section>
             <section className="space-y-3"><div className="flex items-center gap-3 text-primary/60"><Award size={16} /><h5 className="text-[10px] font-display font-black uppercase tracking-ultra">Missione</h5></div><div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-3xl border border-white/60 relative overflow-hidden group"><p className="text-text-primary/60 font-body text-base leading-relaxed relative z-10">{coop.mission}</p></div></section>
           </div>
           <div className="lg:col-span-5 space-y-6">
             {coop.studioInCampoAvailable && (
-              <div className="bg-accent-warm p-6 rounded-4xl text-white relative overflow-hidden group shadow-xl shadow-accent-warm/20"><Zap className="absolute -top-3 -right-3 w-20 h-20 text-white/5" /><div className="flex items-center gap-3 mb-4"><div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20 font-display text-white italic font-black text-lg">S</div><h6 className="font-display font-black text-white text-base leading-none">Studio in Campo</h6></div><p className="text-[11px] font-body text-white/80 leading-relaxed mb-6">Osserva i processi operativi di {coop.name} dal vivo.</p><button onClick={() => setRequestSent(true)} disabled={requestSent} className={`w-full py-4 rounded-xl font-display font-black text-[10px] uppercase tracking-widest-plus transition-all ${requestSent ? 'bg-white/20' : 'bg-white text-accent-warm'}`}>{requestSent ? 'Richiesta Inviata' : 'Prenota Posto'}</button></div>
+              <div className="bg-accent-warm p-6 rounded-4xl text-white relative overflow-hidden group shadow-xl shadow-accent-warm/20">
+                <Zap className="absolute -top-3 -right-3 w-20 h-20 text-white/5" />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20 font-display text-white italic font-black text-lg">S</div>
+                  <h6 className="font-display font-black text-white text-base leading-none">Studio in Campo</h6>
+                </div>
+                <p className="text-[11px] font-body text-white/80 leading-relaxed mb-6">Osserva i processi operativi di {coop.name} dal vivo.</p>
+                <button 
+                  onClick={() => setRequestSent(true)} 
+                  disabled={requestSent} 
+                  className={`w-full py-4 rounded-xl font-display font-black text-[10px] uppercase tracking-widest-plus transition-all active:scale-95 ${
+                    requestSent 
+                      ? 'bg-white/20 cursor-default' 
+                      : 'bg-white text-accent-warm hover:scale-[1.03] hover:shadow-xl hover:shadow-white/20'
+                  }`}
+                >
+                  {requestSent ? 'Richiesta Inviata' : 'Prenota Posto'}
+                </button>
+              </div>
             )}
             <div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-4xl border border-white/50 space-y-4">
-               <h5 className="text-[9px] font-display font-black uppercase tracking-ultra text-primary/40">Collaborazione</h5><p className="text-[11px] font-body text-text-primary/60 leading-relaxed">Contatta il board di {coop.name}.</p><button className="w-full py-3.5 bg-white/60 border border-white/60 rounded-xl font-display font-black text-[9px] uppercase tracking-widest-plus transition-all text-primary shadow-sm hover:bg-primary hover:text-white">Presenta Visione <Share2 size={12} /></button>
+               <h5 className="text-[9px] font-display font-black uppercase tracking-ultra text-primary/40">Collaborazione</h5>
+               <p className="text-[11px] font-body text-text-primary/60 leading-relaxed">Contatta il board di {coop.name}.</p>
+               <button className="w-full py-4 bg-white/70 border border-primary/10 rounded-2xl font-display font-black text-[10px] uppercase tracking-widest-plus transition-all text-primary shadow-sm hover:bg-primary hover:text-white hover:scale-[1.02] flex items-center justify-center">
+                 Presenta Visione
+               </button>
             </div>
           </div>
         </div>
