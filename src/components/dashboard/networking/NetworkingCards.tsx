@@ -145,31 +145,29 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
     >
       <motion.div
         initial={{ scale: 0.96, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.96, opacity: 0, y: 20 }}
-        className="bg-white/70 backdrop-blur-[40px] w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden border border-white/50"
+        className="bg-white/95 backdrop-blur-[40px] w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden border border-white/50 flex flex-col max-h-full"
       >
-        <div className="bg-gradient-brand p-10 text-white relative overflow-hidden">
+        <div className="bg-gradient-brand p-8 md:p-10 text-white relative overflow-hidden">
           <button 
             onClick={onClose} 
-            className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
+            className="absolute top-4 right-4 md:top-6 md:right-6 w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
             aria-label="Chiudi"
           >
             <X className="w-5 h-5" />
           </button>
-          {/* Internal Aurora Blob for Modal */}
-          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent/20 rounded-full blur-[60px]" />
           
-          <div className="flex items-center gap-8 relative z-10">
+          <div className="flex items-center gap-6 md:gap-8 relative z-10">
             <div className="relative shrink-0">
-               <img src={`https://picsum.photos/seed/${profile.avatarSeed}/200/200`} alt={profile.name} className="w-20 h-20 rounded-2xl object-cover border-4 border-white/20 shadow-2xl" />
-               {profile.badge && <div className="absolute -top-2 -right-2 bg-accent-warm p-1.5 rounded-full border-4 border-white shadow-xl shadow-accent-warm/20"><Zap className="w-4 h-4 text-white fill-current" /></div>}
+               <img src={`https://picsum.photos/seed/${profile.avatarSeed}/200/200`} alt={profile.name} className="w-16 h-16 md:w-20 md:h-20 rounded-2xl object-cover border-4 border-white/20 shadow-2xl" />
+               {profile.badge && <div className="absolute -top-2 -right-2 bg-accent-warm p-1 md:p-1.5 rounded-full border-2 md:border-4 border-white shadow-xl shadow-accent-warm/20"><Zap className="w-3 h-3 md:w-4 md:h-4 text-white fill-current" /></div>}
             </div>
             <div>
-              <h3 className="font-display font-black text-3xl tracking-tight leading-none italic">{profile.name}</h3>
-              <p className="text-white/80 font-display font-black text-[9px] uppercase tracking-mega mt-3 glass-pill px-3 py-1.5 w-fit border border-white/10">{profile.role}</p>
+              <h3 className="font-display font-black text-2xl md:text-3xl tracking-tight leading-none italic">{profile.name}</h3>
+              <p className="text-white/80 font-display font-black text-[9px] uppercase tracking-mega mt-2 md:mt-3 glass-pill px-3 py-1.5 w-fit border border-white/10">{profile.role}</p>
             </div>
           </div>
         </div>
-        <div className="p-8 md:p-10 space-y-10 overflow-y-auto max-h-[calc(100vh-200px)] min-h-0 touch-pan-y">
+        <div className="p-6 md:p-10 space-y-8 md:space-y-10 overflow-y-auto max-h-[calc(100vh-280px)] md:max-h-[calc(100vh-200px)] min-h-0 touch-pan-y">
           <section className="space-y-3">
             <p className="text-[10px] text-primary/60 font-display font-black uppercase tracking-ultra">Visione</p>
             <div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-3xl border border-white/60 italic"><p className="text-text-primary/70 font-body leading-relaxed text-sm">"{profile.vision}"</p></div>
@@ -215,28 +213,33 @@ export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile;
     >
       <motion.div
         initial={{ scale: 0.96, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.96, opacity: 0, y: 20 }}
-        className="bg-white/70 backdrop-blur-[40px] w-full max-w-4xl rounded-5xl shadow-ambient overflow-hidden border border-white/50 flex flex-col max-h-[90vh]"
+        className="bg-white/95 backdrop-blur-[40px] w-full max-w-4xl rounded-5xl shadow-ambient overflow-hidden border border-white/50 flex flex-col max-h-full"
       >
-        <div className="bg-gradient-brand p-8 md:p-10 text-white relative shrink-0">
+        <div className="bg-gradient-brand p-6 md:p-10 text-white relative shrink-0">
            <button 
              onClick={onClose} 
-             className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
+             className="absolute top-4 right-4 md:top-6 md:right-6 w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white/10 hover:bg-white text-white hover:text-primary rounded-xl transition-all z-50 backdrop-blur-md active:scale-90"
              aria-label="Chiudi"
            >
              <X className="w-5 h-5" />
            </button>
-           {/* Internal Aurora Blob for Modal */}
-           <div className="absolute top-0 left-0 w-64 h-64 bg-accent-warm/20 rounded-full blur-[80px]" />
            
-          <div className="flex flex-col md:flex-row md:items-center gap-8 relative z-10">
-            <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20 shadow-inner"><Building2 className="w-10 h-10 text-white" /></div>
-            <div>
-              <div className="flex items-center gap-3 mb-2"><span className="text-[10px] font-display font-black uppercase tracking-mega text-white/80">{coop.sector}</span><div className="w-1 h-1 rounded-full bg-white/40" /><div className="flex items-center gap-2"><MapPin size={10} className="text-white/60" /><span className="text-[10px] font-display font-black uppercase text-white/60">{coop.location}</span></div></div>
-              <h3 className="text-3xl md:text-4xl font-display font-black italic tracking-tighter leading-none">{coop.name}</h3>
+          <div className="flex items-center gap-6 md:gap-8 relative z-10 pr-12 md:pr-0">
+            <div className="hidden md:flex w-20 h-20 bg-white/10 backdrop-blur-xl rounded-2xl items-center justify-center border border-white/20 shadow-inner"><Building2 className="w-10 h-10 text-white" /></div>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <span className="text-[10px] font-display font-black uppercase tracking-mega text-white/80">{coop.sector}</span>
+                <div className="hidden sm:block w-1 h-1 rounded-full bg-white/40" />
+                <div className="flex items-center gap-2">
+                  <MapPin size={10} className="text-white/60" />
+                  <span className="text-[10px] font-display font-black uppercase text-white/60">{coop.location}</span>
+                </div>
+              </div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-black italic tracking-tighter leading-none">{coop.name}</h3>
             </div>
           </div>
         </div>
-        <div className="p-8 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 overflow-y-auto min-h-0 touch-pan-y">
+        <div className="p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 overflow-y-auto min-h-0 touch-pan-y flex-1">
           <div className="lg:col-span-7 space-y-10">
             <section className="space-y-3"><div className="flex items-center gap-3 text-primary/60"><LayoutGrid size={16} /><h5 className="text-[10px] font-display font-black uppercase tracking-ultra">Identità</h5></div><p className="text-text-primary/70 font-body leading-relaxed text-sm italic">"{coop.description}"</p></section>
             <section className="space-y-3"><div className="flex items-center gap-3 text-primary/60"><Award size={16} /><h5 className="text-[10px] font-display font-black uppercase tracking-ultra">Missione</h5></div><div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-3xl border border-white/60 relative overflow-hidden group"><p className="text-text-primary/60 font-body text-base leading-relaxed relative z-10">{coop.mission}</p></div></section>

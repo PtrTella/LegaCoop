@@ -94,7 +94,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.94, y: 20 }}
-        className="bg-surface-softest w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden max-h-[calc(100vh-40px)] flex flex-col"
+        className="bg-white/95 backdrop-blur-[40px] w-full max-w-xl rounded-5xl shadow-ambient overflow-hidden max-h-full flex flex-col"
       >
         {!config ? (
           <div className="p-20 flex flex-col items-center justify-center gap-4">
@@ -106,7 +106,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             {/* Header */}
             <div className="p-8 pb-6 flex items-start justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gradient-accent-reverse rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+                <div className="w-12 h-12 bg-gradient-brand rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -131,7 +131,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
             <div className="px-8 mb-6">
               <div className="h-1 bg-surface-soft rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-accent-reverse rounded-full"
+                  className="h-full bg-gradient-brand rounded-full"
                   animate={{ width: `${((step + 1) / config.steps.length) * 100}%` }}
                   transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                 />
@@ -284,7 +284,7 @@ export const FounderProfileModal = ({ initialProfile, onSave, onClose }: Props) 
                 disabled={!canProceed()}
                 className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-display font-black text-xs-tight uppercase tracking-widest-plus transition-all ${
                   canProceed()
-                    ? 'bg-gradient-accent-reverse text-white shadow-xl shadow-primary/20'
+                    ? 'bg-gradient-brand text-white shadow-xl shadow-primary/20'
                     : 'bg-surface-soft text-primary/20 cursor-not-allowed'
                 }`}
               >
