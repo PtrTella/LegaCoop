@@ -119,7 +119,7 @@ export const TeamView = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-0.5 sm:px-4 md:px-8 font-display">
+      <div className="w-full mx-auto max-w-7xl space-y-12 pt-2 pb-10 px-0.5 sm:px-4 md:px-8 font-display">
         <SectionHeader 
           titleMain="L'Ecosistema"
           titleSuffix="Indicoo"

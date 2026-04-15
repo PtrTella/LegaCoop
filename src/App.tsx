@@ -167,7 +167,7 @@ const AppContent = () => {
   const isFullWidth = ['pitch', 'roleplay'].includes(view);
 
   return (
-    <div className={`aurora-container font-body flex flex-col ${isFullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
+    <div className={`aurora-container font-body flex flex-col w-full ${isFullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
       {/* Magnificent Aurora: High-Vibrancy Radiant Atmosphere (Restored) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-white">
         <div className="aurora-blob bg-aurora-purple w-[150vw] h-[150vw] -top-[50vw] -left-[50vw] opacity-[0.45] mix-blend-multiply" />
@@ -180,9 +180,9 @@ const AppContent = () => {
       <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
       {/* Main Content Area */}
-      <main className={`flex-1 relative z-10 flex flex-col pt-20 ${isFullWidth ? 'h-0' : ''}`}>
+      <main className={`flex-1 relative z-10 flex flex-col w-full min-w-0 pt-20 ${isFullWidth ? 'h-0' : ''}`}>
         <div className={`flex-1 flex flex-col ${isFullWidth ? 'p-0 overflow-hidden' : 'pt-10 pb-32 md:pb-12 px-1.5 sm:px-12'}`}>
-          <div className={`flex-1 ${isFullWidth ? 'w-full h-full' : 'max-w-6xl mx-auto'}`}>
+          <div className={`flex-1 w-full min-w-0 ${isFullWidth ? 'h-full' : 'max-w-6xl mx-auto'}`}>
             <AnimatePresence mode="wait">
               {view === 'dashboard' && (
                 <motion.div key="dash" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
