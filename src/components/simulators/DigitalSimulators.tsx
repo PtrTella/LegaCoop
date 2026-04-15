@@ -10,7 +10,7 @@ export const DigitalSimulators = ({ onSelect }: DigitalSimulatorsProps) => {
   const simulators = [
     {
       id: 'governance',
-      title: "Consiglio dei Saggi",
+      title: "Governance Lab",
       description: "Prendi decisioni etiche e strategiche per la tua cooperativa in scenari realistici.",
       icon: Shield,
       accent: "bg-primary/10 text-primary",
