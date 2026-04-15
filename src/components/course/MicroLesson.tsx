@@ -42,7 +42,7 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
     >
       {chunk.type === 'text' && (
         <Card padding="p-0" className="bg-white/70 backdrop-blur-[40px] shadow-soft border border-white/40 overflow-hidden">
-          <article className="p-8 sm:p-12 text-text-lesson text-lg sm:text-2xl font-body leading-[1.6] selection:bg-primary/20">
+          <article className="px-4 py-8 sm:p-12 text-text-lesson text-lg sm:text-2xl font-body leading-[1.6] selection:bg-primary/20">
             {renderTextWithKeywords(chunk.content, keywords)}
           </article>
         </Card>
@@ -131,7 +131,7 @@ export const MicroLesson = ({
   const showNextButton = !isInteractive || isSolved;
 
   return (
-    <div className="flex flex-col h-full bg-transparent max-w-4xl mx-auto space-y-8 sm:space-y-12 pb-64 pt-6 sm:pt-12 px-4 sm:px-6">
+    <div className="flex flex-col h-full bg-transparent max-w-4xl mx-auto space-y-8 sm:space-y-12 pb-64 pt-6 sm:pt-12 px-0 sm:px-6">
 
       {/* Header statico e pulito */}
       <header className="space-y-4 pt-4 text-center sm:text-left">
@@ -166,7 +166,7 @@ export const MicroLesson = ({
       </div>
 
       {/* UI di navigazione fissa */}
-      <div className="fixed bottom-12 left-0 right-0 flex justify-center pointer-events-none z-50 px-6">
+      <div className="fixed bottom-28 md:bottom-12 left-0 right-0 flex justify-center pointer-events-none z-50 px-6">
         <AnimatePresence>
           {showNextButton && (
             <motion.div 

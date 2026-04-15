@@ -6,7 +6,6 @@ import { useAppContext } from '../../context/AppContext';
 export const Header = ({ 
   view, 
   setView, 
-  activeModule 
 }: { 
   view: string, 
   setView: (v: any) => void, 
@@ -27,21 +26,21 @@ export const Header = ({
   const progressToNextLevel = (state.maturityScore % 20) * 5; // Scale to 100%
 
   return (
-    <header className="sticky top-0 z-40 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
+    <header className="sticky top-0 z-50 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
       <div className="flex items-center gap-3 md:gap-8 text-nowrap">
-        {/* Branding (Moved from Sidebar) */}
+        {/* Branding */}
         <div className="flex cursor-pointer items-center" onClick={() => setView('dashboard')}>
           <motion.img 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             src="/indicoo-logo.svg" 
             alt="Indicoo Logo" 
-            className="h-8 md:h-11 w-auto object-contain" 
+            className="h-10 md:h-11 w-auto object-contain" 
           />
         </div>
 
-        {/* Global Navigation */}
-        <nav className="flex items-center rounded-full bg-primary/5 p-1.5 shadow-inner border border-primary/5">
+        {/* Global Navigation (Desktop Only) */}
+        <nav className="hidden md:flex items-center rounded-full bg-primary/5 p-1.5 shadow-inner border border-primary/5">
           {menuItems.map((item) => {
             const isActive = view === item.id || 
               (item.id === 'map' && ['lesson', 'quiz', 'success'].includes(view)) ||
@@ -71,7 +70,7 @@ export const Header = ({
       </div>
 
       <div className="flex items-center gap-3 md:gap-6">
-        {/* Evolution Metrics (XP & Level) - Centralized in App */}
+        {/* Evolution Metrics (XP & Level) - Hidden on mobile, shown on tablet+ */}
         <div className="hidden items-center gap-4 rounded-full bg-primary/5 px-4 py-2 shadow-sm border border-primary/5 lg:flex">
            <div className="flex flex-col items-end gap-0.5">
               <div className="flex items-center gap-1.5">
@@ -107,3 +106,4 @@ export const Header = ({
     </header>
   );
 };
+

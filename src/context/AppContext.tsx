@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Module, UserProfile } from '../types';
+import { Module, UserProfile, ChatMessage } from '../types';
 
 const STORAGE_KEY = 'legacoop_user_profile';
 
@@ -11,6 +11,7 @@ interface AppState {
   modules: Module[] | null;
   userProfile: UserProfile | null;
   hasSeenTour: boolean;
+  messages: ChatMessage[];
 }
 
 interface AppContextType {
@@ -20,6 +21,7 @@ interface AppContextType {
   unlockPhase: (phaseId: number) => void;
   updateUserProfile: (profile: UserProfile) => void;
   completeTour: () => void;
+  addChatMessage: (msg: ChatMessage) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -32,6 +34,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     userRole: null,
     modules: null,
     hasSeenTour: localStorage.getItem('legacoop_has_seen_tour') === 'true',
+    messages: [
+      { role: 'bot', text: 'Ciao! Sono la tua intelligenza cooperativa. Come posso aiutarti oggi?' }
+    ],
     userProfile: (() => {
       try {
         const saved = localStorage.getItem(STORAGE_KEY);
@@ -93,8 +98,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setState(prev => ({ ...prev, hasSeenTour: true }));
   };
 
+  const addChatMessage = (msg: ChatMessage) => {
+    setState(prev => ({ ...prev, messages: [...prev.messages, msg] }));
+  };
+
   return (
-    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile, completeTour }}>
+    <AppContext.Provider value={{ state, completePhase, updateMaturityScore, unlockPhase, updateUserProfile, completeTour, addChatMessage }}>
       {children}
     </AppContext.Provider>
   );

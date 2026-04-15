@@ -10,7 +10,7 @@ export const MaturityDashboard = ({ onNavigate }: { onNavigate: (view: any) => v
   return (
     <div className="space-y-12 pb-12">
       {/* Hero Section: The Aurora Masterpiece (Refined & High Contrast) */}
-      <div className="relative overflow-hidden rounded-5xl p-6 md:p-10 border border-white/60 shadow-ambient bg-white/40 backdrop-blur-[40px] text-text-primary">
+      <div className="relative overflow-hidden rounded-5xl p-4 md:p-10 border border-white/60 shadow-ambient bg-white/40 backdrop-blur-[40px] text-text-primary">
         {/* Atmospheric Depth: Dynamic Internal Blobs */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-pulse pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent-warm/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />

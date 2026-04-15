@@ -88,3 +88,9 @@ export interface Module {
   gamification: Gamification; 
   task: string;
 }
+// --- CHAT TYPES ---
+
+export interface ChatMessage {
+  role: 'bot' | 'user';
+  text: string;
+}

@@ -18,6 +18,7 @@ import { AITutor } from './components/simulators/AITutor';
 import { SimulationHub } from './components/simulators/SimulationHub';
 import { PitchBattle } from './components/simulators/PitchBattle';
 import { GuidedTour } from './components/ui/GuidedTour';
+import { MobileTabNavigation } from './components/layout/MobileTabNavigation';
 import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
 
 // --- Main App Content ---
@@ -25,7 +26,7 @@ import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
 const AppContent = () => {
   const { state, completePhase, completeTour, updateMaturityScore } = useAppContext();
   const { modules } = state;
-  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch'>('dashboard');
+  const [view, setView] = useState<'dashboard' | 'map' | 'lesson' | 'quiz' | 'roleplay' | 'success' | 'team' | 'simulation' | 'pitch' | 'tutor'>('dashboard');
   const [lastMainView, setLastMainView] = useState<'dashboard' | 'map' | 'team' | 'simulation'>('dashboard');
   const [activeModuleId, setActiveModuleId] = useState<number | null>(null);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
@@ -139,7 +140,7 @@ const AppContent = () => {
         {/* Header (Now contains all Navigation & Metrics) */}
         <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
-        <div className="flex-1 pt-10 pb-12 px-6 sm:px-12">
+        <div className="flex-1 pt-10 pb-32 md:pb-12 px-1.5 sm:px-12">
           <div className="max-w-6xl mx-auto h-full">
             <AnimatePresence mode="wait">
               {view === 'dashboard' && (
@@ -193,6 +194,12 @@ const AppContent = () => {
                   <PitchBattle onComplete={() => handleSetView('simulation')} />
                 </motion.div>
               )}
+              
+              {view === 'tutor' && (
+                <motion.div key="tutor" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="h-full">
+                  <AITutor mode="inline" />
+                </motion.div>
+              )}
 
               {view === 'success' && (
                 <motion.div key="success" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-full flex flex-col items-center justify-center p-8 text-center space-y-6 glass-card rounded-5xl">
@@ -216,8 +223,12 @@ const AppContent = () => {
             </AnimatePresence>
           </div>
         </div>
-        <AITutor />
+        <div className="hidden md:block">
+          <AITutor mode="fab" />
+        </div>
       </main>
+
+      <MobileTabNavigation view={view} setView={handleSetView} />
 
       <AnimatePresence>
         {!state.hasSeenTour && (
