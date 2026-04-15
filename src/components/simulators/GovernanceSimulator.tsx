@@ -132,144 +132,133 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
   );
 
   return (
-    <div className="p-4 space-y-4 flex flex-col max-w-5xl mx-auto glass-card rounded-5xl shadow-ambient relative text-text-primary">
-      {/* Corner Aurora Decoration */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full -mr-40 -mt-40 blur-[100px] pointer-events-none" />
-      
-      <div className="flex justify-between items-start relative z-10">
-        <div className="space-y-1">
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
-            <p className="text-primary font-display font-black text-[11px] uppercase tracking-mega">Governance Visionary Lab</p>
+    <div className="min-h-screen flex flex-col relative text-text-primary overflow-hidden">
+      {/* HUD: Universal Metrics Bar (Sticky on all devices) */}
+      <div className="sticky top-0 z-50 bg-white/70 backdrop-blur-[40px] border-b border-white/40 px-6 py-4 md:px-12 md:py-6 shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
+              <p className="text-primary font-display font-black text-[9px] md:text-[10px] uppercase tracking-mega">Governance Visionary Lab</p>
+            </div>
+            <h2 className="text-xl md:text-2xl font-display font-black text-text-primary tracking-tight italic uppercase leading-none">
+              Scenario {step + 1}<span className="text-primary/30 not-italic">/{scenarios.length}</span>
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-black text-text-primary tracking-tight italic leading-none uppercase">
-            Scenario <span className="bg-gradient-brand bg-clip-text text-transparent font-black not-italic">{step + 1}/{scenarios.length}</span>
-          </h2>
-        </div>
 
-        {/* Real-time Triad Stats Mini HUD (High Definition) */}
-        <div className="flex gap-3 bg-white/70 p-2 md:p-3 rounded-2xl border border-white/60 shadow-inner">
-           <div className="flex flex-col items-center">
-              <TrendingUp className="w-3.5 h-3.5 text-accent-warm/40 mb-2" />
-              <div className="w-1.5 h-8 bg-white/50 rounded-full relative overflow-hidden border border-white/40">
-                <motion.div 
-                  initial={{ height: 0 }}
-                  animate={{ height: `${stats.finanze}%` }}
-                  className="absolute bottom-0 w-full bg-accent-warm shadow-glow shadow-accent-warm/40" 
-                />
-              </div>
-              <span className="text-[9px] font-display font-black text-text-muted/40 uppercase tracking-widest mt-2">{stats.finanze}</span>
-           </div>
-           <div className="flex flex-col items-center">
-              <Users className="w-3.5 h-3.5 text-accent/40 mb-2" />
-              <div className="w-1.5 h-8 bg-white/50 rounded-full relative overflow-hidden border border-white/40">
-                <motion.div 
-                   initial={{ height: 0 }}
-                   animate={{ height: `${stats.soddisfazione_soci}%` }}
-                   className="absolute bottom-0 w-full bg-accent shadow-glow shadow-accent/40" 
-                />
-              </div>
-              <span className="text-[8px] font-display font-black text-text-muted/40 uppercase tracking-widest mt-2">{stats.soddisfazione_soci}</span>
-           </div>
-           <div className="flex flex-col items-center">
-              <Heart className="w-3.5 h-3.5 text-primary/40 mb-2" />
-              <div className="w-1.5 h-8 bg-white/50 rounded-full relative overflow-hidden border border-white/40">
-                <motion.div 
-                   initial={{ height: 0 }}
-                   animate={{ height: `${stats.principi_coop}%` }}
-                   className="absolute bottom-0 w-full bg-primary shadow-glow shadow-primary/40" 
-                />
-              </div>
-              <span className="text-[8px] font-display font-black text-text-muted/40 uppercase tracking-widest mt-2">{stats.principi_coop}</span>
-           </div>
+          <div className="flex gap-4 md:gap-8 items-center bg-white/50 px-4 py-2 rounded-2xl border border-white/60 shadow-inner">
+             <div className="flex items-center gap-2 md:gap-3">
+                <TrendingUp size={14} className="text-accent-warm/50" />
+                <div className="w-12 md:w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+                  <motion.div animate={{ width: `${stats.finanze}%` }} className="absolute h-full bg-accent-warm" />
+                </div>
+                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.finanze}%</span>
+             </div>
+             <div className="flex items-center gap-2 md:gap-3 border-l border-primary/5 pl-4 md:pl-8">
+                <Users size={14} className="text-accent/50" />
+                <div className="w-12 md:w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+                  <motion.div animate={{ width: `${stats.soddisfazione_soci}%` }} className="absolute h-full bg-accent" />
+                </div>
+                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.soddisfazione_soci}%</span>
+             </div>
+             <div className="hidden sm:flex items-center gap-2 md:gap-3 border-l border-primary/5 pl-8">
+                <Heart size={14} className="text-primary/50" />
+                <div className="w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+                  <motion.div animate={{ width: `${stats.principi_coop}%` }} className="absolute h-full bg-primary" />
+                </div>
+                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.principi_coop}%</span>
+             </div>
+          </div>
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center space-y-4 relative z-10">
-        {/* The Balance Scale: Refined Visualizer */}
-        <div className="w-full max-w-xs text-center space-y-2">
+      <div className="flex-1 flex flex-col justify-start md:justify-center px-4 md:px-12 pt-12 pb-[120px] md:py-20 relative z-10 overflow-y-auto">
+        {/* The Balance Scale: Refined Ambient Visualizer */}
+        <div className="w-full max-w-xs mx-auto text-center space-y-4 mb-16">
           <motion.div
             animate={{ rotate: (balanceScore - 50) * 0.4 }}
-            className="inline-block p-3 bg-white/70 rounded-3xl shadow-ambient border border-white/60 backdrop-blur-[40px] relative group hover:scale-105 transition-transform"
+            className="inline-block p-4 bg-white/70 rounded-4xl shadow-ambient border border-white/60 backdrop-blur-[40px] relative group"
           >
-             {/* Glow based on balance */}
-             <div className={`absolute inset-0 blur-3xl opacity-0 group-hover:opacity-20 transition-opacity rounded-full ${balanceScore < 40 ? 'bg-accent' : balanceScore > 60 ? 'bg-accent-warm' : 'bg-primary'}`} />
-             <Scale className={`w-8 h-8 transition-colors duration-700 relative z-10 ${balanceScore < 40 ? 'text-accent' : balanceScore > 60 ? 'text-accent-warm' : 'text-primary'}`} />
+             <div className={`absolute inset-0 blur-4xl opacity-10 transition-colors rounded-full ${balanceScore < 40 ? 'bg-accent' : balanceScore > 60 ? 'bg-accent-warm' : 'bg-primary'}`} />
+             <Scale className={`w-12 h-12 transition-colors duration-700 relative z-10 ${balanceScore < 40 ? 'text-accent' : balanceScore > 60 ? 'text-accent-warm' : 'text-primary'}`} />
           </motion.div>
-          <div className="h-1.5 w-full bg-white/40 rounded-full relative overflow-hidden shadow-inner border border-white/20">
-             <motion.div 
-               animate={{ left: `${balanceScore}%` }}
-               className="absolute top-0 w-2 h-2 bg-text-primary rounded-full -ml-1 -mt-px shadow-2xl z-20 border border-white/50"
-             />
-             <div className="absolute inset-0 bg-linear-to-r from-accent via-primary to-accent-warm opacity-30" />
+          <div className="space-y-2">
+            <p className="text-[10px] font-display font-black uppercase tracking-mega text-text-muted/40">Equilibrio Coop</p>
+            <div className="h-1.5 w-full bg-white/40 rounded-full relative overflow-hidden shadow-inner border border-white/20">
+               <motion.div 
+                 animate={{ left: `${balanceScore}%` }}
+                 className="absolute top-0 w-2 h-2 bg-text-primary rounded-full -ml-1 -mt-px shadow-2xl z-20 border border-white/50"
+               />
+               <div className="absolute inset-0 bg-linear-to-r from-accent via-primary to-accent-warm opacity-30" />
+            </div>
           </div>
         </div>
 
-        <AnimatePresence mode="wait">
-          {!feedback ? (
-            <motion.div 
-              key={step}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white/70 p-8 md:p-10 rounded-[3rem] shadow-ambient space-y-6 w-full max-w-3xl border border-white/60 backdrop-blur-[40px]"
-            >
-              <div className="space-y-5">
-                <h3 className="text-2xl md:text-3xl font-display font-black text-text-primary leading-[1.1] tracking-tight italic uppercase">
-                  {current.titolo}
-                </h3>
-                <p className="text-text-muted font-body text-base leading-relaxed opacity-80">
-                  {current.descrizione}
-                </p>
-              </div>
-              
-              <div className="grid gap-4 pt-4">
-                {current.opzioni.map((opt, i) => (
-                  <motion.button 
-                    key={i}
-                    whileHover={{ x: 10, backgroundColor: 'rgba(255, 255, 255, 0.6)' }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => handleChoice(opt)}
-                    className="w-full p-5 text-left rounded-3xl bg-white/70 border border-white/60 shadow-sm transition-all font-display font-black text-text-primary/70 hover:text-primary text-sm uppercase tracking-wide flex items-center justify-between group backdrop-blur-[40px]"
-                  >
-                    <span className="pr-10 leading-snug">{opt.testo}</span>
-                    <ChevronRight className="w-6 h-6 text-primary shrink-0 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2.5 group-hover:translate-x-0" />
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div 
-              key="feedback"
-              initial={{ opacity: 0, scale: 0.9, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white/40 p-8 rounded-[3rem] shadow-2xl space-y-6 w-full max-w-2xl text-center relative overflow-hidden backdrop-blur-3xl border border-white/60"
-            >
-              {/* Internal Feedback Glow */}
-              <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full -ml-32 -mt-32 blur-[80px]" />
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent/10 rounded-full -mr-32 -mb-32 blur-[80px]" />
-              
-              <div className="w-20 h-20 bg-primary/10 rounded-4xl flex items-center justify-center mx-auto mb-8 animate-pulse border border-primary/20 shadow-glow shadow-primary/20">
-                 <Info className="text-primary w-10 h-10" />
-              </div>
-              <div className="space-y-4">
-                <p className="text-text-muted font-display font-black text-[10px] uppercase tracking-mega">Analisi Impatto Decisionale</p>
-                <p className="text-text-primary text-xl font-body leading-relaxed max-w-xl mx-auto italic px-4 select-none">
-                  "{feedback}"
-                </p>
-              </div>
-              <div className="flex items-center justify-center gap-3 text-primary font-display font-black text-[10px] uppercase tracking-widest pt-6">
-                 <div className="flex gap-1">
-                   <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
-                   <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
-                   <div className="w-2 h-2 bg-primary rounded-full animate-bounce" />
-                 </div>
-                 Ricalibrazione Parametri...
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="w-full max-w-4xl mx-auto">
+          <AnimatePresence mode="wait">
+            {!feedback ? (
+              <motion.div 
+                key={step}
+                initial={{ opacity: 0, scale: 0.98, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="space-y-12"
+              >
+                <div className="text-center space-y-6">
+                  <h3 className="text-4xl md:text-6xl font-display font-black text-text-primary leading-none tracking-tight italic uppercase max-w-3xl mx-auto">
+                    {current.titolo}
+                  </h3>
+                  <p className="text-text-muted font-body text-lg md:text-xl leading-relaxed max-w-2xl mx-auto opacity-80">
+                    {current.descrizione}
+                  </p>
+                </div>
+                
+                <div className="grid gap-4 md:grid-cols-1 max-w-3xl mx-auto pt-8">
+                  {current.opzioni.map((opt, i) => (
+                    <motion.button 
+                      key={i}
+                      whileHover={{ scale: 1.02, x: 10, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleChoice(opt)}
+                      className="w-full p-6 md:p-8 text-left rounded-4xl bg-white/70 border border-white/60 shadow-ambient transition-all font-display font-black text-text-primary/70 hover:text-primary text-sm md:text-base uppercase tracking-wide flex items-center justify-between group backdrop-blur-[40px]"
+                    >
+                      <span className="pr-10 leading-snug">{opt.testo}</span>
+                      <ChevronRight className="w-8 h-8 text-primary shrink-0 transition-all transform -translate-x-2 group-hover:translate-x-0" />
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="feedback"
+                initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="bg-white/40 p-10 md:p-16 rounded-[4rem] shadow-2xl space-y-8 w-full max-w-3xl mx-auto text-center relative overflow-hidden backdrop-blur-3xl border border-white/60"
+              >
+                <div className="absolute top-0 left-0 w-80 h-80 bg-primary/10 rounded-full -ml-40 -mt-40 blur-[100px]" />
+                
+                <div className="w-24 h-24 bg-primary/10 rounded-4xl flex items-center justify-center mx-auto mb-8 animate-pulse border border-primary/20 shadow-glow shadow-primary/20">
+                   <Info className="text-primary w-12 h-12" />
+                </div>
+                <div className="space-y-6">
+                  <p className="text-primary font-display font-black text-xs uppercase tracking-mega">Analisi Impatto Decisionale</p>
+                  <p className="text-text-primary text-xl md:text-2xl font-body leading-relaxed italic px-4">
+                    "{feedback}"
+                  </p>
+                </div>
+                <div className="flex items-center justify-center gap-4 text-primary font-display font-black text-xs uppercase tracking-mega pt-10">
+                   <div className="flex gap-2">
+                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
+                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
+                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce" />
+                   </div>
+                   Aggiornamento Ecosistema...
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

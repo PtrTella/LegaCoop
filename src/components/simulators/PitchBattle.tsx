@@ -60,154 +60,122 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-
-  return (
-    <div className="h-full flex flex-col glass-card rounded-5xl shadow-ambient overflow-hidden max-h-[85vh] relative">
-      {/* Internal Aurora Atmosphere - High Definition */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[140px] animate-pulse pointer-events-none" />
-      <div className="absolute bottom-40 left-0 w-80 h-80 bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-accent-warm/5 rounded-full blur-[160px] pointer-events-none" />
-
-      {/* Milky Glass Header with Color Accent Line */}
-      <div className="bg-white/70 backdrop-blur-[40px] px-8 py-8 md:px-12 md:py-10 shrink-0 z-20 relative overflow-hidden border-b border-white/60 shadow-sm">
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r from-primary via-accent to-accent-warm opacity-40" />
-        
-        <div className="flex items-center justify-between mb-8 relative z-10">
-          <div className="flex items-center gap-6">
-            <div className={`w-16 h-16 bg-white/70 rounded-3xl flex items-center justify-center shadow-ambient border border-white/60 backdrop-blur-[40px] transition-all duration-700 ${isLoading ? 'animate-pulse scale-110 shadow-glow shadow-primary/40 border-primary/30' : 'transform rotate-2 hover:rotate-0 hover:border-accent/30'}`}>
-              <Briefcase className={`w-8 h-8 transition-colors ${isLoading ? 'text-accent' : 'text-primary'}`} aria-hidden="true" />
+  };  return (
+    <div className="h-full flex flex-col relative text-text-primary overflow-hidden bg-white">
+      {/* Sticky Gordon HUD */}
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-[40px] px-6 py-4 md:px-12 md:py-6 border-b border-white/60 shadow-sm shrink-0">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4 md:gap-6">
+            <div className={`w-12 h-12 md:w-16 md:h-16 bg-white/70 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-ambient border border-white/60 transition-all duration-700 ${isLoading ? 'animate-pulse scale-105 border-primary/30' : ''}`}>
+              <Briefcase className={`w-6 h-6 md:w-8 md:h-8 ${isLoading ? 'text-accent' : 'text-primary'}`} />
             </div>
             <div>
-              <div className="flex items-center gap-3 mb-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
-                <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">Sessione Pitch Live</p>
+              <div className="flex items-center gap-2 mb-0.5 md:mb-1">
+                <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
+                <p className="text-primary font-display font-black text-[8px] md:text-[10px] uppercase tracking-mega">Investor Live Chat</p>
               </div>
-              <h2 className="font-display font-black text-4xl tracking-tighter leading-none italic uppercase bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent filter drop-shadow-sm select-none">
+              <h2 className="font-display font-black text-2xl md:text-3xl tracking-tighter leading-none italic uppercase bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent">
                 Gordon
               </h2>
             </div>
           </div>
-          <div className="text-right">
-            <p className="text-[10px] text-text-muted/40 font-display font-black uppercase tracking-mega mb-2">Livello di Convinzione</p>
-            <div className="flex items-center gap-3 justify-end">
-              <span className="text-4xl font-display font-black tracking-tighter tabular-nums bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent">
-                {score}%
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* The Meter Bar: Redesigned Trust Gradient */}
-        <div className="relative h-2.5 bg-surface-soft/40 rounded-full shadow-inner border border-white/20 overflow-hidden">
-          {/* Static background gradient track */}
-          <div className="absolute inset-0 bg-linear-to-r from-primary via-accent to-accent-warm opacity-20" />
           
-          <motion.div 
-             initial={{ width: 0 }}
-             animate={{ width: `${score}%` }}
-             className="absolute top-0 left-0 h-full bg-linear-to-r from-primary via-accent to-accent-warm transition-all duration-1000 ease-out shadow-glow"
-          >
-            {/* Glossy overlay on the filled part */}
-            <div className="absolute inset-0 bg-linear-to-b from-white/20 to-transparent" />
-          </motion.div>
-        </div>
-        
-        <div className="mt-4 flex justify-between items-center text-[9px] font-display font-black uppercase tracking-mega">
-          <span className="text-text-muted/40 italic">Gordon sta analizzando la tua sostenibilità...</span>
-          <div className="flex items-center gap-2">
-            <span className="text-accent bg-accent/10 px-2 py-0.5 rounded-full font-black">Obiettivo: 75%</span>
+          {/* Subtle Activity Indicators */}
+          <div className="flex items-center gap-2 translate-y-1">
+             <div className="w-1.5 h-1.5 rounded-full bg-primary/10" />
+             <div className="w-1.5 h-1.5 rounded-full bg-primary/20" />
+             <div className="w-1.5 h-1.5 rounded-full bg-primary/30" />
           </div>
         </div>
+
+        {/* Immersive Edge-to-Edge Conviction Bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-surface-soft/20 overflow-hidden">
+           <motion.div 
+             initial={{ width: 0 }}
+             animate={{ width: `${score}%` }} 
+             className="h-full bg-linear-to-r from-primary via-accent to-accent-warm shadow-glow shadow-primary/30 transition-all duration-1000 ease-out" 
+           />
+        </div>
       </div>
 
-      {/* Chat Area: Airy Glass Background */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 md:p-12 space-y-10 bg-white/70 backdrop-blur-[40px] scrollbar-hide relative z-10">
-        <AnimatePresence initial={false}>
-          {messages.map((msg, i) => {
-            const isModel = msg.role === 'model';
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15, x: isModel ? -15 : 15 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                className={`flex ${isModel ? 'justify-start' : 'justify-end'}`}
-              >
-                <div className={`max-w-[80%] flex gap-5 ${isModel ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`w-11 h-11 shrink-0 rounded-2xl flex items-center justify-center shadow-ambient border transition-all duration-300 ${isModel ? 'bg-white/70 text-primary border-white/60' : 'bg-accent/10 text-accent border-accent/20 rotate-3 group-hover:rotate-0'}`} aria-hidden="true">
-                    {isModel ? <Briefcase size={20} /> : <User size={20} />}
+      {/* Chat Messages: Edge-to-Edge with asymmetrical bubbles */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 md:px-12 py-10 space-y-8 scrollbar-hide relative z-10">
+        <div className="max-w-5xl mx-auto space-y-10">
+          <AnimatePresence initial={false}>
+            {messages.map((msg, i) => {
+              const isModel = msg.role === 'model';
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 15, x: isModel ? -10 : 10 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
+                  className={`flex ${isModel ? 'justify-start' : 'justify-end'}`}
+                >
+                  <div className={`max-w-[95%] sm:max-w-[85%] flex gap-3 md:gap-5 ${isModel ? 'flex-row' : 'flex-row-reverse'}`}>
+                    <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center shadow-ambient border transition-all ${isModel ? 'bg-white/70 text-primary border-white/60' : 'bg-accent/10 text-accent border-accent/20'}`} aria-hidden="true">
+                      {isModel ? <Briefcase size={18} /> : <User size={18} />}
+                    </div>
+                    <div className={`p-5 md:p-7 rounded-4xl shadow-ambient transition-all border leading-relaxed text-sm md:text-base font-body ${
+                      isModel
+                        ? 'bg-white text-text-primary border-white/60 rounded-tl-none backdrop-blur-[40px] shadow-glow shadow-primary/5'
+                        : 'bg-primary/5 text-text-primary border-primary/20 rounded-tr-none shadow-glow shadow-accent/5'
+                    }`}>
+                      {renderTextWithKeywords(msg.parts[0].text.replace(/\[?\[?\s*SCORE:\s*\d+\s*\]?\]?/gi, ''))}
+                    </div>
                   </div>
-                  <div className={`p-6 rounded-4xl shadow-ambient transition-all border leading-relaxed ${
-                    isModel
-                      ? 'bg-white/80 text-text-primary border-white/60 rounded-tl-none font-body text-base backdrop-blur-[40px] shadow-glow shadow-primary/5'
-                      : 'bg-white/70 text-text-primary border-accent/20 rounded-tr-none text-base font-body shadow-glow shadow-accent/5 backdrop-blur-[40px]'
-                  }`}>
-                    {renderTextWithKeywords(msg.parts[0].text.replace(/\[?\[?\s*SCORE:\s*\d+\s*\]?\]?/gi, ''))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
 
-        {isLoading && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }}
-            className="flex justify-start"
-          >
-            <div className="max-w-[80%] flex gap-5">
-              <div className="w-11 h-11 bg-white/70 text-primary rounded-2xl flex items-center justify-center animate-pulse border border-white/60 backdrop-blur-[40px]" aria-hidden="true">
-                <Briefcase size={20} />
-              </div>
-              <div className="p-7 bg-white/80 rounded-4xl rounded-tl-none shadow-ambient flex items-center gap-4 border border-white/60 backdrop-blur-[40px]">
-                <div className="flex gap-1.5">
-                  <div className="w-2 h-2 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                  <div className="w-2 h-2 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                  <div className="w-2 h-2 bg-primary/40 rounded-full animate-bounce" />
+          {isLoading && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+              <div className="max-w-[85%] flex gap-5">
+                <div className="w-10 h-10 bg-white/70 text-primary rounded-xl flex items-center justify-center animate-pulse border border-white/60" />
+                <div className="p-6 bg-white rounded-4xl rounded-tl-none shadow-ambient flex items-center gap-4 border border-white/60 font-display font-black text-[10px] text-primary/30 uppercase tracking-mega">
+                  <div className="flex gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.3s]" />
+                    <div className="w-1.5 h-1.5 bg-primary/40 rounded-full animate-bounce [animation-delay:-0.15s]" />
+                    <div className="w-1.5 h-1.5 bg-primary/40 rounded-full animate-bounce" />
+                  </div>
+                  Gordon sta elaborando...
                 </div>
-                <span className="text-[10px] font-display font-black text-primary/30 uppercase tracking-mega pl-2">Gordon ti sta smontando...</span>
               </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </div>
       </div>
 
-      {/* Input Area: Pure White Glass */}
-      <div className="p-8 md:p-12 bg-white/80 border-t border-white/60 relative z-20 backdrop-blur-3xl">
-        <form onSubmit={handleSend} className="relative max-w-5xl mx-auto flex items-center gap-5">
+      {/* Sticky Footer Input */}
+      <div className="sticky bottom-0 z-50 bg-white/80 backdrop-blur-3xl border-t border-white/60 p-6 pb-[112px] md:p-10 shrink-0">
+        <form onSubmit={handleSend} className="max-w-7xl mx-auto flex items-center gap-4 md:gap-6">
           <input
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Sostieni la tua visione con eleganza..."
-            className="flex-1 px-10 py-7 bg-white/70 rounded-4xl focus:outline-none focus:ring-4 focus:ring-primary/20 text-text-primary font-body text-lg placeholder-text-muted/30 transition-all border border-primary/30 shadow-inner backdrop-blur-[40px] hover:border-primary/50"
+            placeholder="Convincilo della tua visione..."
+            className="flex-1 px-6 md:px-10 py-5 md:py-7 bg-surface-soft/50 rounded-3xl md:rounded-4xl focus:outline-none focus:ring-4 focus:ring-primary/10 text-text-primary font-body text-base md:text-lg placeholder-text-muted/30 transition-all border border-border-subtle"
             disabled={isLoading}
           />
           <motion.button
-            whileHover={{ scale: 1.05, y: -4, shadow: '0 20px 40px rgba(251, 191, 36, 0.3)' }}
+            whileHover={{ scale: 1.05, y: -4 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={!input.trim() || isLoading}
-            className="p-7 bg-gradient-brand hover:from-primary hover:to-accent-warm text-white rounded-4xl shadow-2xl shadow-primary/30 transition-all shrink-0 relative overflow-hidden group/btn"
-            aria-label="Invia pitch"
+            className="p-5 md:p-7 bg-gradient-brand text-white rounded-3xl md:rounded-4xl shadow-2xl shadow-primary/30 transition-all shrink-0"
           >
-            <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
-            <Send className="w-8 h-8 relative z-10" />
+            <Send className="w-6 h-6 md:w-8 md:h-8" />
           </motion.button>
         </form>
-        <div className="mt-8 flex justify-center">
+        <div className="max-w-5xl mx-auto mt-6 flex justify-center">
           <button
             onClick={onComplete}
-            className="group flex items-center gap-3 text-[10px] font-display font-black text-text-muted/30 hover:text-primary transition-all uppercase tracking-mega"
+            className="flex items-center gap-2 text-[9px] font-display font-black text-text-muted/30 hover:text-primary transition-all uppercase tracking-mega"
           >
-            <span className="border-b border-transparent group-hover:border-primary transition-all">Abbandona la sessione di Pitch</span>
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Abbandona Pitch <ChevronRight size={12} />
           </button>
         </div>
       </div>
-
     </div>
   );
 };

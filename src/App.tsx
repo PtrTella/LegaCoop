@@ -164,9 +164,10 @@ const AppContent = () => {
 
 
   const activeModule = activeModuleId !== null ? modules[activeModuleId] : null;
+  const isFullWidth = ['pitch', 'roleplay'].includes(view);
 
   return (
-    <div className="min-h-screen aurora-container font-body flex flex-col">
+    <div className={`aurora-container font-body flex flex-col ${isFullWidth ? 'h-screen overflow-hidden' : 'min-h-screen'}`}>
       {/* Magnificent Aurora: High-Vibrancy Radiant Atmosphere (Restored) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-white">
         <div className="aurora-blob bg-aurora-purple w-[150vw] h-[150vw] -top-[50vw] -left-[50vw] opacity-[0.45] mix-blend-multiply" />
@@ -179,9 +180,9 @@ const AppContent = () => {
       <Header view={view} setView={handleSetView} activeModule={activeModule} />
 
       {/* Main Content Area */}
-      <main className="flex-1 min-h-screen relative z-10 flex flex-col pt-20">
-        <div className="flex-1 pt-10 pb-32 md:pb-12 px-1.5 sm:px-12">
-          <div className="max-w-6xl mx-auto h-full">
+      <main className={`flex-1 relative z-10 flex flex-col pt-20 ${isFullWidth ? 'h-0' : ''}`}>
+        <div className={`flex-1 flex flex-col ${isFullWidth ? 'p-0 overflow-hidden' : 'pt-10 pb-32 md:pb-12 px-1.5 sm:px-12'}`}>
+          <div className={`flex-1 ${isFullWidth ? 'w-full h-full' : 'max-w-6xl mx-auto'}`}>
             <AnimatePresence mode="wait">
               {view === 'dashboard' && (
                 <motion.div key="dash" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
@@ -218,8 +219,10 @@ const AppContent = () => {
               )}
 
               {view === 'roleplay' && (
-                <motion.div key="rp" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="h-full">
-                  <GovernanceSimulator onComplete={handleActionComplete} />
+                <motion.div key="roleplay" className="h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <GovernanceSimulator 
+                    onComplete={() => handleSetView('simulation')} 
+                  />
                 </motion.div>
               )}
 
@@ -230,8 +233,10 @@ const AppContent = () => {
               )}
 
               {view === 'pitch' && (
-                <motion.div key="pitch" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="h-full">
-                  <PitchBattle onComplete={() => handleSetView('simulation')} />
+                <motion.div key="pitch" className="h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <PitchBattle 
+                    onComplete={() => handleSetView('simulation')} 
+                  />
                 </motion.div>
               )}
               

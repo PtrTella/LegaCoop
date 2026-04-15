@@ -67,7 +67,7 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
               <p className="text-primary font-display font-black text-[9px] uppercase tracking-mega">Minigioco Offline</p>
             </div>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-text-primary leading-none italic tracking-tight uppercase break-words">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-text-primary leading-none italic tracking-tight uppercase wrap-break-word">
               {game.titolo}
             </h3>
           </div>
