@@ -37,22 +37,22 @@ const AppContent = () => {
   const viewIntros: Record<string, any[]> = {
     dashboard: [{
       title: "Il tuo Hub Cooperativo",
-      description: "Benvenuto! Da qui puoi monitorare la tua crescita ed accedere rapidamente a Laboratorio, Networking e Accademia attraverso i banner qui sotto.",
+      description: "Benvenuto! Questo è il cuore della tua startup. Da qui potrai monitorare la tua **crescita** e accedere rapidamente a **Laboratorio**, **Networking** e **Accademia**.",
       icon: Sparkles
     }],
     map: [{
       title: "Percorso Accademia",
-      description: "Sblocca ogni fase della tua startup completando le lezioni e i quiz per scalare i livelli di maturità.",
+      description: "Il centro della tua formazione. Sblocca ogni fase del percorso e scala i **Livelli di Maturità** completando lezioni e quiz interattivi.",
       icon: GraduationCap
     }],
     simulation: [{
       title: "Laboratorio Pratico",
-      description: "Metti alla prova le tue abilità con simulatori reali di governance e pitch battle AI in un ambiente sicuro.",
+      description: "Il tuo campo di addestramento. Metti alla prova la tua visione con **Simulatori Reali** di Governance e preparati alla **Pitch Battle**.",
       icon: Zap
     }],
     team: [{
       title: "Ecosistema Network",
-      description: "Non sei solo. Connettiti con talenti, imprese ed esperti per far crescere e scalare la tua visione cooperativa.",
+      description: "La forza del gruppo. Connettiti con **Talenti**, **Imprese** ed **Esperti** per far scalare la tua visione nell'ecosistema **Indicoo**.",
       icon: Users
     }]
   };

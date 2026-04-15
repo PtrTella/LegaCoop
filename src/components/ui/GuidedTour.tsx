@@ -25,6 +25,14 @@ export const GuidedTour = ({ steps, onComplete }: { steps: Step[]; onComplete: (
   if (!step) return null;
   const Icon = step.icon;
 
+  const renderFormattedText = (text: string) =>
+    text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-black text-primary">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+
   return (
     <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-6 overflow-y-auto pointer-events-none">
       {/* Visual Overlay: Full-page blur & color tint (Behind Nav Bars) */}
@@ -64,7 +72,7 @@ export const GuidedTour = ({ steps, onComplete }: { steps: Step[]; onComplete: (
               {step.title}
             </h2>
             <p className="text-primary/60 font-body text-sm leading-relaxed">
-              {step.description}
+              {renderFormattedText(step.description)}
             </p>
           </div>
 
