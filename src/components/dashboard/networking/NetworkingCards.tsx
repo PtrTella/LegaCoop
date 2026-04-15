@@ -178,7 +178,18 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
             <p className="text-[10px] text-primary/60 font-display font-black uppercase tracking-ultra">Competenze</p>
             <div className="flex flex-wrap gap-2">{profile.skills.map(skill => <SkillTag key={skill} skill={skill} />)}</div>
           </section>
-          <motion.button onClick={() => setSent(true)} disabled={sent} className={`w-full py-5 rounded-2xl font-display font-black text-xs uppercase tracking-widest-plus transition-all flex items-center justify-center gap-3 shadow-2xl relative overflow-hidden ${sent ? 'bg-primary/10 text-primary border border-primary/20 shadow-none cursor-default' : 'bg-gradient-brand text-white shadow-glow shadow-primary/20'}`}>{sent ? 'Richiesta Inviata' : 'Inizia Connessione'}</motion.button>
+          <motion.button 
+            whileTap={!sent ? { scale: 0.96 } : {}}
+            onClick={() => setSent(true)} 
+            disabled={sent} 
+            className={`w-full py-5 rounded-2xl font-display font-black text-xs uppercase tracking-widest-plus transition-all flex items-center justify-center gap-3 shadow-2xl relative overflow-hidden ${
+              sent 
+                ? 'bg-primary text-white border-transparent' 
+                : 'bg-gradient-brand text-white shadow-glow shadow-primary/20 hover:scale-[1.02]'
+            }`}
+          >
+            {sent ? 'Collegato' : 'Collegati'}
+          </motion.button>
         </div>
       </motion.div>
     </motion.div>
@@ -188,6 +199,7 @@ export const ProfileDetail = ({ profile, onClose }: { profile: CoFounderProfile;
 // --- COOPERATIVE DETAIL MODAL ---
 export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile; onClose: () => void }) => {
   const [requestSent, setRequestSent] = useState(false);
+  const [visionSent, setVisionSent] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -254,9 +266,18 @@ export const CooperativeDetail = ({ coop, onClose }: { coop: CooperativeProfile;
             <div className="bg-white/70 backdrop-blur-[40px] p-6 rounded-4xl border border-white/50 space-y-4">
                <h5 className="text-[9px] font-display font-black uppercase tracking-ultra text-primary/40">Collaborazione</h5>
                <p className="text-[11px] font-body text-text-primary/60 leading-relaxed">Contatta il board di {coop.name}.</p>
-               <button className="w-full py-4 bg-white/70 border border-primary/10 rounded-2xl font-display font-black text-[10px] uppercase tracking-widest-plus transition-all text-primary shadow-sm hover:bg-primary hover:text-white hover:scale-[1.02] flex items-center justify-center">
-                 Presenta Visione
-               </button>
+               <motion.button 
+                 whileTap={!visionSent ? { scale: 0.96 } : {}}
+                 onClick={() => setVisionSent(true)}
+                 disabled={visionSent}
+                 className={`w-full py-4 rounded-2xl font-display font-black text-[10px] uppercase tracking-widest-plus transition-all flex items-center justify-center shadow-sm ${
+                   visionSent 
+                     ? 'bg-primary text-white border-transparent' 
+                     : 'bg-white/70 border border-primary/10 text-primary hover:bg-primary hover:text-white'
+                 }`}
+               >
+                 {visionSent ? 'Collegato' : 'Collegati'}
+               </motion.button>
             </div>
           </div>
         </div>
