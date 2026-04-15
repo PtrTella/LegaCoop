@@ -58,6 +58,25 @@ const AppContent = () => {
     }
   ];
 
+  // --- History Management ---
+  React.useEffect(() => {
+    // Initial state setup to handle "back to home" behavior
+    if (!window.history.state) {
+      window.history.replaceState({ view: 'dashboard' }, '');
+    }
+
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state && event.state.view) {
+        setView(event.state.view);
+      } else {
+        setView('dashboard');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   if (!modules) {
     return (
       <div className="min-h-screen bg-surface flex flex-col items-center justify-center space-y-4">
@@ -67,11 +86,19 @@ const AppContent = () => {
     );
   }
 
+
+
   const handleSetView = (newView: any) => {
     // Track main views for returning after completion
     if (['dashboard', 'map', 'team', 'simulation', 'knowledge'].includes(newView)) {
       setLastMainView(newView);
     }
+    
+    // Push new state to browser history if it's a different view
+    if (newView !== view) {
+      window.history.pushState({ view: newView }, '');
+    }
+    
     setView(newView);
   };
 
