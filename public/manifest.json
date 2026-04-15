@@ -1,0 +1,17 @@
+{
+  "name": "Indicoo - Accademia",
+  "short_name": "Indicoo",
+  "description": "Accademia della Cooperazione Indicoo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFDFF",
+  "theme_color": "#9F87F3",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

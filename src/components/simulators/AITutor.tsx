@@ -108,7 +108,7 @@ export const AITutor = ({ mode = 'fab' }: { mode?: 'fab' | 'inline' }) => {
       </div>
 
       {/* Footer */}
-      <div className="p-4 md:p-6 bg-gradient-brand border-t border-white/10 pb-20 md:pb-6 relative overflow-hidden">
+      <div className="p-4 md:p-6 bg-gradient-brand border-t border-white/10 pb-32 md:pb-6 relative overflow-hidden">
         {/* Decorative backdrop for the footer */}
         <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent/20 rounded-full blur-2xl pointer-events-none" />
         
@@ -165,7 +165,7 @@ export const AITutor = ({ mode = 'fab' }: { mode?: 'fab' | 'inline' }) => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-8 sm:right-8 sm:w-full sm:max-w-95 z-50 flex flex-col"
+            className="fixed inset-0 sm:inset-auto sm:bottom-8 sm:right-8 sm:w-full sm:max-w-95 z-250 flex flex-col"
           >
             {chatContent}
           </motion.div>
