@@ -132,55 +132,51 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
   );
 
   return (
-    <div className="min-h-screen flex flex-col relative text-text-primary overflow-hidden">
+    <div className="h-full flex flex-col relative text-text-primary overflow-hidden">
       {/* HUD: Universal Metrics Bar (Sticky on all devices) */}
       <div className="sticky top-0 z-50 bg-white/70 backdrop-blur-[40px] border-b border-white/40 px-6 py-4 md:px-12 md:py-6 shadow-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
-              <p className="text-primary font-display font-black text-[9px] md:text-[10px] uppercase tracking-mega">Governance Visionary Lab</p>
-            </div>
             <h2 className="text-xl md:text-2xl font-display font-black text-text-primary tracking-tight italic uppercase leading-none">
               Scenario {step + 1}<span className="text-primary/30 not-italic">/{scenarios.length}</span>
             </h2>
           </div>
 
-          <div className="flex gap-4 md:gap-8 items-center bg-white/50 px-4 py-2 rounded-2xl border border-white/60 shadow-inner">
-             <div className="flex items-center gap-2 md:gap-3">
-                <TrendingUp size={14} className="text-accent-warm/50" />
-                <div className="w-12 md:w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+          <div className="flex flex-row gap-2 md:gap-8 items-center bg-white/50 px-2 md:px-4 py-1.5 md:py-2 rounded-xl md:rounded-2xl border border-white/60 shadow-inner shrink-0">
+             <div className="flex items-center gap-1 md:gap-3">
+                <TrendingUp size={12} className="text-accent-warm/50" />
+                <div className="hidden md:block w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
                   <motion.div animate={{ width: `${stats.finanze}%` }} className="absolute h-full bg-accent-warm" />
                 </div>
-                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.finanze}%</span>
+                <span className="text-[9px] md:text-[10px] font-display font-black text-text-primary/60">{stats.finanze}%</span>
              </div>
-             <div className="flex items-center gap-2 md:gap-3 border-l border-primary/5 pl-4 md:pl-8">
-                <Users size={14} className="text-accent/50" />
-                <div className="w-12 md:w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+             <div className="flex items-center gap-1 md:gap-3 border-l border-primary/5 pl-2 md:pl-8">
+                <Users size={12} className="text-accent/50" />
+                <div className="hidden md:block w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
                   <motion.div animate={{ width: `${stats.soddisfazione_soci}%` }} className="absolute h-full bg-accent" />
                 </div>
-                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.soddisfazione_soci}%</span>
+                <span className="text-[9px] md:text-[10px] font-display font-black text-text-primary/60">{stats.soddisfazione_soci}%</span>
              </div>
-             <div className="hidden sm:flex items-center gap-2 md:gap-3 border-l border-primary/5 pl-8">
-                <Heart size={14} className="text-primary/50" />
-                <div className="w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
+             <div className="flex items-center gap-1 md:gap-3 border-l border-primary/5 pl-2 md:pl-8">
+                <Heart size={12} className="text-primary/50" />
+                <div className="hidden md:block w-16 h-1.5 bg-surface-soft rounded-full relative overflow-hidden">
                   <motion.div animate={{ width: `${stats.principi_coop}%` }} className="absolute h-full bg-primary" />
                 </div>
-                <span className="text-[10px] font-display font-black text-text-primary/60">{stats.principi_coop}%</span>
+                <span className="text-[9px] md:text-[10px] font-display font-black text-text-primary/60">{stats.principi_coop}%</span>
              </div>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col justify-start md:justify-center px-4 md:px-12 pt-12 pb-[120px] md:py-20 relative z-10 overflow-y-auto">
+      <div className="flex-1 flex flex-col justify-start md:justify-center px-4 md:px-12 pt-12 pb-30 md:py-20 relative z-10 overflow-y-auto">
         {/* The Balance Scale: Refined Ambient Visualizer */}
-        <div className="w-full max-w-xs mx-auto text-center space-y-4 mb-16">
+        <div className="w-full max-w-xs mx-auto text-center space-y-4 mb-8 md:mb-16">
           <motion.div
             animate={{ rotate: (balanceScore - 50) * 0.4 }}
-            className="inline-block p-4 bg-white/70 rounded-4xl shadow-ambient border border-white/60 backdrop-blur-[40px] relative group"
+            className="inline-block p-3 md:p-4 bg-white/70 rounded-4xl shadow-ambient border border-white/60 backdrop-blur-[40px] relative group"
           >
              <div className={`absolute inset-0 blur-4xl opacity-10 transition-colors rounded-full ${balanceScore < 40 ? 'bg-accent' : balanceScore > 60 ? 'bg-accent-warm' : 'bg-primary'}`} />
-             <Scale className={`w-12 h-12 transition-colors duration-700 relative z-10 ${balanceScore < 40 ? 'text-accent' : balanceScore > 60 ? 'text-accent-warm' : 'text-primary'}`} />
+             <Scale className={`w-10 h-10 md:w-12 md:h-12 transition-colors duration-700 relative z-10 ${balanceScore < 40 ? 'text-accent' : balanceScore > 60 ? 'text-accent-warm' : 'text-primary'}`} />
           </motion.div>
           <div className="space-y-2">
             <p className="text-[10px] font-display font-black uppercase tracking-mega text-text-muted/40">Equilibrio Coop</p>
@@ -202,10 +198,10 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
                 initial={{ opacity: 0, scale: 0.98, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="space-y-12"
+                className="space-y-8 md:space-y-12"
               >
-                <div className="text-center space-y-6">
-                  <h3 className="text-4xl md:text-6xl font-display font-black text-text-primary leading-none tracking-tight italic uppercase max-w-3xl mx-auto">
+                <div className="text-center space-y-4 md:space-y-6">
+                  <h3 className="text-4xl md:text-6xl font-display font-black text-text-primary leading-none tracking-tight italic uppercase max-w-3xl mx-auto pr-4">
                     {current.titolo}
                   </h3>
                   <p className="text-text-muted font-body text-lg md:text-xl leading-relaxed max-w-2xl mx-auto opacity-80">

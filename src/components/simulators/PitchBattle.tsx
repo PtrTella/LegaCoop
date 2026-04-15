@@ -70,11 +70,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
               <Briefcase className={`w-6 h-6 md:w-8 md:h-8 ${isLoading ? 'text-accent' : 'text-primary'}`} />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-0.5 md:mb-1">
-                <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
-                <p className="text-primary font-display font-black text-[8px] md:text-[10px] uppercase tracking-mega">Investor Live Chat</p>
-              </div>
-              <h2 className="font-display font-black text-2xl md:text-3xl tracking-tighter leading-none italic uppercase bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent">
+              <h2 className="font-display font-black text-2xl md:text-3xl tracking-tighter leading-none italic uppercase bg-linear-to-r from-primary via-accent to-accent-warm bg-clip-text text-transparent pr-2">
                 Gordon
               </h2>
             </div>
@@ -147,7 +143,7 @@ export const PitchBattle = ({ onComplete }: PitchBattleProps) => {
       </div>
 
       {/* Sticky Footer Input */}
-      <div className="sticky bottom-0 z-50 bg-white/80 backdrop-blur-3xl border-t border-white/60 p-6 pb-[112px] md:p-10 shrink-0">
+      <div className="sticky bottom-0 z-50 bg-white/80 backdrop-blur-3xl border-t border-white/60 p-6 pb-28 md:p-10 shrink-0">
         <form onSubmit={handleSend} className="max-w-7xl mx-auto flex items-center gap-4 md:gap-6">
           <input
             type="text"
