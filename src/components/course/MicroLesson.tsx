@@ -41,7 +41,7 @@ const ChunkRenderer = React.memo(({ chunk, idx, isSolved, keywords, onSuccess, c
       className="relative"
     >
       {chunk.type === 'text' && (
-        <Card padding="p-0" className="bg-white/70 backdrop-blur-[40px] shadow-soft border border-white/40 overflow-hidden">
+        <Card padding="p-0" className="bg-white/70 backdrop-blur-[40px] shadow-soft border border-white/40">
           <article className="px-4 py-8 sm:p-12 text-text-lesson text-lg sm:text-2xl font-body leading-[1.6] selection:bg-primary/20">
             {renderTextWithKeywords(chunk.content, keywords)}
           </article>

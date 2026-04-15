@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Info } from 'lucide-react';
 
 interface PopTooltipProps {
   word: string;
@@ -18,25 +17,30 @@ export const PopTooltip = ({ word, definition }: PopTooltipProps) => {
       >
         {word}
       </button>
+
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: 12, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.95 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-72 p-5 bg-surface/90 backdrop-blur-[24px] rounded-2xl shadow-ambient z-50 overflow-hidden"
-          >
-            {/* Ambient Glow behind content */}
-            <div className="absolute -top-10 -right-10 w-20 h-20 bg-tertiary/10 rounded-full blur-2xl" />
+          <>
+            {/* Backdrop to close on click outside */}
+            <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
             
-            <div className="relative z-10 flex flex-col gap-3">
-              <p className="text-2xs font-display font-black uppercase tracking-widest-plus text-primary">Glossario</p>
-              <p className="text-sm text-primary/70 leading-relaxed font-body font-medium italic">"{definition}"</p>
-            </div>
-            
-            {/* The Tip (Frosted) */}
-            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface/90 backdrop-blur-[24px] rotate-45" />
-          </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 p-4 bg-white shadow-glow shadow-primary/10 z-50 border border-primary/10 text-left pointer-events-auto rounded-2xl"
+            >
+              <div className="flex flex-col gap-2">
+                <p className="text-[10px] font-display font-black uppercase tracking-mega text-primary/60">Glossario</p>
+                <p className="text-sm text-text-primary leading-relaxed font-body font-medium italic">
+                  "{definition}"
+                </p>
+              </div>
+              
+              {/* Tip - Solid White */}
+              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45 border-r border-b border-primary/10" />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </span>

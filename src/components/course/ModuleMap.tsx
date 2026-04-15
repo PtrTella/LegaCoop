@@ -96,21 +96,24 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
         whileHover={isUnlocked ? { scale: 1.01 } : {}}
         whileTap={isUnlocked ? { scale: 0.99 } : {}}
         onClick={() => isUnlocked && onSelect(index)}
-        className={`glass-card group cursor-pointer relative overflow-hidden transition-all duration-300 p-5 rounded-3xl border-white/60 shadow-ambient ${
+        className={`glass-card group cursor-pointer relative transition-all duration-300 p-5 rounded-3xl border-white/60 shadow-ambient ${
           !isUnlocked ? 'opacity-40 grayscale cursor-not-allowed' : ''
         } ${isActive ? 'ring-2 ring-accent/40 shadow-glow shadow-accent/10' : ''}`}
       >
-        {/* Dynamic Shine Effect */}
-        <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-        
-        {/* Background Decorative Icon (Floating Depth) */}
-        <div 
-          style={{ transform: 'translateZ(-20px)' }}
-          className={`absolute -top-10 -right-10 p-6 opacity-[0.05] group-hover:opacity-[0.1] transform transition-all duration-1000 group-hover:scale-110 group-hover:-rotate-12 ${
-            isCompleted ? 'text-primary' : 'text-accent'
-          }`}
-        >
-          <Icon size={200} />
+        {/* Clipped Decorations Layer */}
+        <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
+          {/* Dynamic Shine Effect */}
+          <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          
+          {/* Background Decorative Icon (Floating Depth) */}
+          <div 
+            style={{ transform: 'translateZ(-20px)' }}
+            className={`absolute -top-10 -right-10 p-6 opacity-[0.05] group-hover:opacity-[0.1] transform transition-all duration-1000 group-hover:scale-110 group-hover:-rotate-12 ${
+              isCompleted ? 'text-primary' : 'text-accent'
+            }`}
+          >
+            <Icon size={200} />
+          </div>
         </div>
 
         <div className="relative z-10 flex flex-col gap-2">
