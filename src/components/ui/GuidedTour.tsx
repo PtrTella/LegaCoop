@@ -34,7 +34,7 @@ export const GuidedTour = ({ steps, onComplete }: { steps: Step[]; onComplete: (
     });
 
   return (
-    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-6 overflow-y-auto pointer-events-none">
+    <div className="fixed inset-0 z-150 flex items-center justify-center p-4 sm:p-6 overflow-y-auto pointer-events-none">
       {/* Visual Overlay: Full-page blur & color tint (Behind Nav Bars) */}
       <motion.div 
         initial={{ opacity: 0 }}

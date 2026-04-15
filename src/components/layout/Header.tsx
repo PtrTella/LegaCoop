@@ -26,7 +26,7 @@ export const Header = ({
   const progressToNextLevel = (state.maturityScore % 20) * 5; // Scale to 100%
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[200] flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
+    <header className="fixed top-0 left-0 right-0 z-200 flex h-20 shrink-0 items-center justify-between bg-surface/80 px-4 md:px-8 shadow-sm backdrop-blur-2xl transition-all duration-500">
       <div className="flex items-center gap-3 md:gap-8 text-nowrap">
         {/* Branding */}
         <div className="flex cursor-pointer items-center" onClick={() => setView('dashboard')}>

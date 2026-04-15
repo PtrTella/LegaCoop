@@ -17,7 +17,7 @@ export const MobileTabNavigation = ({ view, setView }: MobileTabNavigationProps)
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[210] md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-210 md:hidden">
       <div className="flex items-center justify-around p-2 pb-[env(safe-area-inset-bottom,1.5rem)] rounded-t-5xl glass-card border-white/60 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] backdrop-blur-3xl">
         {tabs.map((tab) => {
           const isActive = view === tab.id || 
