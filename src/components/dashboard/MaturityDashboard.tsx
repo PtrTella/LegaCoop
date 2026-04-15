@@ -79,9 +79,9 @@ export const MaturityDashboard = ({ onNavigate }: { onNavigate: (view: any) => v
                 <Compass size={24} />
               </div>
            </div>
-           <div>
+            <div>
              <h4 className="font-display font-black text-xl text-text-primary mb-1">Accademia</h4>
-             <p className="text-text-muted text-xs leading-relaxed">9 Moduli, 3 livelli di competenza</p>
+             <p className="text-text-muted text-xs leading-relaxed">Trova la mappa del tuo viaggio e sblocca ogni fase della tua crescita.</p>
            </div>
         </div>
         
@@ -93,7 +93,7 @@ export const MaturityDashboard = ({ onNavigate }: { onNavigate: (view: any) => v
            </div>
            <div>
              <h4 className="font-display font-black text-xl text-text-primary mb-1">Ecosistema</h4>
-             <p className="text-text-muted text-xs leading-relaxed">Connettiti con 42 Cooperative</p>
+             <p className="text-text-muted text-xs leading-relaxed">Connettiti con talenti ed esperti per accelerare la tua visione.</p>
            </div>
         </div>
 
@@ -106,7 +106,7 @@ export const MaturityDashboard = ({ onNavigate }: { onNavigate: (view: any) => v
            </div>
            <div>
              <h4 className="font-display font-black text-2xl text-text-primary italic tracking-tight">Laboratorio</h4>
-             <p className="text-[11px] text-text-muted mt-2 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Affronta simulazioni reali di governance e pitch battle AI.</p>
+             <p className="text-[11px] text-text-muted mt-2 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">Metti alla prova le tue abilità con simulatori reali di governance e pitch.</p>
            </div>
         </div>
       </div>
