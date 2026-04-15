@@ -45,16 +45,16 @@ const AppContent = () => {
       view: 'map' as const
     },
     {
-      title: "Ecosistema e Network",
-      description: "Non sei solo. Connettiti con talenti, imprese ed esperti dell'ecosistema Legacoop per accelerare la tua visione.",
-      icon: Users,
-      view: 'team' as const
-    },
-    {
       title: "Laboratorio Pratico",
       description: "Metti alla prova le tue abilità con simulatori realistici di governance e pitch in un ambiente protetto.",
       icon: Zap,
       view: 'simulation' as const
+    },
+    {
+      title: "Ecosistema e Network",
+      description: "Non sei solo. Connettiti con talenti, imprese ed esperti dell'ecosistema Legacoop per accelerare la tua visione.",
+      icon: Users,
+      view: 'team' as const
     }
   ];
 
