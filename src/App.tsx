@@ -20,6 +20,7 @@ import { PitchBattle } from './components/simulators/PitchBattle';
 import { GuidedTour } from './components/ui/GuidedTour';
 import { MobileTabNavigation } from './components/layout/MobileTabNavigation';
 import { Sparkles, GraduationCap, Users, Zap } from 'lucide-react';
+import { PWAInstaller } from './components/ui/PWAInstaller';
 
 // --- Main App Content ---
 
@@ -284,6 +285,7 @@ const AppContent = () => {
           />
         )}
       </AnimatePresence>
+      <PWAInstaller />
     </div>
   );
 };
