@@ -40,7 +40,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       } catch { return []; }
     })(),
     messages: [
-      { role: 'bot', text: 'Ciao! Sono la tua intelligenza cooperativa. Come posso aiutarti oggi?' }
+      { 
+        role: 'bot', 
+        text: 'Ciao! Sono il tuo Tutor AI dedicato alla crescita della tua startup cooperativa. 🚀\n\nIl mio compito è affiancarti in ogni passo del tuo viaggio: dalla definizione della tua **Vision** alla creazione di una **Governance** solida, fino al perfezionamento del tuo **Pitch**.' 
+      }
     ],
     userProfile: (() => {
       try {
