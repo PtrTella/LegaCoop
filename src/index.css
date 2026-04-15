@@ -86,8 +86,8 @@
 
 /* ─── Component classes: Clear & Milky Glass ────────── */
 .modal-overlay {
-  @apply fixed inset-0 flex items-center justify-center pt-24 pb-32 px-2 sm:p-4;
-  @apply bg-slate-900/40 backdrop-blur-xl;
+  @apply fixed inset-0 flex items-start justify-center pt-24 pb-32 md:pt-40 md:pb-12 px-2 sm:px-4;
+  @apply bg-slate-900/50 backdrop-blur-xl;
   z-index: var(--z-modal);
 }
 

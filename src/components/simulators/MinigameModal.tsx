@@ -48,7 +48,7 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="modal-overlay backdrop-blur-3xl"
+    className="modal-overlay"
     onClick={onClose}
   >
     <motion.div
@@ -56,21 +56,18 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-      className="glass-card max-w-2xl w-full max-h-[85vh] overflow-y-auto relative rounded-[3rem] shadow-ambient"
+      className="bg-white max-w-2xl w-full max-h-full relative rounded-5xl shadow-ambient flex flex-col overflow-hidden"
       onClick={e => e.stopPropagation()}
     >
-      {/* Sticky Vibrant Header like Pitch Battle */}
-      <div className="p-10 pb-8 sticky top-0 bg-white/70 border-b border-white/20 z-50 overflow-hidden backdrop-blur-[40px]">
-        {/* Internal Glow Effect */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-brand opacity-10 blur-3xl rounded-full -mr-32 -mt-32 pointer-events-none" />
-        
-        <div className="flex items-start justify-between gap-6 relative z-10">
-          <div className="space-y-4">
+      {/* Fixed Header - Solid White */}
+      <div className="p-8 md:p-10 bg-white border-b border-primary/5 shrink-0 z-50">
+        <div className="flex items-start justify-between gap-6">
+          <div className="space-y-3 flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
-              <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">Minigioco Offline</p>
+              <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-glow shadow-accent/40" />
+              <p className="text-primary font-display font-black text-[9px] uppercase tracking-mega">Minigioco Offline</p>
             </div>
-            <h3 className="text-4xl font-display font-black text-text-primary leading-[0.9] italic tracking-tight uppercase">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-text-primary leading-none italic tracking-tight uppercase break-words">
               {game.titolo}
             </h3>
           </div>
@@ -79,18 +76,18 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
             whileTap={{ scale: 0.9 }}
             onClick={onClose}
             aria-label="Chiudi"
-            className="w-12 h-12 rounded-2xl bg-white/20 hover:bg-white/40 flex items-center justify-center border border-white/40 text-primary transition-all shadow-sm"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-surface-soft hover:bg-white flex items-center justify-center border border-border-subtle text-primary transition-all shadow-sm shrink-0"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </motion.button>
         </div>
       </div>
 
-      {/* Body Area */}
-      <div className="p-10 space-y-12 relative z-10">
+      {/* Scrollable Body area */}
+      <div className="flex-1 overflow-y-auto p-8 md:p-10 space-y-12 touch-pan-y relative scrollbar-hide">
         <div className="relative">
-          <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-primary/20 to-transparent -ml-10" />
-          <p className="text-text-muted font-body text-lg leading-relaxed italic select-none">
+          <div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-primary/20 to-transparent -ml-8" />
+          <p className="text-text-muted font-body text-base md:text-lg leading-relaxed italic select-none">
             "{game.descrizione_metodo}"
           </p>
         </div>
@@ -106,7 +103,7 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
 
         <div className="space-y-6">
           <SectionLabel>Esecuzione Lab</SectionLabel>
-          <div className="grid gap-6 bg-white/70 p-8 rounded-4xl border border-white/50 shadow-inner">
+          <div className="grid gap-6 bg-surface-soft p-6 md:p-8 rounded-4xl border border-border-subtle shadow-inner">
             {game.istruzioni_passo_passo.map((step, i) => (
               <StepItem key={i} index={i + 1} text={step} />
             ))}
@@ -121,10 +118,13 @@ export const MinigameModal: React.FC<MinigameModalProps> = ({ game, onClose }) =
             ))}
           </div>
         </div>
+        
+        {/* Decorative Space at bottom for safe scrolling */}
+        <div className="h-4" />
       </div>
       
-      {/* Decorative Aurora Blob */}
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-accent-warm opacity-[0.05] blur-[100px] pointer-events-none rounded-full" />
+      {/* Subtle Aurora Hint (Internal only) */}
+      <div className="absolute bottom-0 right-0 w-48 h-48 bg-accent-warm opacity-[0.03] blur-[100px] pointer-events-none rounded-full" />
     </motion.div>
   </motion.div>
 );
