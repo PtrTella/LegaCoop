@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Scale, Info, ChevronRight, TrendingUp, Users, Heart, Trophy } from 'lucide-react';
+import { Info, ChevronRight, TrendingUp, Users, Heart, Trophy } from 'lucide-react';
 
 interface Option {
   testo: string;
@@ -46,8 +46,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
 
   const current = scenarios[step];
 
-  // Calculate overall balance score (0-100)
-  const balanceScore = (stats.finanze + stats.soddisfazione_soci + stats.principi_coop) / 3;
+
 
   const handleChoice = (opt: Option) => {
     const newStats = {
@@ -66,7 +65,7 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
       } else {
         setIsGameOver(true);
       }
-    }, 4000);
+    }, 6000);
   };
 
   if (isLoading) return (
@@ -169,27 +168,6 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
       </div>
 
       <div className="flex-1 flex flex-col justify-start md:justify-center px-4 md:px-12 pt-12 pb-30 md:py-20 relative z-10 overflow-y-auto">
-        {/* The Balance Scale: Refined Ambient Visualizer */}
-        <div className="w-full max-w-xs mx-auto text-center space-y-4 mb-8 md:mb-16">
-          <motion.div
-            animate={{ rotate: (balanceScore - 50) * 0.4 }}
-            className="inline-block p-3 md:p-4 bg-white/70 rounded-4xl shadow-ambient border border-white/60 backdrop-blur-[40px] relative group"
-          >
-             <div className={`absolute inset-0 blur-4xl opacity-10 transition-colors rounded-full ${balanceScore < 40 ? 'bg-accent' : balanceScore > 60 ? 'bg-accent-warm' : 'bg-primary'}`} />
-             <Scale className={`w-10 h-10 md:w-12 md:h-12 transition-colors duration-700 relative z-10 ${balanceScore < 40 ? 'text-accent' : balanceScore > 60 ? 'text-accent-warm' : 'text-primary'}`} />
-          </motion.div>
-          <div className="space-y-2">
-            <p className="text-[10px] font-display font-black uppercase tracking-mega text-text-muted/40">Equilibrio Coop</p>
-            <div className="h-1.5 w-full bg-white/40 rounded-full relative overflow-hidden shadow-inner border border-white/20">
-               <motion.div 
-                 animate={{ left: `${balanceScore}%` }}
-                 className="absolute top-0 w-2 h-2 bg-text-primary rounded-full -ml-1 -mt-px shadow-2xl z-20 border border-white/50"
-               />
-               <div className="absolute inset-0 bg-linear-to-r from-accent via-primary to-accent-warm opacity-30" />
-            </div>
-          </div>
-        </div>
-
         <div className="w-full max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             {!feedback ? (
@@ -230,24 +208,24 @@ export const GovernanceSimulator = ({ onComplete }: { onComplete: () => void }) 
                 initial={{ opacity: 0, scale: 0.9, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-white/40 p-10 md:p-16 rounded-[4rem] shadow-2xl space-y-8 w-full max-w-3xl mx-auto text-center relative overflow-hidden backdrop-blur-3xl border border-white/60"
+                className="bg-white/40 p-8 md:p-12 rounded-5xl shadow-2xl space-y-6 w-full max-w-2xl mx-auto text-center relative overflow-hidden backdrop-blur-3xl border border-white/60"
               >
                 <div className="absolute top-0 left-0 w-80 h-80 bg-primary/10 rounded-full -ml-40 -mt-40 blur-[100px]" />
                 
-                <div className="w-24 h-24 bg-primary/10 rounded-4xl flex items-center justify-center mx-auto mb-8 animate-pulse border border-primary/20 shadow-glow shadow-primary/20">
-                   <Info className="text-primary w-12 h-12" />
+                <div className="w-16 h-16 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 animate-pulse border border-primary/20 shadow-glow shadow-primary/20">
+                   <Info className="text-primary w-8 h-8" />
                 </div>
-                <div className="space-y-6">
-                  <p className="text-primary font-display font-black text-xs uppercase tracking-mega">Analisi Impatto Decisionale</p>
-                  <p className="text-text-primary text-xl md:text-2xl font-body leading-relaxed italic px-4">
+                <div className="space-y-4">
+                  <p className="text-primary font-display font-black text-[10px] uppercase tracking-mega">Analisi Impatto Decisionale</p>
+                  <p className="text-text-primary text-lg md:text-xl font-body leading-relaxed italic px-4">
                     "{feedback}"
                   </p>
                 </div>
-                <div className="flex items-center justify-center gap-4 text-primary font-display font-black text-xs uppercase tracking-mega pt-10">
+                <div className="flex items-center justify-center gap-4 text-primary font-display font-black text-[10px] uppercase tracking-mega pt-8">
                    <div className="flex gap-2">
-                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
-                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
-                     <div className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce" />
+                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]" />
+                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]" />
+                     <div className="w-2 h-2 bg-primary rounded-full animate-bounce" />
                    </div>
                    Aggiornamento Ecosistema...
                 </div>
